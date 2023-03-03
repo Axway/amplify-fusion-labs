@@ -2,5 +2,5 @@
 
 These labs are related to  *"Amplify Integration"* course on [Axway University](https://university.axway.com/)
 
- - [Amplify Integration - Asynchronous Integration Use Case](asynchronous-integration-use-case)
+ - [Amplify Integration - Asynchronous Integration Use Case](asynchronous-integration-use-case/README.md)
  -  more to come soon ...
