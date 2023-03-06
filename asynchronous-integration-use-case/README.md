@@ -1,4 +1,4 @@
-# Amplify Integration - Asynchronous Integration Use Cases
+# Amplify Integration - Asynchronous Integration Use Case
 
 ## Introduction
 
