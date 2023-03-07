@@ -41,6 +41,8 @@ with sample response:
 }
 ```
 
+A demo is shown below:
+
 ![demo](images/intro-demo.gif)
 
 You can download the project export [**here**](assets/LBAPIFication_V5_NoCreds.zip).
