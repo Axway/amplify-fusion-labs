@@ -76,7 +76,7 @@ The labs below are intended to be exploratory. Instructions are provided but you
 
   ```json
   {
-  ‌   "text":"Hello world"
+    "text": "Hello world"
   ‌}
   ```
   
