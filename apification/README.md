@@ -329,7 +329,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
   * `public_invoice_status` to `invoiceResponse->status` in the right hand panel
 * Expand `currencyConvertResponse` in the left hand panel and drag lines from:
   * `query->to` to `invoiceResponse->currency` in the right hand panel
-  * `query->result` to `currencyConvertResponse->result` in the right hand panel
+  * `result` to `invoiceResponse->totalamt` in the right hand panel
 * Add a Function, AddFloats, to add the converted currency (`currencyConvertResponse->result`) to the grandTotal as follows:
 ![map2 addFloats](images/lab4-map2-addfloats.png)
 * Click Save
