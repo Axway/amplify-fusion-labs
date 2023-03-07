@@ -43,8 +43,8 @@ The final integrations are shown below:
 
 ## Prerequisites
 
-* Access to Amplify Integration </br>
-If you do not have an account and need one, please send an email to amplify-integration-training@axway.com with the subject line `Amplify Integration Training Environment Access Request`
+* Access to Amplify Integration 
+  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
 * A free [**Zoho Invoice**](https://www.zoho.com/invoice/) account
 * A Kafka instance and the ability to create topics and publish on the topic. [**CloudKarafka**](https://www.cloudkarafka.com/) and [**Upstash**](https://upstash.com/) have free tiers. In these labs I used Upstash
 * Access to MS Teams and the ability to add an Incoming Webhook Connector to a channel
@@ -65,7 +65,7 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
   * Drag a line from DateFormat function `output` to the String variable you created above (e.g. *LastRunDt-formatted*) and click Save
   ![map](images/lab1-map.png)
 * Now, we need to query Zoho Invoice for modified invoices. So, click the plus button to add an OpenAPI Client Invoke Operation component and expand the bottom panel. Click the Add button next to Connection so that we can create an OpenAPI Connection to your Zoho Invoice application and enter a name (e.g. Zoho API) and description.
-* Follow the instructions [**here**](assets/zohoapi.md) and use the OAS doc [**here**](assets/Zoho-Invoice-oas3.json) to create you connection and don't forget to generate a token and test the connection
+* Follow the instructions [**here**](assets/zoho-api-instructions.md) and use the OAS doc [**here**](assets/Zoho-Invoice-oas3.json) to create you connection and don't forget to generate a token and test the connection
   ![openapi client connection](images/lab1-open-apiclient-connection.png)
 * Go back to the Integration and click on the OpenAPI Client Invoke Operation component and click refresh and select the connection you just created
 * Select Invoice for the Object and GetInvoices for the Action
@@ -213,11 +213,11 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
 
   ```json
   {
-    Text: "Invoice #{{invoice_number}} for customer '{{company_name}}', total value: {{currency_symbol}}{{total}} {{currency_code}} is now {{status}}"
+    Text: "Invoice #{invoice_number} for customer '{company_name}', total value: {currency_symbol}{total} {currency_code} is now {status}"
   }
   ```
 
-* Replace the variables (e.g. {{}}) by deleting them and clicking the plus button and selecting the appropriate variable from there and click Save and then Save again
+* Replace the variables (e.g. {...}) by deleting them and clicking the plus button and selecting the appropriate variable from there and click Save and then Save again
   ![https client post set value](images/lab2-https-client-post-set-value.png)
 * Now we're ready to test our integration which should look like this:
   ![integration](images/lab2-integration.png)

@@ -1,7 +1,6 @@
 # Amplify Integration - Hello World Lab
 
-
-In these labs, we will start from the scratch and build some very basic integrations. </br></br>
+In these labs, we will start from the scratch and build some very basic integrations. \
 At the end of these labs, you will learn the following:
 
 * Two ways to trigger an integration (Webhook and Scheduler)
@@ -16,9 +15,7 @@ As you go through the labs, take the time to explore more about the items relate
 ## Pre-requisites
 
 * Access to Amplify Integration
-
-  If you do not have an account and need one, please send an email to amplify-integration-training@axway.com with the subject line `Amplify Integration Training Environment Access Request`
-
+  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
 * Access to [**Webhook.site**](https://webhook.site/) or [**Pipedream**](https://pipedream.com/) or the equivalent that you can use to send API requests to for analysis. In the instruction, I will refer to webhook site to mean whatever service you are using
 
 ## Logging In
