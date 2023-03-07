@@ -87,7 +87,7 @@
 
 - After entering the above details, click **Update** to save the connection details.
 
-- Click on [Generate token]{.mark} to Allow access. Once token is generated, click on [Test button]{.mark} as shown below.
+- Click on [Generate token] to Allow access. Once token is generated, click on [Test button] as shown below.
 
 ![salesforce18](salesforce-connection/salesforce18.png)
 ![salesforce19](salesforce-connection/salesforce19.png)
