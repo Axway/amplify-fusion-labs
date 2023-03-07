@@ -6,7 +6,7 @@ In these labs, we will create an integration that will enable us to SFTP a CSV f
 
 ![demo](images/intro-demo.gif)
 
-You can download the base Amplify Integration project export [**here**](https://github.com/Axway/amplify-integration-labs/raw/main/file-integration/assets/LBCSVSFTP2SFDC_V4_NoCreds.zip).
+You can download the base Amplify Integration project export [**here**](assets/LBCSVSFTP2SFDC_V4_NoCreds.zip).
 
 The flow is described below:
 
@@ -62,7 +62,7 @@ In this lab, we will ingest a CSV file of contacts.
 Now, let's test the integration.
 
 * Enable the integration by clicking on the toggle switch next to the Test button
-* Download the file leads.csv from [**here**](https://github.com/Axway/amplify-integration-labs/raw/main/file-integration/assets/leads.csv)
+* Download the file leads.csv from [**here**](assets/leads.csv)
 * Launch your FTP client (e.g. FileZilla) and create a connection to the SFTP Server using the credentials from the Connection and connect to the SFTP server. Select the `/incoming` folder to upload to (as this will trigger your integration)
   ![filezilla connection](images/lab1-filezilla-connection.png)
 * Upload leads2.csv to the `/incoming` folder which will trigger your integration

@@ -8,7 +8,7 @@ A demo is shown below:
 
 ![demo](images/intro-demo.gif)
 
-You can download an Amplify Integration project [**here**](https://github.com/Axway/amplify-integration-labs/raw/main/asynchronous-integration/assets/LBInvoiceAsyncNotification_V10_NoCreds.zip).
+You can download an Amplify Integration project [**here**](assets/LBInvoiceAsyncNotification_V10_NoCreds.zip).
 
 The flows are described below:
 
@@ -65,7 +65,7 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
   * Drag a line from DateFormat function `output` to the String variable you created above (e.g. *LastRunDt-formatted*) and click Save
   ![map](images/lab1-map.png)
 * Now, we need to query Zoho Invoice for modified invoices. So, click the plus button to add an OpenAPI Client Invoke Operation component and expand the bottom panel. Click the Add button next to Connection so that we can create an OpenAPI Connection to your Zoho Invoice application and enter a name (e.g. Zoho API) and description.
-* Follow the instructions [**here**](assets/zohoapi.md) and use the OAS doc [**here**](https://github.com/Axway/amplify-integration-labs/raw/main/asynchronous-integration/assets/Zoho-Invoice-oas3.json) to create you connection and don't forget to generate a token and test the connection
+* Follow the instructions [**here**](assets/zohoapi.md) and use the OAS doc [**here**](assets/Zoho-Invoice-oas3.json) to create you connection and don't forget to generate a token and test the connection
   ![openapi client connection](images/lab1-open-apiclient-connection.png)
 * Go back to the Integration and click on the OpenAPI Client Invoke Operation component and click refresh and select the connection you just created
 * Select Invoice for the Object and GetInvoices for the Action

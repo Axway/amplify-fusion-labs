@@ -19,7 +19,7 @@ Your final integration should like this:
 
   ![integration](images/intro-integration.png)
 
-You can download the Amplify Integration project [**here**](https://github.com/Axway/amplify-integration-labs/raw/main/cloud-integration/assets/LBSFDCNewContact2Hubspot_V5_NoCreds.zip)
+You can download the Amplify Integration project [**here**](assets/LBSFDCNewContact2Hubspot_V5_NoCreds.zip)
 
 ## Pre-requisites
 

@@ -89,7 +89,7 @@ Let's create the Postgres Database to hold our invoice records.
 
 Create an account at [**Neon**](https://neon.tech). Write down the connection details (username, password, host, port, database name, ..) for later and select your project and navigate to the SQL Editor tab. We'll use the following SQL to create an invoice table:
 
-```
+```sql
 CREATE TABLE Invoice (
   created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -297,6 +297,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
   ```
 
 ![extract json](images/lab4-extract-json.png)
+
 * Right click on any variable on the right hand side and select Paste and give your extract variable a name (e.g. currencyConvertResponse) and drag a line from `HTTPSGetOutput->response` to the new extract variable `currencyConvertResponse` and click save
 ![htttps client component](images/lab4-htttps-client-component.png)
 * Add a Map component inside the loop and expand the bottom panel. We're going to set the decimal precision of the converted currency to 2 using a Map DecimalPrecision function as follows:
