@@ -1,4 +1,4 @@
-# Amplify Integration - APIfication Use Case Lab
+# Amplify Integration - APIfication Lab
 
 ## Introduction
 

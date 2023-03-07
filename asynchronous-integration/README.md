@@ -1,4 +1,4 @@
-# Amplify Integration - Asynchronous Integration Use Case
+# Amplify Integration - Invoice Asynchronous Integration Lab
 
 ## Introduction
 
