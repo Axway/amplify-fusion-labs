@@ -33,7 +33,9 @@ The final integration is shown below:
 
 * Access to Amplify Integration </br>
 If you do not have an account and need one, please send an email to amplify-integration-training@axway.com with the subject line `Amplify Integration Training Environment Access Request`
-* A [**Salesforce developer instance**](https://developer.salesforce.com/signup)
+* A [**Salesforce developer instance**](https://developer.salesforce.com/signup) 
+  > Note: If you already use Salesforce in your organization, don't use your corporate account for this lab and do not use your corporate email address to register for a developer account. Simply register with an alternative email address if you have one. \
+  If you don't, and your corporate email provider is Google or Microsoft, you may use email aliases to avoid creating a new email : for instance, if your corporate email is john@axway.com , you can use john+labs@axway.com alias to register an salesforce developer account for your labs.
 * An SFTP client, such as FileZilla
 
 ## Lab 1
