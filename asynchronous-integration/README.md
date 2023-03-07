@@ -43,7 +43,7 @@ The final integrations are shown below:
 
 ## Prerequisites
 
-* Access to Amplify Integration 
+* Access to Amplify Integration
   > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
 * A free [**Zoho Invoice**](https://www.zoho.com/invoice/) account
 * A Kafka instance and the ability to create topics and publish on the topic. [**CloudKarafka**](https://www.cloudkarafka.com/) and [**Upstash**](https://upstash.com/) have free tiers. In these labs I used Upstash
@@ -213,7 +213,7 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
 
   ```json
   {
-    Text: "Invoice #{invoice_number} for customer '{company_name}', total value: {currency_symbol}{total} {currency_code} is now {status}"
+    "Text": "Invoice #{invoice_number} for customer '{company_name}', total value: {currency_symbol}{total} {currency_code} is now {status}"
   }
   ```
 
@@ -260,4 +260,3 @@ Use the following MS Teams card sample and modify it to make a nicer MS Teams ca
     ]
   }
   ```
-
