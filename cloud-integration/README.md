@@ -2,7 +2,7 @@
 
 In these labs, we will create an integration that will copy new Salesforce Contacts to Hubspot and MS Teams as shown below:
 
-![demo](images/intro-demo.png)
+![demo](images/intro-demo.gif)
 
 We will learn the following:
 
@@ -19,7 +19,7 @@ Your final integration should like this:
 
   ![integration](images/intro-integration.png)
 
-You can download the Amplify Integration project [**here**](assets/LBSFDCNewContact2Hubspot_V5_NoCreds.zip)
+You can download the Amplify Integration project [**here**](https://github.com/Axway/amplify-integration-labs/raw/main/cloud-integration/assets/LBSFDCNewContact2Hubspot_V5_NoCreds.zip)
 
 ## Pre-requisites
 
@@ -59,7 +59,7 @@ In this lab, we'll set up a Salesforce push topic and start our integration by a
 
   ![salesforce apex code pushtopic](images/lab1-salesforce-apex-code-pushtopic.png)
 
-* Follow the instructions [**here**](assets/Salesforce.pdf) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection
+* Follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection
   ![salesforce connection](images/lab1-salesforce-connection.png)
 * Create a Salesforce Contact Push Plug (e.g. SFDCContactPush) and select the Salesforce Connection you just created and:
   * Select `SubscribePushTopic` for Actions

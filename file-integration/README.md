@@ -6,7 +6,7 @@ In these labs, we will create an integration that will enable us to SFTP a CSV f
 
 ![demo](images/intro-demo.gif)
 
-You can download the base Amplify Integration project export [**here**](assets/LBCSVSFTP2SFDC_V4_NoCreds.zip).
+You can download the base Amplify Integration project export [**here**](https://github.com/Axway/amplify-integration-labs/raw/main/file-integration/assets/LBCSVSFTP2SFDC_V4_NoCreds.zip).
 
 The flow is described below:
 
@@ -60,7 +60,7 @@ In this lab, we will ingest a CSV file of contacts.
 Now, let's test the integration.
 
 * Enable the integration by clicking on the toggle switch next to the Test button
-* Download the file leads.csv from [**here**](assets/leads.csv)
+* Download the file leads.csv from [**here**](https://github.com/Axway/amplify-integration-labs/raw/main/file-integration/assets/leads.csv)
 * Launch your FTP client (e.g. FileZilla) and create a connection to the SFTP Server using the credentials from the Connection and connect to the SFTP server. Select the `/incoming` folder to upload to (as this will trigger your integration)
   ![filezilla connection](images/lab1-filezilla-connection.png)
 * Upload leads2.csv to the `/incoming` folder which will trigger your integration
@@ -147,7 +147,7 @@ In this lab, we will loop over the delimited rows (contacts) and create the lead
 * Right click on `leads->Status` and select SetValue and set the value to `Open - Not Contacted` and click Save
   ![map component](images/lab3-map-component.png)
 * Close the bottom panel
-* We need to create a Salesforce Connection so follow the instructions [**here**](assets/Salesforce.pdf) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection
+* We need to create a Salesforce Connection so follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection
   ![saleforce connector](images/lab3-saleforce-connector.png)
 * Close the Salesforce Connection and return to your Integration
 * Click the add button to add a Salesforce insert Component and expand the bottom panel and select the newly created Salesforce Connection that we just created
@@ -165,3 +165,4 @@ In this lab, we will loop over the delimited rows (contacts) and create the lead
 Your final flow should like this:
 
   ![integration](images/lab3-integration.png)
+  
