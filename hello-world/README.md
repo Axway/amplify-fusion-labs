@@ -62,7 +62,7 @@ The labs below are intended to be exploratory. Instructions are provided but you
 * Click Add on Connection
   * Provide a name (webhook site)
   * Select https
-  * Paste url for webhook site (WITHOUT THE PROTOCOL)
+  * Paste url for webhook site (WITHOUT THE `https://` PROTOCOL )
   * Select Basic Authentication
   * Enter username and password (abcd/1234) and click update
   * Close tab
@@ -85,7 +85,7 @@ The labs below are intended to be exploratory. Instructions are provided but you
 
 ## Lab 3
 
-* Remove the Scheduler trigger and replace with HTTP/S Server Server trigger
+* Remove the Scheduler trigger and replace with HTTP/S Server trigger
 * Click add on Connection
   * Provide a name (HTTPS Server)
   * Select HTTPS
@@ -111,5 +111,5 @@ The labs below are intended to be exploratory. Instructions are provided but you
 * Disable to integration so it can be edited
 * Click the plus sign between the two components and add an if-else
 * Set the expressions condition so that it's checks if value is greater than 10
-* Drag the webhook HTTP/S Client POST component inside the true path
+* Drag the webhook HTTP/S Client POST component inside the "if true" path (on the top line, after the expression)
 * Enable your integration and trigger it with values greater than and less than 10 to see that only those greater than 10 are sent to webhook site
