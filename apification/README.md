@@ -177,7 +177,7 @@ In this lab, we'll create our integration and define the REST API endpoint using
 * Close the plug sub tab and return to the Database Select component in your integration and click the refresh button in the Plug picker and select the newly created plug
 * Expand `HTTPSServerGetOutput` in the left hand panel to expose the `queryParams->status` and drag a line from status to `GetInvoicesByStatusInput->where->invoice_status` in the ACTION PROPERTIES in the center panel
 * We are going to declare some variables that we'll use later on in the integration
-  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes our desired API response object and click on Copy Node:
+  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes our desired API response object and click on Copy Node button
 
     ```json
     {
@@ -262,7 +262,7 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 Your integration should look like this:
 ![integration](images/lab3-integration.png)
 
-* Enable your integration and make an API call from Postman or curl as follows:
+* Enable your integration and make an API call from the Browser, Postman or curl as follows:
 
   ```bash
   curl --location --request GET 'https://<<YOUR BASE ADDRESS>>/invoices?status=Overdue&currencycode=EUR'
@@ -279,7 +279,7 @@ Your integration should look like this:
 In this lab, we'll map our invoice and currency converted amount to the response invoice array and calculate a grand total.
 
 * Disable your integration and click on the currency conversion HTTP/S Client Get component and expand the bottom panel
-* Right click on any variable on the right hand side and select Extract and paste in the following JSON sample response and click Copy Node
+* Right click on any variable on the right hand side and select Extract and paste in the following JSON sample response and click on Copy Node button
 
   ```json
   {
@@ -304,7 +304,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
 ![htttps client component](images/lab4-htttps-client-component.png)
 * Add a Map component inside the loop and expand the bottom panel. We're going to set the decimal precision of the converted currency to 2 using a Map DecimalPrecision function as follows:
 ![map1](images/lab4-map1.png)
-* Add another Map component and expand the bottom panel. Right click on any variable on the right hand panel and select Extract and paste in the following JSON that represents what we want our resulting invoice looks like and click on Copy Node
+* Add another Map component and expand the bottom panel. Right click on any variable on the right hand panel and select Extract and paste in the following JSON that represents what we want our resulting invoice looks like and click on Copy Node button
 
   ```json
   {
@@ -345,7 +345,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
 Your integration is complete and should look like this:
 ![integration](images/lab4-integration.png)
 
-* Enable your integration and make an API call from Postman or curl as follows:
+* Enable your integration and make an API call from the Browser, Postman or curl as follows:
 
   ```bash
   curl --location --request GET 'https://<<YOUR BASE ADDRESS>>/invoices?status=Overdue&currencycode=EUR'
