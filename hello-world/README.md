@@ -1,4 +1,4 @@
-# Amplify Integration - Hello World Lab
+# Hello World Lab
 
 In these labs, we will start from the scratch and build some very basic integrations. \
 At the end of these labs, you will learn the following:

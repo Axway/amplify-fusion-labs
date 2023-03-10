@@ -1,4 +1,4 @@
-# Amplify Integration - APIfication Lab
+# Invoice APIfication Lab
 
 ## Introduction
 

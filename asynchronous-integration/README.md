@@ -1,4 +1,4 @@
-# Amplify Integration - Invoice Asynchronous Integration Lab
+# Invoice Asynchronous Integration Lab
 
 ## Introduction
 

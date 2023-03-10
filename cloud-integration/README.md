@@ -1,4 +1,4 @@
-# Amplify Integration - SaaS App Integration Lab
+# CRM Cloud Integration Lab
 
 In these labs, we will create an integration that will copy new Salesforce Contacts to Hubspot and MS Teams as shown below:
 

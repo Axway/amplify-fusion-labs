@@ -1,4 +1,4 @@
-# Amplify Integration - CSV Leads File Integration Lab
+# CSV Leads File Integration Lab
 
 ## Introduction
 
