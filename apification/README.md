@@ -1,4 +1,4 @@
-# Invoice APIfication Lab
+# Invoices APIfication Lab
 
 ## Introduction
 
