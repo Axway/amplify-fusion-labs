@@ -89,7 +89,7 @@ The final integration is shown below:
 
 Let's create the Postgres Database to hold our invoice records.
 
-Create an account at [**Neon**](https://neon.tech). Write down the connection details (username, password, host, port, database name, ..) for later and select your project and navigate to the SQL Editor tab. We'll use the following SQL to create an invoice table:
+Create an account at [**Neon**](https://neon.tech). Create a project and write down the connection string ("postgres://_`username`_:_`password`_@_`host`_/_`database name`_") for later and select your project and navigate to the SQL Editor tab. We'll use the following SQL to create an invoice table:
 
 ```sql
 CREATE TABLE Invoice (
@@ -164,7 +164,7 @@ In this lab, we'll create our integration and define the REST API endpoint using
 * Note that we still need to connect the response to the HTTP/S Server component but we'll do that shortly after we've defined the response variable
 * Click the plus button to add a Database Select component and expand the bottom panel
 * We need to create a database connection for our Postgres database so click Add next to the Connection picker and give your connection a name and description (e.g. Neon Postgres DB)
-* Enter your username, password, database type, host, port and database name and click on Update and then on Test
+* Enter your username, password, database type, host and database name from the connection details you wrote down previsouly, add port 5432 (default PostgreSQL database port) and click on Update and then on Test
 ![database connection](images/lab2-database-connection.png)
 * Close your connection sub tab and return the the Database Select component in your integration
 * Click refresh in the Connections tab and select the database connection you just created

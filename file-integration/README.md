@@ -65,7 +65,7 @@ Now, let's test the integration.
 * Download the file leads.csv from [**here**](assets/leads.csv)
 * Launch your FTP client (e.g. FileZilla) and create a connection to the SFTP Server using the credentials from the Connection and connect to the SFTP server. Select the `/incoming` folder to upload to (as this will trigger your integration)
   ![filezilla connection](images/lab1-filezilla-connection.png)
-* Upload leads2.csv to the `/incoming` folder which will trigger your integration
+* Upload leads.csv to the `/incoming` folder which will trigger your integration
 * Go to the Monitor
   ![monitor dashboard](images/lab1-monitor-dashboard.png)
 * Click on the transaction
@@ -111,7 +111,7 @@ In this lab, we will loop over the delimited rows (contacts) and create the lead
   ![foreach configuration](images/lab3-foreach-configuration.png)
 
   ![foreach configuration inputlist](images/lab3-foreach-configuration-inputlist.png)
-* Add a Map Component inside the If-else branch, and expand the bottom panel
+* Add a Map Component inside the For-each loop branch, and expand the bottom panel
   ![add map](images/lab3-add-map.png)
   ![map component init](images/lab3-map-component-init.png)
 * On the right side, right click on a variable and select Extract
