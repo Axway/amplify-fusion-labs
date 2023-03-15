@@ -145,7 +145,7 @@ In this lab, we will loop over the delimited rows (contacts) and create the lead
 * Drag a line from `LeadsCSV->delimitedRecords->first_name` to `leads->FirstName`
 * Drag a line from `LeadsCSV->delimitedRecords->title` to `Title`
 * Drag a line from `LeadsCSV->delimitedRecords->company` to `leads->Company`
-* Right click on `leads->LeadStatus` and select SetValue and set the value to `Partner Referral`
+* Right click on `leads->LeadSource` and select SetValue and set the value to `Partner Referral`
 * Right click on `leads->Status` and select SetValue and set the value to `Open - Not Contacted` and click Save
   ![map component](images/lab3-map-component.png)
 * Close the bottom panel
