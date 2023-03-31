@@ -4,6 +4,10 @@ In these labs, we will create an integration that will copy new Salesforce Conta
 
 ![demo](images/intro-demo.gif)
 
+A data flow diagram is shown below:
+
+![dataflow](images/dataflow.png)
+
 We will learn the following:
 
 * How to create a Salesforce Connection
@@ -159,4 +163,3 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
 Your final flow should like this:
 
   ![integration](images/lab4-integration.png)
-  
