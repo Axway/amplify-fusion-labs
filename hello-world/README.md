@@ -110,6 +110,6 @@ The labs below are intended to be exploratory. Instructions are provided but you
 
 * Disable to integration so it can be edited
 * Click the plus sign between the two components and add an if-else
-* Set the expressions condition so that it's checks if value is greater than 10
+* Set the expressions condition so that it checks if value is greater than 10
 * Drag the webhook HTTP/S Client POST component inside the "if true" path (on the top line, after the expression)
 * Enable your integration and trigger it with values greater than and less than 10 to see that only those greater than 10 are sent to webhook site
