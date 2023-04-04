@@ -70,7 +70,7 @@ In this lab, we'll set up a Salesforce push topic and start our integration by a
   * Select `/topic/ContactPush` for Objects
   * Select RECEIVE_NEW_EVENTS for Replay Id
   ![salesforce pushtopic plug](images/lab1-salesforce-pushtopic-plug.png)
-  * Click Generate
+  * Click Generate and then Save to create your Plug
 * Create an integration
 * Click on the Event button and select the Salesforce Pushtopic component
   * Select the Salesforce Connection and Plug you created above
