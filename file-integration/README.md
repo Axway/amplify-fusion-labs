@@ -61,14 +61,14 @@ Now, let's test the integration.
 
 * Enable the integration by clicking on the toggle switch next to the Test button
 * Download the file leads.csv from [**here**](assets/leads.csv)
-* Launch your FTP client (e.g. FileZilla) and create a connection to the SFTP Server using the credentials from the Connection and connect to the SFTP server. Select the `/incoming` folder to upload to (as this will trigger your integration)
+* Launch your FTP client (e.g. FileZilla) and create a connection to the SFTP Server using the credentials from the Connection and connect to the SFTP server (if using FileZilla, make sure to prefix the host by `sftp://`). Select the `/incoming` folder to upload to (as this will trigger your integration)
   ![filezilla connection](images/lab1-filezilla-connection.png)
 * Upload leads.csv to the `/incoming` folder which will trigger your integration
 * Go to the Monitor
   ![monitor dashboard](images/lab1-monitor-dashboard.png)
 * Click on the transaction
   ![transaction monitoring](images/lab1-transaction-monitoring.png)
-* Click on the SFTP Server Poll step and expand `SFTPServerPollOutput` to see the files->0 node and it's body field to see that your file was ingested
+* Click on the SFTP Server Poll step and expand `SFTPServerPollOutput` to see the files->0 node and its body field to see that your file was ingested
   ![transaction monitoring details](images/lab1-transaction-monitoring-details.png)
 
 ## Lab 2
@@ -131,7 +131,7 @@ In this lab, we will loop over the delimited rows (contacts) and create the lead
   ![map variable copy](images/lab3-map-variable-copy.png)
 * On the ride side, right click on a variable and select Paste and provide a name for your variable (e.g. lead)
   ![map variable paste](images/lab3-map-variable-paste.png)
-* Expand LeadsCSV in the left hand panel to expose `delimitedRecords` and it's fields
+* Expand LeadsCSV in the left hand panel to expose `delimitedRecords` and its fields
   ![map expand input](images/lab3-map-expand-input.png)
 * Let's convert the last name to uppercase by using a function. Click on +fx and search for, and select, the UpperCase function
   ![map add function](images/lab3-map-add-function.png)
