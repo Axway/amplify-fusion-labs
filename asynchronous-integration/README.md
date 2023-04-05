@@ -8,8 +8,6 @@ A demo is shown below:
 
 ![demo](images/intro-demo.gif)
 
-You can download an Amplify Integration project [**here**](assets/LBInvoiceAsyncNotification_V10_NoCreds.zip).
-
 The flows are described below:
 
 * Kafka Publisher
@@ -229,6 +227,8 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
 ## Lab 3 - Challenge yourself!
 
 Use the following MS Teams card sample and modify it to make a nicer MS Teams card for your invoice and send it as the body of your HTTPS Client Post to MS Teams:
+
+  ![teams message](images/lab3-teams-message.png)
 
   ```json
   {

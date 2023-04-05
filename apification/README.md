@@ -45,8 +45,6 @@ A demo is shown below:
 
 ![demo](images/intro-demo.gif)
 
-You can download the project export [**here**](assets/LBAPIFication_V5_NoCreds.zip).
-
 The integration is described below:
 
 * Expose a GET API endpoint that retrieves invoices by status and desired currency

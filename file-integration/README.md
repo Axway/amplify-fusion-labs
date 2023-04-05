@@ -6,8 +6,6 @@ In these labs, we will create an integration that will enable us to SFTP a CSV f
 
 ![demo](images/intro-demo.gif)
 
-You can download the base Amplify Integration project export [**here**](assets/LBCSVSFTP2SFDC_V4_NoCreds.zip).
-
 The flow is described below:
 
 * Ingest a CSV file (of leads) via an SFTP Ingest Server
@@ -167,4 +165,3 @@ In this lab, we will loop over the delimited rows (contacts) and create the lead
 Your final flow should like this:
 
   ![integration](images/lab3-integration.png)
-  
