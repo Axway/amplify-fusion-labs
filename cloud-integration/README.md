@@ -70,6 +70,7 @@ In this lab, we'll set up a Salesforce push topic and start our integration by a
   * Select `/topic/ContactPush` for Objects
   * Select RECEIVE_NEW_EVENTS for Replay Id
   ![salesforce pushtopic plug](images/lab1-salesforce-pushtopic-plug.png)
+  * Click Generate and then Save to create your Plug
 * Create an integration
 * Click on the Event button and select the Salesforce Pushtopic component
   * Select the Salesforce Connection and Plug you created above
@@ -92,6 +93,7 @@ Disable your integration and let's continue below:
   * Select `Query` for Actions
   * Select `Contact` for Objects
   * Select Id, FirstName, LastName and Email for the fields
+  * Click on the Where clause button and select Id for the field and `=` for the operation
   ![salesforce query plug configure](images/lab2-salesforce-query-plug-configure.png)
 * Click Generate and then Save to create your Plug
   ![salesforce query plug](images/lab2-salesforce-query-plug.png)
