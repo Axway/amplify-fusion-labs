@@ -63,7 +63,7 @@ Now, let's test the integration.
 
 * Enable the integration by clicking on the toggle switch next to the Test button
 * Download the file leads.csv from [**here**](assets/leads.csv)
-* Launch your FTP client (e.g. FileZilla) and create a connection to the SFTP Server using the credentials from the Connection and connect to the SFTP server. Select the `/incoming` folder to upload to (as this will trigger your integration)
+* Launch your FTP client (e.g. FileZilla) and create a connection to the SFTP Server using the credentials from the Connection and connect to the SFTP server (if using FileZilla, make sure to prefix the host by `sftp://`). Select the `/incoming` folder to upload to (as this will trigger your integration)
   ![filezilla connection](images/lab1-filezilla-connection.png)
 * Upload leads.csv to the `/incoming` folder which will trigger your integration
 * Go to the Monitor

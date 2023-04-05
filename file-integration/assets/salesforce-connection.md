@@ -48,7 +48,7 @@
 
 - Save all settings and then click Continue.
 
-- Save the Consumer Key (Client ID) and Consumer Secret (Client Secret) displayed after clicking Continue.
+- Click on Manage Consumer Details button, and save the Consumer Key (Client ID) and Consumer Secret (Client Secret).
   ![salesforce12](salesforce-connection/salesforce12.png)
 
 - These above details must be used when creating your Salesforce connection on Amplify Integration
@@ -74,9 +74,10 @@
 - Base URL (Required) --
 
   - Subdomain -- You can get your domain by clicking on the Avatar on the top right corner of Salesforce application
-
-  - Version -- 46.0, 52.0 etc
     ![salesforce17](salesforce-connection/salesforce17.png)
+
+  - Version -- 46.0, 57.0 etc.  You can get the API version by creating a new Apex class: from the Setup Menu, search Apex Classes, click New, go on Version Settings, writte down the default Salesforce.com API version, then Cancel.
+    ![salesforce17b](salesforce-connection/salesforce17b.png)
 
   - Replace your subdomain and version in the below URL
     `https://{subdomain}.my.salesforce.com/services/data/v{version}`
