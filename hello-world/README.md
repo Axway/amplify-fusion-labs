@@ -130,16 +130,36 @@ Continue from Lab 2
   ![HTTPS Post](images/lab3-create-http-post-component-a.png)
 * Click the Test button to test your flow and see that you cannot do that. We will need to trigger our integration with an API call
 * Enable the flow with the toggle switch
+  ![Enable Toggle](images/lab3-enable.png)
 * In a separate browser tab paste the URL you copied before and enter a value for value (e.g. 10)
 * See results in webhook site and see the body should equal the value you provided as a query parameter
   ![Result](images/lab3-result-a.png)
 * Go to the Monitor and view the transaction and explore the information there that is useful for debugging
   ![Result](images/lab3-result-b.png)
 
+Your final integration should look like this:
+
+![Final](images/lab3-final-a.png)
+
+
 ## Lab 4
+
+Continue from Lab 2
 
 * Disable to integration so it can be edited
 * Click the plus sign between the two components and add an if-else
-* Set the expressions condition so that it checks if value is greater than 10
+  ![If-else](images/lab4-ifelse-a.png)
+* Expand the If-else and click on Expression
+  ![If-else](images/lab4-ifelse-b.png)
+  ![If-else](images/lab4-ifelse-c.png)
+* Add a condition and set the expressions condition so that it checks if `value` is greater than 10
+  ![If-else](images/lab4-ifelse-d.png)
+  ![If-else](images/lab4-ifelse-e.png)
 * Drag the webhook HTTP/S Client POST component inside the "if true" path (on the top line, after the expression)
-* Enable your integration and trigger it with values greater than and less than 10 to see that only those greater than 10 are sent to webhook site
+  ![If-else](images/lab4-ifelse-f.png)
+  ![If-else](images/lab4-ifelse-g.png)
+* Enable your integration and trigger it with values greater than and less than 10 to see that only those greater than 10 are sent to webhook site. Verify by inspecting the transaction in the Monitor.
+
+Your final integration should look like this:
+
+![Final](images/lab4-final-a.png)
