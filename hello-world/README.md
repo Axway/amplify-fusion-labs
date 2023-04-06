@@ -107,26 +107,34 @@ Your final integration should look like this:
 
 Continue from Lab 2
 
-* Remove the Scheduler trigger and replace with HTTP/S Server trigger
+* Delete the Scheduler Event trigger (first component)
+* Click the Event button and select an HTTP/S Server Get trigger
+  ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-a.png)
+  ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-b.png)
 * Click add on Connection
-  * Provide a name (HTTPS Server)
+  * Provide a name and description (e.g. HTTPS Server) and press Select
   * Select HTTPS
   * Leave authentication as None
   * Click update
-* Go back to integration -> HTTP/S Server GET Component and select the Connection we just made
-* Add a resource path (name must be unique)
-* Add a query parameter (value)
+  ![HTTP Server Connection](images/lab3-https-connection-a.png)
+* Go back to integration and open the HTTP/S Server GET Component. click refresh and select the Connection we just created
+* Add a resource path (e.g. checkvalue). Note that the name must be unique
+* Add a query parameter (e.g. value)
+  ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-c.png)
 * Copy the url to a notepad and press Save
 * Click on the HTTP/S Client POST component (webhook site) and expand the bottom panel
 * Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
 * Click the delete button on the body
 * Expand the HTTPSServerGetOutput flyout and the queryParameters flyout on the left hand side of the panel
 * Drag value over to body and click save
+  ![HTTPS Post](images/lab3-create-http-post-component-a.png)
 * Click the Test button to test your flow and see that you cannot do that. We will need to trigger our integration with an API call
 * Enable the flow with the toggle switch
-* In a separate browser tab paste the URL you copied before and enter a value for value
+* In a separate browser tab paste the URL you copied before and enter a value for value (e.g. 10)
 * See results in webhook site and see the body should equal the value you provided as a query parameter
+  ![Result](images/lab3-result-a.png)
 * Go to the Monitor and view the transaction and explore the information there that is useful for debugging
+  ![Result](images/lab3-result-b.png)
 
 ## Lab 4
 
