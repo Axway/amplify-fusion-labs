@@ -1,6 +1,6 @@
 # Hello World Lab
 
-In these labs, we will start from the scratch and build some very basic integrations. \
+In these labs, we will start from the scratch and build some very basic integrations.
 At the end of these labs, you will learn the following:
 
 * Two ways to trigger an integration (Webhook and Scheduler)
@@ -50,40 +50,62 @@ The labs below are intended to be exploratory. Instructions are provided but you
 
 * Create integration
 * Add Scheduler trigger
+  ![Add Scheduler](images/lab1-add-scheduler-a.png)
+  ![Add Scheduler](images/lab1-add-scheduler-b.png)
+  ![Add Scheduler](images/lab1-add-scheduler-c.png)
 * Click test
 * See transaction in monitor
+  ![Test](images/lab1-test-a.png)
+  ![Test](images/lab1-test-b.png)
+
+Your final integration should look like this:
+
+![Final](images/lab1-final-a.png)
 
 ## Lab 2
 
-* Add HTTP/S Client Post Component
-* See bottom panel
+Continue from Lab 1
+
+* Add an HTTP/S Client Post Component
 * Label the component (send to webhook site)
 * Expand bottom panel
+  ![Add HTTPS Post](images/lab2-add-https-post-a.png)
+  ![Add HTTPS Post](images/lab2-add-https-post-b.png)
 * Click Add on Connection
-  * Provide a name (webhook site)
+  * Provide a name and description (webhook site)
   * Select https
   * Paste url for webhook site (WITHOUT THE `https://` PROTOCOL )
   * Select Basic Authentication
   * Enter username and password (abcd/1234) and click update
+    ![Create Connection](images/lab2-create-connection-a.png)
   * Close tab
-* Go back to integration -> HTTP/S Client POST Component and select the Connection we just made
+* Go back to integration -> HTTP/S Client POST Component, click refresh in the Connection picker and select the Connection we just made
 * Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
 * Right click on body and select Set Value
 * Enter simple JSON body and press save
+
 
   ```json
   {
     "text": "Hello world"
   ‌}
   ```
-  
+
 * Right click on basePath and select Set Value
 * Enter any base path (e.g. /v1/search)
 * Click save on the panel
+  ![Create Component](images/lab2-create-http-post-component-a.png)
 * Click the Test button to test your flow
-* See results in webhook site and see the Authorization Header and body
+* See results in webhook site and see the respurce path, Authorization Header and body
+  ![Create Component](images/lab2-test-results-a.png)
+
+Your final integration should look like this:
+
+![Final](images/lab2-final-a.png)
 
 ## Lab 3
+
+Continue from Lab 2
 
 * Remove the Scheduler trigger and replace with HTTP/S Server trigger
 * Click add on Connection
