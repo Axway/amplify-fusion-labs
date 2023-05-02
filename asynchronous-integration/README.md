@@ -54,7 +54,7 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
 * Create an integration (e.g. InvoiceHandler)
 * Click on the Event button and select the Scheduler Component and configure for 60 seconds
   ![scheduler](images/lab1-scheduler.png)
-* Click Test to run the integration and set the built in Last Run time stamp, `LastRunDt-...`
+* Click Test to run the integration. This will initialize the Last Run time stamp, `LastRunDt-...`. This built in variable will always contain the timestamp of the last time the integration ran. We can use it for polling modifications in back end data sources.
 * In order to query Zoho Invoice for updated invoices, we'll use the built in Last Run time stamp, `LastRunDt-...` to compare with the invoice *last_modified_time* times tamp, but we need to convert it to the Zoho Invoice Timestamp format using a Map function. Click on plus button and add a Map component and expand the bottom panel and add a DateFormat function
   * On the right hand panel, right click on a variable and add a String variable called *LastRunDt-formatted*
   * Drag a line from `LastRunDt-...` variable on the left hand side to the DateFormat function `sourceDate`
@@ -82,7 +82,7 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
   ![Upstash Kafka details](images/lab1-upstash-kafka-details.png)
 * In the Amplify Integration Connection screen
   * Enter the Upstash Endpoint for Bootstrap Servers
-  * Select SASL_SCRAM for Authentication
+  * Select SASL_SCRAM (or SASL_SCRAM_SSL) for Authentication.
   * Enter the Upstash username and password
   * Select for SCRAM_SHA_256 Encryption Type
   * Check the SSL Certificate checkbox and press Test
