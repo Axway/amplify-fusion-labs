@@ -8,7 +8,6 @@ The API we are building is as follows:
 
 `GET /invoices?status=Overdue&currencycode=EUR`
 
-
 with sample response:
 
 ```json
@@ -176,50 +175,47 @@ In this lab, we'll create our integration and define the REST API endpoint using
 ![database plug](images/lab2-database-plug.png)
 * Close the plug sub tab and return to the Database Select component in your integration and click the refresh button in the Plug picker and select the newly created plug
 * Expand `HTTPSServerGetOutput` in the left hand panel to expose the `queryParams->status` and drag a line from status to `GetInvoicesByStatusInput->where->invoice_status` in the ACTION PROPERTIES in the center panel
-* We are going to declare some variables that we'll use later on in the integration
-  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes our desired API response object and click on Copy Node button
-
-    ```json
-    {
-        "success": true,
-        "invoices": [],
-        "status": "Paid",
-        "grandTotal": 0.00,
-        "currency": "EUR"
-    }
-    ```
-
-    * Right click again and select Paste and name your variable `response`
-    * Repeat these steps with the following JSON to define a variable called `DBInvoicePayload` for mapping the invoices received by the database query
-
-    ```json
-    {
-      "public_invoice_created_at": "2023-01-26 00:00:00.0",
-      "public_invoice_updated_at": "2023-01-26 00:00:00.0",
-      "public_invoice_invid": "1",
-      "public_invoice_invnum": "IN4001",
-      "public_invoice_invdate": "2023-01-26",
-      "public_invoice_businessname": "ACME Corp",
-      "public_invoice_businessaddress": "3734 Jacobs Street,Pittsburgh, PA, 15201 , USA",
-      "public_invoice_businessphone": "412-297-3188",
-      "public_invoice_billtoname": "Cesar Bowman",
-      "public_invoice_billtoaddress": "3734 Jacobs Street,Pittsburgh, PA, 15201 , USA",
-      "public_invoice_vat": "15%",
-      "public_invoice_totalamt": "500.0",
-      "public_invoice_currency": "USD",
-      "public_invoice_status": "Paid",
-      "public_invoice_notes": "Net30"
-    }
-    ```
-
 * Click the Save button
-![database component](images/lab2-database-component.png)
+![database component](images/lab2-database-component_.png)
+* We are going to declare a response variables that we'll use in the integration. This is the response returned to the client.
+  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes our desired API response object and click on Copy Node button
+    ```json
+    {
+        "grandTotal": 1049.46,
+        "status": "Overdue",
+        "currency": "EUR",
+        "success": true,
+        "invoices": [
+            {
+                "currency": "EUR",
+                "totalamt": "456.29",
+                "invnum": "IN4001",
+                "invdate": "2023-01-12",
+                "businessname": "ACME Corp",
+                "billtoname": "Cesar Bowman",
+                "vat": "15%"
+            },
+            {
+                "currency": "EUR",
+                "totalamt": "593.17",
+                "invnum": "IN4003",
+                "invdate": "2023-03-13",
+                "businessname": "Crypto Corp",
+                "billtoname": "Jane Doe",
+                "vat": "15%"
+            }
+        ]
+    }
+    ```
+    * Right click again and select Paste and name your variable `response`
+    ![database component](images/lab2-database-component2.png)
+
 * Now that we've declared our API response variable, let's go back to the HTTP/S Server component and map our response
 * Click on the HTTP/S Server component and click on Response
 ![https server component response](images/lab2-https-server-component-response.png)
-* Click on Map Reponse and expand the bottom panel
+* Click on Map Response and expand the bottom panel
 * Drag a line from the variable `response` in the left panel to the `HttpResponseInput->body` under ACTION PROPERTIES in the center panel and click on Save
-![https server component response map](images/lab2-https-server-component-response-map.png)
+![https server component response map](images/lab2-https-server-component-response-map_.png)
 
 Your integration should look like this:
 ![integration](images/lab2-integration.png)
@@ -233,7 +229,7 @@ Your integration should look like this:
   Note: Make sure to update the resource path to match what you defined
 
 * Find your transaction in the Monitor and click on the Database Select step and expand `GetInvoicesByStatusOutput->resultSet` and see that you are retrieving invoices
-![transaction monitoring](images/lab2-transaction-monitoring.png)
+![transaction monitoring](images/lab2-transaction-monitoring_.png)
 
 ## Lab 3
 
