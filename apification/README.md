@@ -172,7 +172,7 @@ In this lab, we'll create our integration and define the REST API endpoint using
 * Check the box next to your invoice table, and click on that table name and select all the columns
 * Click the Where tab and select `invoice.status` and `=` and press Generate and click save
 ![database plug configuration](images/lab2-database-plug-configuration.png)
-![database plug](images/lab2-database-plug.png)
+![database plug](images/lab2-database-plug_.png)
 * Close the plug sub tab and return to the Database Select component in your integration and click the refresh button in the Plug picker and select the newly created plug
 * Expand `HTTPSServerGetOutput` in the left hand panel to expose the `queryParams->status` and drag a line from status to `GetInvoicesByStatusInput->where->invoice_status` in the ACTION PROPERTIES in the center panel
 * Click the Save button
