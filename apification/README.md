@@ -8,6 +8,7 @@ The API we are building is as follows:
 
 `GET /invoices?status=Overdue&currencycode=EUR`
 
+
 with sample response:
 
 ```json
