@@ -10,4 +10,4 @@ These labs are related to  *"Amplify Integration"* course on [Axway University](
 - [Amplify Integration - APIfication example](https://university.axway.com/learn/course/11701/play/25844/example-apification-use-case-ampint0403?hash=0180bbf5c81862afce156015046f3cdb78c25f74&generated_by=13047)
 - [Amplify Integration - Cloud Integration of contact information](https://university.axway.com/learn/course/11701/play/25847/example-cloud-integration-use-case-ampint0503?hash=0180bbf5c81862afce156015046f3cdb78c25f74&generated_by=13047)
 
-> For questions related to Axway University, email `axway.university@axway.com`
+> For questions related to Axway University, email `university@axway.com`
