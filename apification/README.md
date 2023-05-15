@@ -172,53 +172,51 @@ In this lab, we'll create our integration and define the REST API endpoint using
 * Check the box next to your invoice table, and click on that table name and select all the columns
 * Click the Where tab and select `invoice.status` and `=` and press Generate and click save
 ![database plug configuration](images/lab2-database-plug-configuration.png)
-![database plug](images/lab2-database-plug.png)
+![database plug](images/lab2-database-plug_.png)
 * Close the plug sub tab and return to the Database Select component in your integration and click the refresh button in the Plug picker and select the newly created plug
 * Expand `HTTPSServerGetOutput` in the left hand panel to expose the `queryParams->status` and drag a line from status to `GetInvoicesByStatusInput->where->invoice_status` in the ACTION PROPERTIES in the center panel
-* We are going to declare some variables that we'll use later on in the integration
-  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes our desired API response object and click on Copy Node button
-
-    ```json
-    {
-        "success": true,
-        "invoices": [],
-        "status": "Paid",
-        "grandTotal": 0.00,
-        "currency": "EUR"
-    }
-    ```
-
-    * Right click again and select Paste and name your variable `response`
-    * Repeat these steps with the following JSON to define a variable called `DBInvoicePayload` for mapping the invoices received by the database query
-
-    ```json
-    {
-      "public_invoice_created_at": "2023-01-26 00:00:00.0",
-      "public_invoice_updated_at": "2023-01-26 00:00:00.0",
-      "public_invoice_invid": "1",
-      "public_invoice_invnum": "IN4001",
-      "public_invoice_invdate": "2023-01-26",
-      "public_invoice_businessname": "ACME Corp",
-      "public_invoice_businessaddress": "3734 Jacobs Street,Pittsburgh, PA, 15201 , USA",
-      "public_invoice_businessphone": "412-297-3188",
-      "public_invoice_billtoname": "Cesar Bowman",
-      "public_invoice_billtoaddress": "3734 Jacobs Street,Pittsburgh, PA, 15201 , USA",
-      "public_invoice_vat": "15%",
-      "public_invoice_totalamt": "500.0",
-      "public_invoice_currency": "USD",
-      "public_invoice_status": "Paid",
-      "public_invoice_notes": "Net30"
-    }
-    ```
-
 * Click the Save button
-![database component](images/lab2-database-component.png)
+![database component](images/lab2-database-component_.png)
+* We are going to declare a response variables that we'll use in the integration. This is the response returned to the client.
+  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes our desired API response object and click on Copy Node button
+    ```json
+    {
+        "grandTotal": 1049.51,
+        "status": "Overdue",
+        "currency": "EUR",
+        "success": true,
+        "invoices": [
+            {
+                "currency": "EUR",
+                "totalamt": "456.31",
+                "invnum": "IN4001",
+                "invdate": "2023-01-12",
+                "businessname": "ACME Corp",
+                "billtoname": "Cesar Bowman",
+                "vat": "15%"
+            },
+            {
+                "currency": "EUR",
+                "totalamt": "593.17",
+                "invnum": "IN4003",
+                "invdate": "2023-03-13",
+                "businessname": "Crypto Corp",
+                "billtoname": "Jane Doe",
+                "vat": "15%"
+            }
+        ]
+    }
+    ```
+  ![extract json](images/lab3-extract-json.png)
+  * Right click again and select Paste and name your variable `response`
+  ![database component](images/lab2-database-component2.png)
+
 * Now that we've declared our API response variable, let's go back to the HTTP/S Server component and map our response
 * Click on the HTTP/S Server component and click on Response
 ![https server component response](images/lab2-https-server-component-response.png)
-* Click on Map Reponse and expand the bottom panel
+* Click on Map Response and expand the bottom panel
 * Drag a line from the variable `response` in the left panel to the `HttpResponseInput->body` under ACTION PROPERTIES in the center panel and click on Save
-![https server component response map](images/lab2-https-server-component-response-map.png)
+![https server component response map](images/lab2-https-server-component-response-map_.png)
 
 Your integration should look like this:
 ![integration](images/lab2-integration.png)
@@ -232,17 +230,15 @@ Your integration should look like this:
   Note: Make sure to update the resource path to match what you defined
 
 * Find your transaction in the Monitor and click on the Database Select step and expand `GetInvoicesByStatusOutput->resultSet` and see that you are retrieving invoices
-![transaction monitoring](images/lab2-transaction-monitoring.png)
+![transaction monitoring](images/lab2-transaction-monitoring_.png)
 
 ## Lab 3
 
 In this lab, we'll loop over the invoices, parse each one to a JSON object and do a currency conversion on the invoice amount to a desired currency passed into the API call as a query parameter.
 
 * Click the plus button and add a For-each component, expand it and click on Config
-* Click the down arrow and select the `GetInvoicesByStatusOutput->resultSet` array to loop over and click Save
-![foreach configuration](images/lab3-foreach-configuration.png)
-* Add a Map component inside the For-each loop and expand the bottom panel and drag a line from `GetInvoicesByStatusOutput->resultSet` in the left hand panel to `DBInvoicePayload` in the right hand panel to parse our invoice to a JSON object and click on Save
-![map](images/lab3-map.png)
+* Click the down arrow and select the `GetInvoicesByStatusOutput->response->resultSet` array to loop over and click Save
+![foreach configuration](images/lab3-foreach-configuration_.png)
 * Let's convert the invoice total amount to the desired currency using the APILayer currency conversion API. Add an HTTP/S Client Get component after the Map component inside the loop and expand the bottom panel
 * Click Add next to the Connection picker and give your connection a name and description (e.g. Exchange Rates Data API) and enter the information as shown below and click Update. Note the the URL is `api.apilayer.com/exchangerates_data`
 ![https client connection](images/lab3-https-client-connection.png)
@@ -253,13 +249,33 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
   * Right click on `headers` and add a string variable called `apikey`
   * Right click on `apikey` and setValue to your APILayer apikey value
   * Drag a line from the left hand panel `/HTTPSServerGetOutput->queryParams->currencycode` to the center panel `HTTPSGetInput->queryParams->to` to set the target currency code for the APILayer API
-  * Drag a line from the left hand panel `DBInvoicePayload->public_invoice_totalamt` to the center panel `HTTPSGetInput->queryParams->amount` to set the amount for the APILayer API
-  * Drag a line from the left hand panel `DBInvoicePayload->public_invoice_currency` to the center panel `HTTPSGetInput->queryParams->from` to set the source currency code for the APILayer API
+  * Drag a line from the left hand panel `GetInvoicesByStatusOutput->response->resultSet->invoice_totalamt` to the center panel `HTTPSGetInput->queryParams->amount` to set the amount for the APILayer API
+  * Drag a line from the left hand panel `GetInvoicesByStatusOutput->response->resultSet->invoice_currency` to the center panel `HTTPSGetInput->queryParams->from` to set the source currency code for the APILayer API
+  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes the currency converter API response object and click on Copy Node button
+    ```json
+    {
+        "success": true,
+        "query": {
+            "from": "USD",
+            "to": "EUR",
+            "amount": 100
+        },
+        "info": {
+            "timestamp": 1683656343,
+            "rate": 0.91192
+        },
+        "date": "2023-05-09",
+        "result": 91.192
+    }
+    ```
+  ![extract json](images/lab4-extract-json.png)
+  * Right click again and select Paste and name your variable `currencyConvertResponse`
+  * Drag a line from ACTION PROPERTIERS `HTTPSGetOutput->response` to the `currencyConvertResponse` extract variable
   * Press Save
-![https client component](images/lab3-https-client-component.png)
+  ![https client component](images/lab3-https-client-component_.png)
 
-Your integration should look like this:
-![integration](images/lab3-integration.png)
+* Your integration should look like this:
+  ![integration](images/lab3-integration_.png)
 
 * Enable your integration and make an API call from the Browser, Postman or curl as follows:
 
@@ -277,72 +293,60 @@ Your integration should look like this:
 
 In this lab, we'll map our invoice and currency converted amount to the response invoice array and calculate a grand total.
 
-* Disable your integration and click on the currency conversion HTTP/S Client Get component and expand the bottom panel
-* Right click on any variable on the right hand side and select Extract and paste in the following JSON sample response and click on Copy Node button
-
-  ```json
-  {
-      "success": true,
-      "query": {
-          "from": "USD",
-          "to": "EUR",
-          "amount": 100
-      },
-      "info": {
-          "timestamp": 1675302063,
-          "rate": 0.907966
-      },
-      "date": "2023-02-02",
-      "result": 90.7966
-  }
-  ```
-
-![extract json](images/lab4-extract-json.png)
-
-* Right click on any variable on the right hand side and select Paste and give your extract variable a name (e.g. currencyConvertResponse) and drag a line from `HTTPSGetOutput->response` to the new extract variable `currencyConvertResponse` and click save
-![htttps client component](images/lab4-htttps-client-component.png)
-* Add a Map component inside the loop and expand the bottom panel. We're going to set the decimal precision of the converted currency to 2 using a Map DecimalPrecision function as follows:
-![map1](images/lab4-map1.png)
-* Add another Map component and expand the bottom panel. Right click on any variable on the right hand panel and select Extract and paste in the following JSON that represents what we want our resulting invoice looks like and click on Copy Node button
-
-  ```json
-  {
-    "invnum": "IN4001",
-    "invdate": "2023-01-26",
-    "businessname": "ACME Corp",
-    "billtoname": "Cesar Bowman",
-    "vat": "15%",
-    "totalamt": "500.00",
-    "currency": "USD",
-    "status": "Paid"
-  }
-  ```
-
-* Right click on any variable on the right hand panel and select Paste and name your variable (e.g. invoiceResponse)
-* Expand `DBInvoicePayload` in the left hand panel and drag lines from:
-  * `public_invoice_invnum` to `invoiceResponse->invnum` in the right hand panel
-  * `public_invoice_invdate` to `invoiceResponse->invdate` in the right hand panel
-  * `public_invoice_businessname` to `invoiceResponse->businessname` in the right hand panel
-  * `public_invoice_billtoname` to `invoiceResponse->billtoname` in the right hand panel
-  * `public_invoice_vat` to `invoiceResponse->vat` in the right hand panel
-  * `public_invoice_status` to `invoiceResponse->status` in the right hand panel
-* Expand `currencyConvertResponse` in the left hand panel and drag lines from:
-  * `query->to` to `invoiceResponse->currency` in the right hand panel
-  * `result` to `invoiceResponse->totalamt` in the right hand panel
-* Add a Function, AddFloats, to add the converted currency (`currencyConvertResponse->result`) to the grandTotal as follows:
-![map2 addFloats](images/lab4-map2-addfloats.png)
-* Click Save
-![map2](images/lab4-map2.png)
-* Add another Map component to the loop so we can add our invoice to the response invoice array using a AppendList function as follows:
-![map3 appendList](images/lab4-map3-appendlist.png)
-  * Drag a line from `HTTPSServerGetOutput->queryParams->status` on the left hand panel to `response/status` on the right hand panel
-  * Drag a line from `currencyConvertResponse->query->to` on the left hand panel to `response->currency` on the right hand panel
-  * Right click on `response->success` and setValue to True
+* First we need to set the precision of our converted currency to 2 decimal points since it is returned with 3 decimal points of precision
+* Disable your integration and add a Map component inside the loop and expand the bottom panel. We're going to set the decimal precision of the converted currency to 2 using a Map DecimalPrecision function as follows:
+  * Drag a line from `currencyConvertResponse->result` to `decimal`
+  * Set `precision` to 2
+  * Drag a line from `output` to `currencyConvertResponse->result`
   * Click Save
-![map3](images/lab4-map3.png)
+  ![map1](images/lab4-map1_.png)
+* Add another Map component and expand the bottom panel. In this Map component we are going to do two things: (1) add the invoice total amount to the response grand total and (2) populate the response invoice entry based on the database query response and the currency conversion response.
+* For the Grand Total calculation, do the following:
+  * Click the +fx button and select the AddFloats function and expand it
+  * Drag a line from `response->grandTotal` to `num1`
+  * Drag a line from `currencyConvertResponse->result` to `num2`
+  * Drag a line from `output` to `response->grandTotal`
+  ![map2 addFloats](images/lab4-map2-addfloats.png)
+* For the result invoice mapping, do the following:
+  * Right click on any variable on the right hand panel and select Extract and paste in the following JSON that represents what we want our resulting invoice looks like and click on Copy Node button
+    ```json
+    {
+      "invnum": "IN4001",
+      "invdate": "2023-01-26",
+      "businessname": "ACME Corp",
+      "billtoname": "Cesar Bowman",
+      "vat": "15%",
+      "totalamt": "500.00",
+      "currency": "USD",
+      "status": "Paid"
+    }
+    ```
+  * Right click on any variable on the right hand panel and select Paste and name your variable (e.g. `invoiceResponse`)
+  * Expand `GetInvoicesByStatusOutput->response_resultSet` in the left hand panel and drag lines from:
+    * `invoice_invnum` to `invoiceResponse->invnum` in the right hand panel
+    * `invoice_invdate` to `invoiceResponse->invdate` in the right hand panel
+    * `invoice_businessname` to `invoiceResponse->businessname` in the right hand panel
+    * `invoice_billtoname` to `invoiceResponse->billtoname` in the right hand panel
+    * `invoice_vat` to `invoiceResponse->vat` in the right hand panel
+    * `invoice_status` to `invoiceResponse->status` in the right hand panel
+  * Expand `currencyConvertResponse` in the left hand panel and drag lines from:
+    * `query->to` to `invoiceResponse->currency` in the right hand panel
+    * `result` to `invoiceResponse->totalamt` in the right hand panel
+  * Click Save
+  ![map2](images/lab4-map2_.png)
+* Add another Map component to the loop so we can add our invoice to the response invoice array using a AppendList function and set the remaining response elements as follows:
+  * Add an AppendList function
+  * Drag a line from `response->invoices[]` on the left to `docList`
+  * Drag a line from `invoiceResponse` to `docIn`
+  * Drag a line from `docList` to `response->invoices[]` on the right
+  ![map3 appendList](images/lab4-map3-appendlist_.png)
+  * Drag a line from `HTTPSServerGetOutput->queryParams->currencycode` on the left to `response->currency` on the right
+  * Drag a line from `HTTPSServerGetOutput->queryParams->status` on the left to `response->status` on the right
+  * Click Save
+![map3](images/lab4-map3_.png)
 
 Your integration is complete and should look like this:
-![integration](images/lab4-integration.png)
+![integration](images/lab4-integration_.png)
 
 * Enable your integration and make an API call from the Browser, Postman or curl as follows:
 
