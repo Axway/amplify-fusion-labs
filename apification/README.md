@@ -240,14 +240,17 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 * Click the down arrow and select the `GetInvoicesByStatusOutput->response->resultSet` array to loop over and click Save
 ![foreach configuration](images/lab3-foreach-configuration_.png)
 * Let's convert the invoice total amount to the desired currency using the APILayer currency conversion API. Add an HTTP/S Client Get component after the Map component inside the loop and expand the bottom panel
-* Click Add next to the Connection picker and give your connection a name and description (e.g. Exchange Rates Data API) and enter the information as shown below and click Update. Note the the URL is `api.apilayer.com/exchangerates_data`
+* Click Add next to the Connection picker and give your connection a name and description (e.g. Exchange Rates Data API) and do the following:
+  * Select HTTPS for the Protocol
+  * Select HTTP/2 for the HTTP Version
+  * Enter `api.apilayer.com/exchangerates_data` for Url
+  * Add a header named `apikey` and enter your APILayer APIKey
+  * Click Update
 ![https client connection](images/lab3-https-client-connection.png)
 * Go back to your HTTP/S Client Get component, click refresh in the Connection picker and select the connection you just created
 * In the center panel under ACTION PROPERTIES, expand `HTTPSGetInput` and:
   * Right click on basePath and setValue to `/convert`
   * Right click on `queryParams` and add 3 string variables inside (`amount`, `to` and `from`)
-  * Right click on `headers` and add a string variable called `apikey`
-  * Right click on `apikey` and setValue to your APILayer apikey value
   * Drag a line from the left hand panel `/HTTPSServerGetOutput->queryParams->currencycode` to the center panel `HTTPSGetInput->queryParams->to` to set the target currency code for the APILayer API
   * Drag a line from the left hand panel `GetInvoicesByStatusOutput->response->resultSet->invoice_totalamt` to the center panel `HTTPSGetInput->queryParams->amount` to set the amount for the APILayer API
   * Drag a line from the left hand panel `GetInvoicesByStatusOutput->response->resultSet->invoice_currency` to the center panel `HTTPSGetInput->queryParams->from` to set the source currency code for the APILayer API
