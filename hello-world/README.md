@@ -48,6 +48,8 @@ The labs below are intended to be exploratory. Instructions are provided but you
 
 ## Lab 1
 
+In this lab, we'll create an integration that is triggered using a Scheduler and test it.
+
 * Create integration
 * Add Scheduler trigger
   ![Add Scheduler](images/lab1-add-scheduler-a.png)
@@ -63,6 +65,8 @@ Your final integration should look like this:
 ![Final](images/lab1-final-a.png)
 
 ## Lab 2
+
+In this lab, we'll add an HTTP/S Client component (and associated connection) to our integration and test it.
 
 Continue from Lab 1
 
@@ -105,6 +109,8 @@ Your final integration should look like this:
 
 ## Lab 3
 
+In this lab, we'll replace the Scheduler component event trigger with an HTTP/S Server component (and associated connection) and test it.
+
 Continue from Lab 2
 
 * Delete the Scheduler Event trigger (first component)
@@ -144,7 +150,9 @@ Your final integration should look like this:
 
 ## Lab 4
 
-Continue from Lab 2
+In this lab, we'll add some flow control logic and variables to our integration and test it.
+
+Continue from Lab 3
 
 * Disable to integration so it can be edited
 * Click the plus sign between the two components and add an if-else
