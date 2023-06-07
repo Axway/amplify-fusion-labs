@@ -165,6 +165,7 @@ In this lab, we'll create our integration and define the REST API endpoint using
 * We need to create a database connection for our Postgres database so click Add next to the Connection picker and give your connection a name and description (e.g. Neon Postgres DB)
 * Enter your username, password, database type, host and database name from the connection details you wrote down previsouly, add port 5432 (default PostgreSQL database port) and click on Update and then on Test
 ![database connection](images/lab2-database-connection.png)
+> Note that if you get any Connection Timeout errors with the connection then you may want to expand the Advanced section and set `Connection Wait Timeout` to 1000
 * Close your connection sub tab and return the the Database Select component in your integration
 * Click refresh in the Connections tab and select the database connection you just created
 * We need a plug for selecting invoices by Status so click Add next to the Plug picker and give your plug a name and description (e.g. GetInvoicesByStatus) and click on the Configure button
