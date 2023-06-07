@@ -43,7 +43,7 @@ In this lab, we will ingest a CSV file of contacts.
 * Create an integration (e.g. csv2sfdc)
 * Click on the Event button and select the SFTP Server Poll Component
   ![sftp server poll event](images/lab1-sftp-server-poll-event.png)
-  ![sftp server poll component](images/lab1-sftp-server-poll-component.png)
+  ![sftp server poll component](images/lab1-sftp-server-poll-component_.png)
 * In the Configure Component dialog, click Add to add a new SFTP Server Connection
 * Give your Connection a name and description (e.g. SFTP Server)
 * Select Basic Authentication, enter a unique username and password, and press Update
@@ -52,8 +52,8 @@ In this lab, we will ingest a CSV file of contacts.
   > Note: to keep things simple, you can use the same value for username and password. In the screen shot above, I  used lbadmin3-cx2-d for both
 
 * Close the SFTP Server Connection sub tab and return to your integration
-* Click on the SFTP Server Poll Component, click refresh and select the newly created SFTP Server Connection from the list. Enter `*.csv` for File Pattern and press Save
-  ![sftp server poll component file pattern](images/lab1-sftp-server-poll-component-file-pattern.png)
+* Click on the SFTP Server Poll Component, click refresh and select the newly created SFTP Server Connection from the list. Enter `*.csv` for File Pattern, leave the rest at their default value and press Save
+  ![sftp server poll component file pattern](images/lab1-sftp-server-poll-component-file-pattern_.png)
 * Your integration should look like this:
   ![integration](images/lab1-integration.png)
 
