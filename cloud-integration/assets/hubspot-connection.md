@@ -22,7 +22,7 @@ We will do the following:
   `<<YOUR AIP BASE URL>>/design/oauth2/callback`
   ![hubspot04](hubspot-connection/hubspot04.png)
 * Scroll down to the Scopes section and select your desired scopes. For example, I selected all CRM scopes below:
-  ![hubspot05](hubspot-connection/hubspot05.png)
+  ![hubspot05](hubspot-connection/hubspot05_.png)
 * We will need the list of selected scopes when we create the Amplify Integration Hubspot Connection. For my settings, they are as follows:
 `crm.schemas.companies.write crm.schemas.contacts.write crm.schemas.deals.read crm.schemas.deals.write crm.objects.owners.read crm.objects.contacts.write crm.objects.companies.write crm.lists.write crm.objects.companies.read crm.lists.read crm.objects.deals.read crm.schemas.contacts.read crm.objects.deals.write crm.objects.contacts.read crm.schemas.companies.read crm.objects.custom.read crm.schemas.custom.read`
 
@@ -66,4 +66,3 @@ Now your Connection can be used in an integration but first let's test it out.
   ![hubspot24](hubspot-connection/hubspot24.png)
 * Click on the Hubspot GetAll step and see the Hubspot contacts
   ![hubspot25](hubspot-connection/hubspot25.png)
-  
