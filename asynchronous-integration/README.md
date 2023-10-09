@@ -81,10 +81,10 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
   ![Upstash Kafka details](images/lab1-upstash-kafka-details.png)
 * In the Amplify Integration Connection screen
   * Enter the Upstash Endpoint for Bootstrap Servers
-  * Select SASL_SCRAM (or SASL_SCRAM_SSL) for Authentication.
+  * Select "SASL SCRAM with SSL" for Authentication.
   * Enter the Upstash username and password
   * Select for SCRAM_SHA_256 Encryption Type
-  * Check the SSL Certificate checkbox and press Test
+  * Click on save/update and press Test
   ![kafka connection](images/lab1-kafka-connection.png)
 * Return to the Apache Kafka Publish component in the integration and click refresh in the Connection picker and select our newly created Kafka Connection
 * Expand the `ApacheKafkaPublishInput->messages` to expose the messages parameters and drag a line from the `GetInvoicesOutput->response->invoices` in the left hand panel to `ApacheKafkaPublishInput->messages->value`
