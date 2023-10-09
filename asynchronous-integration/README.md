@@ -69,8 +69,7 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
 * Select Invoice for the Object and GetInvoices for the Action
 * Right click on the queryParams and add two string variables inside: `filter_by` and `last_modified_time`
   * Right click on `filter_by` and set to `Status.All`
-  * Drag a line from `LastRunDt-formatted` on the left to `last_modified_time`
-* Expand headers and set `X-com-zoho-invoice-organizationid` to your ogranization id as described in the guide and click on Save
+  * Drag a line from `LastRunDt-formatted` on the left to `last_modified_time` and click on Save
 
   ![openapi client component](images/lab1-openapi-client-component.png)
 * Now let's loop over the modified invoices and publish each to Kafka

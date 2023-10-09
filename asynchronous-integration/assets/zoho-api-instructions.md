@@ -52,18 +52,20 @@
         - Token URL: **<https://accounts.zoho.com/oauth/v2/token>** \
           (change domain `.com` suffix if needed )
         - Scope: **ZohoInvoice.invoices.READ,offline_access**
+    - Provide a safe path to test the connection: **/api/v3/invoices?customer_name=test**
+    - Add a header named **X-com-zoho-invoice-organizationid** as required in the API documentation and provide the value copied previously
     - Click Update/save button
     - Generate a Token
     - Test connection.
 
-2. Create a test integration
+2. [optional] Create a test integration
     - Add a scheduler as trigger
     - Add an "OpenAPI client -- invoke operation" component
-    - Select the "ZohoAPI" , invoice object and "Get invoices" action
-    - Set a value for the "X-come-zoho-organizationid" header. Use the Organization ID you copied previously. \
+    - Select the "ZohoAPI" , invoice object and "Get invoices" action 
+    - Click on the Save icon \
     ![integration](zoho-api-instructions/image6.png)
 
-3. Test retrieving Invoices
-    - Click on test
-    - Click on details of the API call to see request parameters and response body with 1 invoice \
+3. [optional] Test retrieving Invoices
+    - Click on Test button of your integration
+    - Click on details of the API call to see request response body with 1 invoice \
         ![Test](zoho-api-instructions/image7.png)
