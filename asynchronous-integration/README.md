@@ -239,19 +239,23 @@ Use the following MS Teams card sample and modify it to make a nicer MS Teams ca
       {
         "activityTitle": "Title",
         "activitySubtitle": "Subtitle",
-        "activityImage": "https://teamsnodesample.azurewebsites.net/static/img/image5.png",
+        "activityImage": "https://adaptivecards.io/content/atbot-logo.png",
         "facts": [
           {
-            "name": "Date",
-            "value": "March 4, 2020"
+            "name": "Description",
+            "value": "This is a **sample *message* card**"
           },
           {
-            "name": "Total",
+            "name": "Value",
             "value": 29672
           },
           {
-            "name": "Partial",
-            "value": 3564
+            "name": "Date",
+            "value": "March 4, 2024"
+          },
+          {
+            "name": "URL",
+            "value": "[More samples](https://adaptivecards.io/samples)"
           }
         ],
         "markdown": true
