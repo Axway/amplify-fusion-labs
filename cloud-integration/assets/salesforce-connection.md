@@ -3,44 +3,45 @@
 ## Salesforce Setup
 
 - If you already have a Salesforce developer account you can use for training, make sure is either a developer edition, or API Access has been enabled.
-- In other cases, you can sign up for a new salesforce developer account using <https://developer.salesforce.com/signup> for free. Make sure to use a username that is specific for the training, and different from corporate email address in case you use Salesforce in your organization.
+- In other cases, you can **sign up** for a new salesforce developer account using <https://developer.salesforce.com/signup> for free.
   - Provide all required fields and a valid email address. \
+  Make sure to use a username that is specific for the training, and **different from corporate email address** in case you use Salesforce in your organization. \
   ![salesforce02](salesforce-connection/salesforce02.png)
 
-  - Once you click on Sign me up, you will get an email with your saleforce URL and username. \
+  - Once you click on **Sign me Up**. You will get an email with your Salesforce URL and username. \
   ![salesforce04](salesforce-connection/salesforce04.png)
 
-  - Verify account by clicking on Verify Account button in the email.
+  - Verify account by clicking on **Verify Account** button in the email.
 
   - Set password to your account \
   ![salesforce05](salesforce-connection/salesforce05.png)
 
-  - Now you are able to login to your salesforce developer account.
+  - You are now able to login to your Salesforce developer account.
 
-- Go to [https://login.salesforce.com](https://login.salesforce.com/) and enter your Username and Password click on LogIn. \
+- Go to [https://login.salesforce.com](https://login.salesforce.com/) and enter your Username and Password click on **Log In**. \
   ![salesforce06](salesforce-connection/salesforce06.png)
 
-- After Login, open the Setup menu. \
+- Open the **Setup** menu. \
   ![salesforce07](salesforce-connection/salesforce07.png)
 
-- Under Apps, Click on App Manager and Click New connected App for creating a new app \
+- Under **Apps**, click on **App Manager** and click **New connected App** for creating a new app \
   ![salesforce08](salesforce-connection/salesforce09.png).
 
-- Fill up the required fields in the Basic Information
+- Fill up the required fields in the **Basic Information** \
   ![salesforce10](salesforce-connection/salesforce10.png)
 
-- Enable OAuth Settings should be checked and
-  - Enter the Callback URLs. For example, if your Amplify Integration access URL is <https://axway.integration.us.axway.com>, your callback URL will be    <https://axway.integration.us.axway.com/design/oauth2/callback>.
-  - Choose the following scopes in the Selected available OAuth Scopes.
+- Enable **OAuth Settings** should be checked and
+  - Enter the **Callback URLs**. For example, if your Amplify Integration access URL is <https://axway.integration.us.axway.com>, your callback URL will be <https://axway.integration.us.axway.com/design/oauth2/callback>.
+  - Choose the following scopes in the **Available OAuth Scopes** and **Add** them to the **Selecected OAuth Scopes** .
     - Full access (full)
     - Manage user data via APIs (api)
     - Perform requests at any time (refresh_token, offline_access)
-    
+  
   ![salesforce11](salesforce-connection/salesforce11.png)
 
-- Save the app and then click Continue.
+- **Save** the app and then click **Continue**.
 
-- Click on Manage Consumer Details button, and copy the Consumer Key and Consumer Secret. These consumer details will be used when creating your Salesforce connection on Amplify Integration \
+- Click on **Manage Consumer Details** button, and copy the **Consumer Key** and **Consumer Secret** or keep the page open for later. These consumer details will be used when creating your Salesforce connection on Amplify Integration \
   ![salesforce12](salesforce-connection/salesforce12.png)
 
 ## Amplify Integration Setup
@@ -77,9 +78,7 @@ You must configure a Salesforce Connection to connect Amplify Integration to you
 - Click on [Generate token] to Allow access. A pop-up window should prompt you to explicitly allow some access. \
 ![salesforce18](salesforce-connection/salesforce18.png)
 
-- Once token is generated, click on [Test button] as shown below. \
+- Once token is generated, click on **Test** button \
 ![salesforce19](salesforce-connection/salesforce19.png)
 
-- **Note:** A **Green Tick** mark indicates a successful Connection
-    Test, while an **Error Popup** indicates wrong connection details as
-    shown in the screenshots below. 
+- A ![test-greencheck](salesforce-connection/test-greencheck.png) indicates a successful connection test, while an ![test-redmark](salesforce-connection/test-redmark.png) indicates wrong connection and a pop-up would provide error details.
