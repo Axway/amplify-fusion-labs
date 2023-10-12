@@ -69,9 +69,9 @@ You must configure a Salesforce Connection to connect Amplify Integration to you
 
     - Version: 46.0, 57.0 etc.  You can get the available API versions by calling the service <https://{subdomain}.my.salesforce.com/services/data> in your browser.
 
-  - ClientID: Enter Consumer ID of the Salesforce app
+  - ClientID: Paste the Consumer Key of the Salesforce app
 
-  - Client Secret: Enter Consumer Secret of the Salesforce app, which will be saved in the encrypted format.
+  - Client Secret: Paste the Consumer Secret of the Salesforce app, which will be saved in the encrypted format.
 
 - After entering the above details, click **Update** to save the connection details.
 
