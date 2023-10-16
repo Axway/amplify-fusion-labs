@@ -171,3 +171,4 @@ Continue from Lab 3
 Your final integration should look like this:
 
 ![Final](images/lab4-final-a.png)
+Note that is recommanded to set labels to every step for an easier understanding and monitoring of each integration.
