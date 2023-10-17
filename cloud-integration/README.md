@@ -41,41 +41,47 @@ Before you start, make sure you have Salesforce and Hubspot accounts that you ca
 
 In this lab, we'll set up a Salesforce push topic and start our integration by adding a Salesforce Pushtopic listener as a trigger to our integration.
 
-* In Salesforce, open the Developer Console
-  ![salesforce menu](images/lab1-salesforce-menu.png)
-* Click Debug -> Open Execute Anonymous Window
-  ![salesforce developer console](images/lab1-salesforce-developer-console.png)
-  ![salesforce apex code](images/lab1-salesforce-apex-code.png)
-* In the Enter Apex Code window, paste in the following Apex code, and click Execute:
+* Create a new project in Amplify Integration for this CRM cloud integration. Use a unique name in case your not the only one to do this lab on your Amplify Integration tenant.
+* Follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection \
+![salesforce connection](images/lab1-salesforce-connection.png)
+* Create a PushTopic in the Salesforce Developer Console
+  * Open the Salesforce Developer Console \
+    ![salesforce menu](images/lab1-salesforce-menu.png)
+  * Click Debug -> Open Execute Anonymous Window \
+    ![salesforce developer console](images/lab1-salesforce-developer-console.png) \
+    ![salesforce apex code](images/lab1-salesforce-apex-code.png)
+  * In the Enter Apex Code window, paste in the following Apex code, and click Execute:
 
-  ```java
-  PushTopic pushTopic = new PushTopic();
-  pushTopic.Name = 'ContactPush';
-  pushTopic.Query = 'SELECT Id, Name, Phone, Email FROM Contact';
-  pushTopic.ApiVersion = 43.0;
-  pushTopic.NotifyForOperationCreate = true;
-  pushTopic.NotifyForOperationUpdate = false;
-  pushTopic.NotifyForOperationUndelete = false;
-  pushTopic.NotifyForOperationDelete = false;
-  pushTopic.NotifyForFields = 'All';
-  insert pushTopic;
-  ```
+    ```java
+    PushTopic pushTopic = new PushTopic();
+    pushTopic.Name = 'ContactPush';
+    pushTopic.Query = 'SELECT Id, Name, Phone, Email FROM Contact';
+    pushTopic.ApiVersion = 58.0;
+    pushTopic.NotifyForOperationCreate = true;
+    pushTopic.NotifyForOperationUpdate = false;
+    pushTopic.NotifyForOperationUndelete = false;
+    pushTopic.NotifyForOperationDelete = false;
+    pushTopic.NotifyForFields = 'All';  
+    insert pushTopic;
+    ```
 
-  ![salesforce apex code pushtopic](images/lab1-salesforce-apex-code-pushtopic.png)
+    ![salesforce apex code pushtopic](images/lab1-salesforce-apex-code-pushtopic.png)
 
-* Follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection
-  ![salesforce connection](images/lab1-salesforce-connection.png)
-* Create a Salesforce Contact Push Plug (e.g. SFDCContactPush) and select the Salesforce Connection you just created and:
+* Go back to your Amplify Integration project
+* Create a Plug for Salesforce (e.g. SFDCContactPush), and configure it:
+  * Select the Salesforce Connection you created previously
   * Select `SubscribePushTopic` for Actions
-  * Select `/topic/ContactPush` for Objects
+  * Select `/topic/ContactPush` you've just created for Objects
   * Select RECEIVE_NEW_EVENTS for Replay Id
   ![salesforce pushtopic plug](images/lab1-salesforce-pushtopic-plug.png)
   * Click Generate and then Save to create your Plug
-* Create an integration
-* Click on the Event button and select the Salesforce Pushtopic component
+* Create an integration for CRM cloud integration
+  * Click on the Event button and select the Salesforce Pushtopic component
   * Select the Salesforce Connection and Plug you created above
   ![salesforce pushtopic component](images/lab1-salesforce-pushtopic-component.png)
-* Enable your integration and add a new contact in Salesforce
+* Enable your integration 
+* Add a new contact in Salesforce 
+  ![salesforce contact](images/lab1-salesforce-new-contact.png)
   ![salesforce contact](images/lab1-salesforce-contact.png)
 * Go to the Monitor and click on the transaction and see that you consumed the pushtopic contact
   ![transaction monitoring details](images/lab1-transaction-monitoring-details.png)
@@ -84,12 +90,12 @@ In this lab, we'll set up a Salesforce push topic and start our integration by a
 
 In this lab, we'll retrieve the contact and desired fields based on the id from the new contact pushtopic. We'll use a Salesforce query component and a query Contact by id Plug.
 
-Disable your integration and let's continue below:
-
-* Click the plus icon to continue the integration and select a Salesforce query component and select your Salesforce Connection
+* Disable your integration to continue designing the integration
+* Click the plus icon to add a step after the trigger event 
+* Select a Salesforce query component and select your Salesforce Connection
   ![salesforce query component init](images/lab2-salesforce-query-component-init.png)
-* Click Add on the Plugs and name your Plug and give it a description (e.g. SFDC_Get_Contact_by_Id) and click on Configure
-* Select your Salesforce Connection and:
+* Click Add on the Plugs and name your Plug and give it a description (e.g. SFDC_Get_Contact_by_Id) and Configure it
+  * Select your Salesforce Connection 
   * Select `Query` for Actions
   * Select `Contact` for Objects
   * Select Id, FirstName, LastName and Email for the fields
@@ -109,17 +115,18 @@ Disable your integration and let's continue below:
 
 In this lab, we'll use the retrieved contact and insert it into Hubspot. We'll use a Hubspot create component and an associated create Plug.
 
-Disable your integration and let's continue below:
-
 * Follow [**this guide**](assets/hubspot-connection.md) to create  Hubspot Connection
-* Click on the plus sign to continue the integration and select a Hubspot Create component and select the Hubspot connection you just created
+* Disable your integration to continue designing the integration
+* Click on the plus sign to add a new step to the integration and select a Hubspot Create component 
   ![add hubspot create component](images/lab3-add-hubspot-create-component.png)
+* Select the Hubspot connection you just created
   ![hubspot create component init](images/lab3-hubspot-create-component-init.png)
-* Click on the Add button next to the Plugs so we can create a Hubspot Create Contact plug and provide a name and description and click on Create
+* Click on the Add button next to the Plugs so we can create a Hubspot plug to Create a Contact. 
+* Provide a name and description and click on Create
   ![hubspot plug create](images/lab3-hubspot-plug-create.png)
   ![hubspot plug init](images/lab3-hubspot-plug-init.png)
 * Click on Configure and do the following:
-  * Select yoru Hubspot Connector
+  * Select your Hubspot Connector
   * Select Create for Actions
   * Select contacts for Objects
   * Press the Generate button
