@@ -153,7 +153,7 @@ Now the database is ready.
 In this lab, we'll create our integration and define the REST API endpoint using an HTTP/S Server Component and associated connection and then we'll query our database for invoices with a particular status.
 
 * Create a new integration (e.g. GetInvoicesByStatus)
-* Click on the Event button and add an HTTP/S Server component
+* Click on the Event button and add an HTTP/S Server component and choose GET method
 * We'll need an HTTP/S Connection so click on Add next to Connection, provide a connection name and description
 * Select HTTPS for the Protocol and leave Authentication to None for now and click on Update
 ![HTTPS server connection](images/lab2-https-server-connection.png)
