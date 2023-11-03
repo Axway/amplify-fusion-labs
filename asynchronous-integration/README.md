@@ -44,8 +44,9 @@ The final integrations are shown below:
 * Access to Amplify Integration
   > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
 * A free [**Zoho Invoice**](https://www.zoho.com/invoice/) account
-* A Kafka instance and the ability to create topics and publish on the topic. [**CloudKarafka**](https://www.cloudkarafka.com/) and [**Upstash**](https://upstash.com/) have free tiers. In these labs I used Upstash
-* Access to MS Teams and the ability to add an Incoming Webhook Connector to a channel
+* A Kafka instance and the ability to create topics and publish on the topic. [**Upstash**](https://upstash.com/) have free tiers and is recommanded for this lab. Alternatively, you also sign up for [**CloudKarafka**](https://www.cloudkarafka.com/) for free. 
+* Access to **Microsoft Teams** and the ability to install an Microsoft Teams incoming webbook connector
+  > If you don't use Teams or don't have the webhook capability, you can use a test webhook online app like [Webhook.site](https://webhook.site) instead for this lab.
 
 ## Lab 1
 
@@ -69,8 +70,7 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
 * Select Invoice for the Object and GetInvoices for the Action
 * Right click on the queryParams and add two string variables inside: `filter_by` and `last_modified_time`
   * Right click on `filter_by` and set to `Status.All`
-  * Drag a line from `LastRunDt-formatted` on the left to `last_modified_time`
-* Expand headers and set `X-com-zoho-invoice-organizationid` to your ogranization id as described in the guide and click on Save
+  * Drag a line from `LastRunDt-formatted` on the left to `last_modified_time` and click on Save
 
   ![openapi client component](images/lab1-openapi-client-component.png)
 * Now let's loop over the modified invoices and publish each to Kafka
@@ -82,10 +82,10 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
   ![Upstash Kafka details](images/lab1-upstash-kafka-details.png)
 * In the Amplify Integration Connection screen
   * Enter the Upstash Endpoint for Bootstrap Servers
-  * Select SASL_SCRAM (or SASL_SCRAM_SSL) for Authentication.
+  * Select "SASL SCRAM with SSL" for Authentication.
   * Enter the Upstash username and password
   * Select for SCRAM_SHA_256 Encryption Type
-  * Check the SSL Certificate checkbox and press Test
+  * Click on save/update and press Test
   ![kafka connection](images/lab1-kafka-connection.png)
 * Return to the Apache Kafka Publish component in the integration and click refresh in the Connection picker and select our newly created Kafka Connection
 * Expand the `ApacheKafkaPublishInput->messages` to expose the messages parameters and drag a line from the `GetInvoicesOutput->response->invoices` in the left hand panel to `ApacheKafkaPublishInput->messages->value`
@@ -240,19 +240,23 @@ Use the following MS Teams card sample and modify it to make a nicer MS Teams ca
       {
         "activityTitle": "Title",
         "activitySubtitle": "Subtitle",
-        "activityImage": "https://teamsnodesample.azurewebsites.net/static/img/image5.png",
+        "activityImage": "https://adaptivecards.io/content/atbot-logo.png",
         "facts": [
           {
-            "name": "Date",
-            "value": "March 4, 2020"
+            "name": "Description",
+            "value": "This is a **sample *message* card**"
           },
           {
-            "name": "Total",
+            "name": "Value",
             "value": 29672
           },
           {
-            "name": "Partial",
-            "value": 3564
+            "name": "Date",
+            "value": "March 4, 2024"
+          },
+          {
+            "name": "URL",
+            "value": "[More samples](https://adaptivecards.io/samples)"
           }
         ],
         "markdown": true
