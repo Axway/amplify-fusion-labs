@@ -62,9 +62,9 @@ You must configure a Salesforce Connection to connect Amplify Integration to you
 
   - Connection Type: **OAuth2.0** 
 
-  - Base URL:  **https://{subdomain}.develop.my.salesforce.com/services/data/v{version}** if using a developer edition. Replace your {subdomain} and {version} as follow: 
+  - Base URL:  **https://{subdomain}.my.salesforce.com/services/data/v{version}**. Replace your {subdomain} and {version} as follow: 
 
-    - Subdomain: You can get your domain by clicking on the Avatar on the top right corner of Salesforce application
+    - Subdomain: You can get your domain by clicking on the Avatar on the top right corner of Salesforce application and copy what comes before ".my.saleforce.com"
       ![salesforce17](salesforce-connection/salesforce17.png)
 
     - Version: 46.0, 57.0 etc.  You can get the available API versions by calling the service <https://{subdomain}.my.salesforce.com/services/data> in your browser.
