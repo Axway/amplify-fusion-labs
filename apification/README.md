@@ -61,7 +61,7 @@ This data flow is illustrated below:
 In this set of labs, you will learn the following:
 
 * How to configure an HTTP/S Server Connection
-* How to use an HTTP/S Server Get component to define a GET API with query parameters
+* How to use an HTTP/S Server Get component to define a GET API endpoint with query parameters
 * How to to configure a PostgreSql Database Connection
 * How to use a PostgreSql Database Select component and plug to query a table with a where clause
 * How to loop over an array (of invoices)
@@ -74,7 +74,7 @@ In this set of labs, you will learn the following:
 
 The final integration is shown below:
 
-![integration](images/intro-integration.png)
+![integration](images/lab4-integration.png)
 
 ## Prerequisites
 
