@@ -129,8 +129,9 @@ In this lab, we'll use the retrieved contact and insert it into Hubspot. We'll u
   * Select your Hubspot Connector
   * Select Create for Actions
   * Select contacts for Objects
-  * Press the Generate button
+  * Select `firstname`, `lastname` and `email` fields
   ![hubspot plug configure](images/lab3-hubspot-plug-configure.png)
+  * Press the Generate button
   ![hubspot plug](images/lab3-hubspot-plug.png)
 * Click Save and then return to your integration and select the newly created plug
   ![hubspot create component](images/lab3-hubspot-create-component.png)
