@@ -10,8 +10,9 @@ We will do the following:
 
 ## Hubspot Connected App
 
-* If you don't have a Hubspot account, create one at **[https://www.hubspot.com/](https://www.hubspot.com/)**
-* If you don't have a Hubspot Developer account, create one at [**https://developers.hubspot.com/**](https://developers.hubspot.com/)
+* If you don't have a Hubspot account, create one at **[https://www.hubspot.com/](https://www.hubspot.com/)**. Skip all welcome wizards until you reach the Hubspot homepage
+  ![hubspot00](hubspot-connection/hubspot00.png)
+* If you don't have a Hubspot App Developer account, create one at [**https://developers.hubspot.com/**](https://developers.hubspot.com/) , choose App Developer option and skip all welcome wizzards if any until you reach the Hubspot Developer homepage
   ![hubspot01](hubspot-connection/hubspot01.png)
 * In your developer account, click on Manage Apps and click the Create App button to create a new app
   ![hubspot02](hubspot-connection/hubspot02.png)
