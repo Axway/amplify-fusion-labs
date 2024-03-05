@@ -16,7 +16,7 @@ As you go through the labs, take the time to explore more about the items relate
 
 * Access to Amplify Integration
   > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
-* Access to [**Webhook.site**](https://webhook.site/) or [**Pipedream**](https://pipedream.com/) or the equivalent that you can use to send API requests to for analysis. In the instruction, I will refer to webhook site to mean whatever service you are using
+* Access to [**Webhook.site**](https://webhook.site/) that you can use to send API requests to for analysis. You can alternatively use an equivalent tool such as [**typedwebhook**](https://typedwebhook.tools/) or others that you may prefer.
 
 ## Logging In
 
@@ -127,7 +127,11 @@ Continue from Lab 2
 * Add a resource path (e.g. checkvalue). Note that the name must be unique
 * Add a query parameter (e.g. value)
   ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-c.png)
-* Copy the url to a notepad and press Save
+* Copy the url to a notepad and replace \<dataplane-hostname\> by your actual dataplane hostname
+  > The Shared _dataplane hostname_ (in SaaS deployment) in Design mode  is:\
+  >  _**tenant-name**-design.prod.integration.**region**.axway.com_\
+  >  where _tenant-name_ and _region_ can be found in the current control plane URL that you are using so far.
+* Click Save and go back to your integration
 * Click on the HTTP/S Client POST component (webhook site) and expand the bottom panel
 * Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
 * Click the delete button on the body
