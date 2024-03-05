@@ -48,8 +48,11 @@ In this lab, we will ingest a CSV file of contacts.
 * Give your Connection a name and description (e.g. SFTP Server)
 * Select Basic Authentication, enter a unique username and password, and press Update
   ![sftp server connection](images/lab1-sftp-server-connection.png)
+  > Note: The _dataplane hostname_ of the Design mode (in SaaS deployment) is:\
+  > _**tenant-name**-design.prod.integration.**region**.axway.com_\
+  > where _tenant-name_ and _region_ can be found in the current control plane URL that you are using so far.
 
-  > Note: to keep things simple, you can use the same value for username and password. In the screen shot above, I  used lbadmin3-cx2-d for both
+  > Tip: to keep things simple, you can use the same value for username and password. In the screen shot above, I  used lbadmin3-cx2-d for both
 
 * Close the SFTP Server Connection sub tab and return to your integration
 * Click on the SFTP Server Poll Component, click refresh and select the newly created SFTP Server Connection from the list. Enter `*.csv` for File Pattern, leave the rest at their default value and press Save

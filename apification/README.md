@@ -234,13 +234,13 @@ Your integration should look like this: \
   curl --location --request GET "https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR"
   ```
 
-  > The Shared _dataplane hostname_ (in SaaS deployment) in Design mode  is:\
-  >  _**tenant-name**-design.prod.integration.**region**.axway.com_\
-  >  where _tenant-name_ and _region_ can be found in the current control plane URL that you are using so far.
+  > Note: The _dataplane hostname_ of the Design mode (in SaaS deployment) is:\
+  > _**tenant-name**-design.prod.integration.**region**.axway.com_\
+  > where _tenant-name_ and _region_ can be found in the current control plane URL that you are using so far.
 
-  > Make sure to update the resource path "/invoices" to match what you defined.
+  > Tip: Make sure to update the resource path "/invoices" to match what you defined.
 
-  > The response would be empty for now, so ignore "empty response" error message from your browser or client.
+  > Note: The response would be empty for now, so ignore "empty response" error message from your browser or client.
 
 * Find your transaction in the Monitor and click on the Database Select step and expand `GetInvoicesByStatusOutput->resultSet` and see that you are retrieving invoices
 ![transaction monitoring](images/lab2-transaction-monitoring_.png)

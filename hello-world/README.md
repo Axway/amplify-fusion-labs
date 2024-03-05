@@ -128,7 +128,7 @@ Continue from Lab 2
 * Add a query parameter (e.g. value)
   ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-c.png)
 * Copy the url to a notepad and replace \<dataplane-hostname\> by your actual dataplane hostname
-  > The Shared _dataplane hostname_ (in SaaS deployment) in Design mode  is:\
+  > Note: The _dataplane hostname_ of the Design mode (in SaaS deployment) is:\
   >  _**tenant-name**-design.prod.integration.**region**.axway.com_\
   >  where _tenant-name_ and _region_ can be found in the current control plane URL that you are using so far.
 * Click Save and go back to your integration
