@@ -2,13 +2,13 @@
 
 ## Salesforce Setup
 
-- If you already have a Salesforce developer account you can use for training, make sure is either a developer edition, or API Access has been enabled.
+- If you already have a Salesforce dev or test account you can use for training, make sure it is either a developer edition, or API Access has been enabled and that you have admin rights.
 - In other cases, you can **sign up** for a new salesforce developer account using <https://developer.salesforce.com/signup> for free.
   - Provide all required fields and a valid email address. \
   Make sure to use a username that is specific for the training, and **different from corporate email address** in case you use Salesforce in your organization. \
   ![salesforce02](salesforce-connection/salesforce02.png)
 
-  - Once you click on **Sign me Up**. You will get an email with your Salesforce URL and username. \
+  - Once you click on **Sign me Up**, you will get an email with your Salesforce URL and username (you might need to wait couple minutes) \
   ![salesforce04](salesforce-connection/salesforce04.png)
 
   - Verify account by clicking on **Verify Account** button in the email.
@@ -31,12 +31,14 @@
   ![salesforce10](salesforce-connection/salesforce10.png)
 
 - Enable **OAuth Settings** should be checked and
-  - Enter the **Callback URLs**. For example, if your Amplify Integration access URL is <https://axway.integration.us.axway.com>, your callback URL will be <https://axway.integration.us.axway.com/design/oauth2/callback>.
+  - Enter the **Callback URLs**. For example, if your Amplify Integration control plane URL is  `https://axway-university.integration.us.axway.com`, your callback URL to generate tokens will be `https://axway-university.integration.us.axway.com/design/oauth2/callback`.
   - Choose the following scopes in the **Available OAuth Scopes** and **Add** them to the **Selecected OAuth Scopes** .
     - Full access (full)
     - Manage user data via APIs (api)
     - Perform requests at any time (refresh_token, offline_access)
-  
+
+  - Make sure to disable the PKCE extension. Leave the other options requiring secret enabled
+
   ![salesforce11](salesforce-connection/salesforce11.png)
 
 - **Save** the app and then click **Continue**.
