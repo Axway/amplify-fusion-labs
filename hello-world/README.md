@@ -36,7 +36,7 @@ As you go through the labs, take the time to explore more about the items relate
 
   ![designer menu](images/designer-menu.png)
 
-* Click on or Create a New Project
+* Click on Create to start a new Project
 
   ![projects list](images/projects-list.png)
 
@@ -50,13 +50,15 @@ The labs below are intended to be exploratory. Instructions are provided but you
 
 In this lab, we'll create an integration that is triggered using a Scheduler and test it.
 
-* Create integration
+* Create an integration
 * Add Scheduler trigger
   ![Add Scheduler](images/lab1-add-scheduler-a.png)
   ![Add Scheduler](images/lab1-add-scheduler-b.png)
   ![Add Scheduler](images/lab1-add-scheduler-c.png)
+* Choose a test data plane (if not set yet on the top bar)
+  ![Prepare Test](images/lab1-prepare-test.png)
 * Click test
-* See transaction in monitor
+* See transaction in monitor (or refresh until you see it)
   ![Test](images/lab1-test-a.png)
   ![Test](images/lab1-test-b.png)
 
@@ -71,22 +73,26 @@ In this lab, we'll add an HTTP/S Client component (and associated connection) to
 Continue from Lab 1
 
 * Add an HTTP/S Client Post Component
-* Label the component (send to webhook site)
-* Expand bottom panel
   ![Add HTTPS Post](images/lab2-add-https-post-a.png)
+* Label the component "Send to webhook site"
   ![Add HTTPS Post](images/lab2-add-https-post-b.png)
+* Expand bottom panel
+  ![Add HTTPS Post](images/lab2-add-https-post-c.png)
 * Click Add on Connection
   * Provide a name and description (webhook site)
   * Select https
   * Paste url for webhook site (WITHOUT THE `https://` PROTOCOL )
   * Select Basic Authentication
-  * Enter username and password (abcd/1234) and click update
+  * Enter username and password (abcd/1234)
+  * Set / as safe path
+  * Click update
     ![Create Connection](images/lab2-create-connection-a.png)
+  * Click test and make sure you get a green check
   * Close tab
 * Go back to integration -> HTTP/S Client POST Component, click refresh in the Connection picker and select the Connection we just made
 * Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
 * Right click on body and select Set Value
-* Enter simple JSON body and press save
+* Enter simple JSON body and press Save
 
 
   ```json
@@ -96,9 +102,9 @@ Continue from Lab 1
   ```
 
 * Right click on basePath and select Set Value
-* Enter any base path (e.g. /v1/search)
-* Click save on the panel
+* Enter any base path (e.g. /v1/message)
   ![Create Component](images/lab2-create-http-post-component-a.png)
+* Click save on the panel
 * Click the Test button to test your flow
 * See results in webhook site and see the respurce path, Authorization Header and body
   ![Create Component](images/lab2-test-results-a.png)
@@ -121,31 +127,34 @@ Continue from Lab 2
   * Provide a name and description (e.g. HTTPS Server) and press Select
   * Select HTTPS
   * Leave authentication as None
-  * Click update
+  * Click Update
   ![HTTP Server Connection](images/lab3-https-connection-a.png)
+  * Close tab
 * Go back to integration and open the HTTP/S Server GET Component. click refresh and select the Connection we just created
 * Add a resource path (e.g. checkvalue). Note that the name must be unique
 * Add a query parameter (e.g. value)
   ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-c.png)
-* Copy the url to a notepad and replace \<dataplane-hostname\> by your actual dataplane hostname
-  > Note: The _dataplane hostname_ of the Design mode (in SaaS deployment) is:\
-  >  _**tenant-name**-design.prod.integration.**region**.axway.com_\
-  >  where _tenant-name_ and _region_ can be found in the current control plane URL that you are using so far.
-* Click Save and go back to your integration
-* Click on the HTTP/S Client POST component (webhook site) and expand the bottom panel
+* Click Save 
+* Label the HTTP/S Server Get component "Receive check request"
+* Click on the HTTP/S Client POST component (Send to webhook site) and expand the bottom panel
 * Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
-* Click the delete button on the body
-* Expand the HTTPSServerGetOutput flyout and the queryParameters flyout on the left hand side of the panel
+* Click the delete button on the body to remove the former static value
+* Expand the HTTPSServerGetOutput flyout and the queryParams flyout on the left hand side of the panel
 * Drag value over to body and click save
   ![HTTPS Post](images/lab3-create-http-post-component-a.png)
 * Click the Test button to test your flow and see that you cannot do that. We will need to trigger our integration with an API call
-* Enable the flow with the toggle switch
-  ![Enable Toggle](images/lab3-enable.png)
-* In a separate browser tab paste the URL you copied before and enter a value for value (e.g. 10)
+* Activate the integration on the data plane with the toggle switch
+  ![Enable Toggle](images/lab3-enable-a.png)
+  ![Enable Toggle](images/lab3-enable-b.png)
+* Copy the endpoint URL of the integration on the data plane  
+  ![Enable Toggle](images/lab3-enable-c.png)
+* In a separate browser tab paste the URL and enter a value for value (e.g. 10)
 * See results in webhook site and see the body should equal the value you provided as a query parameter
   ![Result](images/lab3-result-a.png)
 * Go to the Monitor and view the transaction and explore the information there that is useful for debugging
   ![Result](images/lab3-result-b.png)
+  ![Result](images/lab3-result-c.png)
+
 
 Your final integration should look like this:
 
@@ -161,8 +170,9 @@ Continue from Lab 3
 * Disable to integration so it can be edited
 * Click the plus sign between the two components and add an if-else
   ![If-else](images/lab4-ifelse-a.png)
-* Expand the If-else and click on Expression
+* Expand the If-else and label it "check value"
   ![If-else](images/lab4-ifelse-b.png)
+* click on Expression
   ![If-else](images/lab4-ifelse-c.png)
 * Add a condition and set the expressions condition so that it checks if `value` is greater than 10
   ![If-else](images/lab4-ifelse-d.png)
@@ -170,7 +180,7 @@ Continue from Lab 3
 * Drag the webhook HTTP/S Client POST component inside the "if true" path (on the top line, after the expression)
   ![If-else](images/lab4-ifelse-f.png)
   ![If-else](images/lab4-ifelse-g.png)
-* Enable your integration and trigger it with values greater than and less than 10 to see that only those greater than 10 are sent to webhook site. Verify by inspecting the transaction in the Monitor.
+* Activate your integration and trigger it with values greater than and less than 10 to see that only those greater than 10 are sent to webhook site. Verify by inspecting the transaction in the Monitor.
 
 Your final integration should look like this:
 
