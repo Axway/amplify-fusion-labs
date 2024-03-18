@@ -52,7 +52,7 @@ In this lab, we will ingest a CSV file of contacts.
 
 * Close the SFTP Server Connection sub tab and return to your integration
 * Click on the SFTP Server Poll Component, click refresh and select the newly created SFTP Server Connection from the list. Enter `*.csv` for File Pattern, leave the rest at their default value and press Save\
-  ![sftp server poll component file pattern](images/lab1-sftp-server-poll-component-file-pattern_.png)
+  ![sftp server poll component file pattern](images/lab1-sftp-server-poll-component-file-pattern.png)
 * Your integration should look like this: \
   ![integration](images/lab1-integration.png)
 
