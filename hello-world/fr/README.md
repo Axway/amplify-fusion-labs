@@ -180,7 +180,7 @@ Continuer à partir de l'étape 3
 * Faire glisser le composant POST du webhook HTTP/S Client à l'intérieur du path « if true » (sur la ligne supérieure, après Expression)
   ![If-else](../images/lab4-ifelse-f.png)
   ![If-else](../images/lab4-ifelse-g.png)
-* Activez votre intégration et déclenchez-la avec des valeurs supérieures et inférieures à 10 pour vérifier que seules les valeurs supérieures à 10 sont envoyées à webhook site . Vérifier en inspectant la transaction dans le moniteur.
+* Activez votre intégration et déclenchez-la avec des valeurs supérieures et inférieures à 10 afin de  vérifier que seules les valeurs supérieures à 10 sont envoyées à webhook site. Vérifier en inspectant la transaction dans le moniteur.
 
 Votre intégration finale doit ressembler à ceci:
 
