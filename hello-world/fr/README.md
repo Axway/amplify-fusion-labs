@@ -161,7 +161,7 @@ Votre intégration finale doit ressembler à ceci:
 ![Final](../images/lab3-final-a.png)
 
 
-## Lab 4
+## Etape 4
 
 Dans cette étape, nous allons ajouter une logique de contrôle de flux et des variables à notre intégration et la tester
 
