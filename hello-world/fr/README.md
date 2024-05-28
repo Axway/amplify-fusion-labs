@@ -1,98 +1,98 @@
-# Hello World Lab
+# Lab Hello World
 
-In these labs, we will start from the scratch and build some very basic integrations.
-At the end of these labs, you will learn the following:
+Dans ces exercices, nous partirons de zéro et construirons quelques intégrations très basiques.
+A travers ces étapes, vous apprendrez ce qui suit :
 
-* Two ways to trigger an integration (Webhook and Scheduler)
-* How to view the integration execution
-* How to enable/disable integrations
-* The HTTP/S Server event trigger and the HTTP/S Client and if-else Components
-* How to create an HTTP/S Server and HTTP/S Client Connection
-* How to use the drag and drop features to configure components
+* Deux façons de déclencher une intégration (Webhook et Scheduler)
+* Comment visualiser l'exécution de l'intégration
+* Comment activer/désactiver les intégrations
+* Le déclencheur d'événement HTTP/S Server et les composants HTTP/S Client et if-else
+* Comment créer une connexion HTTP/S Server et HTTP/S Client ?
+* Comment utiliser les fonctions glisser-déposer pour configurer les composants.
 
-As you go through the labs, take the time to explore more about the items related to what you are working on. For example, when you are instructed to add an if-else component, explore what other components are available.
+Au cours des étapes, prenez le temps d'explorer davantage les éléments liés à ce sur quoi vous travaillez. Par exemple, lorsqu'il vous est demandé d'ajouter un composant if-else, explorez les autres composants disponibles.
 
-## Pre-requisites
 
-* Access to Amplify Integration
-  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
-* Access to [**Webhook.site**](https://webhook.site/) that you can use to send API requests to for analysis. You can alternatively use an equivalent tool such as [**typedwebhook**](https://typedwebhook.tools/) or others that you may prefer.
+## Pré-requis
 
-## Logging In
+* Un Accès à Amplify Integration
+  > Si vous n'avez pas de compte, veuillez contacter **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)**  par mail avec en objet `Amplify Integration Training Environment Access Request`
+* Un accès à [**Webhook.site**](https://webhook.site/) que vous pourrez utiliser pour les analyses. Vous pouvez également utiliser un outil équivalent tel que [**typedwebhook**](https://typedwebhook.tools/) ou d'autres que vous préféreriez.
 
-* Login into Amplify Integration
+## Se connecter
 
-  ![login screen](images/login-screen.png)
+* Se connecter à Amplify Integration
 
-* Click on Designer
+  ![login screen](../images/login-screen.png)
 
-  ![homepage](images/homepage.png)
+* Cliquer sur Designer
 
-* Expand the menu panel on the left
+  ![homepage](../images/homepage.png)
 
-  ![designer](images/designer.png)
+* Etendre le pannel du menu de gauche
 
-* Select Projects
+  ![designer](../images/designer.png)
 
-  ![designer menu](images/designer-menu.png)
+* Selectionner Projects
 
-* Click on Create to start a new Project
+  ![designer menu](../images/designer-menu.png)
 
-  ![projects list](images/projects-list.png)
+* Cliquer sur  Create pour commencer un nouveau projet
 
-* This is where we will do our design work
+  ![projects list](../images/projects-list.png)
 
-  ![project content](images/project-content.png)
+* C'est ici que nous ferons notre travail de conception
 
-The labs below are intended to be exploratory. Instructions are provided but you will need to figure out how to accomplish them.
+  ![project content](../images/project-content.png)
 
-## Lab 1
+Les exercices ci-dessous ont pour but  d'être exploratoires. Des instructions sont fournies, mais vous devrez trouver comment les réaliser.
+## Etape 1
 
-In this lab, we'll create an integration that is triggered using a Scheduler and test it.
+Dans cette étape, nous allons créer une intégration qui est déclenchée par un scheduler et la tester.
 
-* Create an integration
-* Add Scheduler trigger
-  ![Add Scheduler](images/lab1-add-scheduler-a.png)
-  ![Add Scheduler](images/lab1-add-scheduler-b.png)
-  ![Add Scheduler](images/lab1-add-scheduler-c.png)
-* Choose a test data plane (if not set yet on the top bar)
-  ![Prepare Test](images/lab1-prepare-test.png)
-* Click test
-* See transaction in monitor (or refresh until you see it)
-  ![Test](images/lab1-test-a.png)
-  ![Test](images/lab1-test-b.png)
+* Créer une integration
+* Ajouter un Scheduler comme déclencheur
+  ![Add Scheduler](../images/lab1-add-scheduler-a.png)
+  ![Add Scheduler](../images/lab1-add-scheduler-b.png)
+  ![Add Scheduler](../images/lab1-add-scheduler-c.png)
+* Choisir un test data plane (si pas encore sélectionné dans la barre supérieure)
+  ![Prepare Test](../images/lab1-prepare-test.png)
+* Cliquer sur test
+* Visualiser la transaction dans le monitor (ou actualiser jusqu'à la voir)
+  ![Test](../images/lab1-test-a.png)
+  ![Test](../images/lab1-test-b.png)
 
-Your final integration should look like this:
+Votre intégration finale doit ressembler à ceci:
 
-![Final](images/lab1-final-a.png)
+![Final](../images/lab1-final-a.png)
 
-## Lab 2
+## Etape 2
 
-In this lab, we'll add an HTTP/S Client component (and associated connection) to our integration and test it.
+Dans cette étape, nous allons ajouter un composant HTTP/S Client (et la connexion associée) à notre intégration et la tester.
 
-Continue from Lab 1
+Continuer à partir de l'étape 1
 
-* Add an HTTP/S Client Post Component
-  ![Add HTTPS Post](images/lab2-add-https-post-a.png)
-* Label the component "Send to webhook site"
-  ![Add HTTPS Post](images/lab2-add-https-post-b.png)
-* Expand bottom panel
-  ![Add HTTPS Post](images/lab2-add-https-post-c.png)
-* Click Add on Connection
-  * Provide a name and description (webhook site)
-  * Select https
-  * Paste url for webhook site (WITHOUT THE `https://` PROTOCOL )
-  * Select Basic Authentication
-  * Enter username and password (abcd/1234)
-  * Set / as safe path
-  * Click update
-    ![Create Connection](images/lab2-create-connection-a.png)
-  * Click test and make sure you get a green check
-  * Close tab
-* Go back to integration -> HTTP/S Client POST Component, click refresh in the Connection picker and select the Connection we just made
-* Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
-* Right click on body and select Set Value
-* Enter simple JSON body and press Save
+* Ajouter un composant HTTP/S Client Post
+  ![Add HTTPS Post](../images/lab2-add-https-post-a.png)
+* Etiquetter le  composant "Send to webhook site"
+  ![Add HTTPS Post](../images/lab2-add-https-post-b.png)
+* Etendre le pannel inférieur
+  ![Add HTTPS Post](../images/lab2-add-https-post-c.png)
+* Cliquer sur Add dans Connection
+  * Donner un nom et une description (webhook site)
+  * Sélectionner https
+  * Coller l'url de webhook site (SANS LE PROTOCOLE `https://` )
+  * Selectionner  Basic Authentication
+  * Entrer un nom d'utilisateur et un mot de passe (abcd/1234)
+  * Entrer / pour le safe ressource path
+  * Cliquer sur update
+    ![Create Connection](../images/lab2-create-connection-a.png)
+  * Cliquer sur Test et vérifier que vous avez obtenu une flèche verte
+  * Fermer l'onglet
+* Retourner à l'intégration -> HTTP/S Client POST Component, cliquer sur refresh dans le selecteur de connexion et choisir la connexion que nous venons de concevoir
+* Développez la liste déroulante HTTPSPostInput dans la section ACTION PROPRETIES
+* Faire un clique droit sur body et sélectionner Set Value
+* Entrer le texte JSON suivant et appuyer sur Save
 
 
   ```json
@@ -101,88 +101,88 @@ Continue from Lab 1
   ‌}
   ```
 
-* Right click on basePath and select Set Value
-* Enter any base path (e.g. /v1/message)
-  ![Create Component](images/lab2-create-http-post-component-a.png)
-* Click save on the panel
-* Click the Test button to test your flow
-* See results in webhook site and see the respurce path, Authorization Header and body
-  ![Create Component](images/lab2-test-results-a.png)
+* Faire un clique droit sur basePath et sélectionner Set Value 
+* Entrer n'importe quel base path (par ex: /v1/message)
+  ![Create Component](../images/lab2-create-http-post-component-a.png)
+* Cliquer sur  save sur le panel
+* Cliquer sur test pour tester votre flux
+* Les résultats, le ressource path, le body et le Authorization Header sont visibles sur webhook.site
+  ![Create Component](../images/lab2-test-results-a.png)
 
-Your final integration should look like this:
+Votre intégration finale doit ressembler à ceci:
 
-![Final](images/lab2-final-a.png)
+![Final](../images/lab2-final-a.png)
 
-## Lab 3
+## Etape 3
 
-In this lab, we'll replace the Scheduler component event trigger with an HTTP/S Server component (and associated connection) and test it.
+Dans cette étape, nous remplacerons le déclencheur d'événement du composant Scheduler par un composant HTTP/S Server (et la connexion associée) et nous le testerons.
 
-Continue from Lab 2
+Continuer à partir de l'étape 2 
 
-* Delete the Scheduler Event trigger (first component)
-* Click the Event button and select an HTTP/S Server Get trigger
-  ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-a.png)
-  ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-b.png)
-* Click add on Connection
-  * Provide a name and description (e.g. HTTPS Server) and press Select
-  * Select HTTPS
-  * Leave authentication as None
-  * Click Update
-  ![HTTP Server Connection](images/lab3-https-connection-a.png)
-  * Close tab
-* Go back to integration and open the HTTP/S Server GET Component. click refresh and select the Connection we just created
-* Add a resource path (e.g. checkvalue). Note that the name must be unique
-* Add a query parameter (e.g. value)
-  ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-c.png)
-* Click Save 
-* Label the HTTP/S Server Get component "Receive check request"
-* Click on the HTTP/S Client POST component (Send to webhook site) and expand the bottom panel
-* Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
-* Click the delete button on the body to remove the former static value
-* Expand the HTTPSServerGetOutput flyout and the queryParams flyout on the left hand side of the panel
-* Drag value over to body and click save
-  ![HTTPS Post](images/lab3-create-http-post-component-a.png)
-* Click the Test button to test your flow and see that you cannot do that. We will need to trigger our integration with an API call
-* Activate the integration on the data plane with the toggle switch
-  ![Enable Toggle](images/lab3-enable-a.png)
-  ![Enable Toggle](images/lab3-enable-b.png)
-* Copy the endpoint URL of the integration on the data plane  
-  ![Enable Toggle](images/lab3-enable-c.png)
-* In a separate browser tab paste the URL and enter a value for value (e.g. 10)
-* See results in webhook site and see the body should equal the value you provided as a query parameter
-  ![Result](images/lab3-result-a.png)
-* Go to the Monitor and view the transaction and explore the information there that is useful for debugging
-  ![Result](images/lab3-result-b.png)
-  ![Result](images/lab3-result-c.png)
+* Supprimer le déclencheur d'événement Scheduler (premier composant)
+* Cliquez sur le bouton Event et sélectionnez un déclencheur HTTP/S Server Get
+  ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-a.png)
+  ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-b.png)
+* Cliquer sur add dans Connection
+  * Donner un nom et une description (par ex: HTTPS Server) et appuyer sur Select
+  * Sélectionner HTTPS
+  * Laisser None pour l'Authentifictaion
+  * Cliquer sur Update
+  ![HTTP Server Connection](../images/lab3-https-connection-a.png)
+  * Fermer l'onglet 
+* Revenir à l'intégration et ouvrir le composant HTTP/S Server GET. Cliquer sur refresh et sélectionner la connexion que nous venons de créer.
+* Ajouter un resource path (par ex: checkvalue). Notez que le nom doit être unique
+* Ajouter un query parameter (par ex: value)
+  ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-c.png)
+* Cliquer sur  Save 
+* Etiquetter le composant HTTP/S Server Get "Receive check request"
+* Cliquer sur le composant HTTP/S Client POST (renvoie vers webhook site) et développer le panneau inférieur
+* Développer la liste déroulante HTTPSPostInput dans la section ACTION PROPRETIES
+* Cliquer sur le bouton delete dans body pour supprimer l'ancienne valeur statqique 
+* Développer la liste déroulante HTTPSServerGetOutput et la liste déroulante queryParams sur le côté gauche du panneau
+* Faire glisser value jusqu'à body et cliquer sur save 
+  ![HTTPS Post](../images/lab3-create-http-post-component-a.png)
+* Appuyer sur test pour tester votre flux et s'apercevoir qu'il n'est pas possible de le faire. Nous aurons besoin d'activer notre intégration avec un appel d'API
+* Activer l'intégration sur le data plane avec l'interrupteur à bascule
+  ![Enable Toggle](../images/lab3-enable-a.png)
+  ![Enable Toggle](../images/lab3-enable-b.png)
+* Copier l'URL de l'intégration sur le data plane 
+  ![Enable Toggle](../images/lab3-enable-c.png)
+* Dans un autre onglet du navigateur, coller l'URL et entrer une valeur pour value (par ex: 10)
+* Consulter les résultats sur webhook.site, le body doit être égal à la valeur fournie en tant que query parameter 
+  ![Result](../images/lab3-result-a.png)
+* Aller sur le  Monitor, visualiser la transaction et explorer les informations utiles pour le débogage
+  ![Result](../images/lab3-result-b.png)
+  ![Result](../images/lab3-result-c.png)
 
 
-Your final integration should look like this:
+Votre intégration finale doit ressembler à ceci:
 
-![Final](images/lab3-final-a.png)
+![Final](../images/lab3-final-a.png)
 
 
 ## Lab 4
 
-In this lab, we'll add some flow control logic and variables to our integration and test it.
+Dans cette étape, nous allons ajouter une logique de contrôle de flux et des variables à notre intégration et la tester
 
-Continue from Lab 3
+Continuer à partir de l'étape 3
 
-* Disable to integration so it can be edited
-* Click the plus sign between the two components and add an if-else
-  ![If-else](images/lab4-ifelse-a.png)
-* Expand the If-else and label it "check value"
-  ![If-else](images/lab4-ifelse-b.png)
-* click on Expression
-  ![If-else](images/lab4-ifelse-c.png)
-* Add a condition and set the expressions condition so that it checks if `value` is greater than 10
-  ![If-else](images/lab4-ifelse-d.png)
-  ![If-else](images/lab4-ifelse-e.png)
-* Drag the webhook HTTP/S Client POST component inside the "if true" path (on the top line, after the expression)
-  ![If-else](images/lab4-ifelse-f.png)
-  ![If-else](images/lab4-ifelse-g.png)
-* Activate your integration and trigger it with values greater than and less than 10 to see that only those greater than 10 are sent to webhook site. Verify by inspecting the transaction in the Monitor.
+* Désactiver l'intégration afin de pouvoir la modifier 
+* Cliquer sur le signe plus entre les deux composants et ajouter un if-else
+  ![If-else](../images/lab4-ifelse-a.png)
+* Développer le if-else et l'étiqueter "check value"
+  ![If-else](../images/lab4-ifelse-b.png)
+* Cliquer sur Expression
+  ![If-else](../images/lab4-ifelse-c.png)
+* Ajouter une condition et configurer la condition afin qu'elle vérifie si `value` est supérieure à 10
+  ![If-else](../images/lab4-ifelse-d.png)
+  ![If-else](../images/lab4-ifelse-e.png)
+* Faire glisser le composant POST du webhook HTTP/S Client à l'intérieur du path « if true » (sur la ligne supérieure, après Expression)
+  ![If-else](../images/lab4-ifelse-f.png)
+  ![If-else](../images/lab4-ifelse-g.png)
+* Activez votre intégration et déclenchez-la avec des valeurs supérieures et inférieures à 10 pour vérifier que seules les valeurs supérieures à 10 sont envoyées à webhook site . Vérifier en inspectant la transaction dans le moniteur.
 
-Your final integration should look like this:
+Votre intégration finale doit ressembler à ceci:
 
-![Final](images/lab4-final-a.png)
-Note that is recommanded to set labels to every step for an easier understanding and monitoring of each integration.
+![Final](../images/lab4-final-a.png)
+A Noter qu'il est recommandé d'annoter chaque étape pour faciliter la compréhension et le suivi de chaque intégration.
