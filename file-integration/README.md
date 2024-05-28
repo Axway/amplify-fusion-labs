@@ -34,7 +34,7 @@ The final integration is shown below:
 * A **Salesforce developer instance**
   > If you don't have a developer instance, details to sign up for free will be provided in the lab below.
   > If you already use Salesforce as a CRM in your organization, don't use your corporate account for this lab and sign-up for a developer account not using your corporate email address as username.
-* An **SFTP client**, such as FileZilla
+* An **SFTP client**, such as [FileZilla](https://filezilla-project.org/download.php?type=client&show_all=1)
 
 ## Lab 1
 
