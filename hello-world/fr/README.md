@@ -92,7 +92,7 @@ Continuer à partir de l'étape 1
   * Fermer l'onglet
 * Retourner à l'intégration -> HTTP/S Client POST Component, cliquer sur refresh dans le selecteur de connexion et choisir la connexion que nous venons de concevoir
 * Développez la liste déroulante HTTPSPostInput dans la section ACTION PROPRETIES
-* Faire un clique droit sur body et sélectionner Set Value
+* Faire un clic droit sur body et sélectionner Set Value
 * Entrer le texte JSON suivant et appuyer sur Save
 
 
@@ -102,7 +102,7 @@ Continuer à partir de l'étape 1
   ‌}
   ```
 
-* Faire un clique droit sur basePath et sélectionner Set Value 
+* Faire un clic droit sur basePath et sélectionner Set Value 
 * Entrer n'importe quel base path (par ex: /v1/message)
   ![Create Component](../images/lab2-create-http-post-component-a.png)
 * Cliquer sur  save sur le panel

@@ -1,56 +1,56 @@
-# CRM Cloud Integration Lab
+# Integration CRM Cloud
 
-In these labs, we will create an integration that will copy new Salesforce Contacts to Hubspot and MS Teams as shown below:
+Dans cet exercice, nous allons créer une intégration qui copiera les nouveaux contacts Salesforce vers Hubspot et MS Teams, comme indiqué ci-dessous :
 
-![demo](images/intro-demo.gif)
+![demo](../images/intro-demo.gif)
 
-A data flow diagram is shown below:
+Le data flow est illustré ci-dessous:
 
-![dataflow](images/dataflow.png)
+![dataflow](../images/dataflow.png)
 
-We will learn the following:
+Dans cet exercice nous allons apprendre à :
 
-* How to create a Salesforce Connection
-* How to use the Salesforce query Component and associated Plug to query a Salesforce Opportunity
-* How to create a Salesforce Push Topic
-* How to create a Hubspot Connection
-* How to use the Hubspot Create Component and associated Plug to create a Hubspot Contact
-* How to Map data
-* How to create an MS Teams Connection using the HTTP/S Client Connection
-* Send a message to a MS Teams channel
+* Créer une connexion Salesforce
+* Utiliser le composant query de Salesforce et le plug associé
+* Créer un Push Topic Salesforce
+* Créer une connexion Hubspot
+* Utiliser le composant de création HubSpot et le plug associé pour créer un contact HubSpot
+* Faire un Mapping data
+* Créer une connexion MS Teams en utilisant la connexion client HTTP/S
+* Envoyer un message sur un canal MS Teams
 
-Your final integration should like this:
+L'intégration finale doit ressembler à ceci:
 
-  ![integration](images/intro-integration.png)
+  ![integration](../images/intro-integration.png)
 
-## Pre-requisites
+## Pré-requis
 
-* Access to Amplify Integration
-  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
-* A **Salesforce developer instance**
-  > If you don't have a developer instance, details to sign up for free will be provided in the lab below.
-  > If you already use Salesforce as a CRM in your organization, don't use your corporate account for this lab and sign-up for a developer account not using your corporate email address as username.
-* Access to a **Hubspot** instance
-  > If you don't have a developer instance, details to sign up for free will be provided in the lab below.
-* Access to **Microsoft Teams** and the ability to install an Microsoft Teams incoming webbook connector
-  > If you don't use Teams or don't have the webhook capability, you can use a test webhook online app like [Webhook.site](https://webhook.site) instead for this lab.
+* Accès à Amplify Integration
+  > Si vous n'avez pas de compte, veuillez contacter **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** par mail avec en objet `Amplify Integration Training Environment Access Request`
+* Une **Instance développeur Salesforce**
+  > Si vous n'avez pas d'instance développeur, les détails pour vous inscrire gratuitement seront fournis dans les étapes ci-dessous.
+  > Si vous utilisez déjà Salesforce comme CRM dans votre organisation, n'utilisez pas votre compte d'entreprise pour cet exercice et créez un compte de développeur en n'utilisant pas l'adresse e-mail de votre entreprise comme nom d'utilisateur.
+* Un accès à une instance **Hubspot** 
+  > Si vous n'avez pas d'instance développeur, les détails pour s'inscrire gratuitement seront donnés dans les étapes ci-dessous 
+* Un Accès à **Microsoft Teams** et pouvoir installer un connecteur de Webhook entrant 
+  > Si vous n'utilisez pas Teams ou que vous n'avez pas la fonctionnalité Webhook, vous  pouvez utiliser une application webhook de test en ligne comme [Webhook.site](https://webhook.site) à la place pour cet exercice
 
-Before you start, make sure you have Salesforce and Hubspot accounts that you can access.
+Avant de commencer assurez vous d'avoir des comptes Salesforce et Hubspot auxquelles vous pouvez accéder
 
-## Lab 1
+## Étape 1
 
-In this lab, we'll set up a Salesforce push topic and start our integration by adding a Salesforce Pushtopic listener as a trigger to our integration.
+Dans cette étape nous allons paramétrer un Pushtopic Salesforce et commencer notre intégration par ajouter un Salesforce Pushtopic listener en tant que trigger de notre intégration 
 
-* Create a new project in Amplify Integration for this CRM cloud integration. Use a unique name in case your not the only one to do this lab on your Amplify Integration tenant.
-* Follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection \
-![salesforce connection](images/lab1-salesforce-connection.png)
-* Create a PushTopic in the Salesforce Developer Console
-  * Open the Salesforce Developer Console \
-    ![salesforce menu](images/lab1-salesforce-menu.png)
-  * Click Debug -> Open Execute Anonymous Window \
-    ![salesforce developer console](images/lab1-salesforce-developer-console.png) \
-    ![salesforce apex code](images/lab1-salesforce-apex-code.png)
-  * In the Enter Apex Code window, paste in the following Apex code, and click Execute:
+* Créer un nouveau projet dans Amplify Integration pour cette intégration CRM. (Utilisez un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre platefrome Amplify Integration)
+* Suivre les instructions [**ci-jointes**](assets/salesforce-connection.md) pour configurer une App Oauth connectée à Salesforce, une connexion Salesforce dans Amplify Integration, génerer un token et tester la connexion \
+![salesforce connection](../images/lab1-salesforce-connection.png)
+* Créer un PushTopic dans la console de développeur Salesforce
+  * Ouvrir la console de développeur Salesforce \
+    ![salesforce menu](../images/lab1-salesforce-menu.png)
+  * Cliquer sur Debug -> Open Execute Anonymous Window \
+    ![salesforce developer console](../images/lab1-salesforce-developer-console.png) \
+    ![salesforce apex code](../images/lab1-salesforce-apex-code.png)
+  * Dans la fenêtre Enter Apex Code, coller le code Apex suivant, et cliquer sur Execute:
 
     ```java
     PushTopic pushTopic = new PushTopic();
@@ -65,112 +65,113 @@ In this lab, we'll set up a Salesforce push topic and start our integration by a
     insert pushTopic;
     ```
 
-    ![salesforce apex code pushtopic](images/lab1-salesforce-apex-code-pushtopic.png)
+    ![salesforce apex code pushtopic](../images/lab1-salesforce-apex-code-pushtopic.png)
 
-* Go back to your Amplify Integration project
-* Create a Plug for Salesforce (e.g. SFDCContactPush), and configure it:
-  * Select the Salesforce Connection you created previously
-  * Select `SubscribePushTopic` for Actions
-  * Select `/topic/ContactPush` you've just created for Objects
-  * Select RECEIVE_NEW_EVENTS for Replay Id
-  ![salesforce pushtopic plug](images/lab1-salesforce-pushtopic-plug.png)
-  * Click Generate and then Save to create your Plug
-* Create an integration for CRM cloud integration
-  * Click on the Event button and select the Salesforce Pushtopic component
-  * Select the Salesforce Connection and Plug you created above
-  ![salesforce pushtopic component](images/lab1-salesforce-pushtopic-component.png)
-* Enable your integration 
-* Add a new contact in Salesforce 
-  ![salesforce contact](images/lab1-salesforce-new-contact.png)
-  ![salesforce contact](images/lab1-salesforce-contact.png)
-* Go to the Monitor and click on the transaction and see that you consumed the pushtopic contact
-  ![transaction monitoring details](images/lab1-transaction-monitoring-details.png)
+* Retourner au projet
+* Créer un Plug pour Salesforce (par ex: SFDCContactPush) et le configurer:
+  * Sélectionner la connexion Salesforce créée précédemment
+  * Sélectionner `SubscribePushTopic` pour Actions
+  * Sélectionner `/topic/ContactPush` tout juste créée en tant qu'Objects 
+  * Sélectionner `RECEIVE_NEW_EVENTS` pour le  Replay Id
 
-## Lab 2
+  ![salesforce pushtopic plug](../images/lab1-salesforce-pushtopic-plug.png)
+  * Cliquer sur  Generate et ensuite Save pour créer le Plug
+* Créer une intégration pour l'intégration CRM cloud 
+  * Cliquer sur le bouton Event et sélectionner le composant Salesforce Pushtopic
+  * Sélectionner la connexion Salesforce et le plug crées juste avant 
+  ![salesforce pushtopic component](../images/lab1-salesforce-pushtopic-component.png)
+* Activer l'intégration
+* Créer un nouveau contact dans Salesforce 
+  ![salesforce contact](../images/lab1-salesforce-new-contact.png)
+  ![salesforce contact](../images/lab1-salesforce-contact.png)
+* Consulter le Monitor et cliquer sur la transaction pour voir les informations du contact crée
+  ![transaction monitoring details](../images/lab1-transaction-monitoring-details.png)
 
-In this lab, we'll retrieve the contact and desired fields based on the id from the new contact pushtopic. We'll use a Salesforce query component and a query Contact by id Plug.
+## Étape 2
 
-* Disable your integration to continue designing the integration
-* Click the plus icon to add a step after the trigger event 
-* Select a Salesforce query component and select your Salesforce Connection
-  ![salesforce query component init](images/lab2-salesforce-query-component-init.png)
-* Click Add on the Plugs and name your Plug and give it a description (e.g. SFDC_Get_Contact_by_Id) and Configure it
-  * Select your Salesforce Connection 
-  * Select `Query` for Actions
-  * Select `Contact` for Objects
-  * Select Id, FirstName, LastName and Email for the fields
-  * Click on the Where clause button and select Id for the field and `=` for the operation
-  ![salesforce query plug configure](images/lab2-salesforce-query-plug-configure.png)
-* Click Generate and then Save to create your Plug
-  ![salesforce query plug](images/lab2-salesforce-query-plug.png)
-* Return to your integration and select the plug you just created for your query component
-  ![salesforce query component](images/lab2-salesforce-query-component.png)
-* In the left pane (pipelin in) expand `SFDCContactPushOutput` and expose the `SFDCContactPushOutput/sobject/Id`
-* In the middle pane under ACTION PROPERTIES expand `SFDC_Get_Contact_by_IdInput` to expose the `SFDC_Get_Contact_by_IdInput/where/where_Id` and drag a line between the two nodes and click Save
-  ![salesforce query component input](images/lab2-salesforce-query-component-input.png)
-* Enable the integration, add a new Salesforce Contact and inspect your transaction in the Monitor to see the contact with the fields we specified in the Plug
-  ![transaction monitoring](images/lab2-transaction-monitoring.png)
+Dans cette étape, nous allons récupérer le contact et les champs souhaités à partir l'identifiant du pushtopic du nouveau contact. Nous utiliserons un composant de requête Salesforce (Salesforce query component) et une requête Contact par id Plug.
 
-## Lab 3
+* Désactiver l'intégration pour poursuivre le design
+* Cliquer sur l'icône plus pour ajouter une étape après le trigger 
+* Sélectionner le composant Salesforce query et sélectionner la connexion Salesforce créée auparavant 
+  ![salesforce query component init](../images/lab2-salesforce-query-component-init.png)
+* Cliquer sur  Add Plugs, nommer le plug, lui donner une description (par ex: SFDC_Get_Contact_by_Id) et le configurer
+  * Sélectionner votre connexion Salesforce  
+  * Sélectionner `Query` pour les Actions
+  * Sélectionner `Contact` pour les  Objects
+  * Sélectionner les fields: Id, FirstName, LastName et Email 
+  * Cliquer sur Where et sélectionner Id pour les fields et `=` pour l'opération
+  ![salesforce query plug configure](../images/lab2-salesforce-query-plug-configure.png)
+* Cliquer sur Generate puis sur Save pour créer votre plug 
+  ![salesforce query plug](../images/lab2-salesforce-query-plug.png)
+* Retourner à l'intégration et sélectionner le plug tout juste crée pour le composant query
+  ![salesforce query component](../images/lab2-salesforce-query-component.png)
+* Sur le panneau de gauche dérouler `SFDCContactPushOutput` pour afficher `SFDCContactPushOutput/sobject/Id`
+* Sur le panneau du milieu, sous ACTION PROPRETIES, dérouler `SFDC_Get_Contact_by_IdInput` pour afficher  `SFDC_Get_Contact_by_IdInput/where/where_Id` et faire glisser une ligne entre ces deux noeuds puis cliquer sur Save
+  ![salesforce query component input](../images/lab2-salesforce-query-component-input.png)
+* Activer l'intégration, créer un nouveau contact Salesforce et consulter la transaction dans le Monitor pour voir le nouveau contact avec les champs spécifiés dans le plug 
+  ![transaction monitoring](../images/lab2-transaction-monitoring.png)
 
-In this lab, we'll use the retrieved contact and insert it into Hubspot. We'll use a Hubspot create component and an associated create Plug.
+## Étape 3
 
-* Follow [**this guide**](assets/hubspot-connection.md) to create  Hubspot Connection
-* Disable your integration to continue designing the integration
-* Click on the plus sign to add a new step to the integration and select a Hubspot Create component 
-  ![add hubspot create component](images/lab3-add-hubspot-create-component.png)
-* Select the Hubspot connection you just created
-  ![hubspot create component init](images/lab3-hubspot-create-component-init.png)
-* Click on the Add button next to the Plugs so we can create a Hubspot plug to Create a Contact. 
-* Provide a name and description and click on Create
-  ![hubspot plug create](images/lab3-hubspot-plug-create.png)
-  ![hubspot plug init](images/lab3-hubspot-plug-init.png)
-* Click on Configure and do the following:
-  * Select your Hubspot Connector
-  * Select Create for Actions
-  * Select contacts for Objects
-  * Select `firstname`, `lastname` and `email` fields
-  ![hubspot plug configure](images/lab3-hubspot-plug-configure.png)
-  * Press the Generate button
-  ![hubspot plug](images/lab3-hubspot-plug.png)
-* Click Save and then return to your integration and select the newly created plug
-  ![hubspot create component](images/lab3-hubspot-create-component.png)
-* Expand the ACTION PROPERTIES -> `HubspotCreateContactInput->create` to expose the Hubspot contact fields
-  ![hubspot create component properties](images/lab3-hubspot-create-component-properties.png)
-* In the left panel, expand `SFDC_Get_Contact_by_IdOutput/response/records[]` so you can see the Salesforce contact fields and connector each one to the corresponding Hubspot contact fields and click Save
-  ![hubspot create component input](images/lab3-hubspot-create-component-input.png)
-* Enable your integration and create a new Salesforce contact and see the new contact in Hubspot
-  ![salesforce contact creation](images/lab3-salesforce-contact-creation.png)
-  ![hubspot contact created](images/lab3-hubspot-contact-created.png)
+Dans cette étape, nous allons récupérer le contact et l'insérer dans Hubspot. Nous allons utiliser un composant Hubspot create et un plug associé
 
-## Lab 4 - Challenge yourself!
+* Suivre [**ce guide**](assets/hubspot-connection.md) pour créer une connexion Hubspot
+* Désactiver l'integration précédente pour continuer le design
+* Cliquer sur le signe plus pour ajouter une nouvelle étape à l'intégration puis sélectionner le composant Hubspot create
+  ![add hubspot create component](../images/lab3-add-hubspot-create-component.png)
+* Sélectionner la connexion Hubspot tout juste créée 
+  ![hubspot create component init](../images/lab3-hubspot-create-component-init.png)
+* Cliquer sur le bouton Add à côté de Plugs afin de créer un plug Hubspot pour créer un contact
+* Donner un nom, une description puis cliquer sur Create
+  ![hubspot plug create](../images/lab3-hubspot-plug-create.png)
+  ![hubspot plug init](../images/lab3-hubspot-plug-init.png)
+* Cliquer sur Configure puis suivre ces étapes:
+  * Sélectionner le connecteur Hubspot crée précédemment
+  * Sélectionner create pour les Actions
+  * Sélectionner contacts pour les Objects
+  * Sélectionner `firstname`, `lastname` and `email` pour les fields
+  ![hubspot plug configure](../images/lab3-hubspot-plug-configure.png)
+  * Appuyer sur Generate
+  ![hubspot plug](../images/lab3-hubspot-plug.png)
+* Cliquer sur  Save puis retourner à l'intégration et sélectionner le plug tout juste crée
+  ![hubspot create component](../images/lab3-hubspot-create-component.png)
+* Dérouler ACTION PROPERTIES -> `HubspotCreateContactInput->create` pour afficher les fiedls du contact Hubspot
+  ![hubspot create component properties](../images/lab3-hubspot-create-component-properties.png)
+* Dans le panneau de gauche, dérouler `SFDC_Get_Contact_by_IdOutput/response/records[]` pour visualiser les contact fields  et les associer individuellement aux contact fields de Hubspot correspondants, puis cliquer sur Save  
+  ![hubspot create component input](../images/lab3-hubspot-create-component-input.png)
+* Activer l'intégration et créer un nouveau contact Salesforce. Le contact est désormais visible sur Hubspot
+  ![salesforce contact creation](../images/lab3-salesforce-contact-creation.png)
+  ![hubspot contact created](../images/lab3-hubspot-contact-created.png)
 
-In this lab, we'll post a message to MS Teams with the contact details.
+## Étape 4 - Relevez le défi !
 
-We'll use the MS Teams Incoming Webhook Connector so that we can Post a message to a MS Teams channel.
+Dans cette étape, nous posterons un message sur le canal MS teams contenat les détails du contact
 
-* Follow the instructions [**here**](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) to get a URL to a MS Teams channel
-  * If you don't use Teams or don't have the webhook capability, you can use a test webhook online app like [Webhook.site](https://webhook.site) instead for this lab.
-* Disable to integration and add an HTTP/S Client Post Connection to your integration
-  ![add https client post](images/lab4-add-https-client-post.png)
-  ![https client post component init](images/lab4-https-client-post-component-init.png)
-* Click Add next to Connection so we can create an HTTP/S Client Connection to the MS Teams Incoming Webhook Connector URL and give the connection a name and description and do the following:
-  * Select HTTPS for Protocol
-  * Select HTTP/2 for HTTP Version
-  * Enter the MS Teams Incoming Webhook Connector URL and press Update
-  ![https client connection name](images/lab4-https-client-connection-name.png)
-  ![https client connection](images/lab4-https-client-connection.png)
-* Return the integration and select the MS Teams Connection
-  ![https client post component](images/lab4-https-client-post-component.png)
-* In the ACTION PROPERTIES section, expand `HTTPSPostInput` to expose the body and right click on body and select SetValue
-  ![https client post component setvalue](images/lab4-https-client-post-component-setvalue.png)
-* Follow the screen shots below to type the POST body and press the + button to select Name and Email from `SFDCContactPushOutput` and press Save
-  ![https client post component setvalue variable1](images/lab4-https-client-post-component-setvalue-variable1.png)
-  ![https client post component setvalue variable2](images/lab4-https-client-post-component-setvalue-variable2.png)
-  ![https client post component setvalue text](images/lab4-https-client-post-component-setvalue-text.png)
-* Enable your integration and create a new Salesforce contact and see the new contact in Hubspot and you should also have a message in your MS Teams channel as follows:
-  ![microsoft teams message](images/lab4-microsoft-teams-message.png)
+Nous utiliserons le Webhook connector de MS Teams afin de pouvoir poster un message sur un canal MS teams
 
-Your final flow should like this:
+* Suivre les instructions [**ci-jointes**](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) pour obtenir l'URL d'un canal MS teams
+  * Si vous n'utilisez pas Teams ou que vous n'avez pas la fontionnalité Webhook, vous pouvez utiliser une application de test Webhook ligne comme  [Webhook.site](https://webhook.site) à la place pour cette étape
+* Désactiver l'intégration précédente et ajouter une connexion  HTTP/S Client Post à l'intégration 
+  ![add https client post](../images/lab4-add-https-client-post.png)
+  ![https client post component init](../images/lab4-https-client-post-component-init.png)
+* Cliquer sur Add à côté de Connection afin de créer une connexion HTTP/S Client vers le MS Teams Incoming Webhook Connector URL, lui donner un nom, une description puis suivre ces étapes:
+  * Sélectionner HTTPS pour le Protocol
+  * Sélectionner HTTP/2 pour HTTP Version
+  * Entrer l'URL du connecteur MS Teams Incoming Webhook et appuyer sur Update
+  ![https client connection name](../images/lab4-https-client-connection-name.png)
+  ![https client connection](../images/lab4-https-client-connection.png)
+* Retourner à l'intégration et sélectionner la connexion MS Teams
+  ![https client post component](../images/lab4-https-client-post-component.png)
+* Dans la section ACTION PROPERTIES, dérouler `HTTPSPostInput` pour afficher le body, faire un clic droit sur body et sélectionner SetValue 
+  ![https client post component setvalue](../images/lab4-https-client-post-component-setvalue.png)
+* Suivre les captures d'écran ci-dessous pour saisir le POST body et appuyer sur le bouton + pour sélectionner Name et Email depuis `SFDCContactPushOutput` puis appuyer sur Save
+  ![https client post component setvalue variable1](../images/lab4-https-client-post-component-setvalue-variable1.png)
+  ![https client post component setvalue variable2](../images/lab4-https-client-post-component-setvalue-variable2.png)
+  ![https client post component setvalue text](../images/lab4-https-client-post-component-setvalue-text.png)
+* Activer l'intégration et créer un nouveau contact Salesforce puis visualiser le contact sur Hubspot. Un message comme celui-ci doit aussi apparaître sur votre canal MS teams:
+  ![microsoft teams message](../images/lab4-microsoft-teams-message.png)
 
-  ![integration](images/lab4-integration.png)
+L'intégration finale doit ressembler à ceci:
+
+  ![integration](../images/lab4-integration.png)

@@ -31,7 +31,7 @@ L'intégration finale doit ressembler à ceci:
 
 * Accès à **Amplify Integration**
   > Si vous n'avez pas de compte, veuillez contacter **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** par mail avec en objet `Amplify Integration Training Environment Access Request`
-* Une **instance de développeur Salesforce**
+* Une **instance développeur Salesforce**
   > Si vous n'avez pas d'instance de développeur, les détails pour vous inscrire gratuitement seront fournis dans les étapes ci-dessous.
   > Si vous utilisez déjà Salesforce comme CRM dans votre organisation, n'utilisez pas votre compte d'entreprise pour cet exercice et créez un compte de développeur en n'utilisant pas l'adresse e-mail de votre entreprise comme nom d'utilisateur.
 * Un **client SFTP**, tel que [FileZilla](https://filezilla-project.org/download.php?type=client&show_all=1)
@@ -113,7 +113,7 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
 * Ajouter un composant MAP à l'intérieur de la branche de la boucle For-each, le sélectionner et développer le panneau inférieur.
   ![add map](../images/lab3-add-map.png)
   ![map component init](../images/lab3-map-component-init.png)
-* Sur le côté droit, effectuer un clique droit n'importe où et sélectionner Extract
+* Sur le côté droit, effectuer un clic droit n'importe où et sélectionner Extract
   ![map variable extract](../images/lab3-map-variable-extract.png)
 * Coller un exemple de Lead Salesforce et cliquer sur Copy node
 
@@ -130,7 +130,7 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
   ```
 
   ![map variable copy](../images/lab3-map-variable-copy.png)
-* Sur le côté droit, effectuer à nouveau un clique droit n'importe où et sélectionner Paste, donner un nom à votre variable (par ex: Lead) puis l'étendre pour voir à l'intérieur.
+* Sur le côté droit, effectuer à nouveau un clic droit n'importe où et sélectionner Paste, donner un nom à votre variable (par ex: Lead) puis l'étendre pour voir à l'intérieur.
   ![map variable paste](../images/lab3-map-variable-paste.png)
 * Dérouler LeadsCSV dans le panneau de gauche pour afficher `delimitedRecords` et ses champs
   ![map expand input](../images/lab3-map-expand-input.png)
@@ -146,8 +146,8 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
   * Faire glisser une ligne de `LeadsCSV->delimitedRecords->first_name` à  `leads->FirstName`
   * Faire glisser une ligne de `LeadsCSV->delimitedRecords->title` à `Title`
   * Faire glisser une ligne de`LeadsCSV->delimitedRecords->company` à `leads->Company`
-  * Faire un clique droit sur `leads->LeadSource`, sélectionner SetValue et paramétrer  la valeur à `Partner Referral`
-  * Faire un clique droit sur `leads->Status`, sélectionner SetValue et paramétrer la valeur à `Open - Not Contacted` puis cliquer sur Save
+  * Faire un clic droit sur `leads->LeadSource`, sélectionner SetValue et paramétrer  la valeur à `Partner Referral`
+  * Faire un clic droit sur `leads->Status`, sélectionner SetValue et paramétrer la valeur à `Open - Not Contacted` puis cliquer sur Save
   ![map component](../images/lab3-map-component.png)
   * Fermer le panneau inférieur
 * Nous avons besoin de créer une connexion Salesforce, pour cela suivre les instructions juste  [**ici**](assets/salesforce-connection.md) pour configurer une application OAuth connectée à Salesforce, une connexion de type Salesforce, générer un token et tester la connexion.
