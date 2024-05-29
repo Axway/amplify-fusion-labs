@@ -1,8 +1,8 @@
-# Lab CSV Leads File Integration 
+# Intégration de fichier CSV de Leads
 
 ## Introduction
 
-Dans cet exercice, nous allons créer une intégration qui nous permettra de SFTP un fichier CSV de prospects et de créer de nouveaux prospects Salesforce basés sur les lignes CSV. La démo est présentée ci-dessous :
+Dans cet exercice, nous allons créer une intégration qui nous permettra de transférer un fichier CSV contenants des Leads (aussi appelé Pistes, c’est-à-dire des clients potentiels) via le protocole SFTP, et de créer de nouveaux Leads Salesforce basés sur les lignes CSV. La démo est présentée ci-dessous :
 
 ![demo](../images/intro-demo.gif)
 
@@ -16,7 +16,7 @@ Ce data flow est illustré ci-dessous:
 
 ![flow](../images/intro-flow.png)
 
-Dans cette sessions d'exercices, vous allez apprendre à:
+Dans cette exercice, vous allez apprendre à:
 
 * Créer un composant serveur SFTP
 * Créer une connexion Salesforce
@@ -36,7 +36,7 @@ L'intégration finale doit ressembler à ceci:
   > Si vous utilisez déjà Salesforce comme CRM dans votre organisation, n'utilisez pas votre compte d'entreprise pour cet exercice et créez un compte de développeur en n'utilisant pas l'adresse e-mail de votre entreprise comme nom d'utilisateur.
 * Un **client SFTP**, tel que [FileZilla](https://filezilla-project.org/download.php?type=client&show_all=1)
 
-## Etape 1
+## Étape 1
 
 Dans cette étape, nous allons ingérer un fichier CSV de contacts.
 
@@ -58,11 +58,11 @@ Dans cette étape, nous allons ingérer un fichier CSV de contacts.
 
 Testons maintenant l'intégration.
 
-* Activer l'intégration en cliquant sur le bouton play à côté du bouton test et Activate the integration by clicking on the play button next to the Test button et commuter l'interrupteur qui se trouve à côté du data plane
-* Une fois activé, passez la souris sur l'icône du lien pour voir l'URL SFTP et copiez le lien
+* Activer l'intégration en cliquant sur le bouton play à côté du bouton test et commuter l'interrupteur qui se trouve à côté du data plane
+* Une fois activée, passer la souris sur l'icône du lien pour voir l'URL SFTP et copier le lien
 ![integration](../images/lab1-integration-activation.png)
-* Télécharger le fichier leads.csv from [**here**](assets/leads.csv)
-* Lancez votre client FTP (par exemple FileZilla) et créez une connexion SFTP au serveur SFTP en utilisant l'URL que vous venez de copier et les informations d'identification de la connexion et connectez-vous au serveur SFTP (si vous utilisez FileZilla, collez simplement l'URL SFTP dans le premier champ et cliquez sur connexion rapide. Assurez-vous de préfixer l'hôte par `sftp://` puis entrez le mot de passe). Sélectionnez le dossier `/incoming` pour le téléchargergement (c'est ce qui déclenchera votre intégration).
+* Télécharger le fichier leads.csv [**ici**](assets/leads.csv)
+* Lancez un client FTP (par exemple FileZilla) et créez une connexion SFTP au serveur SFTP en utilisant l'URL que vous venez de copier et les informations d'identification de la connexion et connectez-vous au serveur SFTP (si vous utilisez FileZilla, collez simplement l'URL SFTP dans le premier champ et cliquez sur connexion rapide. Assurez-vous de préfixer l'hôte par `sftp://` puis entrez le mot de passe). Sélectionnez le dossier `/incoming` pour le téléchargergement (c'est ce qui déclenchera votre intégration).
   ![filezilla connection](../images/lab1-filezilla-connection.png)
 * Télécharger leads.csv dans le dossier `/incoming`ce qui déclenchera votre intégration
 * Aller sur le Monitor
@@ -72,7 +72,7 @@ Testons maintenant l'intégration.
 * Cliquer sur l'étape SFTP Server Poll et dérouler`SFTPServerPollOutput` pour voir le node files->0  et son body field pour voir que le file a été ingéré
   ![transaction monitoring details](../images/lab1-transaction-monitoring-details.png)
 
-## Etape 2
+## Étape 2
 
 Dans cette étape, nous allons parcourir le fichier CSV des contacts afin d'en parcourir les lignes.
 
@@ -100,9 +100,9 @@ Dans cette étape, nous allons parcourir le fichier CSV des contacts afin d'en p
 * Activez l'intégration et téléchargez votre fichier CSV, puis vérifiez la transaction dans le Monitor pour voir vos lignes délimitées.
   ![transaction monitoring details](../images/lab2-transaction-monitoring-details.png)
 
-## Etape 3
+## Étape 3
 
-Dans cette étape, nous allons parcourir les lignes délimitées (contacts) et créer des leads dans Salesforce.
+Dans cette étape, nous allons parcourir les différentes lignes (contacts) et créer des leads dans Salesforce.
 
 * En continuant là où nous nous sommes arrêtés, désactiver l'intégration et ajouter un composant For-each, le développer et cliquer sur configuration, sélectionner `LeadsCSV->delimitedRecords` et appuyer sur Save.
   ![foreach](../images/lab3-foreach.png)
@@ -141,30 +141,32 @@ Dans cette étape, nous allons parcourir les lignes délimitées (contacts) et c
     ![map search function](../images/lab3-map-search-function.png)
     * Faire glisser une ligne de `LeadsCSV->delimitedRecords->last_name` jusque UpperCase inputString et faire glisser une ligne de UpperCase output jusqu'à `leads->LastName`
     ![map select function](../images/lab3-map-select-function.png)
-  * Convertissons l'e-mail en minuscules à l'aide d'une fonction. Cliquez sur +fx, recherchez la fonction LowerCase et sélectionnez-la.
+  * Convertissons l'e-mail en minuscules à l'aide d'une fonction. Cliquer sur +fx, rechercheR la fonction LowerCase puis la sélectionner.
     * Faire glisser une ligne de`LeadsCSV->delimitedRecords->email`à LowerCase inputString et Faire glisser une ligne de LowerCase output jusqu'à `leads->Email`
   * Faire glisser une ligne de `LeadsCSV->delimitedRecords->first_name` à  `leads->FirstName`
   * Faire glisser une ligne de `LeadsCSV->delimitedRecords->title` à `Title`
   * Faire glisser une ligne de`LeadsCSV->delimitedRecords->company` à `leads->Company`
-  * Faire un clique droit sur `leads->LeadSource` et sélectionner SetValue et paramètrer  la valeur à `Partner Referral`
-  * Faire un clique droit sur `leads->Status`, sélectionner SetValue et régler la valeur à `Open - Not Contacted` puis cliquer sur Save
+  * Faire un clique droit sur `leads->LeadSource`, sélectionner SetValue et paramétrer  la valeur à `Partner Referral`
+  * Faire un clique droit sur `leads->Status`, sélectionner SetValue et paramétrer la valeur à `Open - Not Contacted` puis cliquer sur Save
   ![map component](../images/lab3-map-component.png)
   * Fermer le panneau inférieur
-* We need to create a Salesforce Connection so follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection
+* Nous avons besoin de créer une connexion Salesforce, pour cela suivre les instructions juste  [**ici**](assets/salesforce-connection.md) pour configurer une application OAuth connectée à Salesforce, une connexion de type Salesforce, générer un token et tester la connexion.
+
   ![saleforce connector](../images/lab3-saleforce-connector.png)
-* Close the Salesforce Connection and return to your Integration
-* Click the add button to add a Salesforce insert Component and expand the bottom panel and select the newly created Salesforce Connection that we just created
-* We need a Plug that defines the lead insert so click on the Plug Add button and provide a name (e.g. CreateLead) and description and then click on Configure
-* Select the Salesforce Connection we just created, Insert for the Actions and Lead for the Objects and select FirstName, LastName, Title, Company, Email, LeadSource and Status for the fields and click Generate and then Save and then close the plug and return to the flow (as we did before)
+* Fermer la connexion Salesforce et retourner sur l'intégration
+* Cliquer sur Add pour ajouter un composant Salesforce Insert, étendre le pannel inférieur et sélectionner la connexion Salesforce tout juste créée 
+* Nous avons besoin d'un plug qui définisse l'insertion de leads. Pour cela cliquer sur Plug Add et donner un nom (par ex: CreateLead)une description, puis cliquer sur Configurer.
+* Sélectionner la connexion Salesforce que nous venons de créer, Insert comme Actions et Lead pour Objects, puis  sélectionner FirstName, LastName, Title, Company, Email, LeadSource et Status pour les Fields. Cliquer sur Generate puis Save et ensuite fermer le plug et retourner au flux (comme fait précédemment).
+
   ![salesforce plug](../images/lab3-salesforce-plug.png)
-* Select the newly created plug
-* Expand the CreateLeadInput ACTION PROPERTY to expose the insert property
-* Drag the leads variable we created prior and drag it to the insert property and press Save
+* Sélectionner le plug tout juste crée
+* Dérouler CreateLeadInput dans ACTION PROPERTIES pour afficher la propriété insert
+* Faire glisser la variable Leads créée précédemment la propriété insert, puis appuyer sur Save.
   ![salesforce insert component](../images/lab3-salesforce-insert-component.png)
-* Activate the event and test the integration
-* This time you should see two new leads added to your Salesforce leads
+* Activer l'event et tester l'intégration
+* Cette fois, vous devriez voir deux nouveaux leads ajoutés à vos leads Salesforce
   ![salesforce new leads](../images/lab3-salesforce-new-leads.png)
 
-Your final flow should like this:
+L'intégration finale doit ressembler à ceci:
 
   ![integration](../images/lab3-integration.png)

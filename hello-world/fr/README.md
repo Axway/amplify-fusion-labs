@@ -1,16 +1,16 @@
-# Lab Hello World
+# Hello World
 
-Dans ces exercices, nous partirons de zéro et construirons quelques intégrations très basiques.
-A travers ces étapes, vous apprendrez ce qui suit :
+Dans cet exercice, nous partirons de zéro et construirons quelques intégrations très simples.
+À travers ces étapes, vous apprendrez ce qui suit :
 
 * Deux façons de déclencher une intégration (Webhook et Scheduler)
 * Comment visualiser l'exécution de l'intégration
 * Comment activer/désactiver les intégrations
-* Le déclencheur d'événement HTTP/S Server et les composants HTTP/S Client et if-else
+* Le trigger d'événement HTTP/S Server et les composants HTTP/S Client et if-else
 * Comment créer une connexion HTTP/S Server et HTTP/S Client ?
 * Comment utiliser les fonctions glisser-déposer pour configurer les composants.
 
-Au cours des étapes, prenez le temps d'explorer davantage les éléments liés à ce sur quoi vous travaillez. Par exemple, lorsqu'il vous est demandé d'ajouter un composant if-else, explorez les autres composants disponibles.
+Au cours des étapes, prenez le temps d'explorer davantage les éléments liés à ce sur quoi vous travaillez. Par exemple, lorsqu'il vous est demandé d'ajouter un composant if-else, n'hésitez pas à parcourir les autres composants disponibles.
 
 
 ## Pré-requis
@@ -29,11 +29,11 @@ Au cours des étapes, prenez le temps d'explorer davantage les éléments liés 
 
   ![homepage](../images/homepage.png)
 
-* Etendre le pannel du menu de gauche
+* Étendre le pannel du menu de gauche
 
   ![designer](../images/designer.png)
 
-* Selectionner Projects
+* Sélectionner Projects
 
   ![designer menu](../images/designer-menu.png)
 
@@ -45,13 +45,14 @@ Au cours des étapes, prenez le temps d'explorer davantage les éléments liés 
 
   ![project content](../images/project-content.png)
 
-Les exercices ci-dessous ont pour but  d'être exploratoires. Des instructions sont fournies, mais vous devrez trouver comment les réaliser.
-## Etape 1
+Les étapes ci-dessous ont pour but  d'être exploratoires. Les instructions principales sont fournies mais vous devrez chercher vous même comment les réaliser.
+
+## Étape 1
 
 Dans cette étape, nous allons créer une intégration qui est déclenchée par un scheduler et la tester.
 
 * Créer une integration
-* Ajouter un Scheduler comme déclencheur
+* Ajouter un Scheduler comme trigger
   ![Add Scheduler](../images/lab1-add-scheduler-a.png)
   ![Add Scheduler](../images/lab1-add-scheduler-b.png)
   ![Add Scheduler](../images/lab1-add-scheduler-c.png)
@@ -62,11 +63,11 @@ Dans cette étape, nous allons créer une intégration qui est déclenchée par 
   ![Test](../images/lab1-test-a.png)
   ![Test](../images/lab1-test-b.png)
 
-Votre intégration finale doit ressembler à ceci:
+L'intégration finale doit ressembler à ceci:
 
 ![Final](../images/lab1-final-a.png)
 
-## Etape 2
+## Étape 2
 
 Dans cette étape, nous allons ajouter un composant HTTP/S Client (et la connexion associée) à notre intégration et la tester.
 
@@ -74,9 +75,9 @@ Continuer à partir de l'étape 1
 
 * Ajouter un composant HTTP/S Client Post
   ![Add HTTPS Post](../images/lab2-add-https-post-a.png)
-* Etiquetter le  composant "Send to webhook site"
+* Étiqueter le  composant "Send to webhook site"
   ![Add HTTPS Post](../images/lab2-add-https-post-b.png)
-* Etendre le pannel inférieur
+* Étendre le pannel inférieur
   ![Add HTTPS Post](../images/lab2-add-https-post-c.png)
 * Cliquer sur Add dans Connection
   * Donner un nom et une description (webhook site)
@@ -109,18 +110,18 @@ Continuer à partir de l'étape 1
 * Les résultats, le ressource path, le body et le Authorization Header sont visibles sur webhook.site
   ![Create Component](../images/lab2-test-results-a.png)
 
-Votre intégration finale doit ressembler à ceci:
+L'intégration finale doit ressembler à ceci:
 
 ![Final](../images/lab2-final-a.png)
 
-## Etape 3
+## Étape 3
 
-Dans cette étape, nous remplacerons le déclencheur d'événement du composant Scheduler par un composant HTTP/S Server (et la connexion associée) et nous le testerons.
+Dans cette étape, nous remplacerons le trigger d'événement du composant Scheduler par un composant HTTP/S Server (et la connexion associée) et nous le testerons.
 
 Continuer à partir de l'étape 2 
 
-* Supprimer le déclencheur d'événement Scheduler (premier composant)
-* Cliquez sur le bouton Event et sélectionnez un déclencheur HTTP/S Server Get
+* Supprimer le trigger d'événement Scheduler (premier composant)
+* Cliquez sur le bouton Event et sélectionnez un trigger HTTP/S Server Get
   ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-a.png)
   ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-b.png)
 * Cliquer sur add dans Connection
@@ -156,12 +157,12 @@ Continuer à partir de l'étape 2
   ![Result](../images/lab3-result-c.png)
 
 
-Votre intégration finale doit ressembler à ceci:
+L'intégration finale doit ressembler à ceci:
 
 ![Final](../images/lab3-final-a.png)
 
 
-## Etape 4
+## Étape 4
 
 Dans cette étape, nous allons ajouter une logique de contrôle de flux et des variables à notre intégration et la tester
 
@@ -182,7 +183,7 @@ Continuer à partir de l'étape 3
   ![If-else](../images/lab4-ifelse-g.png)
 * Activez votre intégration et déclenchez-la avec des valeurs supérieures et inférieures à 10 afin de  vérifier que seules les valeurs supérieures à 10 sont envoyées à webhook site. Vérifier en inspectant la transaction dans le moniteur.
 
-Votre intégration finale doit ressembler à ceci:
+L'intégration finale doit ressembler à ceci:
 
 ![Final](../images/lab4-final-a.png)
-A Noter qu'il est recommandé d'annoter chaque étape pour faciliter la compréhension et le suivi de chaque intégration.
+À Noter qu'il est recommandé d'annoter chaque étape afin de faciliter la compréhension et le suivi de chaque intégration.
