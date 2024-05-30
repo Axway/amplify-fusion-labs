@@ -11,8 +11,8 @@ Le data flow est illustré ci-dessous:
 Dans cet exercice nous allons apprendre à :
 
 * Créer une connexion Salesforce
-* Utiliser le composant query de Salesforce et le plug associé
-* Créer un Push Topic Salesforce
+* Utiliser le composant de recherche de Salesforce (Salesforce query component) et le branchement (plug) associé
+* Créer un Push Topic dans Salesforce
 * Créer une connexion Hubspot
 * Utiliser le composant de création HubSpot et le plug associé pour créer un contact HubSpot
 * Faire un Mapping data

@@ -1,116 +1,117 @@
-# Invoice Asynchronous Integration Lab
+# Intégration asynchrone de factures 
 
 ## Introduction
 
-In these labs, we'll create a set of integrations that will enable us to discover new and modified invoices and send notifications to stakeholders via MS Teams. The data will pass through Kafka.
+Dans cet exercice, nous allons créer un ensemble d'intégrations qui nous permettront de découvrir les nouvelles factures ainsi que celle qui ont été modifiées, et d'envoyer des notifications aux parties prenantes via MS Teams. Les données passeront par Kafka.
 
-A demo is shown below:
+Un exemple est illustré ci-dessous:
 
-![demo](images/intro-demo.gif)
+![demo](../images/intro-demo.gif)
 
-The flows are described below:
+Les flux sont décrits ci-dessous:
 
-* Kafka Publisher
-  * Poll Zoho Invoice for new and modified invoices
-  * Loop over the invoices and publish to Kafka
-* Kafka Consumer
-  * Consume Kafka message
-  * Parse message
-  * Send Notification to MS Teams
+* Éditeur Kafka (Kafka Publisher)
+  * Interroge Zoho Invoice à propos des nouvelles factures ou des factures modifiées 
+  * Passe en revue les factures et les publie sur Kafka 
+* Consommateur Kafka (Kafka Consumer)
+  * Consomme le message Kafka
+  * Analyse et interprète le message 
+  * Envoie une notification à MS teams
 
-This entire data flow is illustrated below:
+Ce flux de données (Data flow) est illustré ci-dessous:
 
-![flow](images/intro-flow.png)
+![flow](../images/intro-flow.png)
 
-In this set of labs, you will learn the following:
+Dans cet exrercice nous allons apprendre à :
 
-* How to create a Kafka Connection
-* How to publish to a Kafka Topic
-* How to consume a Kafka topic
-* How to create a Zoho Invoice OpenAPI Connection
-* How to use the Zoho Invoice OpenAPI Component to query Zoho Invoice for new and modified records
-* How to create an HTTP/S Client Connection to integrate with MS Teams
-* How to use an HTTP/S Client Post component to send a notification to MS Teams
+* Créer une connexion Kafka
+* Publier sur un topic Kafka
+* Consommer un topic Kafka
+* Créer une connexion Zoho Invoice OpenAPI
+* Utiliser le composant Zoho Invoice OpenAPI pour interroger Zoho Invoice concernant les nouveaux enregistrements et les enregistrements modifiés 
+* Créer une connexion HTTP/S Client pour réaliser une intégration avec MS teams
+* Utiliser un composant HTTP/S Client Post pour envoyer des notifications sur MS teams
 
-The final integrations are shown below:
+L'intégration finale est illustré ci-dessous :
 
-* Kafka Publisher
-![integration1](images/intro-integration1.png)
-* Kafka Consumer
-![integration2](images/intro-integration2.png)
+* Éditeur Kafka
+![integration1](../images/intro-integration1.png)
+* Consommateur Kafka 
+![integration2](../images/intro-integration2.png)
 
-## Prerequisites
+## Pré-requis
 
-* Access to Amplify Integration
-  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
-* A free [**Zoho Invoice**](https://www.zoho.com/invoice/) account
-* A Kafka instance and the ability to create topics and publish on the topic. [**Upstash**](https://upstash.com/) have free tiers and is recommanded for this lab. Alternatively, you also sign up for [**CloudKarafka**](https://www.cloudkarafka.com/) for free. 
-* Access to **Microsoft Teams** and the ability to install an Microsoft Teams incoming webbook connector
-  > If you don't use Teams or don't have the webhook capability, you can use a test webhook online app like [Webhook.site](https://webhook.site) instead for this lab.
+* Accès à Amplify Integration
+  > Si vous n'avez pas de compte, veuillez contacter **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** par mail avec en objet `Amplify Integration Training Environment Access Request`
+* Un compte [**Zoho Invoice**](https://www.zoho.com/invoice/) gratuit
+* Une instance Kafka et la capacité de créer des topics et de publier dessus. [**Upstash**](https://upstash.com/) propose des niveaux gratuits et est recommandé pour cet exercice. Sinon, vous pouvez vous inscrire à [**CloudKarafka**](https://www.cloudkarafka.com/) gratuitement. 
+* Un Accès à **Microsoft Teams** et pouvoir installer un connecteur de Webhook entrant 
+  > Si vous n'utilisez pas Teams ou que vous n'avez pas la fonctionnalité Webhook, vous  pouvez utiliser une application webhook de test en ligne comme [Webhook.site](https://webhook.site) à la place pour cet exercice
 
-## Lab 1
 
-In this lab, we'll create the first flow that will poll Zoho Invoice for updated invoices and publish each as a Kafka message.
+## Étape 1
 
-* Create an integration (e.g. InvoiceHandler)
-* Click on the Event button and select the Scheduler Component and configure for 60 seconds
-  ![scheduler](images/lab1-scheduler.png)
-* Click Test to run the integration. This will initialize the Last Run time stamp, `LastRunDt-...`. This built in variable will always contain the timestamp of the last time the integration ran. We can use it for polling modifications in back end data sources.
-* In order to query Zoho Invoice for updated invoices, we'll use the built in Last Run time stamp, `LastRunDt-...` to compare with the invoice *last_modified_time* times tamp, but we need to convert it to the Zoho Invoice Timestamp format using a Map function. Click on plus button and add a Map component and expand the bottom panel and add a DateFormat function
-  * On the right hand panel, right click on a variable and add a String variable called *LastRunDt-formatted*
-  * Drag a line from `LastRunDt-...` variable on the left hand side to the DateFormat function `sourceDate`
-  * Right click on the DateFormat `sourceDateFormat` and set to `yyyy-MM-dd HH:mm:ss SSS`
-  * Right click on the DateFormat targetDateFormat and set to `yyyy-MM-dd'T'HH:mm:ssZ`
-  * Drag a line from DateFormat function `output` to the String variable you created above (e.g. *LastRunDt-formatted*) and click Save
-  ![map](images/lab1-map.png)
-* Now, we need to query Zoho Invoice for modified invoices. So, click the plus button to add an OpenAPI Client Invoke Operation component and expand the bottom panel. Click the Add button next to Connection so that we can create an OpenAPI Connection to your Zoho Invoice application and enter a name (e.g. Zoho API) and description.
-* Follow the instructions [**here**](assets/zoho-api-instructions.md) and use the OAS doc [**here**](assets/Zoho-Invoice-oas3.json) to create you connection and don't forget to generate a token and test the connection
-  ![openapi client connection](images/lab1-open-apiclient-connection.png)
-* Go back to the Integration and click on the OpenAPI Client Invoke Operation component and click refresh and select the connection you just created
-* Select Invoice for the Object and GetInvoices for the Action
-* Right click on the queryParams and add two string variables inside: `filter_by` and `last_modified_time`
-  * Right click on `filter_by` and set to `Status.All`
-  * Drag a line from `LastRunDt-formatted` on the left to `last_modified_time` and click on Save
+Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zoho Invoice à propos des factures actualisées et publie pour chacune un message Kafka
 
-  ![openapi client component](images/lab1-openapi-client-component.png)
-* Now let's loop over the modified invoices and publish each to Kafka
-* Add a For-each component, expand it and click on Config and select `GetInvoicesOutput->response->invoices` to specify the array to loop over
-  ![foreach configuration](images/lab1-foreach-configuration.png)
-* Inside the For-each add an Apache Kafka Publish Component and expand the bottom panel
+* Créer une intégration (par exemple: InvoiceHandler)
+* Cliquer sur le bouton Event, sélectionner le composant Scheduler et le régler à 60 secondes
+  ![scheduler](../images/lab1-scheduler.png)
+* Cliquer sur Test pour lancer l'intégration. Cette opération initialisera l'horodatage de la dernière exécution, `LastRunDt-...`. Cette variable intégrée contiendra toujours l'horodatage de la dernière exécution de l'intégration. Nous pourrons l'utiliser pour interroger à propos des modifications dans les sources de données backend.
+* Afin d'interroger Zoho Invoice à propose des factures actualisées, nous utiliserons l'horodatage intégré de la dernière exécution, `LastRunDt-...` pour comparer avec l'horodatage de la facture *last_modified_time*. Mais pour cela nous devons le convertir au format d'horodatage de Zoho Invoice en utilisant une fonction Map. Cliquez sur le bouton plus pour ajouter un composant MAP puis étendez le panneau inférieur et ajoutez une fonction DateFormat
+  * Sur le panneau de droite, effectuer un clic droit et ajouter une variable String nommé *LastRunDt-formatted*
+  * Faire glisser une ligne de la variable `LastRunDt-...` qui se trouve sur le côté gauche, à la fonction DateFormat `sourceDate`
+  * Faire un clic droit sur le DateFormat `sourceDateFormat` et le configuer de cette manière: `yyyy-MM-dd HH:mm:ss SSS`
+  * Faire un clic droit sur le DateFormat `targetDateFormat` et le configurer de cette manière: `yyyy-MM-dd'T'HH:mm:ssZ`
+  * Faire glisser une ligne de la fonction DateFormat `output` à la variable String créée au au-dessus (par exemple: *LastRunDt-formatted*) et cliquer sur Save
+  ![map](../images/lab1-map.png)
+* Nous devons maintenant interroger Zoho Invoice pour à propose des factures modifiées. Pour cela, cliquer sur le bouton plus pour ajouter une un composant d'opération d'appel du Client OpenAPI ( OpenAPI Client Invoke Operation component) puis étendre le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
+* Suivre ces [**instructions**](assets/zoho-api-instructions.md) et utiliser le document OAS [**ci-joint**](assets/Zoho-Invoice-oas3.json) pour créer une connexion. Ne pas oublier de générer un Token et de tester la connexion
+  ![openapi client connection](../images/lab1-open-apiclient-connection.png)
+* Retourner à l'intégration et cliquer sur le composant OpenAPI Client Invoke Operation, actualiser et sélectionner la connexion tout juste créée
+* Sélectionner Invoice pour l'Object et GetInvoices pour l'Action
+* Faire un clic droit sur queryParams et ajouter deux string variables dedans: `filter_by` et `last_modified_time`
+  * Faire un clic droit sur `filter_by` cliquer sur set, puis entrer `Status.All` comme valeur
+  * Faire glisser une ligne de `LastRunDt-formatted` sur la gauche vers `last_modified_time` puis cliquer sur Save
+
+  ![openapi client component](../images/lab1-openapi-client-component.png)
+* Passons maintenant en revue les factures modifiées et publions chacune d'entre elles sur Kafka
+* Ajouter un composant For-each, l'étendre, cliquer sur Config et sélectionner `GetInvoicesOutput->response->invoices` pour indiquer le tableau (array) à parcourir
+  ![foreach configuration](../images/lab1-foreach-configuration.png)
+* Ajouter un composant Apache Kafka Publish à l'intérieur du For-each et étendre le panneau inférieur
 * Click on Add next to Connection to create a new Kafka Connection and give it a name and description
-* Review your Upstash Kafka Details and get your Endpoint, Username and Password
-  ![Upstash Kafka details](images/lab1-upstash-kafka-details.png)
-* In the Amplify Integration Connection screen
-  * Enter the Upstash Endpoint for Bootstrap Servers
-  * Select "SASL SCRAM with SSL" for Authentication.
-  * Enter the Upstash username and password
-  * Select for SCRAM_SHA_256 Encryption Type
-  * Click on save/update and press Test
-  ![kafka connection](images/lab1-kafka-connection.png)
-* Return to the Apache Kafka Publish component in the integration and click refresh in the Connection picker and select our newly created Kafka Connection
-* Expand the `ApacheKafkaPublishInput->messages` to expose the messages parameters and drag a line from the `GetInvoicesOutput->response->invoices` in the left hand panel to `ApacheKafkaPublishInput->messages->value`
-* Right click on `ApacheKafkaPublishInput->topicName` and select SetValue and paste in a Topic name that you should create in your Upstash Kafka instance (e.g. invoice) and press Save
-  ![Upstash Kafka topics](images/lab1-upstash-kafka-topics.png)
-  ![kafka publish component](images/lab1-kafka-publish-component.png)
-* This is what your final integration should look like:
-  ![integration](images/lab1-integration.png)
-* Let's test it by adding an invoice to Zoho Invoice and then pressing the Test button in your integration (no need to enable the integration)
-* A new browser tab will open showing the transaction. You should see that one invoice was detected by looking at the For-each step
-  ![transaction monitoring](images/lab1-transaction-monitoring.png)
-* Click the plus sign next to For-each and again and see the Apache Publish step and click on it and expand both sides to see that your invoice was published
-  ![transaction monitoring details](images/lab1-transaction-monitoring-details.png)
+* Consultez vos détails Upstash Kafka pour accéder à votre Endpoint, Username et Password
+  ![Upstash Kafka details](../images/lab1-upstash-kafka-details.png)
+* Dans la fenêtre Connection de Amplify Integration
+  * Entrer le Upstash Endpoint en tant que Bootstrap Servers
+  * Sélectionner "SASL SCRAM with SSL" pour l'Authentication
+  * Entrer le Username et le Password Upstash
+  * Sélectionner SCRAM_SHA_256 pour le Encryption Type
+  * Cliquer sur save/update puis cliquer sur Test
+  ![kafka connection](../images/lab1-kafka-connection.png)
+* Retourner sur le composant Apache Kafka Publish component dans l'intégration et cliquer sur refresh dans le sélecteur de connexion. Sélectionner la connexion Kafka tout juste créée
+* Dérouler `ApacheKafkaPublishInput->messages` pour afficher les paramètres de messsages et tirer une ligne de `GetInvoicesOutput->response->invoices` sur le panneau de gauche, vers `ApacheKafkaPublishInput->messages->value`
+* Faire un clique droit sur `ApacheKafkaPublishInput->topicName`, sélectionner SetValue et coller le nom de Topic crée dans l'instance kafka (par exemple: invoice) puis cliquer sur Save
+  ![Upstash Kafka topics](../images/lab1-upstash-kafka-topics.png)
+  ![kafka publish component](../images/lab1-kafka-publish-component.png)
+* Votre intégration final doit ressembler à ceci :
+  ![integration](../images/lab1-integration.png)
+* Testons la en ajoutant une facture sur ZohoInvoice et en appuyant ensuite sur le bouton Test dans votre intégration (il n'est pas nécessaire d'activer l'intégration)
+* Un nouvel onglet de navigateur s'ouvre et affiche la transaction. Vous devriez voir qu'une facture a été détectée en regardant l'étape For-each 
+  ![transaction monitoring](../images/lab1-transaction-monitoring.png)
+* Cliquer sur le signe + à côté de For-each puis cliquer sur l'étape Apache Publish et dérouler les deux côtés pour voir que votre facture a été publiée
+  ![transaction monitoring details](../images/lab1-transaction-monitoring-details.png)
 
-Now that we can publish an updated invoice to Kafka, let's create a Kafka Consumer integration to consume the Kafka message and send a notification to Microsoft Teams
+Maintenant que nous pouvons publier une facture mise à jour sur Kafka, créons une intégration Kafka Consumer pour consommer le message Kafka et envoyer sur notification à Microsoft Teams.
 
-## Lab 2
+## Étape 2
 
-In this lab, we'll consume a Kafka message from the `invoice` topic and send a notification with some invoice details to Microsoft Teams.
+Dans cette étape, nous allons consommer un message kafka provenant du `invoice` topic (topic de la facture) et envoyer une notification avec quelques détails de la facture sur Microsoft Teams
 
-* Create an integration (e.g. InvoiceNotifier)
-* Click on the Event button and select the Apache Kafka Consume Component and select the Kafka connector used in the first integration and enter the topic name (e.g. invoice) and press save
-  ![kafka consume component](images/lab2-kafka-consume-component.png)
-* Add a Map component to parse the Kafka message and expand the bottom panel
-* Right click on any variable on the right hand side and select Extract and paste in the following invoice payload sample and click Copy Node
+* Créer une intégration (par exempl: InvoiceNotifier)
+* Cliquer sur le bouton Event, sélectionner le composant Apache Kafka Consume et sélectionner le connecteur utilisé dans la première intégration et entre le nom du topic (par ex: invoice) puis cliquer sur Save
+  ![kafka consume component](../images/lab2-kafka-consume-component.png)
+* Ajouter un composant MAP pour analyser le message Kafka puis étendre le panneau inférieur 
+* Faire un clic droit sur n'importe quelle variable du côté droit et sélectionner Extract puis coller l'exemple d'Invoice payload suivant. Cliquer ensuite sur Copy Node
 
   ```json
   {
@@ -189,25 +190,25 @@ In this lab, we'll consume a Kafka message from the `invoice` topic and send a n
   }
   ```
 
-* Right click on any variable on the right hand side and select Paste and give your extract variable a name (e.g. invoiceJson)
-* Expand the `ApacheKafkaConsumeOutput` variable on the left panel to expose the `recordValue` and drag a line from it to the `invoiceJson` variable
-  ![map](images/lab2-map.png)
+* Faire un clic droit sur n'importe quelle variable du côté droit, sélectionner Paste et nommer la variable extraite (par ex: invoiceJson)
+* Dérouler la variable `ApacheKafkaConsumeOutput` sur le panneau de gauche pour afficher la variable `recordValue` puis faire glisser une ligne de celle-ci vers la variable `invoiceJson`
+  ![map](../images/lab2-map.png)
 
-In the next few steps, we'll post a message to MS Teams with some details from the invoice.
+Dans les prochaines étapes, nous allons poster un message sur MS Teams avec quelques détails sur la facture 
 
-We'll use the MS Teams Incoming Webhook Connector so that we can Post a message to a MS Teams channel using an HTTP/S Client Post component.
+Nous utiliserons le connecteur MS Teams Webhook afin de pouvoir poster un message sur un canal MS Teams en utilisant le composant HTTP/S Client Post
 
-* Follow the instructions [**here**](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) to get a URL to a MS Teams channel
-* Add an HTTP/S Client Post Connection component to your integration and expand the bottom panel
-* Click Add next to Connection so we can create an HTTP/S Client Connection to the MS Teams Incoming Webhook Connector URL and give the connection a name and description and do the following:
-  * Select HTTPS for Protocol
-  * Select HTTP/2 for HTTP Version
-  * Enter the MS Teams Incoming Webhook Connector URL (without the https://) and press Update
-  ![Microsoft Teams https client connection](images/lab2-microsoft-teams-https-client-connection.png)
-* Return the HTTP/S Client Post Connection component in your integration, click refresh and select the MS Teams Connection
-  ![https client post component](images/lab2-https-client-post-component.png)
-* In the ACTION PROPERTIES section, expand `HTTPSPostInput` to expose the `body` and right click on `body` and select SetValue
-* Enter the following:
+* Suivre ces [**instructions**](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) pour obtenir l'URL d'un canal MS teams
+* Ajouter un composant HTTP/S Client Post Connection à l'intégration et étendre le panneau inférieur
+* Cliquer sur Add à côté de Connection afin de créer une connexion Client HTTP/S vers l'URL du connecteur MS Teams Incoming Webhook et donner un nom et une description à la connexion puis suivre ces étapes:
+  * Sélectionner HTTPS comme Protocol
+  * Sélectionner HTTP/2 en tant que HTTP Version
+  * Entrer l'URL du connecteur MS Teams Incoming Webhook (sans le https://) puis appuyer sur update
+  ![Microsoft Teams https client connection](../images/lab2-microsoft-teams-https-client-connection.png)
+* Retourner au composant HTTP/S Client Post Connection dans l'intégration, cliquer sur refresh et sélectionner la connexion MS Teams
+  ![https client post component](../images/lab2-https-client-post-component.png)
+* Dans la section ACTION PROPERTIES, dérouler `HTTPSPostInput` pour afficher `body` faire un clic droit sur `body` et sélectionner SetValue
+* Entrer le texte suivant:
 
   ```json
   {
@@ -215,20 +216,20 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
   }
   ```
 
-* Replace the variables (e.g. {...}) by deleting them and clicking the plus button and selecting the appropriate variable from there and click Save and then Save again
-  ![https client post set value](images/lab2-https-client-post-set-value.png)
-* Now we're ready to test our integration which should look like this:
-  ![integration](images/lab2-integration.png)
-* Enable your integration and you should see a message in MS Teams. This is the message we published at the end of the previous lab
-  ![teams message](images/lab2-teams-message.png)
-* Make sure the other integration is enabled and modify an invoice or create a new invoice in Zoho Invoice and see that you get a new message in MS Teams once the scheduler is triggered. For updating a invoice you can mark an invoice as sent and/or record a payment to change its status
-* Disable both integrations (to avoid polling) when not in use
+* Remplacer les variables entre accolades (par ex: {invoice_number}) en les supprimant puis en cliquant sur le bouton plus et en sélectionnant les variables appropriées à cet endroit. Cliquer ensuite sur Save puis encore sur Save
+  ![https client post set value](../images/lab2-https-client-post-set-value.png)
+* Nous sommes maintenant prêts à tester notre intégration qui devrait ressembler à ceci :
+  ![integration](../images/lab2-integration.png)
+* Activer l'intégration, suite à cela un message apparaît sur MS Teams. C'est le message publié à la fin de l'étape 1
+  ![teams message](../images/lab2-teams-message.png)
+* Assurez-vous que la première intégration est activée et modifiez une facture ou créez une nouvelle facture dans Zoho Invoice et constatez que vous recevez un nouveau message dans MS Teams une fois que le Scheduler est triggered. Pour mettre à jour une facture, vous pouvez la marquer comme envoyée et/ou enregistrer un paiement pour changer son statut.
+* Désactiver les deux intégrations lorsqu'elles ne sont pas utilisées afin d'éviter les requêtes répétitives.
 
-## Lab 3 - Challenge yourself!
+## Étape 3 - Relevez le défi!
 
-Use the following MS Teams card sample and modify it to make a nicer MS Teams card for your invoice and send it as the body of your HTTPS Client Post to MS Teams:
+Utiliser l'exemple de carte MS Teams suivant, le modifier afin d'avoir une carte MS Teams plus esthétique pour vos factures, puis l'envoyer en tant que body pour votre HTTPS Client Post vers MS Teams:
 
-  ![teams message](images/lab3-teams-message.png)
+  ![teams message](../images/lab3-teams-message.png)
 
   ```json
   {
