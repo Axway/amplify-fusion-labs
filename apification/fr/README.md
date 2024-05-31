@@ -4,7 +4,7 @@
 
 Dans cet exercice, nous allons créer une intégration qui nous permettra d'exposer une API pour des factures dans une base de données.  L'intégration permettra également d'orchestrer et d'agréger les données des factures avec un service de conversion de devises afin de convertir le montant de la facture dans la devise souhaitée et de calculer le montant total des factures.
 
-L'API que nous construisons est comme tel:
+L'API que nous construirons sera comme tel:
 
 `GET /invoices?status=Overdue&currencycode=EUR`
 
