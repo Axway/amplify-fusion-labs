@@ -142,7 +142,7 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
     * Faire glisser une ligne de `LeadsCSV->delimitedRecords->last_name` jusque UpperCase inputString et faire glisser une ligne de UpperCase output jusqu'à `leads->LastName`
     ![map select function](../images/lab3-map-select-function.png)
   * Convertissons l'e-mail en minuscules à l'aide d'une fonction. Cliquer sur +fx, rechercheR la fonction LowerCase puis la sélectionner.
-    * Faire glisser une ligne de`LeadsCSV->delimitedRecords->email`à LowerCase inputString et Faire glisser une ligne de LowerCase output jusqu'à `leads->Email`
+  * Faire glisser une ligne de`LeadsCSV->delimitedRecords->email`à LowerCase inputString et Faire glisser une ligne de LowerCase output jusqu'à `leads->Email`
   * Faire glisser une ligne de `LeadsCSV->delimitedRecords->first_name` à  `leads->FirstName`
   * Faire glisser une ligne de `LeadsCSV->delimitedRecords->title` à `Title`
   * Faire glisser une ligne de`LeadsCSV->delimitedRecords->company` à `leads->Company`
