@@ -1,14 +1,14 @@
-# Invoices APIfication Lab
+# APIfication de factures
 
 ## Introduction
 
-In these labs, we'll create an integration that will enable us to expose an API for invoices in a database. The integration will also orchestrate and aggregate the invoice data with a currency conversion service to convert the invoice amount to the desired currency as well as calculate a grand total amount of the invoices.
+Dans cet exercice, nous allons créer une intégration qui nous permettra d'exposer une API pour des factures dans une base de données.  L'intégration permettra également d'orchestrer et d'agréger les données des factures avec un service de conversion de devises afin de convertir le montant de la facture dans la devise souhaitée et de calculer le montant total des factures.
 
-The API we are building is as follows:
+L'API que nous construisons est comme tel:
 
 `GET /invoices?status=Overdue&currencycode=EUR`
 
-with sample response:
+Avec un exemple de réponse :
 
 ```json
 {   
@@ -41,57 +41,56 @@ with sample response:
 }
 ```
 
-A demo is shown below:
+Un exemple est illustré ci-dessous:
 
-![demo](images/intro-demo.gif)
+![demo](../images/intro-demo.gif)
 
-The integration is described below:
+L'intégration est décrite ci-dessous:
 
-* Expose a GET API endpoint that retrieves invoices by status and desired currency
-* Query a PostgreSql Database
-* Loop over the invoices
-  * Make a REST API call to a currency conversion service to convert each invoice total amount to a desired currency
-  * Total the amounts of each invoice
-* Return a payload optimized array of invoices with converted total amount as well as a grand total amount for all invoices
+* Exposer un endpoint API GET qui permet de récupérer les factures en fonction de leur statut et de la devise souhaitée
+* Interroger une base de données PostgreSql
+* Passer en revue les factures
+  * Faire un appel API REST à un service de conversion de devise pour convertir le montant total de chaque facture dans la devise souhaitée
+  * Faire le total des montants de chaque facture
+* Renvoyer un tableau optimisé de factures avec le montant total converti ainsi qu'un montant total général pour toutes les factures
 
-This data flow is illustrated below:
+Le flux de données (data-flow est illustré ci-dessous):
 
-![flow](images/intro-flow.png)
+![flow](../images/intro-flow.png)
 
-In this set of labs, you will learn the following:
+Dans cet exercice, nous apprendrons à:
 
-* How to configure an HTTP/S Server Connection
-* How to use an HTTP/S Server Get component to define a GET API endpoint with query parameters
-* How to to configure a PostgreSql Database Connection
-* How to use a PostgreSql Database Select component and plug to query a table with a where clause
-* How to loop over an array (of invoices)
-* How to configure an HTTP/S Client Connection (to a currency converter REST API)
-* How to use an HTTP/S Client Get component to call a currency conversion REST API
-* How to use the Map component to:
+* Configurer une connexion serveur HTTP/S 
+* Utiliser un composant HTTP/S Server Get pour définir un endpoint API GET avec des paramètres de recherche (query parameters)
+* Configurer une connexion PostgreSql Database 
+* Utiliser un composant PostgreSql Database Select et le branchement (plug) associé pour interroger une table avec une clause Where
+* Parcourir un tableau (de factures)
+* Configurer une connexion HTTP/S Client (à un convertisseur de devises API REST)
+* Utiliser le composant MAP pour:
   * Map data between objects
-  * Use Map functions to set decimal precision and append to a JSON array object
-* Set the response to the API we are exposing
+  * Utiliser des fonctions de Map pour régler la précision décimal et ajouter à un tableau Json  
+* Définir la réponse pour l'API que nous exposons.
 
-The final integration is shown below:
+L'intégration finale est illustrée ci-dessous:
 
-![integration](images/lab4-integration.png)
+![integration](../images/lab4-integration.png)
 
-## Prerequisites
+## Pré-requis
 
-* Access to Amplify Integration
-  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
-* A Postgres Database for storing our invoice records. In this lab, we have used [**Neon**](https://neon.tech)
-* Access to the free [**API Layer Exchange Rates Data API**](https://apilayer.com/marketplace/exchangerates_data-api).
-  > Make sure that you subscribe to the API and test the API in Postman so that you are familiar with how to call the API and see its response.
+* Accès à Amplify Integration
+  > Si vous n'avez pas de compte, veuillez contacter **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** par mail avec en objet `Amplify Integration Training Environment Access Request`
+* Une base de données Postgres pour stocker nos enregistrements de facturation. Dans cet exercice nous avons utilisé [**Neon**](https://neon.tech)
+* Un accès gratuit à [**API Layer Exchange Rates Data API**](https://apilayer.com/marketplace/exchangerates_data-api).
+  > Assurez-vous d'être bien inscrit et testez l'API dans POSTMAN afin de vous familiariser avec les appels d'API et la visualisation de réponses
 
-## Lab 1
+## Étape 1
 
-Let's create the Postgres Database to hold our invoice records.
+Créons une base de données Postgres qui contiendra nos factures
 
-* Create an account at [**Neon**](https://neon.tech). 
-* Create a project and write down the connection details from the psql URL "postgres://_`username`_:_`password`_@_`server`_/_`databaseName`_" for later 
-* Select your project and navigate to the SQL Editor tab to run the following 3 database requests: 
-  * Create an invoice table:
+* Créer un compte [**Neon**](https://neon.tech). 
+* Créer un projet et noter les détails de connexion de l'URL Postgres "postgres://_`username`_:_`password`_@_`server`_/_`databaseName`_" pour plus tard
+* Sélectionner le projet et accéder à l'éditeur SQL pour effectuer ces 3 requêtes de base de données:
+  * Créer un tableau de factures:
 
   ```sql
   CREATE TABLE Invoice (
@@ -114,7 +113,7 @@ Let's create the Postgres Database to hold our invoice records.
   );
   ```
 
-  * Create multiple sample invoices (You can modify the values as you wish)
+  * Créer plusieurs exemples de factures (Vous pouvez modifier les données comme vous le souhaitez)
 
   ```sql
   INSERT INTO Invoice
@@ -141,51 +140,51 @@ Let's create the Postgres Database to hold our invoice records.
     );
   ```
 
-  * Check that invoices are available in the database :
+  * Vérifier que ces factures soient bien dans la base de données :
 
   ```sql
   Select * from invoice
   ```
 
-  ![sql editor](images/lab1-sql-editor.png)
+  ![sql editor](../images/lab1-sql-editor.png)
 
-Now the database is ready.
+La base de données est maintenant prête
 
-## Lab 2
+## Étape 2
 
-In this lab, we'll create our integration and define the REST API endpoint using an HTTP/S Server Component and associated connection and then we'll query our database for invoices with a particular status.
+Dans cette étape, nous allons créer notre intégration et définir un endpoint API REST en utilisant le composant HTTP/S Server et la connexion associée. Ensuite nous interrogerons notre base de données pour récupérer les factures avec un statut particulier.
 
-* Create a new integration (e.g. GetInvoicesByStatus)
-* Click on the Event button and add an HTTP/S Server component and choose GET method
-  * We'll need an HTTP/S Connection so click on Add next to Connection, provide a connection name and description
-  * Select HTTPS for the Protocol and leave Authentication to None for now and click on Update \
-  ![HTTPS server connection](images/lab2-https-server-connection.png)
-  * Close the connection sub tab and go back to the HTTP/S Server component in the integration, refresh the connection list and select the connection you have just created.
-  * Enter `invoices` for the resource path and enter two Query Parameters: `status` and `currencycode` and press Save. The resource path must be unique for your tenant. Since you are most likely working in a shared environment, you may want to prefix the resource path with your initials to make it unique (e.g. lb_invoices) \
-  ![HTTPS Server component](images/lab2-https-server-component.png) 
-    > Note that we still need to connect the response to the HTTP/S Server component but we'll do that shortly after we've defined the response variable
-* Click the plus button to add a Database Select component and expand the bottom panel
-  * We need to create a database connection for our Postgres database so click Add next to the Connection picker and give your connection a name and description (e.g. Neon Postgres DB)
-    * Select PostgreSQL as Database Type and set the version you used for the database creation (default is 15.x)
-    * Update the connection URL with jdbc:postgresql://_`server`_/_`databaseName`_ with `host` and `database name` that you wrote down after database creation (default postgresql port 5432 is not required in the URL)
-    * Enter your User Name and Passwordthat you wrote down after database creation
-    * click on Update and then on Test \
-    ![database connection](images/lab2-database-connection.png)
-      > Note that if you get any Connection Timeout errors with the connection then you may want to expand the Advanced section and set `Connection Wait Timeout` to 1000. Don't forget to click update.
-    * Close your connection sub tab and return the the Database Select component in your integration
-  * Click refresh in the Connections tab and select the database connection you just created
-  * We need a plug for selecting invoices by Status so click Add next to the Plug picker and give your plug a name and description (e.g. GetInvoicesByStatus) and click on the Configure button
-    * Select the database connector you just created and select `Select` for the Actions and `public` for the schemas
-    * Check the box next to your invoice table, and select all the fields
-    * Click the Where tab and select `invoice.status` field and the `=` operator and press Generate and click save
-    ![database plug configuration](images/lab2-database-plug-configuration.png)
-    ![database plug](images/lab2-database-plug_.png)
-    * Close the plug sub tab and return to the Database Select component in your integration and click the refresh button in the Plug picker and select the newly created plug
-  * Expand `HTTPSServerGetOutput` in the left hand panel to expose the `queryParams->status` and drag a line from status to `GetInvoicesByStatusInput->where->invoice_status` in the ACTION PROPERTIES in the center panel
-  * Click the Save button \
-  ![database component](images/lab2-database-component_.png)
-* We are going to declare a response variables that we'll use in the integration. This is the response returned to the client.
-  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes our desired API response object and click on Copy Node button
+* Créer une nouvelle intégration (par ex: GetInvoicesByStatus)
+* Cliquer sur le bouton Event et ajouter un composant HTTP/S Server et choisir GET pour la méthode
+  * Une connexion HTTP/S sera nécessaire. Pour cela, cliquer sur Add à côté de Connection et donner à la connexion un nom et une description
+  * Sélectionner HTTPS comme protocole et laisser None pour l'Authentication pour le moment puis cliquer sur Update
+  ![HTTPS server connection](../images/lab2-https-server-connection.png)
+  * Fermer l'onglet de la connexion et retourner au composant HTTP/S Server de l'intégration, rafraîchir la liste de connexion puis sélectionner la connexion tout juste créée
+  * Entrer `invoices` pour le resource path (chemin d'accès à la ressource) et entrer deux Query Parameters: `status` et  `currencycode` puis apuuyer sur Save. Le resource path doit être unique. Étant donné que vous travaillez probablement dans un environnement partagé, vous pouvez préfixer le ressource path avec vos initiales pour le rendre unique (par exemple, lb_invoices) \
+  ![HTTPS Server component](../images/lab2-https-server-component.png) 
+    > À noter que nous avons toujours besoin de connecter la réponse au composant HTTP/S Server mais nous ferons cela juste après avoir défini la variable réponse
+* Cliquer sur le bouton plus pour ajouter un composant Database Select puis étendre le panneau inférieur
+  * Nous devons créer une connexion Database pour notre Database Postgres. Pour cela cliquer sur Add à côté du sélecteur de connexion et donner à la connexion un nom et une description (par ex: Neon Postgres DB)
+    * Sélectionner PostgreSQL comme Database Type et choisir la version utilisée lors de la création de votre DatabaseSelect (la version par défaut est 15.x)
+    * Mettre à jour l'URL de connexion jdbc:postgresql://_`server`_/_`databaseName`_ avec `host` et `database name` que vous avez noté au début de l'exercice après la création de la database (le port PostgreSQL par défaut 5432 n'est pas requis dans l'URL)
+    * Entrer le nom d'utilisateur et le mot de passe que vous avez noté après la création de votre Database
+    * Cliquer sur Update puis sur Test \
+    ![database connection](../images/lab2-database-connection.png)
+      > Notez que si vous obtenez des erreurs de délai de connexion, vous pouvez développer la section Advanced et régler le `Connection Wait Timeout` à 1000. N'oubliez pas de cliquer sur update.
+    * Fermer l'onglet de la connexion et retourner au composant Database Select dans votre intégration
+  * Cliquer sur refresh dans le panneau de la  Connexion et sélectionner la connexion de Database tout juste créée
+  * Nous avons besoin d'un plug pour sélectionner les factures par statut. Pour cela cliquer sur Add à côté du sélecteur de plug et donner au plug un nom et une description (par ex: GetInvoicesByStatus) puis cliquer sur le bouton Configure
+    * Sélectionner le connecteur de database tout juste créée et sélectionner `Select` pour Actions et `public` pour schemas
+    * Cocher la case à côté de Invoice et sélectionner tous les champs
+    * Cliquer sur Where et sélectionner `invoice.status` comme field et `=` en operator puis cliquer sur Generate et ensuite sur save
+    ![database plug configuration](../images/lab2-database-plug-configuration.png)
+    ![database plug](../images/lab2-database-plug_.png)
+    * Fermer l'onglet du plug et retourner au composant Database Select de l'intégration. Cliquer sur refresh dans le selecteur de plug et choisir le plug tout juste créée
+  * Dérouler `HTTPSServerGetOutput` dans le panneau de gauche et afficher`queryParams->status`. Faire glisser une ligne de `status` à `GetInvoicesByStatusInput->where->invoice_status` dans ACTION PROPERTIES sur le panneau central
+  * Cliquer sur Save \
+  ![database component](../images/lab2-database-component_.png)
+* Nous allons déclarer une variable de réponse que nous utiliserons dans l'intégration. Voici la réponse renvoyée au client.
+  * Faire un clique droit sur n'importe quelle variable du panneau de droite, sélectionner Extract et  collez le  texte JSON suivant qui décrit réponse API souhaitée et cliquer sur Copy Node
     ```json
     {
         "grandTotal": 1049.51,
@@ -214,63 +213,63 @@ In this lab, we'll create our integration and define the REST API endpoint using
         ]
     }
     ```
-  ![extract json](images/lab2-extract-json.png)
-  * Right click again and select Paste and name your variable `response`
-  ![database component](images/lab2-database-component2.png)
+  ![extract json](../images/lab2-extract-json.png)
+  * Refaire un clic droit et sélectionner Paste. Nommer la variable et lui donner une descrpition`response`
+  ![database component](../images/lab2-database-component2.png)
 
-* Now that we've declared our API response variable, let's go back to the HTTP/S Server component and map our response
-  * Click on the HTTP/S Server component at the begining of the integration and click on Response \
-  ![https server component response](images/lab2-https-server-component-response.png)
-  * Click on Map Response and expand the bottom panel
-  * Drag a line from the variable `response` in the left panel to the `HttpResponseInput->body` under ACTION PROPERTIES in the center panel and click on Save
-  ![https server component response map](images/lab2-https-server-component-response-map_.png)
+* Maintenant que nous avons déclaré notre variable de réponse API, retournons au composant HTTP/S Server et effectuons le mapping de notre réponse
+  * Cliquer dur le composant HTTP/S Server au début de l'intégration et cliquer sur Response\
+  ![https server component response](../images/lab2-https-server-component-response.png)
+  * Cliquer sur Map Response et étendre le panneau inférieur
+  * Faire glisser une ligne de la variable `response` du panneau de gauche, vers `HttpResponseInput->body` sous ACTION PROPERTIES dans le panneau central et cliquer sur Save
+  ![https server component response map](../images/lab2-https-server-component-response-map_.png)
 
-Your integration should look like this: \
-![integration](images/lab2-integration.png)
+Votre intégration doit ressembler à ceci: \
+![integration](../images/lab2-integration.png)
 
-* Enable your integration and make an API call from your Browser, Postman or curl as follows:
+* Activez votre intégration et faites un appel API depuis votre navigateur, Postman ou curl comme suit:
 
   ```bash
   curl --location --request GET "https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR"
   ```
 
-  > Note: The _dataplane hostname_ of the Design mode (in SaaS deployment) is:\
+  > Note: Le _dataplane hostname_ du mode Designe (dans le déploiement SaaS) est:\
   > _**tenant-name**-design.prod.integration.**region**.axway.com_\
-  > where _tenant-name_ and _region_ can be found in the current control plane URL that you are using so far.
+  > où _tenant-name_ et _region_ peuvent être trouvés dans le control plane URL que vous utilisez 
 
-  > Tip: Make sure to update the resource path "/invoices" to match what you defined.
+  > Conseil: Assurez vous de mettre à jour le ressource path "/invoices" pour que cela corresponde à ce qui a été défini 
 
-  > Note: The response would be empty for now, so ignore "empty response" error message from your browser or client.
+  > Note: La réponse sera vide pour le moment, il faudra donc ignorer le message d'erreur "empty response" de votre navigateur ou client
 
-* Find your transaction in the Monitor and click on the Database Select step and expand `GetInvoicesByStatusOutput->resultSet` and see that you are retrieving invoices
-![transaction monitoring](images/lab2-transaction-monitoring_.png)
+* Consultez votre transaction dans le Monitor et cliquez sur l'étape Database Select puis déroulez `GetInvoicesByStatusOutput->resultSet`. Les factures ont bien été récupérées
+![transaction monitoring](../images/lab2-transaction-monitoring_.png)
 
-## Lab 3
+## Étape 3
 
-In this lab, we'll loop over the invoices, parse each one to a JSON object and do a currency conversion on the invoice amount to a desired currency passed into the API call as a query parameter.
+Dans cette étape, nous allons parcourir les factures, analyser chacune d'entre elles en un Objet JSON et effectuer une conversion du montant de la facture dans la devise souhaitée, qui sera  transmise à l'appel API sous la forme d'un paramètre de requête
 
-* Disable your integration
-* Click the plus button and add a For-each component, expand it and click on Config
-* Click the down arrow and select the `GetInvoicesByStatusOutput->response->resultSet` array to loop over and click Save
-![foreach configuration](images/lab3-foreach-configuration_.png)
-* Let's convert the invoice total amount to the desired currency using the APILayer currency conversion API. 
-  * Add an HTTP/S Client Get component inside the loop and expand the bottom panel
-  * Click Add next to the Connection picker and give your connection a name and description (e.g. Exchange Rates Data API) and do the following:
-  * Select HTTPS for the Protocol
-  * Select HTTP/2 for the HTTP Version
-  * Enter `api.apilayer.com/exchangerates_data` for Url
-  * Enter `/symbols` as the Safe Resource Path
-  * Add a header named `apikey` and enter your APILayer APIKey
-  * Click Update and Test
-![https client connection](images/lab3-https-client-connection.png)
-* Go back to your HTTP/S Client Get component, click refresh in the Connection picker and select the connection you just created
-* In the center panel under ACTION PROPERTIES, expand `HTTPSGetInput` and:
-  * Right click on basePath and setValue to `/convert`
-  * Right click on `queryParams` and add 3 string variables inside (`amount`, `from` and `to` )  
-  * Drag a line from the left hand panel `GetInvoicesByStatusOutput->response->resultSet->invoice_totalamt` to the center panel `HTTPSGetInput->queryParams->amount` to set the amount for the APILayer API
-  * Drag a line from the left hand panel `GetInvoicesByStatusOutput->response->resultSet->invoice_currency` to the center panel `HTTPSGetInput->queryParams->from` to set the source currency code for the APILayer API
-  * Drag a line from the left hand panel `/HTTPSServerGetOutput->queryParams->currencycode` to the center panel `HTTPSGetInput->queryParams->to` to set the target currency code for the APILayer API
-  * Right click on any variable in the right hand panel and select Extract and paste in the following JSON that describes the currency converter API response object and click on Copy Node button
+* Désactiver l'intégration
+* Cliquer sur le bouton plus et ajouter un composant For-each, l'étendre et cliquer sur configuration
+* Sélectionner `GetInvoicesByStatusOutput->response->resultSet` en déroulant GetInvoicesByStatusOutput puis response, afin de parcourir resultSet puis cliquer sur Save
+![foreach configuration](../images/lab3-foreach-configuration_.png)
+* Convertissons le montant total des factures dans la devises désirée en utilisant l'API de conversion de devises APILayer 
+  * Ajouter un composant HTTP/S Client Get dans la boucle et étendre le panneau inférieur 
+  * Cliquer sur Add à côté du sélecteur  Connection et donner un nom et une description à la connexion (e.g. Exchange Rates Data API) puis suivre ces étapes:
+  * Sélectionner HTTPS pour le Protocol 
+  * Sélectionner HTTP/2 pour la version 
+  * Entrer `api.apilayer.com/exchangerates_data` pour l'Url
+  * Entrer `/symbols` pour le  Safe Resource Path
+  * Ajouter `apikey` en header name et entrer la clé API APILayer 
+  * Cliquer sur Update puis sur Test
+![https client connection](../images/lab3-https-client-connection.png)
+* Retourner au composant HHTP/S Client Get, cliquer sur raffraîchir dans le sélecteur de connexion et choisir la connexion tout juste créée 
+* Dans le panneau central, sous ACTION PROPERTIES, dérouler `HTTPSGetInput` puis :
+  * Faire un clic droit sur basePath et entrer `/convert` comme value 
+  * Faire un clic droit sur `queryParams` et ajouter 3 variables de type String dans queryparams (`amount`, `from` et `to` )  
+  * Faire glisser une ligne de `GetInvoicesByStatusOutput->response->resultSet->invoice_totalamt` sur de panneau de gauche vers `HTTPSGetInput->queryParams->amount` sur le panneau central pour définir le montant pour l'API d'APILayer 
+  * Faire glisser une ligne de `GetInvoicesByStatusOutput->response->resultSet->invoice_currency` sur le panneau de gauche vers `HTTPSGetInput->queryParams->from` sur le panneau de droite pour définir le code source de la devise pour l'API d'APILayer
+  * Faire glisser une ligne de `/HTTPSServerGetOutput->queryParams->currencycode` sur le panneau de gauche vers `HTTPSGetInput->queryParams->to` sur le panneau de droite et configurer pour définir le code de la devise cible pour l'API APILayer
+  * Faire un clic droit sur n'importe quelle variable dans le panneau de droite, sélectionner extract et coller le texte JSON suivant qui décrit la réponse API du convertisseur de devises. Cliquer ensuite sur Copy Node
 
     ```json
     {
@@ -289,36 +288,35 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
     }
     ```
 
-  ![extract json](images/lab4-extract-json.png)
-  * Right click again and select Paste and name your variable `currencyConvertResponse`
-  * Drag a line from ACTION PROPERTIERS `HTTPSGetOutput->response` to the `currencyConvertResponse` extract variable
-  * Press Save
-  ![https client component](images/lab3-https-client-component_.png)
+  ![extract json](../images/lab4-extract-json.png)
+  * Refaire un clic droit sur le panneau de droite et sélectionner Paste puis nommmer la variable `currencyConvertResponse`
+  * Faire glisser une ligne depuis ACTION PROPERTIERS `HTTPSGetOutput->response` vers `currencyConvertResponse` 
+  * Cliquer sur Save
+  ![https client component](../images/lab3-https-client-component_.png)
 
-* Your integration should look like this:
-  ![integration](images/lab3-integration_.png)
+* Votre intégration doit ressembler à ceci:
+  ![integration](../images/lab3-integration_.png)
 
-* Enable your integration and make an API call from the Browser, Postman or curl as follows:
-
+* Activer l'intégration en faisant un appel d'API depuis un navigateur, Postman, ou curl comme suit:
   ```bash
   curl --location --request GET 'https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR'
   ```
 
-* Find your transaction in the Monitor and click on it. You should see the For-each with some number inside indicating the number of invoices
-![transaction monitoring](images/lab3-transaction-monitoring.png)
-* Click the plus sign next to the For-each and again on one of the iterations
-* Click on the HTTP/S Client Get and then expand the HTTPSGetOutput to see the currency conversion API response
-![transaction monitoring response details](images/lab3-transaction-monitoring-response-details.png)
+* Retrouver l'intégration dans le Monitor et cliquer dessus. Un numéro doit apparaître dans le For-each indiquant le nombre de factures
+![transaction monitoring](../images/lab3-transaction-monitoring.png)
+* Cliquer sur le signe plus à côté du composant For-each puis cliquer sur une des itérations
+* Cliquer sur HTTP/S Client Get puis dérouler la variable HTTPSGetOutput pour voir la réponse API de la conversion de devise
+![transaction monitoring response details](../images/lab3-transaction-monitoring-response-details.png)
 
-## Lab 4
+## Étape 4
 
-In this lab, we'll map our invoice and currency converted amount to the response invoice array and calculate a grand total.
+Dans cette étape, nous allons mettre en correspondance (mapping) notre facture et le montant converti dans la devise souhaitée avec le tableau de factures de la réponse, et calculer le motant total
 
-* Disable your integration to update its design
-* First we need to create our converted invoice with using the result of the conversion and setting its decimal precision to 2 digits since it is returned with more decimal digits.
-  * Add a Map component inside the loop after the currency conversion and expand the bottom panel.
-  * Add a temporary variable to map the current invoice, by doing the following:
-    * Right click on any variable on the right hand panel and select Extract and paste in the following JSON that represents what we want our resulting invoice looks like and click on Copy Node button
+* Désactiver l'intégration pour continuer le design
+* Nous devons d'abord créer notre facture en utilisant le résultat de la conversion pour mettre à jour la devise et le montant, et fixer la précision décimale à deux chiffres après la virgule.
+  * Ajouter un composant Map dans la boucle for-Each après la conversion de devise puis étendre le panneau inférieur
+  * Ajouter une variable temporaire pour faire le mapping de la facture acturl, en faisant ce qui suit:
+    * Faire un clic droit sur n'importe quelle variable du panneau de droite et sélectionner Extract puis coller le texte JSON suivant qui représente le résultat désiré pour notre facture. Cliquer ensuite sur Copy Node
 
     ```json
     {
@@ -332,54 +330,54 @@ In this lab, we'll map our invoice and currency converted amount to the response
       "status": "Paid"
     }
     ```
-  * Right click on any variable on the right hand panel and select Paste and name the variable `invoiceResponse`
-  * Click on it expand this variable
-  * Expand `currencyConvertResponse` in the left hand panel
-    * Add a map function using the '+fx' button, select DecimalPrecision is the Math category.
-      * Drag a line from `currencyConvertResponse->result` to `decimal`
-      * Set `precision` to 2
-      * Drag a line from `output` to `invoiceResponse->totalamt`
-      ![map1](images/lab4-map1.png)
-      * Click on the DecimalPrecision function title to minimize and continue the mapping
-    * Drag a line from `currencyConvertResponse->query->to` to `invoiceResponse->currency` in the right hand panel
-  * Expand `GetInvoicesByStatusOutput->response_resultSet` in the left hand panel and drag lines from:
-    * `invoice_invnum` to `invoiceResponse->invnum` in the right hand panel
-    * `invoice_invdate` to `invoiceResponse->invdate` in the right hand panel
-    * `invoice_businessname` to `invoiceResponse->businessname` in the right hand panel
-    * `invoice_billtoname` to `invoiceResponse->billtoname` in the right hand panel
-    * `invoice_vat` to `invoiceResponse->vat` in the right hand panel
-    * `invoice_status` to `invoiceResponse->status` in the right hand panel
-  * Click Save
-  ![map1](images/lab4-map1_.png)
+  * Faire un Clic droit sur n'importe quelle variable du panneau de droite et sélectionner Paste. Donner un nom à la variable `invoiceResponse`
+  * Cliquer dessus et dérouler cette variable
+  * Dérouler `currencyConvertResponse` du panneau de gauche
+    * Ajouter une fonction MAP en utilisant le bouton '+fx' button, sélectionner DecimalPrecision dans la catégorie Math
+      * Faire glisser une ligne de  `currencyConvertResponse->result` vers `decimal`
+      * Régler la  `precision` à 2
+      * Faire glisser une ligne de  `output` à `invoiceResponse->totalamt`
+      ![map1](../images/lab4-map1.png)
+      * Cliquer sur la  fonction DecimalPrecision pour réduire sa taille et continuer le mapping
+    * Faire glisser une ligne de `currencyConvertResponse->query->to` vers `invoiceResponse->currency` sur le panneau de droite 
+  * Dérouler `GetInvoicesByStatusOutput->response_resultSet` dans le panneau de gauche et faire glisser des lignes de :
+    * `invoice_invnum` vers `invoiceResponse->invnum` dans le panneau de droite
+    * `invoice_invdate` vers `invoiceResponse->invdate` dans le panneau de droite
+    * `invoice_businessname` vers `invoiceResponse->businessname` dans le panneau de droite
+    * `invoice_billtoname` vers `invoiceResponse->billtoname` dans le panneau de droite
+    * `invoice_vat` vers `invoiceResponse->vat` dans le panneau de droite
+    * `invoice_status` vers `invoiceResponse->status` dans le panneau de droite
+  * Cliquer sur Save
+  ![map1](../images/lab4-map1_.png)
 * Then we add the converted invoice to the response list and calculate the response grand total.
   * Add another Map component after the previous one and expand the bottom panel.
   * Add an AppendList map function from the List catagory
-    * Drag a line from `response->invoices[]` on the left to `docList`
-    * Drag a line from `invoiceResponse` to `docIn`
-    * Drag a line from `docList` to `response->invoices[]` on the right
-    ![map2](images/lab4-map2-AppendList.png)
-  * Add an AddFloats function
-    * Drag a line from `response->grandTotal` to `num1`
-    * Drag a line from `currencyConvertResponse->result` to `num2`
-    * Drag a line from `output` to `response->grandTotal`
-    ![map2](images/lab4-map2-AddFloats.png)
-  * Complete the response fields
-    * Drag a line from `HTTPSServerGetOutput->queryParams->currencycode` on the left to `response->currency` on the right
-    * Drag a line from `HTTPSServerGetOutput->queryParams->status` on the left to `response->status` on the right
-    * Set Value of `response->success` to `true`
-    ![map2 addFloats](images/lab4-map2.png)
-  * Click Save
+    * Faire glisser une ligne de `response->invoices[]` sur la gauche, vers `docList`
+    * Faire glisser une ligne de `invoiceResponse` à `docIn`
+    * Faire glisser une ligne de `docList` à `response->invoices[]` sur la droite
+    ![map2](../images/lab4-map2-AppendList.png)
+  * Ajouter une fonction AddFloats
+    * Faire glisser une ligne de `response->grandTotal` à `num1`
+    * Faire glisser une ligne de `currencyConvertResponse->result` à `num2`
+    * Faire glisser une ligne de `output` à `response->grandTotal`
+    ![map2](../images/lab4-map2-AddFloats.png)
+  * Compléter le champ de réponse
+    * Faire glisser une ligne de `HTTPSServerGetOutput->queryParams->currencycode` sur la gauche, vers `response->currency` sur la droite
+    * Faire glisser une ligne de `HTTPSServerGetOutput->queryParams->status` sur la gauche, vers  `response->status` sur la droite
+    * Fixer la valeur de `response->success` à `true`
+    ![map2 addFloats](../images/lab4-map2.png)
+  * Cliquer sur Save
 
-Your integration is complete and should look like this:
-![integration](images/lab4-integration.png)
+L'intégration doit ressembler à ceci:
+![integration](../images/lab4-integration.png)
 
-* Enable your integration and make an API call from the Browser, Postman or curl as follows:
+* Activer l'intégration en faisant un appel API depuis un navigateur, Postman ou depuis Curl comme suit:
 
   ```bash
   curl --location --request GET 'https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR'
   ```
 
-Your result should look similar to the following:
+Le résultat devrait être similaire au suivant:
 
   ```json
   {
@@ -412,6 +410,6 @@ Your result should look similar to the following:
   }
   ```
 
-## Lab 5 - Challenge yourself!
+## Étape 5 - Relevez le défi!
 
-Add Basic Authentication to your API and test it again.
+Ajoutez une Authentification de base à votre API et testez la de nouveau
