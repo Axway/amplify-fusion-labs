@@ -42,7 +42,7 @@ Avant de commencer assurez vous d'avoir des comptes Salesforce et Hubspot auxque
 Dans cette étape nous allons paramétrer un Pushtopic Salesforce et commencer notre intégration par ajouter un Salesforce Pushtopic listener en tant que trigger de notre intégration 
 
 * Créer un nouveau projet dans Amplify Integration pour cette intégration CRM. (Utilisez un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre platefrome Amplify Integration)
-* Suivre les instructions [**ci-jointes**](assets/salesforce-connection.md) pour configurer une App Oauth connectée à Salesforce, une connexion Salesforce dans Amplify Integration, génerer un token et tester la connexion \
+* Suivre les instructions [**ci-jointes**](../fr/salesforce-connection.md) pour configurer une App Oauth connectée à Salesforce, une connexion Salesforce dans Amplify Integration, génerer un token et tester la connexion \
 ![salesforce connection](../images/lab1-salesforce-connection.png)
 * Créer un PushTopic dans la console de développeur Salesforce
   * Ouvrir la console de développeur Salesforce \
