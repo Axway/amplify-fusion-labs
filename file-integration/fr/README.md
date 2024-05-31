@@ -150,7 +150,7 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
   * Faire un clic droit sur `leads->Status`, sélectionner SetValue et paramétrer la valeur à `Open - Not Contacted` puis cliquer sur Save
   ![map component](../images/lab3-map-component.png)
   * Fermer le panneau inférieur
-* Nous avons besoin de créer une connexion Salesforce, pour cela suivre les instructions juste  [**ici**](fr/salesforce-connection.md) pour configurer une application OAuth connectée à Salesforce, une connexion de type Salesforce, générer un token et tester la connexion.
+* Nous avons besoin de créer une connexion Salesforce, pour cela suivre les instructions juste  [**ici**](../fr/salesforce-connection.md) pour configurer une application OAuth connectée à Salesforce, une connexion de type Salesforce, générer un token et tester la connexion.
 
   ![saleforce connector](../images/lab3-saleforce-connector.png)
 * Fermer la connexion Salesforce et retourner sur l'intégration
