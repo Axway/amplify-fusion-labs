@@ -40,7 +40,6 @@ Avec un exemple de réponse :
     "grandTotal": 1063.68
 }
 ```
-
 Un exemple est illustré ci-dessous:
 
 ![demo](../images/intro-demo.gif)
