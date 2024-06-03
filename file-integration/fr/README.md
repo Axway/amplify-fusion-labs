@@ -93,7 +93,7 @@ Dans cette étape, nous allons parcourir le fichier CSV des contacts afin d'en p
   * Fermer le sous-onglet LeadsCSV 
 * De retour dans notre composant FlatFile Parser Read, élargissez le panneau inférieur, cliquez sur refresh et sélectionnez le nouveau data object que vous venez de créer
   ![Flat File Parser read component](../images/lab2-flat-file-parser-read-component.png)
-* Sur le côté gauche (pipeline in), développer le `SFTPServerPollOutput` pour afficher `files -> body` et faire glisser une connexion entre body et `ffString` sous ACTION PROPERTIES puis appuyer sur Save.
+* Sur le côté gauche (pipeline in), développer le `SFTPServerPollOutput` pour afficher `files -> body` et tirer une ligne de body à `ffString` sous ACTION PROPERTIES puis appuyer sur Save.
   ![Flat File Parser read component input](../images/lab2-flat-file-parser-read-component-input.png)
 * Votre intégration doit ressembler à ceci:
   ![integration](../images/lab2-integration.png)
@@ -139,13 +139,13 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
     * Cliquer sur +fx, rechercher la fonction UpperCase puis la sélectionner
     ![map add function](../images/lab3-map-add-function.png)
     ![map search function](../images/lab3-map-search-function.png)
-    * Faire glisser une ligne de `LeadsCSV->delimitedRecords->last_name` jusque UpperCase inputString et faire glisser une ligne de UpperCase output jusqu'à `leads->LastName`
+    * Tirer une ligne de `LeadsCSV->delimitedRecords->last_name` jusque UpperCase inputString et tirer une ligne de UpperCase output jusqu'à `leads->LastName`
     ![map select function](../images/lab3-map-select-function.png)
   * Convertissons l'e-mail en minuscules à l'aide d'une fonction. Cliquer sur +fx, rechercheR la fonction LowerCase puis la sélectionner.
-  * Faire glisser une ligne de`LeadsCSV->delimitedRecords->email`à LowerCase inputString et Faire glisser une ligne de LowerCase output jusqu'à `leads->Email`
-  * Faire glisser une ligne de `LeadsCSV->delimitedRecords->first_name` à  `leads->FirstName`
-  * Faire glisser une ligne de `LeadsCSV->delimitedRecords->title` à `Title`
-  * Faire glisser une ligne de`LeadsCSV->delimitedRecords->company` à `leads->Company`
+  * Tirer une ligne de`LeadsCSV->delimitedRecords->email`à LowerCase inputString et Tirer une ligne de LowerCase output jusqu'à `leads->Email`
+  * Tirer une ligne de `LeadsCSV->delimitedRecords->first_name` à  `leads->FirstName`
+  * Tirer une ligne de `LeadsCSV->delimitedRecords->title` à `Title`
+  * Tirer une ligne de`LeadsCSV->delimitedRecords->company` à `leads->Company`
   * Faire un clic droit sur `leads->LeadSource`, sélectionner SetValue et paramétrer  la valeur à `Partner Referral`
   * Faire un clic droit sur `leads->Status`, sélectionner SetValue et paramétrer la valeur à `Open - Not Contacted` puis cliquer sur Save
   ![map component](../images/lab3-map-component.png)
@@ -161,7 +161,7 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
   ![salesforce plug](../images/lab3-salesforce-plug.png)
 * Sélectionner le plug tout juste crée
 * Dérouler CreateLeadInput dans ACTION PROPERTIES pour afficher la propriété insert
-* Faire glisser la variable Leads créée précédemment la propriété insert, puis appuyer sur Save.
+* Tirer la variable Leads créée précédemment la propriété insert, puis appuyer sur Save.
   ![salesforce insert component](../images/lab3-salesforce-insert-component.png)
 * Activer l'event et tester l'intégration
 * Cette fois, vous devriez voir deux nouveaux leads ajoutés à vos leads Salesforce

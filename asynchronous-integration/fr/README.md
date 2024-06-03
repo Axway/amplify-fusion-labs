@@ -59,10 +59,10 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
 * Cliquer sur Test pour lancer l'intégration. Cette opération initialisera l'horodatage de la dernière exécution, `LastRunDt-...`. Cette variable intégrée contiendra toujours l'horodatage de la dernière exécution de l'intégration. Nous pourrons l'utiliser pour interroger à propos des modifications dans les sources de données backend.
 * Afin d'interroger Zoho Invoice à propose des factures actualisées, nous utiliserons l'horodatage intégré de la dernière exécution, `LastRunDt-...` pour comparer avec l'horodatage de la facture *last_modified_time*. Mais pour cela nous devons le convertir au format d'horodatage de Zoho Invoice en utilisant une fonction Map. Cliquez sur le bouton plus pour ajouter un composant MAP puis étendez le panneau inférieur et ajoutez une fonction DateFormat
   * Sur le panneau de droite, effectuer un clic droit et ajouter une variable String nommé *LastRunDt-formatted*
-  * Faire glisser une ligne de la variable `LastRunDt-...` qui se trouve sur le côté gauche, à la fonction DateFormat `sourceDate`
+  * Tirer une ligne de la variable `LastRunDt-...` qui se trouve sur le côté gauche, à la fonction DateFormat `sourceDate`
   * Faire un clic droit sur le DateFormat `sourceDateFormat` et le configuer de cette manière: `yyyy-MM-dd HH:mm:ss SSS`
   * Faire un clic droit sur le DateFormat `targetDateFormat` et le configurer de cette manière: `yyyy-MM-dd'T'HH:mm:ssZ`
-  * Faire glisser une ligne de la fonction DateFormat `output` à la variable String créée au au-dessus (par exemple: *LastRunDt-formatted*) et cliquer sur Save
+  * Tirer une ligne de la fonction DateFormat `output` à la variable String créée au au-dessus (par exemple: *LastRunDt-formatted*) et cliquer sur Save
   ![map](../images/lab1-map.png)
 * Nous devons maintenant interroger Zoho Invoice pour à propose des factures modifiées. Pour cela, cliquer sur le bouton plus pour ajouter une un composant d'opération d'appel du Client OpenAPI ( OpenAPI Client Invoke Operation component) puis étendre le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
 * Suivre ces [**instructions**](assets/zoho-api-instructions.md) et utiliser le document OAS [**ci-joint**](assets/Zoho-Invoice-oas3.json) pour créer une connexion. Ne pas oublier de générer un Token et de tester la connexion
@@ -71,7 +71,7 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
 * Sélectionner Invoice pour l'Object et GetInvoices pour l'Action
 * Faire un clic droit sur queryParams et ajouter deux string variables dedans: `filter_by` et `last_modified_time`
   * Faire un clic droit sur `filter_by` cliquer sur set, puis entrer `Status.All` comme valeur
-  * Faire glisser une ligne de `LastRunDt-formatted` sur la gauche vers `last_modified_time` puis cliquer sur Save
+  * Tirer une ligne de `LastRunDt-formatted` sur la gauche vers `last_modified_time` puis cliquer sur Save
 
   ![openapi client component](../images/lab1-openapi-client-component.png)
 * Passons maintenant en revue les factures modifiées et publions chacune d'entre elles sur Kafka
@@ -191,7 +191,7 @@ Dans cette étape, nous allons consommer un message kafka provenant du `invoice`
   ```
 
 * Faire un clic droit sur n'importe quelle variable du côté droit, sélectionner Paste et nommer la variable extraite (par ex: invoiceJson)
-* Dérouler la variable `ApacheKafkaConsumeOutput` sur le panneau de gauche pour afficher la variable `recordValue` puis faire glisser une ligne de celle-ci vers la variable `invoiceJson`
+* Dérouler la variable `ApacheKafkaConsumeOutput` sur le panneau de gauche pour afficher la variable `recordValue` puis tirer une ligne de celle-ci vers la variable `invoiceJson`
   ![map](../images/lab2-map.png)
 
 Dans les prochaines étapes, nous allons poster un message sur MS Teams avec quelques détails sur la facture 

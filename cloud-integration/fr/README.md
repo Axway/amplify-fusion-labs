@@ -107,7 +107,7 @@ Dans cette étape, nous allons récupérer le contact et les champs souhaités �
 * Retourner à l'intégration et sélectionner le plug tout juste crée pour le composant query
   ![salesforce query component](../images/lab2-salesforce-query-component.png)
 * Sur le panneau de gauche dérouler `SFDCContactPushOutput` pour afficher `SFDCContactPushOutput/sobject/Id`
-* Sur le panneau du milieu, sous ACTION PROPRETIES, dérouler `SFDC_Get_Contact_by_IdInput` pour afficher  `SFDC_Get_Contact_by_IdInput/where/where_Id` et faire glisser une ligne entre ces deux noeuds puis cliquer sur Save
+* Sur le panneau du milieu, sous ACTION PROPRETIES, dérouler `SFDC_Get_Contact_by_IdInput` pour afficher  `SFDC_Get_Contact_by_IdInput/where/where_Id` et tirer une ligne entre ces deux noeuds puis cliquer sur Save
   ![salesforce query component input](../images/lab2-salesforce-query-component-input.png)
 * Activer l'intégration, créer un nouveau contact Salesforce et consulter la transaction dans le Monitor pour voir le nouveau contact avec les champs spécifiés dans le plug 
   ![transaction monitoring](../images/lab2-transaction-monitoring.png)
@@ -116,7 +116,7 @@ Dans cette étape, nous allons récupérer le contact et les champs souhaités �
 
 Dans cette étape, nous allons récupérer le contact et l'insérer dans Hubspot. Nous allons utiliser un composant Hubspot create et un plug associé
 
-* Suivre [**ce guide**](assets/hubspot-connection.md) pour créer une connexion Hubspot
+* Suivre [**ce guide**](../fr/hubspot-connection.md) pour créer une connexion Hubspot
 * Désactiver l'integration précédente pour continuer le design
 * Cliquer sur le signe plus pour ajouter une nouvelle étape à l'intégration puis sélectionner le composant Hubspot create
   ![add hubspot create component](../images/lab3-add-hubspot-create-component.png)

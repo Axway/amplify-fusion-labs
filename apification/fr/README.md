@@ -179,11 +179,11 @@ Dans cette étape, nous allons créer notre intégration et définir un endpoint
     ![database plug configuration](../images/lab2-database-plug-configuration.png)
     ![database plug](../images/lab2-database-plug_.png)
     * Fermer l'onglet du plug et retourner au composant Database Select de l'intégration. Cliquer sur refresh dans le selecteur de plug et choisir le plug tout juste créée
-  * Dérouler `HTTPSServerGetOutput` dans le panneau de gauche et afficher`queryParams->status`. Faire glisser une ligne de `status` à `GetInvoicesByStatusInput->where->invoice_status` dans ACTION PROPERTIES sur le panneau central
+  * Dérouler `HTTPSServerGetOutput` dans le panneau de gauche et afficher`queryParams->status`. Tirer une ligne de `status` à `GetInvoicesByStatusInput->where->invoice_status` dans ACTION PROPERTIES sur le panneau central
   * Cliquer sur Save \
   ![database component](../images/lab2-database-component_.png)
 * Nous allons déclarer une variable de réponse que nous utiliserons dans l'intégration. Voici la réponse renvoyée au client.
-  * Faire un clique droit sur n'importe quelle variable du panneau de droite, sélectionner Extract et  collez le  texte JSON suivant qui décrit réponse API souhaitée et cliquer sur Copy Node
+  * Faire un clic droit sur n'importe quelle variable du panneau de droite, sélectionner Extract et  collez le  texte JSON suivant qui décrit réponse API souhaitée et cliquer sur Copy Node
     ```json
     {
         "grandTotal": 1049.51,
@@ -220,7 +220,7 @@ Dans cette étape, nous allons créer notre intégration et définir un endpoint
   * Cliquer dur le composant HTTP/S Server au début de l'intégration et cliquer sur Response\
   ![https server component response](../images/lab2-https-server-component-response.png)
   * Cliquer sur Map Response et étendre le panneau inférieur
-  * Faire glisser une ligne de la variable `response` du panneau de gauche, vers `HttpResponseInput->body` sous ACTION PROPERTIES dans le panneau central et cliquer sur Save
+  * Tirer une ligne de la variable `response` du panneau de gauche, vers `HttpResponseInput->body` sous ACTION PROPERTIES dans le panneau central et cliquer sur Save
   ![https server component response map](../images/lab2-https-server-component-response-map_.png)
 
 Votre intégration doit ressembler à ceci: \
@@ -265,9 +265,9 @@ Dans cette étape, nous allons parcourir les factures, analyser chacune d'entre 
 * Dans le panneau central, sous ACTION PROPERTIES, dérouler `HTTPSGetInput` puis :
   * Faire un clic droit sur basePath et entrer `/convert` comme value 
   * Faire un clic droit sur `queryParams` et ajouter 3 variables de type String dans queryparams (`amount`, `from` et `to` )  
-  * Faire glisser une ligne de `GetInvoicesByStatusOutput->response->resultSet->invoice_totalamt` sur de panneau de gauche vers `HTTPSGetInput->queryParams->amount` sur le panneau central pour définir le montant pour l'API d'APILayer 
-  * Faire glisser une ligne de `GetInvoicesByStatusOutput->response->resultSet->invoice_currency` sur le panneau de gauche vers `HTTPSGetInput->queryParams->from` sur le panneau de droite pour définir le code source de la devise pour l'API d'APILayer
-  * Faire glisser une ligne de `/HTTPSServerGetOutput->queryParams->currencycode` sur le panneau de gauche vers `HTTPSGetInput->queryParams->to` sur le panneau de droite et configurer pour définir le code de la devise cible pour l'API APILayer
+  * Tirer une ligne de `GetInvoicesByStatusOutput->response->resultSet->invoice_totalamt` sur de panneau de gauche vers `HTTPSGetInput->queryParams->amount` sur le panneau central pour définir le montant pour l'API d'APILayer 
+  * Tirer une ligne de `GetInvoicesByStatusOutput->response->resultSet->invoice_currency` sur le panneau de gauche vers `HTTPSGetInput->queryParams->from` sur le panneau de droite pour définir le code source de la devise pour l'API d'APILayer
+  * Tirer une ligne de `/HTTPSServerGetOutput->queryParams->currencycode` sur le panneau de gauche vers `HTTPSGetInput->queryParams->to` sur le panneau de droite et configurer pour définir le code de la devise cible pour l'API APILayer
   * Faire un clic droit sur n'importe quelle variable dans le panneau de droite, sélectionner extract et coller le texte JSON suivant qui décrit la réponse API du convertisseur de devises. Cliquer ensuite sur Copy Node
 
     ```json
@@ -289,7 +289,7 @@ Dans cette étape, nous allons parcourir les factures, analyser chacune d'entre 
 
   ![extract json](../images/lab4-extract-json.png)
   * Refaire un clic droit sur le panneau de droite et sélectionner Paste puis nommmer la variable `currencyConvertResponse`
-  * Faire glisser une ligne depuis ACTION PROPERTIERS `HTTPSGetOutput->response` vers `currencyConvertResponse` 
+  * Tirer une ligne depuis ACTION PROPERTIERS `HTTPSGetOutput->response` vers `currencyConvertResponse` 
   * Cliquer sur Save
   ![https client component](../images/lab3-https-client-component_.png)
 
@@ -333,13 +333,13 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
   * Cliquer dessus et dérouler cette variable
   * Dérouler `currencyConvertResponse` du panneau de gauche
     * Ajouter une fonction MAP en utilisant le bouton '+fx' button, sélectionner DecimalPrecision dans la catégorie Math
-      * Faire glisser une ligne de  `currencyConvertResponse->result` vers `decimal`
+      * Tirer une ligne de  `currencyConvertResponse->result` vers `decimal`
       * Régler la  `precision` à 2
-      * Faire glisser une ligne de  `output` à `invoiceResponse->totalamt`
+      * Tirer une ligne de  `output` à `invoiceResponse->totalamt`
       ![map1](../images/lab4-map1.png)
       * Cliquer sur la  fonction DecimalPrecision pour réduire sa taille et continuer le mapping
-    * Faire glisser une ligne de `currencyConvertResponse->query->to` vers `invoiceResponse->currency` sur le panneau de droite 
-  * Dérouler `GetInvoicesByStatusOutput->response_resultSet` dans le panneau de gauche et faire glisser des lignes de :
+    * Tirer une ligne de `currencyConvertResponse->query->to` vers `invoiceResponse->currency` sur le panneau de droite 
+  * Dérouler `GetInvoicesByStatusOutput->response_resultSet` dans le panneau de gauche et tirer des lignes de :
     * `invoice_invnum` vers `invoiceResponse->invnum` dans le panneau de droite
     * `invoice_invdate` vers `invoiceResponse->invdate` dans le panneau de droite
     * `invoice_businessname` vers `invoiceResponse->businessname` dans le panneau de droite
@@ -351,18 +351,18 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
 * Then we add the converted invoice to the response list and calculate the response grand total.
   * Add another Map component after the previous one and expand the bottom panel.
   * Add an AppendList map function from the List catagory
-    * Faire glisser une ligne de `response->invoices[]` sur la gauche, vers `docList`
-    * Faire glisser une ligne de `invoiceResponse` à `docIn`
-    * Faire glisser une ligne de `docList` à `response->invoices[]` sur la droite
+    * Tirer une ligne de `response->invoices[]` sur la gauche, vers `docList`
+    * Tirer une ligne de `invoiceResponse` à `docIn`
+    * Tirer une ligne de `docList` à `response->invoices[]` sur la droite
     ![map2](../images/lab4-map2-AppendList.png)
   * Ajouter une fonction AddFloats
-    * Faire glisser une ligne de `response->grandTotal` à `num1`
-    * Faire glisser une ligne de `currencyConvertResponse->result` à `num2`
-    * Faire glisser une ligne de `output` à `response->grandTotal`
+    * Tirer une ligne de `response->grandTotal` à `num1`
+    * Tirer une ligne de `currencyConvertResponse->result` à `num2`
+    * Tirer une ligne de `output` à `response->grandTotal`
     ![map2](../images/lab4-map2-AddFloats.png)
   * Compléter le champ de réponse
-    * Faire glisser une ligne de `HTTPSServerGetOutput->queryParams->currencycode` sur la gauche, vers `response->currency` sur la droite
-    * Faire glisser une ligne de `HTTPSServerGetOutput->queryParams->status` sur la gauche, vers  `response->status` sur la droite
+    * Tirer une ligne de `HTTPSServerGetOutput->queryParams->currencycode` sur la gauche, vers `response->currency` sur la droite
+    * Tirer une ligne de `HTTPSServerGetOutput->queryParams->status` sur la gauche, vers  `response->status` sur la droite
     * Fixer la valeur de `response->success` à `true`
     ![map2 addFloats](../images/lab4-map2.png)
   * Cliquer sur Save
