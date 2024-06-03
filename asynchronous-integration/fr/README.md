@@ -65,7 +65,7 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
   * Tirer une ligne de la fonction DateFormat `output` à la variable String créée au au-dessus (par exemple: *LastRunDt-formatted*) et cliquer sur Save
   ![map](../images/lab1-map.png)
 * Nous devons maintenant interroger Zoho Invoice pour à propose des factures modifiées. Pour cela, cliquer sur le bouton plus pour ajouter une un composant d'opération d'appel du Client OpenAPI ( OpenAPI Client Invoke Operation component) puis étendre le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
-* Suivre ces [**instructions**](assets/zoho-api-instructions.md) et utiliser le document OAS [**ci-joint**](assets/Zoho-Invoice-oas3.json) pour créer une connexion. Ne pas oublier de générer un Token et de tester la connexion
+* Suivre ces [**instructions**](../fr/zoho-api-instructions.md) et utiliser le document OAS [**ci-joint**](assets/Zoho-Invoice-oas3.json) pour créer une connexion. Ne pas oublier de générer un Token et de tester la connexion
   ![openapi client connection](../images/lab1-open-apiclient-connection.png)
 * Retourner à l'intégration et cliquer sur le composant OpenAPI Client Invoke Operation, actualiser et sélectionner la connexion tout juste créée
 * Sélectionner Invoice pour l'Object et GetInvoices pour l'Action

@@ -1,71 +1,69 @@
-# Zoho Invoice API integration guide
+   # Guide d'intégration de l'API Zoho Invoice
 
-## Zoho Invoice Setup
+## Configuration de Zoho Invoice
 
-1. Sign Up from <https://www.zoho.com/invoice/> \
-   ![Sign Up](zoho-api-instructions/image1.png)
+1. Inscrivez-vous depuis <https://www.zoho.com/invoice/> \
+   ![Sign Up](../assets/zoho-api-instructions/image1.png)
 
-2. Note the data center location above the check boxes. \
-   If not US, then replace `zoho.com` in all next steps by your datacenter domain (e.g. `zoho.eu` for Europe)
+2. Notez l'emplacement du data center au-dessus des cases à cocher. \
+   Si ce n'est pas les Etats-Unis, remplacez `zoho.com` dans toutes les étapes suivantes par le domaine de votre data center (par exemple `zoho.eu` pour l'Europe).
 
-3. Once subscribed and signed-in, and you can access the Invoice app : <https://invoice.zoho.com/app> \
-    (change domain `.com` suffix if needed )
+3. Une fois inscrit vous pouvez accéder à l'application Invoice (facture) : <https://invoice.zoho.com/app> \
+    (changez le suffixe `.com` du domaine si nécessaire)
 
-4. Navigate to Invoices menu
+4. Accédez au menu des factures (Invoices)
 
-5. Click on New button to create a new invoice
+5. Cliquez sur new pour ajouter une nouvelle facture
 
-   - Add customer details : at least, primary contact "John Doe" , Company name: "ACME" and email address (use one of yours)
-   - Add first item "Printer V9" at 49\$/unit
-   - Change quantity to 10
-   - Click on save and send \
-     ![New invoice](zoho-api-instructions/image2.png)
+   - Renseignez les informations du client: au moins un nom: "John Doe" , un nom de l'entreprise : "ACME" et une adresse email (utilisez une des vôtres)
+   - Ajouter un premier item par exemple: "Printer V9" à 49$/unité
+   - Changez la quantité à 10
+   - Cliquez sur Save puis sur Send \
+     ![New invoice](../assets/zoho-api-instructions/image2.png)
 
-6. Review recipient address (that should be yours) and click ok.
+6. Vérifiez l'adresse du destinataire (qui doit être la vôtre) et cliquez sur ok.
 
-7. Copy your Organization ID for later from the top right corner menu \
-`  ![Organization ID](zoho-api-instructions/image3.png)
+7. Copiez votre Organization ID pour la suite depuis le menu en haut à droite\
+`  ![Organization ID](../assets/zoho-api-instructions/image3.png)
 
-8. Open the API console: <https://api-console.zoho.com> (change domain
-    `.com` suffix if needed )![API console](zoho-api-instructions/image4.png)
+8. Ouvrez la console de l'API: <https://api-console.zoho.com> (remplacez le suffixe
+    `.com` si besoin )![API console](../assets/zoho-api-instructions/image4.png)
 
-9. Create a "server-based application"
-   - Name the client "Axway Amplify Integration"
-   - Give the Homepage URL of your Amplify Integration instance
-   - Add "/design/oauth2/callback" to the same URL for the Authorized
-        redirect URL![server-based application](zoho-api-instructions/image5.png)
+9. Créez une "server-based application"
+   - Nommez le client "Axway Amplify Integration"
+   - Donnez l'URL de la page d'accueil de votre instance Amplify Integration
+   - Ajoutez "/design/oauth2/callback" au même URL pour le redirect URL![server-based application](../assets/zoho-api-instructions/image5.png)
 
-10. Copy Client ID and secret for later
+10. Copiez le Client ID et Secret pour plus tard 
 
-## Amplify Integration Setup
+## Configuration sur Amplify Integration
 
-1. Open your Amplify Integration project and add a "OpenAPI client"
-    connector
-    - Name it "**ZohoAPI**"
-    - Select OpenAPI file option and upload the corresponding JSON file (using a local copy of [Zoho-Invoice-oas3.json](Zoho-Invoice-oas3.json) )
-    - Set server **<https://invoice.zoho.com>** (change domain `.com` suffix if needed )
-    - Select **OAuth 2.0** with **Authorization code**
-    - Paste your **Client ID** and **secret**
-    - Provide OAuth 2.0 setup required by ZOHO
+1. Ouvrez votre projet Amplify Integration et ajoutez un connecteur "OpenAPI client"
+    - Nommez le "**ZohoAPI**"
+    - Sélectionnez l'option OpenAPI file et téléchargez le fichier JSON correspondant (en utilisant une copie locale de [Zoho-Invoice-oas3.json](Zoho-Invoice-oas3.json) )
+    - Configurez le serveur **<https://invoice.zoho.com>** (changez le suffixe `.com` du domaine si nécessaire)
+    - Sélectionnez **OAuth 2.0** avec  **Authorization code**
+    - Collez votre **Client ID** et **secret**
+    - Fournissez la configuration OAuth 2.0 requise par ZOHO
         - Authorize URL: **<https://accounts.zoho.com/oauth/v2/auth>** \
-          (change domain `.com` suffix if needed )
+          (changez le suffixe `.com` du domaine si nécessaire)
         - Token URL: **<https://accounts.zoho.com/oauth/v2/token>** \
-          (change domain `.com` suffix if needed )
+          (changez le suffixe `.com` du domaine si nécessaire)
         - Scope: **ZohoInvoice.invoices.READ,offline_access**
-    - Provide a safe path to test the connection: **/api/v3/invoices?customer_name=test**
-    - Add a header named **X-com-zoho-invoice-organizationid** as required in the API documentation and provide the value copied previously
-    - Click Update/save button
-    - Generate a Token
-    - Test connection.
+    - Fournissez un safe path (chemin sûr) pour tester la connexion: **/api/v3/invoices?customer_name=test**
+    - Ajoutez un header nommé **X-com-zoho-invoice-organizationid** comme indiqué dans la documentation de l'API et fournissez la valeur copiée précédemment
+    - Cliquez sur Update/save 
+    - Générez un Token
+    - Testez la connexion
 
-2. [optional] Create a test integration
-    - Add a scheduler as trigger
-    - Add an "OpenAPI client -- invoke operation" component
-    - Select the "ZohoAPI" , invoice object and "Get invoices" action 
-    - Click on the Save icon \
-    ![integration](zoho-api-instructions/image6.png)
+2. [optionnel] Créez un test d'intégration
+    - Ajoutez un scheduler comme trigger
+    - Ajoutez un composant « OpenAPI client -- invoke operation ».
+    - Sélectionnez l'objet « ZohoAPI », l'objet « invoice » et l'action « Get invoices ». 
+    - Cliquez sur Save
+    ![integration](../assets/zoho-api-instructions/image6.png)
 
-3. [optional] Test retrieving Invoices
-    - Click on Test button of your integration
-    - Click on details of the API call to see request response body with 1 invoice \
-        ![Test](zoho-api-instructions/image7.png)
+3. [optionnel] Testez la récupération des factures
+    - Cliquez sur le bouton Test de votre intégration
+    - Cliquez sur les détails de l'appel API pour voir le corps de la réponse avec 1 facture.
+        ![Test](../assets/zoho-api-instructions/image7.png)
