@@ -40,7 +40,7 @@
 
 1. Ouvrez votre projet Amplify Integration et ajoutez un connecteur "OpenAPI client"
     - Nommez le "**ZohoAPI**"
-    - Sélectionnez l'option OpenAPI file et téléchargez le fichier JSON correspondant (en utilisant une copie locale de [Zoho-Invoice-oas3.json](Zoho-Invoice-oas3.json) )
+    - Sélectionnez l'option OpenAPI file et téléchargez le fichier JSON correspondant (en utilisant une copie locale de [Zoho-Invoice-oas3.json](../assets/Zoho-Invoice-oas3.json)
     - Configurez le serveur **<https://invoice.zoho.com>** (changez le suffixe `.com` du domaine si nécessaire)
     - Sélectionnez **OAuth 2.0** avec  **Authorization code**
     - Collez votre **Client ID** et **secret**

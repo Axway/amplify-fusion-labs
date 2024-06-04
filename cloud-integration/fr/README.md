@@ -78,7 +78,7 @@ Dans cette étape nous allons paramétrer un Pushtopic Salesforce et commencer n
   * Cliquer sur  Generate et ensuite Save pour créer le Plug
 * Créer une intégration pour l'intégration CRM cloud 
   * Cliquer sur le bouton Event et sélectionner le composant Salesforce Pushtopic
-  * Sélectionner la connexion Salesforce et le plug crées juste avant 
+  * Sélectionner la connexion Salesforce et le plug créés juste avant 
   ![salesforce pushtopic component](../images/lab1-salesforce-pushtopic-component.png)
 * Activer l'intégration
 * Créer un nouveau contact dans Salesforce 
@@ -93,14 +93,14 @@ Dans cette étape, nous allons récupérer le contact et les champs souhaités �
 
 * Désactiver l'intégration pour poursuivre le design
 * Cliquer sur l'icône plus pour ajouter une étape après le trigger 
-* Sélectionner le composant Salesforce query et sélectionner la connexion Salesforce créée auparavant 
+* Sélectionner le composant Salesforce Query et sélectionner la connexion Salesforce créée auparavant 
   ![salesforce query component init](../images/lab2-salesforce-query-component-init.png)
 * Cliquer sur  Add Plugs, nommer le plug, lui donner une description (par ex: SFDC_Get_Contact_by_Id) et le configurer
   * Sélectionner votre connexion Salesforce  
   * Sélectionner `Query` pour les Actions
   * Sélectionner `Contact` pour les  Objects
   * Sélectionner les fields: Id, FirstName, LastName et Email 
-  * Cliquer sur Where et sélectionner Id pour les fields et `=` pour l'opération
+  * Cliquer sur Where puis sur Add Condition et sélectionner Id pour les fields et `=` pour l'opération
   ![salesforce query plug configure](../images/lab2-salesforce-query-plug-configure.png)
 * Cliquer sur Generate puis sur Save pour créer votre plug 
   ![salesforce query plug](../images/lab2-salesforce-query-plug.png)
@@ -134,7 +134,7 @@ Dans cette étape, nous allons récupérer le contact et l'insérer dans Hubspot
   ![hubspot plug configure](../images/lab3-hubspot-plug-configure.png)
   * Appuyer sur Generate
   ![hubspot plug](../images/lab3-hubspot-plug.png)
-* Cliquer sur  Save puis retourner à l'intégration et sélectionner le plug tout juste crée
+* Cliquer sur  Save puis retourner à l'intégration et sélectionner le plug tout juste créé
   ![hubspot create component](../images/lab3-hubspot-create-component.png)
 * Dérouler ACTION PROPERTIES -> `HubspotCreateContactInput->create` pour afficher les fiedls du contact Hubspot
   ![hubspot create component properties](../images/lab3-hubspot-create-component-properties.png)
@@ -157,7 +157,7 @@ Nous utiliserons le Webhook connector de MS Teams afin de pouvoir poster un mess
   ![https client post component init](../images/lab4-https-client-post-component-init.png)
 * Cliquer sur Add à côté de Connection afin de créer une connexion HTTP/S Client vers le MS Teams Incoming Webhook Connector URL, lui donner un nom, une description puis suivre ces étapes:
   * Sélectionner HTTPS pour le Protocol
-  * Sélectionner HTTP/2 pour HTTP Version
+  * Sélectionner HTTP/2 pour la Version HTTP
   * Entrer l'URL du connecteur MS Teams Incoming Webhook et appuyer sur Update
   ![https client connection name](../images/lab4-https-client-connection-name.png)
   ![https client connection](../images/lab4-https-client-connection.png)

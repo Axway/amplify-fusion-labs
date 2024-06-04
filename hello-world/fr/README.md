@@ -132,7 +132,7 @@ Continuer à partir de l'étape 2
   ![HTTP Server Connection](../images/lab3-https-connection-a.png)
   * Fermer l'onglet 
 * Revenir à l'intégration et ouvrir le composant HTTP/S Server GET. Cliquer sur refresh et sélectionner la connexion que nous venons de créer.
-* Ajouter un resource path (par ex: checkvalue). Notez que le nom doit être unique
+* Ajouter un resource path (par ex: checkvalue). Notez que le nom doit être unique pour en être sure entrez par exemple(checkvalue_vosinitiales)
 * Ajouter un query parameter (par ex: value)
   ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-c.png)
 * Cliquer sur  Save 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Dans cet exercice, nous allons créer une intégration qui nous permettra de transférer un fichier CSV contenants des Leads (aussi appelé Pistes, c’est-à-dire des clients potentiels) via le protocole SFTP, et de créer de nouveaux Leads Salesforce basés sur les lignes CSV. La démo est présentée ci-dessous :
+Dans cet exercice, nous allons créer une intégration qui nous permettra de transférer un fichier CSV contenants des Leads (aussi appelé Pistes, c’est-à-dire des clients potentiels) via le protocole SFTP, et de créer de nouveaux Leads Salesforce basés sur les champs CSV. La démo est présentée ci-dessous :
 
 ![demo](../images/intro-demo.gif)
 
@@ -10,7 +10,7 @@ Le flux est décrit ci-dessous:
 
 * Ingérer un fichier CSV (de leads) via un serveur d'ingestion SFTP
 * Analyser le fichier CSV
-* Parcourir les lignes et créer les leads sur SFDC
+* Parcourir les champs et créer les leads sur SFDC
 
 Ce data flow est illustré ci-dessous:
 
@@ -41,17 +41,17 @@ L'intégration finale doit ressembler à ceci:
 Dans cette étape, nous allons ingérer un fichier CSV de contacts.
 
 * Créer une intégration (par ex: CSVtoSalesforce)
-* Cliquer sur event et sélectionner le composant SFTP Server
+* Cliquer sur Event et sélectionner le composant SFTP Server
   ![sftp server poll event](../images/lab1-sftp-server-poll-event.png)
   ![sftp server poll component](../images/lab1-sftp-server-poll-component.png)
 * Dans la boîte de dialogue de configuration du composant, cliquer sur Add pour ajouter une nouvelle connexion au serveur SFTP.
-* Donnez un nom et une description à votre connexion (par ex: Serveur SFTP).
-* Sélectionner Basic Authentication, et entrer un unique nom username et password, puis cliquer sur  Update \
+* Donnez un nom unique et une description à votre connexion (par ex: SFTP Server).
+* Sélectionner Basic pour l'Authentication, et entrer un username et un password, puis cliquer sur  Update \
   ![sftp server connection](../images/lab1-sftp-server-connection.png)  
   > Conseil : pour simplifier les choses, vous pouvez utiliser la même valeur pour le username et le password. Dans la capture d'écran ci-dessus, j'ai utilisé thierry-cx15-d pour les deux.
 
 * Fermer l'onglet SFTP Server Connection et retourner à l'intégration
-* Cliquer sur le composant SFTP Server Poll, cliquer sur refresh et sélectionner la connexion SFTP Server nouvellement créée dans la liste. Entrer `*.csv` pour File Pattern, laissez les autres valeurs par défaut et cliquer sur Save.
+* Cliquer sur le composant SFTP Server Poll, cliquer sur refresh et sélectionner la connexion SFTP Server tout juste créée. Entrer `*.csv` pour File Pattern, laisser les autres valeurs par défaut et cliquer sur Save.
   ![sftp server poll component file pattern](../images/lab1-sftp-server-poll-component-file-pattern.png)
 * Votre intégration doit ressembler à ceci: \
   ![integration](../images/lab1-integration.png)
@@ -61,20 +61,20 @@ Testons maintenant l'intégration.
 * Activer l'intégration en cliquant sur le bouton play à côté du bouton test et commuter l'interrupteur qui se trouve à côté du data plane
 * Une fois activée, passer la souris sur l'icône du lien pour voir l'URL SFTP et copier le lien
 ![integration](../images/lab1-integration-activation.png)
-* Télécharger le fichier leads.csv [**ici**](assets/leads.csv)
+* Télécharger le fichier leads.csv [**ici**](../assets/leads.csv)
 * Lancez un client FTP (par exemple FileZilla) et créez une connexion SFTP au serveur SFTP en utilisant l'URL que vous venez de copier et les informations d'identification de la connexion et connectez-vous au serveur SFTP (si vous utilisez FileZilla, collez simplement l'URL SFTP dans le premier champ et cliquez sur connexion rapide. Assurez-vous de préfixer l'hôte par `sftp://` puis entrez le mot de passe). Sélectionnez le dossier `/incoming` pour le téléchargergement (c'est ce qui déclenchera votre intégration).
   ![filezilla connection](../images/lab1-filezilla-connection.png)
 * Télécharger leads.csv dans le dossier `/incoming`ce qui déclenchera votre intégration
 * Aller sur le Monitor
   ![monitor dashboard](../images/lab1-monitor-dashboard.png)
-* Cliquer sur Transaction
+* Cliquer sur la transaction
   ![transaction monitoring](../images/lab1-transaction-monitoring.png)
 * Cliquer sur l'étape SFTP Server Poll et dérouler`SFTPServerPollOutput` pour voir le node files->0  et son body field pour voir que le file a été ingéré
   ![transaction monitoring details](../images/lab1-transaction-monitoring-details.png)
-
+ 
 ## Étape 2
 
-Dans cette étape, nous allons parcourir le fichier CSV des contacts afin d'en parcourir les lignes.
+Dans cette étape, nous allons parcourir le fichier CSV des contacts afin d'en parcourir les champs.
 
 * Désactiver l'intégration
 * Ajouter un composant FlatFile Parser Read à votre intégration 
@@ -91,18 +91,18 @@ Dans cette étape, nous allons parcourir le fichier CSV des contacts afin d'en p
     ![data object configuration](../images/lab2-data-object-configuration.png)
   * Cliquer sur Next, Next puis Create
   * Fermer le sous-onglet LeadsCSV 
-* De retour dans notre composant FlatFile Parser Read, élargissez le panneau inférieur, cliquez sur refresh et sélectionnez le nouveau data object que vous venez de créer
+* De retour sur notre composant FlatFile Parser Read, élargir le panneau inférieur, cliquer sur refresh et sélectionner le nouveau data object tout juste créé
   ![Flat File Parser read component](../images/lab2-flat-file-parser-read-component.png)
 * Sur le côté gauche (pipeline in), développer le `SFTPServerPollOutput` pour afficher `files -> body` et tirer une ligne de body à `ffString` sous ACTION PROPERTIES puis appuyer sur Save.
   ![Flat File Parser read component input](../images/lab2-flat-file-parser-read-component-input.png)
 * Votre intégration doit ressembler à ceci:
   ![integration](../images/lab2-integration.png)
-* Activez l'intégration et téléchargez votre fichier CSV, puis vérifiez la transaction dans le Monitor pour voir vos lignes délimitées.
+* Activez l'intégration et téléchargez votre fichier CSV sur FileZilla, puis vérifiez la transaction dans le Monitor pour voir vos champs délimités.
   ![transaction monitoring details](../images/lab2-transaction-monitoring-details.png)
 
 ## Étape 3
 
-Dans cette étape, nous allons parcourir les différentes lignes (contacts) et créer des leads dans Salesforce.
+Dans cette étape, nous allons parcourir les différents champs (contacts) et créer des leads dans Salesforce.
 
 * En continuant là où nous nous sommes arrêtés, désactiver l'intégration et ajouter un composant For-each, le développer et cliquer sur configuration, sélectionner `LeadsCSV->delimitedRecords` et appuyer sur Save.
   ![foreach](../images/lab3-foreach.png)
@@ -115,7 +115,7 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
   ![map component init](../images/lab3-map-component-init.png)
 * Sur le côté droit, effectuer un clic droit n'importe où et sélectionner Extract
   ![map variable extract](../images/lab3-map-variable-extract.png)
-* Coller un exemple de Lead Salesforce et cliquer sur Copy node
+* Coller cet exemple de Leads Salesforce puis cliquer sur Copy node
 
   ```json
   {
@@ -130,7 +130,7 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
   ```
 
   ![map variable copy](../images/lab3-map-variable-copy.png)
-* Sur le côté droit, effectuer à nouveau un clic droit n'importe où et sélectionner Paste, donner un nom à votre variable (par ex: Lead) puis l'étendre pour voir à l'intérieur.
+* Sur le côté droit, effectuer à nouveau un clic droit n'importe où et sélectionner Paste, donner un nom à votre variable (par ex: Leads) puis l'étendre pour voir à l'intérieur.
   ![map variable paste](../images/lab3-map-variable-paste.png)
 * Dérouler LeadsCSV dans le panneau de gauche pour afficher `delimitedRecords` et ses champs
   ![map expand input](../images/lab3-map-expand-input.png)
@@ -139,9 +139,9 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
     * Cliquer sur +fx, rechercher la fonction UpperCase puis la sélectionner
     ![map add function](../images/lab3-map-add-function.png)
     ![map search function](../images/lab3-map-search-function.png)
-    * Tirer une ligne de `LeadsCSV->delimitedRecords->last_name` jusque UpperCase inputString et tirer une ligne de UpperCase output jusqu'à `leads->LastName`
+    * Tirer une ligne de `LeadsCSV->delimitedRecords->last_name` à `UpperCase inputString` et tirer une ligne de `UpperCase Output` à `leads->LastName`
     ![map select function](../images/lab3-map-select-function.png)
-  * Convertissons l'e-mail en minuscules à l'aide d'une fonction. Cliquer sur +fx, rechercheR la fonction LowerCase puis la sélectionner.
+  * Convertissons l'e-mail en minuscules à l'aide d'une fonction. Cliquer sur +fx, rechercher la fonction LowerCase puis la sélectionner.
   * Tirer une ligne de`LeadsCSV->delimitedRecords->email`à LowerCase inputString et Tirer une ligne de LowerCase output jusqu'à `leads->Email`
   * Tirer une ligne de `LeadsCSV->delimitedRecords->first_name` à  `leads->FirstName`
   * Tirer une ligne de `LeadsCSV->delimitedRecords->title` à `Title`
@@ -155,13 +155,13 @@ Dans cette étape, nous allons parcourir les différentes lignes (contacts) et c
   ![saleforce connector](../images/lab3-saleforce-connector.png)
 * Fermer la connexion Salesforce et retourner sur l'intégration
 * Cliquer sur Add pour ajouter un composant Salesforce Insert, étendre le pannel inférieur et sélectionner la connexion Salesforce tout juste créée 
-* Nous avons besoin d'un plug qui définisse l'insertion de leads. Pour cela cliquer sur Plug Add et donner un nom (par ex: CreateLead)une description, puis cliquer sur Configurer.
+* Nous avons besoin d'un plug qui définisse l'insertion de leads. Pour cela cliquer sur Add près de Plug et donner un nom (par ex: CreateLead)une description, puis cliquer sur Configurer.
 * Sélectionner la connexion Salesforce que nous venons de créer, Insert comme Actions et Lead pour Objects, puis  sélectionner FirstName, LastName, Title, Company, Email, LeadSource et Status pour les Fields. Cliquer sur Generate puis Save et ensuite fermer le plug et retourner au flux (comme fait précédemment).
 
   ![salesforce plug](../images/lab3-salesforce-plug.png)
 * Sélectionner le plug tout juste crée
 * Dérouler CreateLeadInput dans ACTION PROPERTIES pour afficher la propriété insert
-* Tirer la variable Leads créée précédemment la propriété insert, puis appuyer sur Save.
+* Tirer une ligne de la variable Leads créée précédemment à `insert`, puis appuyer sur Save.
   ![salesforce insert component](../images/lab3-salesforce-insert-component.png)
 * Activer l'event et tester l'intégration
 * Cette fois, vous devriez voir deux nouveaux leads ajoutés à vos leads Salesforce

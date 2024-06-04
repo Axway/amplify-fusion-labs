@@ -60,16 +60,16 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
 * Afin d'interroger Zoho Invoice à propose des factures actualisées, nous utiliserons l'horodatage intégré de la dernière exécution, `LastRunDt-...` pour comparer avec l'horodatage de la facture *last_modified_time*. Mais pour cela nous devons le convertir au format d'horodatage de Zoho Invoice en utilisant une fonction Map. Cliquez sur le bouton plus pour ajouter un composant MAP puis étendez le panneau inférieur et ajoutez une fonction DateFormat
   * Sur le panneau de droite, effectuer un clic droit et ajouter une variable String nommé *LastRunDt-formatted*
   * Tirer une ligne de la variable `LastRunDt-...` qui se trouve sur le côté gauche, à la fonction DateFormat `sourceDate`
-  * Faire un clic droit sur le DateFormat `sourceDateFormat` et le configuer de cette manière: `yyyy-MM-dd HH:mm:ss SSS`
-  * Faire un clic droit sur le DateFormat `targetDateFormat` et le configurer de cette manière: `yyyy-MM-dd'T'HH:mm:ssZ`
+  * Faire un clic droit sur la variable de DateFormat `sourceDateFormat` et la configuer de cette manière: `yyyy-MM-dd HH:mm:ss SSS`
+  * Faire un clic droit sur la variable de DateFormat `targetDateFormat` et la configurer de cette manière: `yyyy-MM-dd'T'HH:mm:ssZ`
   * Tirer une ligne de la fonction DateFormat `output` à la variable String créée au au-dessus (par exemple: *LastRunDt-formatted*) et cliquer sur Save
   ![map](../images/lab1-map.png)
-* Nous devons maintenant interroger Zoho Invoice pour à propose des factures modifiées. Pour cela, cliquer sur le bouton plus pour ajouter une un composant d'opération d'appel du Client OpenAPI ( OpenAPI Client Invoke Operation component) puis étendre le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
-* Suivre ces [**instructions**](../fr/zoho-api-instructions.md) et utiliser le document OAS [**ci-joint**](assets/Zoho-Invoice-oas3.json) pour créer une connexion. Ne pas oublier de générer un Token et de tester la connexion
+* Nous devons maintenant interroger Zoho Invoice à propos des factures modifiées. Pour cela, cliquer sur le bouton plus pour ajouter une un composant d'opération d'appel du Client OpenAPI ( OpenAPI Client Invoke Operation component) puis étendre le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
+* Suivre ces [**instructions**](../fr/zoho-api-instructions.md) et utiliser le document OAS [**ci-joint**](../assets/Zoho-Invoice-oas3.json) pour créer une connexion. Ne pas oublier de générer un Token et de tester la connexion
   ![openapi client connection](../images/lab1-open-apiclient-connection.png)
 * Retourner à l'intégration et cliquer sur le composant OpenAPI Client Invoke Operation, actualiser et sélectionner la connexion tout juste créée
 * Sélectionner Invoice pour l'Object et GetInvoices pour l'Action
-* Faire un clic droit sur queryParams et ajouter deux string variables dedans: `filter_by` et `last_modified_time`
+* Faire un clic droit sur queryParams et ajouter deux variables de type String (Add Inside): `filter_by` et `last_modified_time`
   * Faire un clic droit sur `filter_by` cliquer sur set, puis entrer `Status.All` comme valeur
   * Tirer une ligne de `LastRunDt-formatted` sur la gauche vers `last_modified_time` puis cliquer sur Save
 
