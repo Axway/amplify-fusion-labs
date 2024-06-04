@@ -75,20 +75,20 @@ Continuer à partir de l'étape 1
 
 * Ajouter un composant HTTP/S Client Post
   ![Add HTTPS Post](../images/lab2-add-https-post-a.png)
-* Étiqueter le  composant "Send to webhook site"
+* Étiqueter le  composant "Send to webhook.site"
   ![Add HTTPS Post](../images/lab2-add-https-post-b.png)
 * Étendre le pannel inférieur
   ![Add HTTPS Post](../images/lab2-add-https-post-c.png)
 * Cliquer sur Add dans Connection
-  * Donner un nom et une description (webhook site)
-  * Sélectionner https
-  * Coller l'url de webhook site (SANS LE PROTOCOLE `https://` )
+  * Donner un nom et une description (par ex: webhook.site)
+  * Sélectionner https pour le protocol
+  * Coller l'url provenant de webhook.site (Sans le protocole `https://` )
   * Selectionner  Basic Authentication
-  * Entrer un nom d'utilisateur et un mot de passe (abcd/1234)
-  * Entrer / pour le safe ressource path
+  * Entrer un nom d'utilisateur et un mot de passe (par ex: abcd/1234)
+  * Entrer `/` pour le safe ressource path
   * Cliquer sur update
     ![Create Connection](../images/lab2-create-connection-a.png)
-  * Cliquer sur Test et vérifier que vous avez obtenu une flèche verte
+  * Cliquer sur Test (une flèche verte doit apparaître près du bouton test)
   * Fermer l'onglet
 * Retourner à l'intégration -> HTTP/S Client POST Component, cliquer sur refresh dans le selecteur de connexion et choisir la connexion que nous venons de concevoir
 * Développez la liste déroulante HTTPSPostInput dans la section ACTION PROPRETIES
@@ -105,7 +105,7 @@ Continuer à partir de l'étape 1
 * Faire un clic droit sur basePath et sélectionner Set Value 
 * Entrer n'importe quel base path (par ex: /v1/message)
   ![Create Component](../images/lab2-create-http-post-component-a.png)
-* Cliquer sur  save sur le panel
+* Cliquer sur save en haut à droite du panel
 * Cliquer sur test pour tester votre flux
 * Les résultats, le ressource path, le body et le Authorization Header sont visibles sur webhook.site
   ![Create Component](../images/lab2-test-results-a.png)
@@ -116,17 +116,17 @@ L'intégration finale doit ressembler à ceci:
 
 ## Étape 3
 
-Dans cette étape, nous remplacerons le trigger d'événement du composant Scheduler par un composant HTTP/S Server (et la connexion associée) et nous le testerons.
+Dans cette étape, nous remplacerons le trigger d'événement Scheduler par un composant HTTP/S Server (et la connexion associée) puis nous le testerons.
 
 Continuer à partir de l'étape 2 
 
 * Supprimer le trigger d'événement Scheduler (premier composant)
-* Cliquez sur le bouton Event et sélectionnez un trigger HTTP/S Server Get
+* Cliquer sur le bouton Event et sélectionner un trigger HTTP/S Server Get
   ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-a.png)
   ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-b.png)
 * Cliquer sur add dans Connection
-  * Donner un nom et une description (par ex: HTTPS Server) et appuyer sur Select
-  * Sélectionner HTTPS
+  * Donner un nom et une description (par ex: HTTPS Server) et appuyer sur Create
+  * Sélectionner HTTPS pour le protocole
   * Laisser None pour l'Authentifictaion
   * Cliquer sur Update
   ![HTTP Server Connection](../images/lab3-https-connection-a.png)
@@ -137,13 +137,13 @@ Continuer à partir de l'étape 2
   ![HTTP Server Get Trigger](../images/lab3-add-https-get-trigger-c.png)
 * Cliquer sur  Save 
 * Etiquetter le composant HTTP/S Server Get "Receive check request"
-* Cliquer sur le composant HTTP/S Client POST (renvoie vers webhook site) et développer le panneau inférieur
+* Cliquer sur le composant HTTP/S Client POST (renvoie vers webhook.site) et développer le panneau inférieur
 * Développer la liste déroulante HTTPSPostInput dans la section ACTION PROPRETIES
 * Cliquer sur le bouton delete dans body pour supprimer l'ancienne valeur statqique 
 * Développer la liste déroulante HTTPSServerGetOutput et la liste déroulante queryParams sur le côté gauche du panneau
-* Faire glisser value jusqu'à body et cliquer sur save 
+* Tirer une ligne de value jusqu'à body et cliquer sur save 
   ![HTTPS Post](../images/lab3-create-http-post-component-a.png)
-* Appuyer sur test pour tester votre flux et s'apercevoir qu'il n'est pas possible de le faire. Nous aurons besoin d'activer notre intégration avec un appel d'API
+* Appuyez sur Test pour vérifier le flux. Nous constatons qu'il n'est pas possible de le faire pour le moment. Nous devrons activer notre intégration avec un appel d'API.
 * Activer l'intégration sur le data plane avec l'interrupteur à bascule
   ![Enable Toggle](../images/lab3-enable-a.png)
   ![Enable Toggle](../images/lab3-enable-b.png)
@@ -164,7 +164,7 @@ L'intégration finale doit ressembler à ceci:
 
 ## Étape 4
 
-Dans cette étape, nous allons ajouter une logique de contrôle de flux et des variables à notre intégration et la tester
+Dans cette étape, nous allons ajouter une logique de contrôle de flux et des variables à notre intégration puis la tester
 
 Continuer à partir de l'étape 3
 
@@ -178,10 +178,10 @@ Continuer à partir de l'étape 3
 * Ajouter une condition et configurer la condition afin qu'elle vérifie si `value` est supérieure à 10
   ![If-else](../images/lab4-ifelse-d.png)
   ![If-else](../images/lab4-ifelse-e.png)
-* Faire glisser le composant POST du webhook HTTP/S Client à l'intérieur du path « if true » (sur la ligne supérieure, après Expression)
+* Faire glisser le composant POST du webhook HTTP/S Client à l'intérieur du chemin « if true » (sur la ligne supérieure, après Expression)
   ![If-else](../images/lab4-ifelse-f.png)
   ![If-else](../images/lab4-ifelse-g.png)
-* Activez votre intégration et déclenchez-la avec des valeurs supérieures et inférieures à 10 afin de  vérifier que seules les valeurs supérieures à 10 sont envoyées à webhook site. Vérifier en inspectant la transaction dans le moniteur.
+* Activez votre intégration et déclenchez-la avec des valeurs supérieures et inférieures à 10 afin de  vérifier que seules les valeurs supérieures à 10 sont envoyées à webhook.site. Vérifiez le en inspectant la transaction dans le moniteur.
 
 L'intégration finale doit ressembler à ceci:
 
