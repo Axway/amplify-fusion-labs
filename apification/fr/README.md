@@ -213,7 +213,7 @@ Dans cette étape, nous allons créer notre intégration et définir un endpoint
     }
     ```
   ![extract json](../images/lab2-extract-json.png)
-  * Refaire un clic droit et sélectionner Paste. Nommer la variable et lui donner une descrpition`response`
+  * Refaire un clic droit et sélectionner Paste. Nommer la variable `response` et lui donner une descrpition
   ![database component](../images/lab2-database-component2.png)
 
 * Maintenant que nous avons déclaré notre variable de réponse API, retournons au composant HTTP/S Server et effectuons le mapping de notre réponse
@@ -313,9 +313,9 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
 
 * Désactiver l'intégration pour continuer le design
 * Nous devons d'abord créer notre facture en utilisant le résultat de la conversion pour mettre à jour la devise et le montant, et fixer la précision décimale à deux chiffres après la virgule.
-  * Ajouter un composant Map dans la boucle for-Each après la conversion de devise puis étendre le panneau inférieur
-  * Ajouter une variable temporaire pour faire le mapping de la facture acturl, en faisant ce qui suit:
-    * Faire un clic droit sur n'importe quelle variable du panneau de droite et sélectionner Extract puis coller le texte JSON suivant qui représente le résultat désiré pour notre facture. Cliquer ensuite sur Copy Node
+  * Ajouter un composant Map dans la boucle for-Each après la conversion de devise, puis étendre le panneau inférieur
+  * Ajouter une variable temporaire pour faire le mapping de la facture actuel, en faisant ce qui suit:
+  * Faire un clic droit sur n'importe quelle variable du panneau de droite et sélectionner Extract puis coller le texte JSON suivant qui représente le résultat désiré pour notre facture. Cliquer ensuite sur Copy Node
 
     ```json
     {
@@ -333,11 +333,11 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
   * Cliquer dessus et dérouler cette variable
   * Dérouler `currencyConvertResponse` du panneau de gauche
     * Ajouter une fonction MAP en utilisant le bouton '+fx' button, sélectionner DecimalPrecision dans la catégorie Math
-      * Tirer une ligne de  `currencyConvertResponse->result` vers `decimal`
-      * Régler la  `precision` à 2
-      * Tirer une ligne de  `output` à `invoiceResponse->totalamt`
+    * Tirer une ligne de  `currencyConvertResponse->result` vers `decimal`
+    * Régler la  `precision` à 2
+    * Tirer une ligne de  `output` à `invoiceResponse->totalamt`
       ![map1](../images/lab4-map1.png)
-      * Cliquer sur la  fonction DecimalPrecision pour réduire sa taille et continuer le mapping
+    * Cliquer sur la  fonction DecimalPrecision pour réduire sa taille et continuer le mapping
     * Tirer une ligne de `currencyConvertResponse->query->to` vers `invoiceResponse->currency` sur le panneau de droite 
   * Dérouler `GetInvoicesByStatusOutput->response_resultSet` dans le panneau de gauche et tirer des lignes de :
     * `invoice_invnum` vers `invoiceResponse->invnum` dans le panneau de droite
@@ -348,16 +348,16 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
     * `invoice_status` vers `invoiceResponse->status` dans le panneau de droite
   * Cliquer sur Save
   ![map1](../images/lab4-map1_.png)
-* Then we add the converted invoice to the response list and calculate the response grand total.
-  * Add another Map component after the previous one and expand the bottom panel.
-  * Add an AppendList map function from the List catagory
+* Ajoutons ensuite la facture convertie à la liste des réponses et calculons le total général des réponses.
+  * Ajouter un autre composant Map après le précédent et développer le panneau inférieur.
+  * Ajouter une fonction AppendList de la catégorie List.
     * Tirer une ligne de `response->invoices[]` sur la gauche, vers `docList`
     * Tirer une ligne de `invoiceResponse` à `docIn`
     * Tirer une ligne de `docList` à `response->invoices[]` sur la droite
     ![map2](../images/lab4-map2-AppendList.png)
   * Ajouter une fonction AddFloats
     * Tirer une ligne de `response->grandTotal` à `num1`
-    * Tirer une ligne de `currencyConvertResponse->result` à `num2`
+    * Tirer une ligne de `InvoiceResponse->totalamnt` à `num2`
     * Tirer une ligne de `output` à `response->grandTotal`
     ![map2](../images/lab4-map2-AddFloats.png)
   * Compléter le champ de réponse

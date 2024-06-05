@@ -57,14 +57,14 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
 * Cliquer sur le bouton Event, sélectionner le composant Scheduler et le régler à 60 secondes
   ![scheduler](../images/lab1-scheduler.png)
 * Cliquer sur Test pour lancer l'intégration. Cette opération initialisera l'horodatage de la dernière exécution, `LastRunDt-...`. Cette variable intégrée contiendra toujours l'horodatage de la dernière exécution de l'intégration. Nous pourrons l'utiliser pour interroger à propos des modifications dans les sources de données backend.
-* Afin d'interroger Zoho Invoice à propose des factures actualisées, nous utiliserons l'horodatage intégré de la dernière exécution, `LastRunDt-...` pour comparer avec l'horodatage de la facture *last_modified_time*. Mais pour cela nous devons le convertir au format d'horodatage de Zoho Invoice en utilisant une fonction Map. Cliquez sur le bouton plus pour ajouter un composant MAP puis étendez le panneau inférieur et ajoutez une fonction DateFormat
+* Afin d'interroger Zoho Invoice à propose des factures actualisées, nous utiliserons l'horodatage intégré de la dernière exécution, `LastRunDt-...` pour comparer avec l'horodatage de la facture modifiée `last_modified_time`. Mais pour cela nous devons le convertir au format d'horodatage de Zoho Invoice en utilisant une fonction Map. Cliquez sur le bouton plus pour ajouter un composant MAP puis étendez le panneau inférieur et ajoutez une fonction DateFormat
   * Sur le panneau de droite, effectuer un clic droit et ajouter une variable String nommé *LastRunDt-formatted*
   * Tirer une ligne de la variable `LastRunDt-...` qui se trouve sur le côté gauche, à la fonction DateFormat `sourceDate`
   * Faire un clic droit sur la variable de DateFormat `sourceDateFormat` et la configuer de cette manière: `yyyy-MM-dd HH:mm:ss SSS`
   * Faire un clic droit sur la variable de DateFormat `targetDateFormat` et la configurer de cette manière: `yyyy-MM-dd'T'HH:mm:ssZ`
   * Tirer une ligne de la fonction DateFormat `output` à la variable String créée au au-dessus (par exemple: *LastRunDt-formatted*) et cliquer sur Save
   ![map](../images/lab1-map.png)
-* Nous devons maintenant interroger Zoho Invoice à propos des factures modifiées. Pour cela, cliquer sur le bouton plus pour ajouter une un composant d'opération d'appel du Client OpenAPI ( OpenAPI Client Invoke Operation component) puis étendre le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
+* Nous devons maintenant interroger Zoho Invoice à propos des factures modifiées. Pour cela, cliquer sur le bouton plus pour ajouter un composant d'opération d'appel du Client OpenAPI ( OpenAPI Client Invoke Operation component) puis étendre le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
 * Suivre ces [**instructions**](../fr/zoho-api-instructions.md) et utiliser le document OAS [**ci-joint**](../assets/Zoho-Invoice-oas3.json) pour créer une connexion. Ne pas oublier de générer un Token et de tester la connexion
   ![openapi client connection](../images/lab1-open-apiclient-connection.png)
 * Retourner à l'intégration et cliquer sur le composant OpenAPI Client Invoke Operation, actualiser et sélectionner la connexion tout juste créée
@@ -78,7 +78,7 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
 * Ajouter un composant For-each, l'étendre, cliquer sur Config et sélectionner `GetInvoicesOutput->response->invoices` pour indiquer le tableau (array) à parcourir
   ![foreach configuration](../images/lab1-foreach-configuration.png)
 * Ajouter un composant Apache Kafka Publish à l'intérieur du For-each et étendre le panneau inférieur
-* Click on Add next to Connection to create a new Kafka Connection and give it a name and description
+* Cliquer sur Add à côté de Connection et donner un nom et une description à celle-ci 
 * Consultez vos détails Upstash Kafka pour accéder à votre Endpoint, Username et Password
   ![Upstash Kafka details](../images/lab1-upstash-kafka-details.png)
 * Dans la fenêtre Connection de Amplify Integration
@@ -108,7 +108,7 @@ Maintenant que nous pouvons publier une facture mise à jour sur Kafka, créons 
 Dans cette étape, nous allons consommer un message kafka provenant du `invoice` topic (topic de la facture) et envoyer une notification avec quelques détails de la facture sur Microsoft Teams
 
 * Créer une intégration (par exempl: InvoiceNotifier)
-* Cliquer sur le bouton Event, sélectionner le composant Apache Kafka Consume et sélectionner le connecteur utilisé dans la première intégration et entre le nom du topic (par ex: invoice) puis cliquer sur Save
+* Cliquer sur le bouton Event, sélectionner le composant Apache Kafka Consume puis sélectionner la connexion utilisé dans la première intégration et entrer le nom du topic (par ex: invoice) puis cliquer sur Save
   ![kafka consume component](../images/lab2-kafka-consume-component.png)
 * Ajouter un composant MAP pour analyser le message Kafka puis étendre le panneau inférieur 
 * Faire un clic droit sur n'importe quelle variable du côté droit et sélectionner Extract puis coller l'exemple d'Invoice payload suivant. Cliquer ensuite sur Copy Node
