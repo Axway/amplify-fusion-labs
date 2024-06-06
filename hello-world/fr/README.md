@@ -89,9 +89,12 @@ Continuer à partir de l'étape 1
   * Entrer un nom d'utilisateur et un mot de passe (par ex: abcd/1234)
   * Entrer `/` pour le safe ressource path
   * Cliquer sur update
-    ![Create Connection](../images/lab2-create-connection-a.png)
   * Cliquer sur Test (une coche verte doit apparaître près du bouton Test)
   * Fermer l'onglet
+
+  ![Create Connection](../images/lab2-create-connection-a.png)
+
+ 
 * Retourner à l'intégration -> HTTP/S Client POST Component, cliquer sur refresh dans le selecteur de connexion et choisir la connexion que nous venons de créer
 * Développer HTTPSPostInput dans la section ACTION PROPRETIES
 * Faire un clic droit sur body et sélectionner Set Value
@@ -188,4 +191,5 @@ Continuer à partir de l'étape 3
 L'intégration finale doit ressembler à ceci:
 
 ![Final](../images/lab4-final-a.png)
+        
 À noter qu'il est recommandé d'étiqueter chaque étape afin de faciliter la compréhension et le suivi de chaque intégration.
