@@ -1,4 +1,4 @@
-# APIfication de factures
+# APIsation de factures
 
 ## Introduction
 

@@ -15,7 +15,7 @@ Au cours des étapes de l'exercice, prenez le temps d'explorer davantage les él
 
 ## Pré-requis
 
-Avant de démarrer cet exercice assurez d'avoir:
+Avant de démarrer cet exercice assurez vous d'avoir:
 
 * Un Accès à Amplify Integration
   > Si vous n'avez pas de compte, veuillez contacter **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)**  par mail avec en objet `Amplify Integration Training Environment Access Request`
@@ -76,11 +76,17 @@ Dans cette étape, nous allons ajouter un composant HTTP/S Client (et la connexi
 Continuer à partir de l'étape 1
 
 * Ajouter un composant HTTP/S Client Post
+
   ![Add HTTPS Post](../images/lab2-add-https-post-a.png)
+  
 * Étiqueter le composant "Send to webhook.site"
+
   ![Add HTTPS Post](../images/lab2-add-https-post-b.png)
+
 * Étendre le panneau inférieur
+
   ![Add HTTPS Post](../images/lab2-add-https-post-c.png)
+
 * Cliquer sur Add dans Connection
   * Donner un nom et une description (par ex: webhook.site)
   * Sélectionner https pour le protocol
