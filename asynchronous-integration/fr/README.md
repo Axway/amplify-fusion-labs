@@ -66,7 +66,7 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
   * Faire un clic droit sur la variable de DateFormat `targetDateFormat` et la configurer de cette manière: `yyyy-MM-dd'T'HH:mm:ssZ`
   * Tirer une ligne de la fonction DateFormat `output` à la variable String créée au-dessus (par exemple: *LastRunDt-formatted*) et cliquer sur Save
   ![map](../images/lab1-map.png)
-* Nous devons maintenant interroger Zoho Invoice à propos des factures mises à jour. Pour cela, cliquer sur le bouton plus pour ajouter un composant OpenAPI Client puis étendre le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
+* Nous devons maintenant interroger Zoho Invoice à propos des factures mises à jour. Pour cela, cliquer sur le bouton plus pour ajouter un composant OpenAPI Client puis agrandir le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.
 * Suivre ces [**instructions**](../fr/zoho-api-instructions.md) et utiliser le document OAS [**ci-joint**](../assets/Zoho-Invoice-oas3.json) pour créer une connexion. Ne pas oublier de générer un Token et de tester la connexion
   ![openapi client connection](../images/lab1-open-apiclient-connection.png)
 * Retourner à l'intégration et cliquer sur le composant OpenAPI Client, actualiser et sélectionner la connexion tout juste créée
@@ -77,9 +77,9 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
 
   ![openapi client component](../images/lab1-openapi-client-component.png)
 * Passons maintenant en revue les factures modifiées et publions chacune d'entre elles sur Kafka
-* Ajouter un composant For-each, l'étendre, cliquer sur Config et sélectionner `GetInvoicesOutput->response->invoices` pour indiquer le tableau à parcourir
+* Ajouter un composant For-each, l'agrandir, cliquer sur Config et sélectionner `GetInvoicesOutput->response->invoices` pour indiquer le tableau à parcourir
   ![foreach configuration](../images/lab1-foreach-configuration.png)
-* Ajouter un composant Apache Kafka Publish à l'intérieur du For-each et étendre le panneau inférieur
+* Ajouter un composant Apache Kafka Publish à l'intérieur du For-each et agrandir le panneau inférieur
 * Cliquer sur Add à côté de Connection et donner un nom et une description à celle-ci 
 * Consulter vos détails Upstash Kafka pour accéder à votre Endpoint, Username et Password
   ![Upstash Kafka details](../images/lab1-upstash-kafka-details.png)
@@ -112,7 +112,7 @@ Dans cette étape, nous allons consommer un message kafka provenant du topic `in
 * Créer une intégration (par exempl: InvoiceNotifier)
 * Cliquer sur le bouton Event, sélectionner l'évènement déclencheur Apache Kafka Consume puis sélectionner la connexion utilisée dans la première intégration et entrer le nom du topic (par ex: invoice) puis cliquer sur Save
   ![kafka consume component](../images/lab2-kafka-consume-component.png)
-* Ajouter un composant Map pour analyser le message Kafka puis étendre le panneau inférieur 
+* Ajouter un composant Map pour analyser le message Kafka puis agrandir le panneau inférieur 
 * Faire un clic droit sur n'importe quelle variable du côté droit et sélectionner Extract puis coller l'exemple d'Invoice payload suivant. Cliquer ensuite sur Copy Node
 
   ```json
@@ -201,7 +201,7 @@ Dans les prochaines étapes, nous allons poster un message sur MS Teams avec que
 Nous utiliserons le connecteur MS Teams Webhook afin de pouvoir poster un message sur un canal MS Teams en utilisant le composant HTTP/S Client Post
 
 * Suivre ces [**instructions**](https://learn.microsoft.com/fr-fr/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) pour obtenir l'URL d'un canal MS teams
-* Ajouter un composant HTTP/S Client Post Connection à l'intégration et étendre le panneau inférieur
+* Ajouter un composant HTTP/S Client Post Connection à l'intégration et agrandir le panneau inférieur
 * Cliquer sur Add à côté de Connection afin de créer une connexion Client HTTP/S vers l'URL du connecteur MS Teams Webhook entrant et donner un nom et une description à la connexion puis suivre ces étapes:
   * Sélectionner HTTPS comme Protocol
   * Sélectionner HTTP/2 en tant que HTTP Version

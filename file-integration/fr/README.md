@@ -94,7 +94,7 @@ Dans cette étape, nous allons parcourir le fichier CSV de Leads afin d'en parco
     ![data object configuration](../images/lab2-data-object-configuration.png)
   * Cliquer sur Next, Next puis Create
   * Fermer le sous-onglet LeadsCSV 
-* De retour sur notre composant FlatFile Parser Read, étendre le panneau inférieur, cliquer sur Refresh et sélectionner le nouveau data object tout juste créé
+* De retour sur notre composant FlatFile Parser Read, agrandir le panneau inférieur, cliquer sur Refresh et sélectionner le nouveau data object tout juste créé
   ![Flat File Parser read component](../images/lab2-flat-file-parser-read-component.png)
 * Sur le côté gauche (pipeline in), développer le `SFTPServerPollOutput` pour afficher `files -> body` et tirer une ligne de body à `ffString` sous ACTION PROPERTIES puis appuyer sur Save.
   ![Flat File Parser read component input](../images/lab2-flat-file-parser-read-component-input.png)
@@ -133,7 +133,7 @@ Dans cette étape, nous allons parcourir les différents champs (contacts) et cr
   ```
 
   ![map variable copy](../images/lab3-map-variable-copy.png)
-* Sur le côté droit, effectuer à nouveau un clic droit n'importe où et sélectionner Paste, donner un nom à votre variable (par ex: Leads) puis l'étendre pour voir à l'intérieur.
+* Sur le côté droit, effectuer à nouveau un clic droit n'importe où et sélectionner Paste, donner un nom à votre variable (par ex: Leads) puis l'agrandir pour voir à l'intérieur.
   ![map variable paste](../images/lab3-map-variable-paste.png)
 * Dérouler LeadsCSV dans le panneau de gauche pour afficher `delimitedRecords` et ses champs
   ![map expand input](../images/lab3-map-expand-input.png)
@@ -157,7 +157,7 @@ Dans cette étape, nous allons parcourir les différents champs (contacts) et cr
 
   ![saleforce connector](../images/lab3-saleforce-connector.png)
 * Fermer la connexion Salesforce et retourner sur l'intégration
-* Cliquer sur Add pour ajouter un composant Salesforce Insert, étendre le panneau inférieur et sélectionner la connexion Salesforce tout juste créée 
+* Cliquer sur Add pour ajouter un composant Salesforce Insert, agrandir le panneau inférieur et sélectionner la connexion Salesforce tout juste créée 
 * Nous avons besoin d'un plug (branchement) qui définisse l'insertion de leads. Pour cela, cliquer sur Add près de Plug et donner un nom (par ex: CreateLead) une description, puis cliquer sur Configure.
 * Sélectionner la connexion Salesforce que nous venons de créer, Insert comme Actions et Lead pour Objects, puis  sélectionner FirstName, LastName, Title, Company, Email, LeadSource et Status pour les Fields. Cliquer sur Generate puis Save et ensuite fermer le plug et retourner au flux (comme fait précédemment)
 

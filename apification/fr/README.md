@@ -162,7 +162,7 @@ Dans cette étape, nous allons créer notre intégration et définir un endpoint
   * Entrer `invoices` pour le resource path (chemin d'accès à la ressource) et entrer deux Query Parameters: `status` et  `currencycode` puis apuuyer sur Save. Le resource path doit être unique. Étant donné que vous travaillez probablement dans un environnement partagé, vous pouvez préfixer le ressource path avec vos initiales pour le rendre unique (par exemple, lb_invoices) \
   ![HTTPS Server component](../images/lab2-https-server-component.png) 
     > À noter que nous avons toujours besoin de connecter la réponse au composant HTTP/S Server mais nous ferons cela juste après avoir défini la variable réponse
-* Cliquer sur le bouton plus pour ajouter un composant Database Select puis étendre le panneau inférieur
+* Cliquer sur le bouton plus pour ajouter un composant Database Select puis agrandir le panneau inférieur
   * Nous devons créer une connexion Database pour notre Database Postgres. Pour cela cliquer sur Add à côté du sélecteur de connexion et donner à la connexion un nom et une description (par ex: Neon Postgres DB)
     * Sélectionner PostgreSQL comme Database Type et choisir la version utilisée lors de la création de votre DatabaseSelect (la version par défaut est 15.x)
     * Mettre à jour l'URL de connexion jdbc:postgresql://_`server`_/_`databaseName`_ avec `host` et `database name` que vous avez noté au début de l'exercice après la création de la database (le port PostgreSQL par défaut 5432 n'est pas requis dans l'URL)
@@ -219,7 +219,7 @@ Dans cette étape, nous allons créer notre intégration et définir un endpoint
 * Maintenant que nous avons déclaré notre variable de réponse API, retournons au composant HTTP/S Server et effectuons le mapping de notre réponse
   * Cliquer dur le composant HTTP/S Server au début de l'intégration et cliquer sur Response\
   ![https server component response](../images/lab2-https-server-component-response.png)
-  * Cliquer sur Map Response et étendre le panneau inférieur
+  * Cliquer sur Map Response et agrandir le panneau inférieur
   * Tirer une ligne de la variable `response` du panneau de gauche, vers `HttpResponseInput->body` sous ACTION PROPERTIES dans le panneau central et cliquer sur Save
   ![https server component response map](../images/lab2-https-server-component-response-map_.png)
 
@@ -248,11 +248,11 @@ Votre intégration doit ressembler à ceci: \
 Dans cette étape, nous allons parcourir les factures, analyser chacune d'entre elles en un Objet JSON et effectuer une conversion du montant de la facture dans la devise souhaitée, qui sera  transmise à l'appel API sous la forme d'un paramètre de requête
 
 * Désactiver l'intégration
-* Cliquer sur le bouton plus et ajouter un composant For-each, l'étendre et cliquer sur configuration
+* Cliquer sur le bouton plus et ajouter un composant For-each, l'agrandir et cliquer sur configuration
 * Sélectionner `GetInvoicesByStatusOutput->response->resultSet` en déroulant GetInvoicesByStatusOutput puis response, afin de parcourir resultSet puis cliquer sur Save
 ![foreach configuration](../images/lab3-foreach-configuration_.png)
 * Convertissons le montant total des factures dans la devises désirée en utilisant l'API de conversion de devises APILayer 
-  * Ajouter un composant HTTP/S Client Get dans la boucle et étendre le panneau inférieur 
+  * Ajouter un composant HTTP/S Client Get dans la boucle et agrandir le panneau inférieur 
   * Cliquer sur Add à côté du sélecteur  Connection et donner un nom et une description à la connexion (e.g. Exchange Rates Data API) puis suivre ces étapes:
   * Sélectionner HTTPS pour le Protocol 
   * Sélectionner HTTP/2 pour la version 
@@ -313,7 +313,7 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
 
 * Désactiver l'intégration pour continuer le design
 * Nous devons d'abord créer notre facture en utilisant le résultat de la conversion pour mettre à jour la devise et le montant, et fixer la précision décimale à deux chiffres après la virgule.
-  * Ajouter un composant Map dans la boucle for-Each après la conversion de devise, puis étendre le panneau inférieur
+  * Ajouter un composant Map dans la boucle for-Each après la conversion de devise, puis agrandir le panneau inférieur
   * Ajouter une variable temporaire pour faire le mapping de la facture actuel, en faisant ce qui suit:
   * Faire un clic droit sur n'importe quelle variable du panneau de droite et sélectionner Extract puis coller le texte JSON suivant qui représente le résultat désiré pour notre facture. Cliquer ensuite sur Copy Node
 
