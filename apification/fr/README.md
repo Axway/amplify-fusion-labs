@@ -411,4 +411,4 @@ Le résultat devrait ressembler à:
 
 ## Étape 5 - Relevez le défi!
 
-Ajouter une Authentification de base à votre API et tester la de nouveau
+Ajouter une Authentification de base à votre API puis la tester de nouveau
