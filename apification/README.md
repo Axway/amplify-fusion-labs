@@ -161,7 +161,8 @@ In this lab, we'll create our integration and define the REST API endpoint using
   * Select HTTPS for the Protocol and leave Authentication to None for now and click on Update \
   ![HTTPS server connection](images/lab2-https-server-connection.png)
   * Close the connection sub tab and go back to the HTTP/S Server component in the integration, refresh the connection list and select the connection you have just created.
-  * Enter `invoices` for the resource path and enter two Query Parameters: `status` and `currencycode` and press Save. The resource path must be unique for your tenant. Since you are most likely working in a shared environment, you may want to prefix the resource path with your initials to make it unique (e.g. lb_invoices) \
+  * Enter `invoices` for the resource path and enter two Query Parameters: `status` and `currencycode` and press Save. 
+    > Note that the resource path must be unique for your tenant. Since you are most likely working in a shared environment, you may want to prefix the resource path with your initials to make it unique (e.g. lb_invoices) \
   ![HTTPS Server component](images/lab2-https-server-component.png) 
     > Note that we still need to connect the response to the HTTP/S Server component but we'll do that shortly after we've defined the response variable
 * Click the plus button to add a Database Select component and expand the bottom panel
