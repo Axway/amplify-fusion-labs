@@ -360,7 +360,7 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
     * Tirer une ligne de `response->grandTotal` à `num1`
     * Tirer une ligne de `InvoiceResponse->totalamnt` à `num2`
     * Tirer une ligne de `output` à `response->grandTotal`
-    ![map2](../images/lab4-map2-AddFloats.png)
+    ![map2](../images/lab4-map2-addfloats.png)
   * Compléter le champ de réponse
     * Tirer une ligne de `HTTPSServerGetOutput->queryParams->currencycode` sur la gauche, vers `response->currency` sur la droite
     * Tirer une ligne de `HTTPSServerGetOutput->queryParams->status` sur la gauche, vers  `response->status` sur la droite
