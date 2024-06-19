@@ -172,7 +172,7 @@ In this lab, we'll create our integration and define the REST API endpoint using
     * click on Update and then on Test \
     ![database connection](images/lab2-database-connection.png)
       > Note that if you get any Connection Timeout errors with the connection then you may want to expand the Advanced section and set `Connection Wait Timeout` to 1000. Don't forget to click update.
-    * Close your connection sub tab and return the the Database Select component in your integration
+    * Close your connection sub tab and return to the Database Select component in your integration
   * Click refresh in the Connections tab and select the database connection you just created
   * We need a plug for selecting invoices by Status so click Add next to the Plug picker and give your plug a name and description (e.g. GetInvoicesByStatus) and click on the Configure button
     * Select the database connector you just created and select `Select` for the Actions and `public` for the schemas
