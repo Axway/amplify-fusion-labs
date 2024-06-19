@@ -161,7 +161,7 @@ In this lab, we will loop over the delimited rows (contacts) and create the lead
 * Expand the CreateLeadInput ACTION PROPERTY to expose the insert property
 * Drag the leads variable we created prior and drag it to the insert property and press Save
   ![salesforce insert component](images/lab3-salesforce-insert-component.png)
-* Activate the event and test to integration
+* Activate the event and test the integration
 * This time you should see two new leads added to your Salesforce leads
   ![salesforce new leads](images/lab3-salesforce-new-leads.png)
 
