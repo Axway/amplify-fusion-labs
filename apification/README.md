@@ -165,7 +165,7 @@ In this lab, we'll create our integration and define the REST API endpoint using
     > Note that the resource path must be unique for your tenant. Since you are most likely working in a shared environment, you may want to prefix the resource path with your initials to make it unique (e.g. lb_invoices) \
   ![HTTPS Server component](images/lab2-https-server-component.png) 
     > Note that we still need to connect the response to the HTTP/S Server component but we'll do that shortly after we've defined the response variable
-* Click the plus button to add a Database Select component and expand the bottom panel
+* Click the `+`button to add a Database Select component and expand the bottom panel
   * We need to create a database connection for our Postgres database so click Add next to the Connection picker and give your connection a name and description (e.g. Neon Postgres DB)
     * Select PostgreSQL as Database Type and set the version you used for the database creation (default is 15.x)
     * Update the connection URL with jdbc:postgresql://_`server`_/_`databaseName`_ with `host` and `database name` that you wrote down after database creation (default postgresql port 5432 is not required in the URL)
@@ -251,7 +251,7 @@ Your integration should look like this: \
 In this lab, we'll loop over the invoices, parse each one to a JSON object and do a currency conversion on the invoice amount to a desired currency passed into the API call as a query parameter.
 
 * Disable your integration
-* Click the plus button and add a For-each component, expand it and click on Config
+* Click the `+`button and add a For-each component, expand it and click on Config
 * Click the down arrow and select the `GetInvoicesByStatusOutput->response->resultSet` array to loop over and click Save
 ![foreach configuration](images/lab3-foreach-configuration_.png)
 * Let's convert the invoice total amount to the desired currency using the APILayer currency conversion API. 
@@ -307,7 +307,7 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 
 * Find your transaction in the Monitor and click on it. You should see the For-each with some number inside indicating the number of invoices
 ![transaction monitoring](images/lab3-transaction-monitoring.png)
-* Click the plus sign next to the For-each and again on one of the iterations
+* Click the `+`sign next to the For-each and again on one of the iterations
 * Click on the HTTP/S Client Get and then expand the HTTPSGetOutput to see the currency conversion API response
 ![transaction monitoring response details](images/lab3-transaction-monitoring-response-details.png)
 

@@ -168,7 +168,7 @@ In this lab, we'll add some flow control logic and variables to our integration 
 Continue from Lab 3
 
 * Disable the integration so it can be edited
-* Click the plus sign between the two components and add an if-else
+* Click the `+`sign between the two components and add an if-else
   ![If-else](images/lab4-ifelse-a.png)
 * Expand the If-else and label it "check value"
   ![If-else](images/lab4-ifelse-b.png)

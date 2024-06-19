@@ -43,7 +43,7 @@
 
 - Cliquez sur **Save** pour sauvegarder l'application, puis sur **Continue**.
 
-- Cliquez sur **Manage Consumer Details**, puis copiez la **Consumer Key** et le  **Consumer Secret** ou gardez la page ouverte pour plus tard. Ces informations seront nécessaires lors de la création de votre connexion Salesforce sur Amplify Integration \
+- Cliquez sur **Manage Consumer Details**, puis copiez la **Consumer Key** et le  **Consumer Secret** ou gardez la page ouverte pour `+`tard. Ces informations seront nécessaires lors de la création de votre connexion Salesforce sur Amplify Integration \
   ![salesforce12](../assets/salesforce-connection/salesforce12.png)
 
 ## Configuration sur Amplify Integration
