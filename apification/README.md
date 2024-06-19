@@ -336,7 +336,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
   * Right click on any variable on the right hand panel and select Paste and name the variable `invoiceResponse`
   * Click on it expand this variable
   * Expand `currencyConvertResponse` in the left hand panel
-    * Add a map function using the '+fx' button, select DecimalPrecision is the Math category.
+    * Add a map function using the '+fx' button, select DecimalPrecision in the Math category.
       * Drag a line from `currencyConvertResponse->result` to `decimal`
       * Set `precision` to 2
       * Drag a line from `output` to `invoiceResponse->totalamt`
