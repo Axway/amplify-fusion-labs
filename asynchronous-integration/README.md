@@ -60,7 +60,7 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
   * On the right hand panel, right click on a variable and add a String variable called *LastRunDt-formatted*
   * Drag a line from `LastRunDt-...` variable on the left hand side to the DateFormat function `sourceDate`
   * Right click on the DateFormat `sourceDateFormat` and set to `yyyy-MM-dd HH:mm:ss SSS`
-  * Right click on the DateFormat targetDateFormat and set to `yyyy-MM-dd'T'HH:mm:ssZ`
+  * Right click on the DateFormat `targetDateFormat` and set to `yyyy-MM-dd'T'HH:mm:ssZ`
   * Drag a line from DateFormat function `output` to the String variable you created above (e.g. *LastRunDt-formatted*) and click Save
   ![map](images/lab1-map.png)
 * Now, we need to query Zoho Invoice for modified invoices. So, click the plus button to add an OpenAPI Client Invoke Operation component and expand the bottom panel. Click the Add button next to Connection so that we can create an OpenAPI Connection to your Zoho Invoice application and enter a name (e.g. Zoho API) and description.
