@@ -137,7 +137,7 @@ In this lab, we'll use the retrieved contact and insert it into Hubspot. We'll u
   ![hubspot create component](images/lab3-hubspot-create-component.png)
 * Expand the ACTION PROPERTIES -> `HubspotCreateContactInput->create` to expose the Hubspot contact fields
   ![hubspot create component properties](images/lab3-hubspot-create-component-properties.png)
-* In the left panel, expand `SFDC_Get_Contact_by_IdOutput/response/records[]` so you can see the Salesforce contact fields and connector each one to the corresponding Hubspot contact fields and click Save
+* In the left panel, expand `SFDC_Get_Contact_by_IdOutput/response/records[]` so you can see the Salesforce contact fields and connect each one to the corresponding Hubspot contact fields and click Save
   ![hubspot create component input](images/lab3-hubspot-create-component-input.png)
 * Enable your integration and create a new Salesforce contact and see the new contact in Hubspot
   ![salesforce contact creation](images/lab3-salesforce-contact-creation.png)
