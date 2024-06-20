@@ -22,11 +22,10 @@ Nous ferons ce qui suit:
 * Faites défiler vers le bas jusqu'aux URLs de redirection puis entrez l'URL de redirection suivant, puis appuyez sur Save:
   `<<Nom de domaine de l'interface de Designe d'Amplify Integration>>/design/oauth2/callback`
   ![hubspot04](../assets/hubspot-connection/hubspot04.png)
-* Faites défiler vers le bas jusqu'à la section Scopes et sélectionnez les scopes souhaités. Par exemple, vous pouvez sélectionner tous les Scopes CRM (en lien avec les clients):
-  ![hubspot05](../assets/hubspot-connection/hubspot05_.png)
+* Faites défiler vers le bas jusqu'à la section Scopes et sélectionnez les scopes souhaités. Par exemple, vous pouvez sélectionner les 4 Scopes CRM en lien avec les clients:
+  ![hubspot05](../assets/hubspot-connection/hubspot05.png)
 * Nous aurons besoin de la liste des Scopes lorsque nous créerons la connexion Hubspot sur Amplify Integration Hubspot. Pour cet exemple, ce sont les suivants:
-`crm.schemas.companies.write crm.schemas.contacts.write crm.schemas.deals.read crm.schemas.deals.write crm.objects.owners.read crm.objects.contacts.write crm.objects.companies.write crm.lists.write crm.objects.companies.read crm.lists.read crm.objects.deals.read crm.schemas.contacts.read crm.objects.deals.write crm.objects.contacts.read crm.schemas.companies.read crm.objects.custom.read crm.schemas.custom.read`
-
+`crm.schemas.contacts.write crm.objects.contacts.write crm.schemas.contacts.read crm.objects.contacts.read oauth`
 ## Connexion Hubspot sur Amplify Integration
 
 * Créez une nouvelle connexion, sélectionnez Hubspot et donnez-lui un nom et une description
