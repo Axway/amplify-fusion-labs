@@ -164,7 +164,14 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
   ![https client post component](images/lab4-https-client-post-component.png)
 * In the ACTION PROPERTIES section, expand `HTTPSPostInput` to expose the body and right click on body and select SetValue
   ![https client post component setvalue](images/lab4-https-client-post-component-setvalue.png)
-* Follow the screen shots below to type the POST body and press the + button to select Name and Email from `SFDCContactPushOutput` and press Save
+* Copy the JSON text, follow the screenshots below, and press the "+" button to select "Name" and "Email" from `SFDCContactPushOutput`, then press "Save"
+
+  ```json
+  {
+    Text: "Newly created Salesforce contact: () copied to Hubspot"
+  ‌}
+  ```
+
   ![https client post component setvalue variable1](images/lab4-https-client-post-component-setvalue-variable1.png)
   ![https client post component setvalue variable2](images/lab4-https-client-post-component-setvalue-variable2.png)
   ![https client post component setvalue text](images/lab4-https-client-post-component-setvalue-text.png)
