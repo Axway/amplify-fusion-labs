@@ -229,17 +229,19 @@ L'intégration doit ressembler à ceci: \
 
 * Activer l'intégration et faire un appel API depuis un navigateur, Postman ou curl comme suit:
 
+   > Passer la souris sur l'icône du lien pour voir l'URL nécessaire à l'appel API et copier le lien.
+  
+  ![alt text](/apification/images/image.png)
+  
+  > Veiller à mettre à jour le chemin de ressource "/invoices" pour qu'il corresponde à ce qui a été défini. Par exemple, dans notre cas d'utilisation, le statut est "Overdue" et le code de la devise est "EUR". Le chemin de la ressource doit donc être "/invoices?status=Overdue&currencycode=EUR".
+
+  > Effectuez un appel l'API depuis votre navigateur, Postman ou curl avec la commande suivante:   
+  
   ```bash
-  curl --location --request GET "https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR"
+  curl --location --request GET "<YOUR URL>"
   ```
-
-  > Note: Le _dataplane hostname_ du mode Design (dans le déploiement SaaS) est:\
-  > _**tenant-name**-design.prod.integration.**region**.axway.com_\
-  > où _tenant-name_ et _region_ peuvent être trouvés dans le control plane URL que vous utilisez 
-
-  > Conseil: Assurez vous de mettre à jour le ressource path "/invoices" pour que cela corresponde à ce qui a été défini 
-
-  > Note: La réponse sera vide pour le moment, il faudra donc ignorer le message d'erreur "empty response" de votre navigateur ou client
+  
+  > Note : La réponse sera vide pour l'instant, ignorez donc le message d'erreur "empty response" de votre navigateur ou client
 
 * Consulter la transaction dans le Monitor et cliquer sur l'étape Database Select puis dérouler `GetInvoicesByStatusOutput->resultSet`. Les factures ont bien été récupérées
 ![transaction monitoring](../images/lab2-transaction-monitoring_.png)

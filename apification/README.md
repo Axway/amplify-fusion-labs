@@ -230,17 +230,19 @@ Your integration should look like this: \
 ![integration](images/lab2-integration.png)
 
 * Enable your integration and make an API call from your Browser, Postman or curl as follows:
+  
+  > Mouse over the link icon to see the URL you need for the API call and copy the link
+  
+  ![alt text](images/image.png)
+  
+  > Make sure to update the resource path "/invoices" to match what you defined. For example in our use case the status is 'Overdue' and the currency code is 'EUR', so your ressource path should be "/invoices?status=Overdue&currencycode=EUR"
 
+  > Make an API call from your Browser, Postman or curl with the following command:   
+  
   ```bash
-  curl --location --request GET "https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR"
+  curl --location --request GET "<YOUR URL>"
   ```
-
-  > Note: The _dataplane hostname_ of the Design mode (in SaaS deployment) is:\
-  > _**tenant-name**-design.prod.integration.**region**.axway.com_\
-  > where _tenant-name_ and _region_ can be found in the current control plane URL that you are using so far.
-
-  > Tip: Make sure to update the resource path "/invoices" to match what you defined.
-
+  
   > Note: The response would be empty for now, so ignore "empty response" error message from your browser or client.
 
 * Find your transaction in the Monitor and click on the Database Select step and expand `GetInvoicesByStatusOutput->resultSet` and see that you are retrieving invoices
