@@ -358,7 +358,7 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
     ![map2](../images/lab4-map2-AppendList.png)
   * Ajouter une fonction AddFloats
     * Tirer une ligne de `response->grandTotal` à `num1`
-    * Tirer une ligne de `InvoiceResponse->totalamnt` à `num2`
+    * Tirer une ligne de `InvoiceResponse->totalamt` à `num2`
     * Tirer une ligne de `output` à `response->grandTotal`
     ![map2](../images/lab4-map2-addfloats.png)
   * Compléter le champ de réponse

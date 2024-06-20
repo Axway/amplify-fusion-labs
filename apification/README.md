@@ -361,7 +361,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
     ![map2](images/lab4-map2-AppendList.png)
   * Add an AddFloats function
     * Drag a line from `response->grandTotal` to `num1`
-    * Drag a line from `currencyConvertResponse->result` to `num2`
+    * Drag a line from `invoiceResponse->totalamt` to `num2`
     * Drag a line from `output` to `response->grandTotal`
     ![map2](images/lab4-map2-addfloats.png)
   * Complete the response fields
