@@ -59,7 +59,7 @@ Votre connexion peut désormais être utilisée dans une intégration. Mais avan
 * Nous avons maintenant besoin de créer un plug, pour cela cliquez sur Add à côté de Plugs. Donnez un nom puis cliquez sur Create
   ![hubspot20](../assets/hubspot-connection/hubspot20.png)
   ![hubspot21](../assets/hubspot-connection/hubspot21.png)
-* Cliquez sur Configure, selectionnez le connecteur, choisissez Get All pour les Actions, contacts pour les Objects, sélectionnez les champs désirés (firstname, lastname, ...) cliquez sur Generate puis sur Saveand 
+* Cliquez sur Configure, selectionnez le connecteur, choisissez Get All pour les Actions, contacts pour les Objects, sélectionnez les champs désirés (firstname, lastname, ...) cliquez sur Generate puis sur Save
   ![hubspot22](../assets/hubspot-connection/hubspot22.png)
 * Retournez à l'intégration, sélectionnez le plug puis cliquez sur Save
   ![hubspot23](../assets/hubspot-connection/hubspot23.png)
