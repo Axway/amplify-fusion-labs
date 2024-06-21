@@ -373,10 +373,10 @@ Dans cette étape, nous allons mettre en correspondance (mapping) notre facture 
 L'intégration doit ressembler à ceci:
 ![integration](../images/lab4-integration.png)
 
-* Activer l'intégration en faisant un appel API depuis un navigateur, Postman ou depuis Curl comme suit:
+* Activer l'intégration en faisant un appel API depuis un navigateur, Postman ou depuis Curl avec le même URL que précédemment comme suit:
 
   ```bash
-  curl --location --request GET 'https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR'
+  curl --location --request GET '<YOUR URL>'
   ```
 
 Le résultat devrait ressembler à:

@@ -376,10 +376,10 @@ In this lab, we'll map our invoice and currency converted amount to the response
 Your integration is complete and should look like this:
 ![integration](images/lab4-integration.png)
 
-* Enable your integration and make an API call from the Browser, Postman or curl as follows:
+* Enable your integration and make an API call from the Browser, Postman or curl with the same URL you used before as follows:
 
   ```bash
-  curl --location --request GET 'https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR'
+  curl --location --request GET '<Your URL'
   ```
 
 Your result should look similar to the following:
