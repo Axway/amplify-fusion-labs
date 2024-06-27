@@ -225,11 +225,11 @@ Nous utiliserons le connecteur MS Teams Webhook afin de pouvoir poster un messag
 * Activer l'intégration, suite à cela un message apparaît sur MS Teams. C'est le message publié à la fin de l'étape 1
   ![teams message](../images/lab2-teams-message.png)
 * S'assurer que la première intégration soit activée et modifier une facture ou créer une nouvelle facture dans Zoho Invoice. On constate la réception d'un nouveau message dans MS Teams une fois que le Scheduler est déclenché. Pour mettre à jour une facture, on peut la marquer comme envoyée et/ou enregistrer un paiement pour changer son statut.
-* Désactiver les deux intégrations lorsqu'elles ne sont `+`utilisées afin d'éviter les requêtes répétitives.
+* Désactiver les deux intégrations lorsqu'elles ne sont plus utilisées afin d'éviter les requêtes répétitives.
 
 ## Étape 3 - Relevez le défi!
 
-Utiliser l'exemple de carte MS Teams suivant, le modifier afin d'avoir une carte MS Teams `+`esthétique pour vos factures, puis l'envoyer en tant que body pour votre HTTPS Client Post vers MS Teams:
+Utiliser l'exemple de carte MS Teams suivant, le modifier afin d'avoir une carte MS Teams plus esthétique pour vos factures, puis l'envoyer en tant que body pour votre HTTPS Client Post vers MS Teams:
 
   ![teams message](../images/lab3-teams-message.png)
 
