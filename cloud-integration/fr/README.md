@@ -93,7 +93,7 @@ Dans cette étape nous allons paramétrer un PushTopic Salesforce et commencer n
 Dans cette étape, nous allons récupérer le contact et les champs souhaités à partir l'identifiant du PushTopic du nouveau contact. Nous utiliserons un composant de requête Salesforce (Salesforce query component) et un plug de recherche de contact par identifiant
 
 * Désactiver l'intégration pour poursuivre le design
-* Cliquer sur l'icône `+`pour ajouter une étape après l'évènement déclencheur 
+* Cliquer sur l'icône `+` pour ajouter une étape après l'évènement déclencheur 
 * Sélectionner le composant Salesforce Query et sélectionner la connexion Salesforce créée auparavant 
   ![salesforce query component init](../images/lab2-salesforce-query-component-init.png)
 * Cliquer sur  Add Plugs, nommer le Plug, lui donner une description (par ex: SFDC_Get_Contact_by_Id) et le configurer
@@ -119,7 +119,7 @@ Dans cette étape, nous allons récupérer le contact et l'insérer dans Hubspot
 
 * Suivre [**ce guide**](../fr/hubspot-connection.md) pour créer une connexion Hubspot
 * Désactiver l'integration précédente pour continuer le design
-* Cliquer sur le signe `+`pour ajouter une nouvelle étape à l'intégration puis sélectionner le composant Hubspot Create
+* Cliquer sur le signe `+` pour ajouter une nouvelle étape à l'intégration puis sélectionner le composant Hubspot Create
   ![add hubspot create component](../images/lab3-add-hubspot-create-component.png)
 * Sélectionner la connexion Hubspot tout juste créée 
   ![hubspot create component init](../images/lab3-hubspot-create-component-init.png)
@@ -166,7 +166,7 @@ Nous utiliserons le connecteur Webhook entrant de MS Teams afin de pouvoir poste
   ![https client post component](../images/lab4-https-client-post-component.png)
 * Dans la section ACTION PROPERTIES, développer `HTTPSPostInput` pour afficher le body, faire un clic droit sur body et sélectionner SetValue 
   ![https client post component setvalue](../images/lab4-https-client-post-component-setvalue.png)
-* Copier coller le texte JSON suivant et suivre les captures d'écran ci-dessous pour saisir le POST body. Appuyer sur le bouton `+`pour sélectionner Name et Email depuis `SFDCContactPushOutput` puis appuyer sur Save
+* Copier coller le texte JSON suivant et suivre les captures d'écran ci-dessous pour saisir le POST body. Appuyer sur le bouton `+` pour sélectionner Name et Email depuis `SFDCContactPushOutput` puis appuyer sur Save
 
  ```json
   {

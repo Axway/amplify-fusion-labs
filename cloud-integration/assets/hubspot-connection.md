@@ -51,7 +51,7 @@ Now your Connection can be used in an integration but first let's test it out.
 * Create an integration and add a Scheduler trigger event and set to any value since we won't be turning it on
   ![hubspot15](hubspot-connection/hubspot15.png)
   ![hubspot16](hubspot-connection/hubspot16.png)
-* Click the `+`button and add a Hubspot Get All component to the integration
+* Click the `+` button and add a Hubspot Get All component to the integration
   ![hubspot17](hubspot-connection/hubspot17.png)
   ![hubspot18](hubspot-connection/hubspot18.png)
 * Expand the bottom panel and select the Hubspot Connector you created above

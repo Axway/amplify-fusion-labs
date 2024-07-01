@@ -91,7 +91,7 @@ In this lab, we'll set up a Salesforce push topic and start our integration by a
 In this lab, we'll retrieve the contact and desired fields based on the id from the new contact pushtopic. We'll use a Salesforce query component and a query Contact by id Plug.
 
 * Disable your integration to continue designing the integration
-* Click the `+`icon to add a step after the trigger event 
+* Click the `+` icon to add a step after the trigger event 
 * Select a Salesforce query component and select your Salesforce Connection
   ![salesforce query component init](images/lab2-salesforce-query-component-init.png)
 * Click Add on the Plugs and name your Plug and give it a description (e.g. SFDC_Get_Contact_by_Id) and Configure it
@@ -117,7 +117,7 @@ In this lab, we'll use the retrieved contact and insert it into Hubspot. We'll u
 
 * Follow [**this guide**](assets/hubspot-connection.md) to create  Hubspot Connection
 * Disable your integration to continue designing the integration
-* Click on the `+`sign to add a new step to the integration and select a Hubspot Create component 
+* Click on the `+` sign to add a new step to the integration and select a Hubspot Create component 
   ![add hubspot create component](images/lab3-add-hubspot-create-component.png)
 * Select the Hubspot connection you just created
   ![hubspot create component init](images/lab3-hubspot-create-component-init.png)

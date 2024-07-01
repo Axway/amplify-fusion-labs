@@ -34,7 +34,7 @@
    - Entrez l'URL Racine de votre Control Plane Amplify Integration pour le Homempage URL
    - Ajoutez "/design/oauth2/callback" au même URL pour le redirect URL![server-based application](../assets/zoho-api-instructions/image5.png)
 
-10. Notez le Client ID et Secret pour `+`tard 
+10. Notez le Client ID et Secret pour plus tard 
 
 ## Configuration sur Amplify Integration
 

@@ -50,7 +50,7 @@ Votre connexion peut désormais être utilisée dans une intégration. Mais avan
 * Créez une intégration et ajoutez un évènement déclencheur Scheduler et réglez le à n'importe quelle valeur étant donné que nous n'allons pas l'activer
   ![hubspot15](../assets/hubspot-connection/hubspot15.png)
   ![hubspot16](../assets/hubspot-connection/hubspot16.png)
-* Cliquez sur le bouton `+`pour ajouter un composant Hubspot Get All à votre intégration
+* Cliquez sur le bouton `+` pour ajouter un composant Hubspot Get All à votre intégration
   ![hubspot17](../assets/hubspot-connection/hubspot17.png)
   ![hubspot18](../assets/hubspot-connection/hubspot18.png)
 * Étendez le panneau inférieur et sélectionnez le connecteur Hubspot créé précedemment 
