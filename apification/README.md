@@ -377,9 +377,16 @@ Your integration is complete and should look like this:
 ![integration](images/lab4-integration.png)
 
 * Enable your integration and make an API call from the Browser, Postman or curl with the same URL you used before as follows:
+> Mouse over the link icon to see the URL you need for the API call and copy the link
+  
+  ![alt text](images/image.png)
+  
+  > Make sure to update the resource path "/invoices" to match what you defined. For example in our use case the status is 'Overdue' and the currency code is 'EUR', so your ressource path should be "/invoices?status=Overdue&currencycode=EUR"
 
+  > Make an API call from your Browser, Postman or curl with the following command:   
+  
   ```bash
-  curl --location --request GET '<Your URL'
+  curl --location --request GET "<YOUR URL>"
   ```
 
 Your result should look similar to the following:

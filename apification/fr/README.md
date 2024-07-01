@@ -374,9 +374,17 @@ L'intégration doit ressembler à ceci:
 ![integration](../images/lab4-integration.png)
 
 * Activer l'intégration en faisant un appel API depuis un navigateur, Postman ou depuis Curl avec le même URL que précédemment comme suit:
+  
+  > Passer la souris sur l'icône du lien pour voir l'URL nécessaire à l'appel API et copier le lien.
+  
+  ![alt text](/apification/images/image.png)
+  
+  > Veiller à mettre à jour le chemin de ressource "/invoices" pour qu'il corresponde à ce qui a été défini. Par exemple, dans notre cas d'utilisation, le statut est "Overdue" et le code de la devise est "EUR". Le chemin de la ressource doit donc être "/invoices?status=Overdue&currencycode=EUR".
 
+  > Effectuez un appel l'API depuis votre navigateur, Postman ou curl avec la commande suivante:   
+  
   ```bash
-  curl --location --request GET '<YOUR URL>'
+  curl --location --request GET "<YOUR URL>"
   ```
 
 Le résultat devrait ressembler à:
