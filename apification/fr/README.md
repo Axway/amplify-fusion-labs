@@ -176,7 +176,7 @@ Dans cette étape, nous allons créer notre intégration et définir un endpoint
   * Nous avons besoin d'un plug pour sélectionner les factures par statut. Pour cela cliquer sur Add à côté du sélecteur de plug et donner au plug un nom et une description (par ex: GetInvoicesByStatus) puis cliquer sur le bouton Configure
     * Sélectionner le connecteur de database tout juste créée et sélectionner `Select` pour Actions et `public` pour schemas
     * Cocher la case à côté de Invoice et sélectionner tous les champs
-    * Cliquer sur Where et sélectionner le champs `invoice.status` et l'opérateur `=` puis cliquer sur Generate et ensuite sur Save
+    * Cliquer sur Where et sélectionner le champ `invoice.status` et l'opérateur `=` puis cliquer sur Generate et ensuite sur Save
     ![database plug configuration](../images/lab2-database-plug-configuration.png)
     ![database plug](../images/lab2-database-plug_.png)
     * Fermer l'onglet du plug et retourner au composant Database Select de l'intégration. Cliquer sur Refresh dans le selecteur de plug et choisir le plug tout juste créé
