@@ -235,13 +235,11 @@ Your integration should look like this: \
   
   ![alt text](images/image.png)
   
-  > Make sure to update the resource path "/invoices" to match what you defined. For example in our use case the status is 'Overdue' and the currency code is 'EUR', so your ressource path should be "/invoices?status=Overdue&currencycode=EUR"
+  > Note that resource path might be different from "/invoices" according to what you defined
 
-  > Make an API call from your Browser, Postman or curl with the following command:   
+  > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
   
-  ```bash
-  curl --location --request GET "<YOUR URL>"
-  ```
+    ![API Call](images/APIcall.png)
   
   > Note: The response would be empty for now, so ignore "empty response" error message from your browser or client.
 
@@ -303,9 +301,15 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 
 * Enable your integration and make an API call from the Browser, Postman or curl as follows:
 
-  ```bash
-  curl --location --request GET 'https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR'
-  ```
+  > Mouse over the link icon to see the URL you need for the API call and copy the link
+  
+  ![alt text](images/image.png)
+  
+  > Note that resource path might be different from "/invoices" according to what you defined
+
+  > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
+    
+   ![API Call](images/APIcall.png)
 
 * Find your transaction in the Monitor and click on it. You should see the For-each with some number inside indicating the number of invoices
 ![transaction monitoring](images/lab3-transaction-monitoring.png)
@@ -377,17 +381,16 @@ Your integration is complete and should look like this:
 ![integration](images/lab4-integration.png)
 
 * Enable your integration and make an API call from the Browser, Postman or curl with the same URL you used before as follows:
-> Mouse over the link icon to see the URL you need for the API call and copy the link
+
+  > Mouse over the link icon to see the URL you need for the API call and copy the link
   
   ![alt text](images/image.png)
   
-  > Make sure to update the resource path "/invoices" to match what you defined. For example in our use case the status is 'Overdue' and the currency code is 'EUR', so your ressource path should be "/invoices?status=Overdue&currencycode=EUR"
+  > Note that resource path might be different from "/invoices" according to what you defined
 
-  > Make an API call from your Browser, Postman or curl with the following command:   
+  > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
   
-  ```bash
-  curl --location --request GET "<YOUR URL>"
-  ```
+  ![API Call 2](images/APICall2.png)
 
 Your result should look similar to the following:
 
