@@ -86,7 +86,7 @@ In this lab, we'll create the first flow that will poll Zoho Invoice for updated
   * Enter the Upstash username and password
   * Select for SCRAM_SHA_256 Encryption Type
   * Click on save/update and press Test
-  ![kafka connection](images/lab1-kafka-connection.png)
+  ![kafka connection](images/lab1_kafka-connection.png)
 * Return to the Apache Kafka Publish component in the integration and click refresh in the Connection picker and select our newly created Kafka Connection
 * Expand the `ApacheKafkaPublishInput->messages` to expose the messages parameters and drag a line from the `GetInvoicesOutput->response->invoices` in the left hand panel to `ApacheKafkaPublishInput->messages->value`
 * Right click on `ApacheKafkaPublishInput->topicName` and select SetValue and paste in a Topic name that you should create in your Upstash Kafka instance (e.g. invoice) and press Save

@@ -89,7 +89,7 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
   * Entrer le Username et le Password Upstash
   * Sélectionner SCRAM_SHA_256 pour le Encryption Type
   * Cliquer sur save/update puis cliquer sur Test
-  ![kafka connection](../images/lab1-kafka-connection.png)
+  ![kafka connection](../images/lab1_kafka-connection.png)
 * Retourner sur le composant Apache Kafka Publish component dans l'intégration et cliquer sur refresh dans le sélecteur de connexion. Sélectionner la connexion Kafka tout juste créée
 * Dérouler `ApacheKafkaPublishInput->messages` pour afficher les paramètres de messsages et tirer une ligne de `GetInvoicesOutput->response->invoices` sur le panneau de gauche, vers `ApacheKafkaPublishInput->messages->value`
 * Faire un clic droit sur `ApacheKafkaPublishInput->topicName`, sélectionner SetValue et coller le nom du Topic créé dans l'instance kafka (par exemple: invoice) puis cliquer sur Save
