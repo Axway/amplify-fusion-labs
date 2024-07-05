@@ -164,7 +164,7 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
   ![https client post component](images/lab4-https-client-post-component.png)
 * In the ACTION PROPERTIES section, expand `HTTPSPostInput` to expose the body and right click on body and select SetValue
   ![https client post component setvalue](images/lab4-https-client-post-component-setvalue.png)
-* Copy the JSON text, and insert Name and Email as shown by positioning your cursor in the text and by pressing the + button to select "Name" and "Email" from `SFDCContactPushOutput`, then press "Save
+* Copy the JSON text, and insert Name and Email as shown by positioning your cursor in the text and by pressing the `+` button to select "Name" and "Email" from `SFDCContactPushOutput`, then press "Save
 
   ```json
   {
