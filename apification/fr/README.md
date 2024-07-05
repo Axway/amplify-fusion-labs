@@ -233,13 +233,11 @@ L'intégration doit ressembler à ceci: \
   
   ![alt text](/apification/images/image.png)
   
-  > Veiller à mettre à jour le chemin de ressource "/invoices" pour qu'il corresponde à ce qui a été défini. Par exemple, dans notre cas d'utilisation, le statut est "Overdue" et le code de la devise est "EUR". Le chemin de la ressource doit donc être "/invoices?status=Overdue&currencycode=EUR".
+  > Survoler l'icône du lien pour voir l'URL nécessaire pour l'appel API et copier le lien
 
-  > Effectuez un appel l'API depuis votre navigateur, Postman ou curl avec la commande suivante:   
+  > Coller l'URL copiée dans le navigateur, ou dans Postman, ou dans une commande curl. Ajouter les valeurs des paramètres de requête (pour notre cas d'utilisation définir le paramètre de requête "status" à 'Overdue' et le paramètre de requête "currencycode" à 'EUR', donc le chemin de ressource avec les paramètres de requête sera "/invoices?status=Overdue&currencycode=EUR") avant d'envoyer la requête  
   
-  ```bash
-  curl --location --request GET "<YOUR URL>"
-  ```
+   ![API Call](/apification/images/APIcall.png)
   
   > Note : La réponse sera vide pour l'instant, ignorez donc le message d'erreur "empty response" de votre navigateur ou client
 
@@ -300,9 +298,16 @@ Dans cette étape, nous allons parcourir les factures, parser chacune d'entre el
   ![integration](../images/lab3-integration_.png)
 
 * Activer l'intégration en faisant un appel d'API depuis un navigateur, Postman, ou curl comme suit:
-  ```bash
-  curl --location --request GET 'https://<dataplane-hostname>:9443/invoices?status=Overdue&currencycode=EUR'
-  ```
+  
+  > Passer la souris sur l'icône du lien pour voir l'URL nécessaire à l'appel API et copier le lien.
+  
+  ![alt text](/apification/images/image.png)
+  
+  > Survoler l'icône du lien pour voir l'URL nécessaire pour l'appel API et copier le lien
+
+  > Coller l'URL copiée dans le navigateur, ou dans Postman, ou dans une commande curl. Ajouter les valeurs des paramètres de requête (pour notre cas d'utilisation définir le paramètre de requête "status" à 'Overdue' et le paramètre de requête "currencycode" à 'EUR', donc le chemin de ressource avec les paramètres de requête sera "/invoices?status=Overdue&currencycode=EUR") avant d'envoyer la requête  
+  
+   ![API Call](/apification/images/APIcall.png)
 
 * Retrouver l'intégration dans le Monitor et cliquer dessus. Un numéro doit apparaître dans le For-each indiquant le nombre de factures
 ![transaction monitoring](../images/lab3-transaction-monitoring.png)
@@ -379,13 +384,11 @@ L'intégration doit ressembler à ceci:
   
   ![alt text](/apification/images/image.png)
   
-  > Veiller à mettre à jour le chemin de ressource "/invoices" pour qu'il corresponde à ce qui a été défini. Par exemple, dans notre cas d'utilisation, le statut est "Overdue" et le code de la devise est "EUR". Le chemin de la ressource doit donc être "/invoices?status=Overdue&currencycode=EUR".
+  > Survoler l'icône du lien pour voir l'URL nécessaire pour l'appel API et copier le lien
 
-  > Effectuez un appel l'API depuis votre navigateur, Postman ou curl avec la commande suivante:   
+  > Coller l'URL copiée dans le navigateur, ou dans Postman, ou dans une commande curl. Ajouter les valeurs des paramètres de requête (pour notre cas d'utilisation définir le paramètre de requête "status" à 'Overdue' et le paramètre de requête "currencycode" à 'EUR', donc le chemin de ressource avec les paramètres de requête sera "/invoices?status=Overdue&currencycode=EUR") avant d'envoyer la requête  
   
-  ```bash
-  curl --location --request GET "<YOUR URL>"
-  ```
+   ![API Call](/apification/images/APICall2.png)
 
 Le résultat devrait ressembler à:
 
