@@ -170,7 +170,7 @@ Nous utiliserons le connecteur Webhook entrant de MS Teams afin de pouvoir poste
 
  ```json
   {
-    Text: "Newly created Salesforce contact: () copied to Hubspot"
+    "Text": "Newly created Salesforce contact: () copied to Hubspot"
   ‌}
   ```
   
