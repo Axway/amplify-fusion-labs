@@ -231,7 +231,7 @@ L'intégration doit ressembler à ceci: \
 
    > Passer la souris sur l'icône du lien pour voir l'URL nécessaire à l'appel API et copier le lien.
   
-  ![alt text](../images/image.png)
+  ![API Link](../images/image.png)
   
   > Survoler l'icône du lien pour voir l'URL nécessaire pour l'appel API et copier le lien
 
@@ -301,7 +301,7 @@ Dans cette étape, nous allons parcourir les factures, parser chacune d'entre el
   
   > Passer la souris sur l'icône du lien pour voir l'URL nécessaire à l'appel API et copier le lien.
   
-  ![alt text](../images/image.png)
+  ![API Link](../images/image.png)
   
   > Survoler l'icône du lien pour voir l'URL nécessaire pour l'appel API et copier le lien
 
@@ -382,7 +382,7 @@ L'intégration doit ressembler à ceci:
   
   > Passer la souris sur l'icône du lien pour voir l'URL nécessaire à l'appel API et copier le lien.
   
-  ![alt text](../images/image.png)
+  ![API Link](../images/image.png)
   
   > Survoler l'icône du lien pour voir l'URL nécessaire pour l'appel API et copier le lien
 

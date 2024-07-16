@@ -233,7 +233,7 @@ Your integration should look like this: \
   
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
-  ![alt text](images/image.png)
+  ![API Link](images/image.png)
   
   > Note that resource path might be different from "/invoices" according to what you defined
 
@@ -303,7 +303,7 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
-  ![alt text](images/image.png)
+  ![API Link](images/image.png)
   
   > Note that resource path might be different from "/invoices" according to what you defined
 
@@ -384,7 +384,7 @@ Your integration is complete and should look like this:
 
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
-  ![alt text](images/image.png)
+  ![API Link](images/image.png)
   
   > Note that resource path might be different from "/invoices" according to what you defined
 
