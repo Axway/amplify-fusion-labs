@@ -233,13 +233,13 @@ Your integration should look like this: \
   
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
-  ![API Link](images/image.png)
+  ![API Link](images/lab2-API-Link.png)
   
   > Note that resource path might be different from "/invoices" according to what you defined
 
   > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
   
-    ![API Call](images/APIcall.png)
+    ![API Call](images/lab2-APICall.png)
   
   > Note: The response would be empty for now, so ignore "empty response" error message from your browser or client.
 
@@ -303,13 +303,13 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
-  ![API Link](images/image.png)
+  ![API Link](images/lab2-API-Link.png)
   
   > Note that resource path might be different from "/invoices" according to what you defined
 
   > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
     
-   ![API Call](images/APIcall.png)
+   ![API Call](images/lab2-APICall.png)
 
 * Find your transaction in the Monitor and click on it. You should see the For-each with some number inside indicating the number of invoices
 ![transaction monitoring](images/lab3-transaction-monitoring.png)
@@ -384,13 +384,13 @@ Your integration is complete and should look like this:
 
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
-  ![API Link](images/image.png)
+  ![API Link](images/lab2-API-Link.png)
   
   > Note that resource path might be different from "/invoices" according to what you defined
 
   > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
   
-  ![API Call 2](images/APICall2.png)
+  ![API Call 2](images/lab4-APICall.png)
 
 Your result should look similar to the following:
 
