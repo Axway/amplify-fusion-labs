@@ -25,7 +25,7 @@ We will do the following:
 * Scroll down to the Scopes section and select your desired scopes. For example, I selected the contact CRM scopes below:
   ![hubspot05](hubspot-connection/hubspot05.png)
 * We will need the list of selected scopes when we create the Amplify Integration Hubspot Connection. For my settings, they are as follows:
-`crm.schemas.contacts.write crm.objects.contacts.write crm.schemas.contacts.read crm.objects.contacts.read oauth`
+`crm.schemas.contacts.write crm.objects.contacts.write crm.schemas.contacts.read crm.objects.contacts.read crm.objects.custom.read oauth`
 
 ## Amplify Integration Hubspot Connection
 
