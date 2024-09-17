@@ -62,8 +62,8 @@ Dans cette étape, nous allons mettre en place le premier flux qui intérroge Zo
 * Afin d'interroger Zoho Invoice à propose des mises à jour de  factures, nous utiliserons l'horodatage intégré de la dernière exécution, `LastRunDt-...` pour comparer avec l'horodatage de la facture modifiée `last_modified_time`. Mais pour cela nous devons le convertir au format d'horodatage de Zoho Invoice en utilisant une fonction Map. Cliquez sur le bouton `+` pour ajouter un composant MAP puis étendez le panneau inférieur et ajoutez une fonction DateFormat
   * Sur le panneau de droite, effectuer un clic droit et ajouter une variable String nommé *LastRunDt-formatted*
   * Tirer une ligne de la variable `LastRunDt-...` qui se trouve sur le côté gauche, à la fonction DateFormat `sourceDate`
-  * Faire un clic droit sur la variable de DateFormat `sourceDateFormat` et la configuer de cette manière: `yyyy-MM-dd HH:mm:ss SSS`
-  * Faire un clic droit sur la variable de DateFormat `targetDateFormat` et la configurer de cette manière: `yyyy-MM-dd'T'HH:mm:ssZ`
+  * Faire un clic droit sur la variable de DateFormat `sourceDateFormat`, cliquer sur Set Value, puis copier/coller la valeur suivante: `yyyy-MM-dd HH:mm:ss SSS`
+  * Faire un clic droit sur la variable de DateFormat `targetDateFormat`, cliquer sur Set Value, puis copier/coller la valeur suivante: `yyyy-MM-dd'T'HH:mm:ssZ`
   * Tirer une ligne de la fonction DateFormat `output` à la variable String créée au-dessus (par exemple: *LastRunDt-formatted*) et cliquer sur Save
   ![map](../images/lab1-map.png)
 * Nous devons maintenant interroger Zoho Invoice à propos des factures mises à jour. Pour cela, cliquer sur le bouton `+` pour ajouter un composant OpenAPI Client puis agrandir le panneau inférieur. Cliquer sur Add à côté de Connection afin de créer une connexion OpenAPI pour l'application ZohoInvoice et entrer un nom (par exemple: Zoho API) et une description.

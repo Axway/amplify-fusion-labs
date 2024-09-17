@@ -51,7 +51,7 @@
           (changez le suffixe `.com` du domaine si nécessaire)
         - Scope: **ZohoInvoice.invoices.READ,offline_access**
     - Fournissez un safe path (chemin sûr) pour tester la connexion: **/api/v3/invoices?customer_name=test**
-    - Ajoutez un header nommé **X-com-zoho-invoice-organizationid** comme indiqué dans la documentation de l'API et fournissez la valeur copiée précédemment
+    - Ajoutez un header nommé **X-com-zoho-invoice-organizationid** comme indiqué dans la documentation de l'API et fournissez la valeur de l'Organization ID  copiée précédemment
     - Cliquez sur Update/save 
     - Générez un Token
     - Testez la connexion
