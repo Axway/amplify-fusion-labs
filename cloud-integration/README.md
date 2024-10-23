@@ -177,7 +177,8 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
                 "body": [
                     {
                         "type": "TextBlock",
-                        "text": "Newly created Salesforce contact: () copied to Hubspot"
+                        "text": "Newly created Salesforce contact: {{name}} ({{email}}) copied to Hubspot",
+                        "wrap": true
                     }
                 ],
                 "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
@@ -191,9 +192,7 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
   }
   ```
 
-  ![https client post component setvalue variable1](images/lab4-https-client-post-component-setvalue-variable1.png)
-  ![https client post component setvalue variable2](images/lab4-https-client-post-component-setvalue-variable2.png)
-  ![https client post component setvalue text](images/lab4-https-client-post-component-setvalue-text.png)
+  ![https client post component setvalue variable1](images/lab4-https-client-post-component-setvalue-variable.png)
 * Enable your integration and create a new Salesforce contact and see the new contact in Hubspot and you should also have a message in your MS Teams channel as follows:
   ![microsoft teams message](images/lab4-microsoft-teams-message.png)
 
