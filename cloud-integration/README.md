@@ -149,7 +149,7 @@ In this lab, we'll post a message to MS Teams with the contact details.
 
 We'll use the MS Teams Incoming Webhook Connector so that we can Post a message to a MS Teams channel.
 
-* Follow the instructions [**here**](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) to get a URL to a MS Teams channel
+* Follow the instructions [**here**](https://support.microsoft.com/en-us/office/create-incoming-webhooks-with-workflows-for-microsoft-teams-8ae491c7-0394-4861-ba59-055e33f75498) to get a URL to a MS Teams channel
   * If you don't use Teams or don't have the webhook capability, you can use a test webhook online app like [Webhook.site](https://webhook.site) instead for this lab.
 * Disable to integration and add an HTTP/S Client Post Connection to your integration
   ![add https client post](images/lab4-add-https-client-post.png)
