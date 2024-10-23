@@ -168,8 +168,27 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
 
   ```json
   {
-    "Text": "Newly created Salesforce contact: () copied to Hubspot"
-  ‌}
+    "type": "message",
+    "attachments": [
+        {
+            "contentType": "application/vnd.microsoft.card.adaptive",
+            "content": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Newly created Salesforce contact: () copied to Hubspot"
+                    }
+                ],
+                "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+                "version": "1.0",
+                "msteams": {
+                    "entities": []
+                }
+            }
+        }
+    ]
+  }
   ```
 
   ![https client post component setvalue variable1](images/lab4-https-client-post-component-setvalue-variable1.png)
