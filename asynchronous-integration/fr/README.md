@@ -256,41 +256,7 @@ Nous utiliserons le connecteur MS Teams Webhook afin de pouvoir poster un messag
 
 ## Étape 3 - Relevez le défi!
 
-Utiliser l'exemple de carte MS Teams suivant, le modifier afin d'avoir une carte MS Teams plus esthétique pour vos factures, puis l'envoyer en tant que body pour votre HTTPS Client Post vers MS Teams:
+Aller voir les examples de cartes adaptatives [ici](https://adaptivecards.io/samples/) et essayer de modifier le design de la carte pour avoir un affichage différent. 
 
+Exemple: 
   ![teams message](../images/lab3-teams-message.png)
-
-  ```json
-  {
-    "@type": "MessageCard",
-    "@context": "http://schema.org/extensions",
-    "themeColor": "0076D7",
-    "summary": "Summary",
-    "sections": [
-      {
-        "activityTitle": "Title",
-        "activitySubtitle": "Subtitle",
-        "activityImage": "https://adaptivecards.io/content/atbot-logo.png",
-        "facts": [
-          {
-            "name": "Description",
-            "value": "This is a **sample *message* card**"
-          },
-          {
-            "name": "Value",
-            "value": 29672
-          },
-          {
-            "name": "Date",
-            "value": "March 4, 2024"
-          },
-          {
-            "name": "URL",
-            "value": "[More samples](https://adaptivecards.io/samples)"
-          }
-        ],
-        "markdown": true
-      }
-    ]
-  }
-  ```

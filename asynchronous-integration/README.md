@@ -254,41 +254,5 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
 
 ## Lab 3 - Challenge yourself!
 
-Use the following MS Teams card sample and modify it to make a nicer MS Teams card for your invoice and send it as the body of your HTTPS Client Post to MS Teams:
-
+Review adaptive card samples [here](https://adaptivecards.io/samples/) and try to make you card look nicer like this:
   ![teams message](images/lab3-teams-message.png)
-
-  ```json
-  {
-    "@type": "MessageCard",
-    "@context": "http://schema.org/extensions",
-    "themeColor": "0076D7",
-    "summary": "Summary",
-    "sections": [
-      {
-        "activityTitle": "Title",
-        "activitySubtitle": "Subtitle",
-        "activityImage": "https://adaptivecards.io/content/atbot-logo.png",
-        "facts": [
-          {
-            "name": "Description",
-            "value": "This is a **sample *message* card**"
-          },
-          {
-            "name": "Value",
-            "value": 29672
-          },
-          {
-            "name": "Date",
-            "value": "March 4, 2024"
-          },
-          {
-            "name": "URL",
-            "value": "[More samples](https://adaptivecards.io/samples)"
-          }
-        ],
-        "markdown": true
-      }
-    ]
-  }
-  ```
