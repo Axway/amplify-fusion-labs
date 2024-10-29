@@ -222,7 +222,8 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
                 "body": [
                     {
                         "type": "TextBlock",
-                        "text": "Invoice #{invoice_number} for customer '{company_name}', total value: {currency_symbol}{total} {currency_code} is now {status}"
+                        "text": "Invoice #{invoice_number} for customer '{customer_name}', total value: {currency_symbol}{total} {currency_code} is now {status}",
+                        "wrap": true
                     }
                 ],
                 "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
@@ -248,7 +249,7 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
 * Now we're ready to test our integration which should look like this:
   ![integration](images/lab2-integration-rabbitmq.jpg)
 * Enable your integration and you should see a message in MS Teams. This is the message we published at the end of the previous lab
-  ![teams message](images/lab2-teams-message.png)
+  ![teams message](images/lab2-teams-message.jpg)
 * Make sure the other integration is enabled and modify an invoice or create a new invoice in Zoho Invoice and see that you get a new message in MS Teams once the scheduler is triggered. For updating a invoice you can mark an invoice as sent and/or record a payment to change its status
 * Disable both integrations (to avoid polling) when not in use
 
