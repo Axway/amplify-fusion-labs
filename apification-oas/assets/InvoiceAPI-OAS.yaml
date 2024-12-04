@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Invoice API
+paths:
+  /invoice:
+    get:
+      tags:
+        - Invoices
+      summary: Get invoice by id
+      operationId: get-invoice
+      parameters:
+        - name: id
+          in: query
+          description: invoice number
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invoice'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  /invoices:
+    get:
+      tags:
+        - Invoices
+      summary: Get invoices by state with currency conversion
+      operationId: get-invoices-by-state
+      parameters:
+        - name: state
+          in: query
+          description: 'Invoice state: Draft, Sent, Paid, Overdue, Cancelled'
+          required: true
+          schema:
+            type: string
+        - name: currencycode
+          in: query
+          description: Target currency code for conversion
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: string
+                  invoices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/invoice'
+                  grandTotal:
+                    type: number
+                  currency:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+tags:
+  - name: Invoices
+components:
+  schemas:
+    invoice:
+      type: object
+      additionalProperties: false
+      properties:
+        invnum:
+          type: string
+          description: Invoice Number
+        invdate:
+          type: string
+          description: 'Invoice Date (format YYYY-MM-DD hh:mm:ss.zzz+00)'
+        businessname:
+          type: string
+          description: Company name
+        billtoname:
+          type: string
+          description: Contact name
+        vat:
+          type: string
+          description: VAT %
+        state:
+          type: string
+          enum:
+            - Draft
+            - Sent
+            - Overdue
+            - Paid
+            - Cancelled
+          description: 'Invoice state '
+        currency:
+          type: string
+          minLength: 3
+          maxLength: 3
+        totalamt:
+          type: number
+      required:
+        - invnum
+        - state
+        - currency
+        - totalamt
+    error:
+      type: object
+      title: error
+      properties:
+        errorMessage:
+          type: string
