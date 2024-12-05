@@ -235,7 +235,7 @@ Your integration should look like this: \
   
   ![API Link](images/lab2-API-Link.png)
   
-  > Note that resource path might be different from "/invoices" according to what you defined
+  > Note that the url corresponds to the HTTP server of the selected dataplane, followed by the base path you chose at the sbeginign of this lab.
 
   > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
   
@@ -292,23 +292,15 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 
   ![extract json](images/lab4-extract-json.png)
   * Right click again and select Paste and name your variable `currencyConvertResponse`
-  * Drag a line from ACTION PROPERTIERS `HTTPSGetOutput->response` to the `currencyConvertResponse` extract variable
+  * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->response` to the `currencyConvertResponse` extract variable
   * Press Save
   ![https client component](images/lab3-https-client-component_.png)
 
 * Your integration should look like this:
   ![integration](images/lab3-integration_.png)
 
-* Enable your integration and make an API call from the Browser, Postman or curl as follows:
-
-  > Mouse over the link icon to see the URL you need for the API call and copy the link
+* Enable your integration and make the same API call from your Browser, Postman or curl again.
   
-  ![API Link](images/lab2-API-Link.png)
-  
-  > Note that resource path might be different from "/invoices" according to what you defined
-
-  > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
-    
    ![API Call](images/lab2-APICall.png)
 
 * Find your transaction in the Monitor and click on it. You should see the For-each with some number inside indicating the number of invoices
@@ -325,7 +317,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
 * First we need to create our converted invoice with using the result of the conversion and setting its decimal precision to 2 digits since it is returned with more decimal digits.
   * Add a Map component inside the loop after the currency conversion and expand the bottom panel.
   * Add a temporary variable to map the current invoice, by doing the following:
-    * Right click on any variable on the right hand panel and select Extract and paste in the following JSON that represents what we want our resulting invoice looks like and click on Copy Node button
+    * Right click anywhere on the right hand panel and select Extract and paste in the following JSON that represents what we want our resulting invoice looks like and click on Copy Node button
 
     ```json
     {
@@ -340,7 +332,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
     }
     ```
   * Right click on any variable on the right hand panel and select Paste and name the variable `invoiceResponse`
-  * Click on it expand this variable
+  * Click on it to expand this variable
   * Expand `currencyConvertResponse` in the left hand panel
     * Add a map function using the '+fx' button, select DecimalPrecision in the Math category.
       * Drag a line from `currencyConvertResponse->result` to `decimal`
@@ -380,17 +372,9 @@ In this lab, we'll map our invoice and currency converted amount to the response
 Your integration is complete and should look like this:
 ![integration](images/lab4-integration.png)
 
-* Enable your integration and make an API call from the Browser, Postman or curl with the same URL you used before as follows:
+* Enable your integration and make the same API call from your Browser, Postman or curl again.
 
-  > Mouse over the link icon to see the URL you need for the API call and copy the link
-  
-  ![API Link](images/lab2-API-Link.png)
-  
-  > Note that resource path might be different from "/invoices" according to what you defined
-
-  > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the status query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?status=Overdue&currencycode=EUR") before sending the request
-  
-  ![API Call 2](images/lab4-APICall.png)
+  ![API Call 4](images/lab4-APICall.png)
 
 Your result should look similar to the following:
 

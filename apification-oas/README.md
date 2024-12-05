@@ -2,13 +2,13 @@
 
 ## Introduction
 
-In these labs, we'll implment an OpenAPI specifications with an integration to expose an API for invoices in a database. The integration will also orchestrate and aggregate the invoice data with a currency conversion service to convert the invoice amount to the desired currency as well as calculate a grand total amount of the invoices.
+In these labs, we'll implement an OpenAPI Specification with an integration to expose  invoices in a database. The integration will also orchestrate and aggregate the invoice data with a currency conversion service to convert the invoice amount to the desired currency as well as calculate a grand total amount of all the invoices that are in a given state.
 
-The API we are building will have the following method endpoint
+The API we are building will support the following method
 
 `GET /invoices?state=Overdue&currencycode=EUR`
 
-with sample response:
+and will have to provide responses like this:
 
 ```json
 {   
@@ -45,7 +45,7 @@ A demo is shown below:
 
 ![demo](images/intro-demo.gif)
 
-The integration linked to this API endpoint will do the following:
+The integration linked to this API method will do the following:
 
 * Parse the OpenAPI request with query parameters
 * Query a PostgreSql Database for invoices with requested state
@@ -74,7 +74,7 @@ In this set of labs, you will learn the following:
 
 The final integration is shown below:
 
-![integration](images/lab4-integration.png)
+![integration](images/intro-integration.png)
 
 ## Prerequisites
 
@@ -157,14 +157,14 @@ In this lab, we'll import our Invoice API, create our integration for the API en
 
 * Create a new project in Amplify Integration for this apificiation use-case. Use a unique name in case your not the only one to do this lab on your Amplify Integration tenant (e.g. XX_apification with XX being your name or initials).\
   ![new-project](images/lab2-new-project.png)
-* Create a new API (e.g. InvoiceAPI) by using the sample OpenAPI specification (OAS) for the Invoice API : **[InvoiceAPI-OAS.yaml](..\assets\InvoiceAPI-OAS.yaml)**.\
+* Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml](..\assets\InvoiceAPI-OAS.yaml)**.\
   ![api-import](images/lab2-api-create.png)
 * Edit the API settings to set a unique API base path (e.g. XX_api)
 * For the "GET /invoices" endpoint, use the button link integration on the right side of the method title\
   ![api-integration-link](images/lab2-api-integration-link.png)
   * Choose to create a new Integration (e.g. GetInvoicesByState)
-* The integration tab should open by itself, click on API Server component and check that linked endpoint is  "GET /invoices"
-* Expand Operations component and its Status component to see the integration flow*\
+* The integration tab should open by itself, click on API Server component and check that linked API operation is  "GET /invoices"
+* Expand Operations component and its Status component to see the integration flow\
   ![integration-init](images/lab2-integration-init.png)
 * Click the first `+` button in Operations to add a Database Select component and expand the bottom panel
   * We need to create a database connection for our Postgres database so click Add next to the Connection picker and give your connection a name and description (e.g. Neon Postgres DB)
@@ -185,23 +185,23 @@ In this lab, we'll import our Invoice API, create our integration for the API en
     * Close the plug sub tab and return to the Database Select component in your integration and click the refresh button in the Plug picker and select the newly created plug
   * Expand `get-invoices-by-stateAPIServerRequest` in the left hand panel to expose the `queryParams->state` and drag a line from state to `GetInvoicesBystateInput->where->invoice_state` in the ACTION PROPERTIES in the center panel
   * In the right hand panel set the value of the response `status` variable to `200` for now.
-  * Expand `get-invoices-by-stateAPIServerResponse` in the right hand panel to expose the `200` response and set its `grandTotal`  to the value `0` (this would be the default response if no invoices are found with the requested state)
-  * Expand `get-invoices-by-stateAPIServerResponse` in the right hand panel to expose the `200` response and set its `responseHeaders->Content-Type` to the value `application/json`
+  * Expand `get-invoices-by-stateAPIServerResponse` in the right hand panel to see response body format of the `200` case and set its `grandTotal`  to the value `0` (this will be the default response if no invoices are found for the requested state)
+  * Expand `get-invoices-by-stateAPIServerResponse->200->responseHeaders` to see the `200` response headers and set its `Content-Type` to the value `application/json`
   * Click the Save button \
   ![database component](images/lab2-database-component.png)
 
 Your integration should look like this: \
 ![integration](images/lab2-integration.png)
 
-* Enable your API from the API definition, and make an API call from your Browser, Postman or curl as follows:
+* Enable your API and make an API call from your Browser, Postman or curl as follows:
   
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
   ![API Link](images/lab2-API-Link.png)
   
-  > Note that base path should be different according to what you defined
+  > Note that the url corresponds to the API server of the selected dataplane, followed by the base path you chose at the sbeginign of this lab.
 
-  > Paste the URL you copy in your Browser, or in Postman or in a curl command , and add the method path and the query parameter values for our use case ("/invoices?state=Overdue&currencycode=EUR") before sending the request
+  > Paste the URL you copy in your Browser, or in Postman or in a curl command. Add the method path and the query parameter values for our use case ("/invoices?state=Overdue&currencycode=EUR") before sending the request
   
     ![API Call](images/lab2-APICall.png)  
 
@@ -264,18 +264,11 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 * Your integration should look like this:
   ![integration](images/lab3-integration.png)
 
-* Enable your API from the API definition, and make an API call from your Browser, Postman or curl as follows:
+* Enable your API and make the same API call from your Browser, Postman or curl again.
   
-  > Mouse over the link icon to see the URL you need for the API call and copy the link
-  
-  ![API Link](images/lab2-API-Link.png)
-  
-  > Note that base path should be different according to what you defined
+   ![API Call](images/lab2-APICall.png)
 
-  > Paste the URL you copy in your Browser, or in Postman or in a curl command , and add the method path and the query parameter values for our use case ("/invoices?state=Overdue&currencycode=EUR") before sending the request
-  
-
-* Find your transaction in the Monitor and click on it. You should see the For-each with some number inside indicating the number of invoices
+* Find your API transaction in the Monitor, click on the `+` sign next to Operations. You should see the For-each with some number inside indicating the number of invoices
 ![transaction monitoring](images/lab3-transaction-monitoring.png)
 * Click the `+` sign next to the For-each and again on one of the iterations
 * Click on the HTTP/S Client Get and then expand the HTTPSGetOutput to see the currency conversion API response
@@ -310,7 +303,7 @@ In this lab, we'll map our invoice and currency converted amount to the response
       * Drag a line from `currencyConvertResponse->result` to `decimal`
       * Set `precision` to 2
       * Drag a line from `output` to `invoiceResponse->totalamt`
-      ![map1](images/lab4-map1-decimalprocision.png)
+      ![map1](images/lab4-map1-decimalprecision.png)
       * Click on the DecimalPrecision function title to minimize and continue the mapping
     * Drag a line from `currencyConvertResponse->query->to` to `invoiceResponse->currency` in the right hand panel
   * Expand `GetInvoicesByStateOutput->response_resultSet` in the left hand panel and drag lines from:
@@ -335,32 +328,25 @@ In this lab, we'll map our invoice and currency converted amount to the response
     * Drag a line from `output` to `response->grandTotal`
     ![map2](images/lab4-map2-addfloats.png)
   * Complete the response fields
-    * Drag a line from `get-invoices-by-stateAPIServerRequest->queryParams->currencycode` on the left to `get-invoices-by-stateAPIServerResponse->200->currency` on the right
     * Drag a line from `get-invoices-by-stateAPIServerRequest->queryParams->state` on the left to `get-invoices-by-stateAPIServerResponse->200->state` on the right
-    * Set Value of `response->success` to `true`
+    * Drag a line from `get-invoices-by-stateAPIServerRequest->queryParams->currencycode` on the left to `get-invoices-by-stateAPIServerResponse->200->currency` on the right
     ![map2 addFloats](images/lab4-map2.png)
   * Click Save
 
 Your integration is complete and should look like this:
 ![integration](images/lab4-integration.png)
 
-* Enable your integration and make an API call from the Browser, Postman or curl with the same URL you used before as follows:
+* Enable your API and make the same API call from your Browser, Postman or curl again.
 
-  > Mouse over the link icon to see the URL you need for the API call and copy the link
-  
-  ![API Link](images/lab2-API-Link.png)
-  
-  > Note that resource path might be different from "/invoices" according to what you defined
-
-  > Paste the URL you copy in your Browser, or in Postman or in a curl command , add the query parameter values for our use case (set the state query parameter to 'Overdue' and the  currencycode query parameter is 'EUR', so your resource path with query params would be "/invoices?state=Overdue&currencycode=EUR") before sending the request
-  
-  ![API Call 2](images/lab4-APICall.png)
+  ![API Call 4](images/lab4-APICall.png)
 
 Your result should look similar to the following:
 
   ```json
   {
       "grandTotal": 1072.19,
+      "state": "Overdue",
+      "currency": "EUR",
       "invoices": [
           {
               "invnum": "IN4001",
@@ -382,10 +368,7 @@ Your result should look similar to the following:
               "currency": "EUR",
               "totalamt": 606.02
           }
-      ],
-      "currency": "EUR",
-      "state": "Overdue",
-      "success": true
+      ]
   }
   ```
 
