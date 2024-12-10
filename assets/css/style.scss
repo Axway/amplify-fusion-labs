@@ -6,23 +6,25 @@
 
 
 body {
-  font:14px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:18px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   
-  color:#2b2b2b;
-  font-weight:300;
+  color:#2b2b2b; */
+  font-weight: normal;
   margin: 0px;
   padding:0px 0 20px 0px;
-  background: white;
+  background: #F3ECE3;
 }
 h1, h2, h3, h4, h5, h6 { 
   color: #006580;
   margin:2rem  0 2rem;
   font-weight: normal;
+  line-height:1.5;
 }
 
 
-p, ul, ol, table, pre, dl {
+p, ul, ol, table, dl {
   margin:0 0 20px;
+  line-height:1.5;
 }
 
 h1, h2, h3 {
@@ -90,7 +92,7 @@ blockquote {
 
 code {
     font-family: 'Lucida Sans', Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-    font-size: 13px;
+    font-size: 18px;
     color: #00A0CC;
     text-shadow: none;
     margin: 0 2px;
@@ -117,10 +119,12 @@ pre {
   position: relative;
   padding: 1rem;
   border: 1px solid #ddd;
+  line-height:1;
   code {
     background-color: transparent;
     margin: 0px;
     padding: 0px;
+    font-size: 13px;
   }
 } 
 pre::before {
