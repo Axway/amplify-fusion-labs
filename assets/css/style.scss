@@ -104,16 +104,16 @@ code {
     margin: 0 2px;
     padding: 2px 6px;
     background: #D9D8D6;
-    border-radius: 2px
-      
-   
-      p  {    color: #d0d0d0;   } //punctuations
-      nl {    color: #00A0CC;   } //keys
-      s2 {    color: #d22630;   } //string value
-      mf {    color: #ff7200;   } //float value
-      mi {    color: #ff7200;   } //int value
-      kc {    color: #9581ff;   } //bollean value
-      
+    border-radius: 10px;
+}
+.highlight code {
+    .p   {    color: #d0d0d0;   } //punctuations
+    .nl  {    color: #00A0CC;   } //keys
+    .s2  {    color: #d22630;   } //string value
+    .mf  {    color: #ff7200;   } //float value
+    .mi  {    color: #ff7200;   } //int value
+    .kc  {    color: #9581ff;   } //bollean value
+    .err {    color: #d22630; background-color: transparent; }
 }
 
 pre {

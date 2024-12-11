@@ -50,11 +50,12 @@
 
       </section>
       <footer>
-        {% if site.github.is_project_page %}
-          <!-- p>Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p -->
-          <p>This page is maintained by <a href="https://university.axway.com">Axway University</a>.</p>
+        {% if site.owner_name %}
+          <p>This page is maintained by <a href="{{ owner_url }}">{{ owner_name }}</a>.</p>
         {% endif %}
-        <p><small>©2025 Axway<br>All Rights Reserved.</small></p>
+        {% if site.copyright %}
+          <p><small>©{{ site.copyright }}<br>All Rights Reserved.</small></p>
+        {% endif %}
       </footer>
     </div>
   </body>
