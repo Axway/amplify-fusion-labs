@@ -6,7 +6,7 @@
 
 
 body {
-  font:18px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:18px/22px 'Roboto', "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   
   color:#2b2b2b; 
   font-weight: normal;
@@ -54,6 +54,9 @@ a {
   color:#006580;
   font-weight:400;
   text-decoration:underline;
+  strong {
+    color: #006580;
+  }
 }
 /**
 a small {
@@ -88,15 +91,18 @@ blockquote {
   margin:0;
   padding:0 0 0 20px;
   font-style:italic;
+  code {
+    font-style: normal; 
+  }
 }
 
 code {
-    font-family: 'Lucida Sans', Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-    font-size: 18px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
     color: #00A0CC;
     text-shadow: none;
     margin: 0 2px;
-    padding: 2px 4px;
+    padding: 2px 6px;
     background: #D9D8D6;
     border-radius: 2px
       
