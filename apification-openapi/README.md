@@ -157,7 +157,7 @@ In this lab, we'll import our Invoice API, create our integration for the API en
 
 * Create a new project in Amplify Integration for this apificiation use-case. Use a unique name in case your not the only one to do this lab on your Amplify Integration tenant (e.g. XX_apification with XX being your name or initials).\
   ![new-project](images/lab2-new-project.png)
-* Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml](..\assets\InvoiceAPI-OAS.yaml)**.\
+* Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml](assets\InvoiceAPI-OAS.yaml)**.\
   ![api-import](images/lab2-api-create.png)
 * Edit the API settings to set a unique API base path (e.g. XX_api)
 * For the "GET /invoices" endpoint, use the button link integration on the right side of the method title\
