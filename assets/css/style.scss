@@ -398,7 +398,7 @@ nav {
     // }
   }
 }
-
+**/
 footer {
   width:180px;
   position: fixed;
@@ -407,8 +407,10 @@ footer {
   bottom:20px;
   text-align: right;
   line-height: 16px;
+  font-size: 14px ;
+  
 }
-**/
+
 @media print, screen and (max-width: 1090px) {
 
   div.wrapper {
