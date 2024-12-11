@@ -57,6 +57,12 @@
           <p><small>©{{ site.copyright }}<br>All Rights Reserved.</small></p>
         {% endif %}
       </footer>
+      <!-- Image lightbox -->
+      <div id="image-lightbox" class="modal">
+        <span class="modal-close">&times;</span>
+        <img id="lightboxed-image" class="modal-content">
+      </div>
+      <script src="{{ '/assets/js/image-lightbox.js' | relative_url }}"></script>
     </div>
   </body>
 </html>
