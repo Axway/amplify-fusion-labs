@@ -14,11 +14,11 @@ In these labs, we will build a very basic project and integration and version an
 * Access to Amplify Integration
   > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
 * Access to curl (or Postman)
-* Completion of the Use Case hands on labs in section 2
+* Completion of the Hello World hands on labs
 
 ## Lab 1
 
-In this lab, we'll create, test and version a very basic integration triggered by an HTTP/S Server GET,.
+In this lab we'll create, test and version a very basic integration triggered by an HTTP/S Server GET,.
 
 * Create a new project (e.g. deploytest)
 * Create an integration (e.g. test)
@@ -48,7 +48,7 @@ Now that our integration is working, let's version it
 
 ## Lab 2
 
-In this lab, we'll deploy our project to LIVE.
+In this lab we'll deploy our project to LIVE.
 
 > Note that it is best practice to deploy to CHECK first to perform QA but in this lab, we'll skip this intermediate step and go right to LIVE (production) since the steps are basically the same.
 
@@ -85,3 +85,52 @@ Now we can activate the integration and test it.
   curl --location '{{YOUR INTEGRATION URL}}/test' --header 'Authorization: Bearer abcde'
   ```
   The response should be `Hello from V1`
+
+## Lab 3
+
+In this lab we'll update our integration, version it to v2 and deploy it. Many of the steps will be a repeat of what we already did in lab 1 and lab 2
+
+* Make sure you only have one tab open and while in LVE mode disable the integration
+* Switch to DESIGN mode and open your project and integration
+* Edit the HTTP/S Server GET component and set the response to `Hello from V2` and save
+![lab3](images/lab3-deploy-version2-1.png)
+* Test your project and make sure your response is `Hello from V2`
+* Version your project to v2
+![lab3](images/lab3-deploy-version2-2.png)
+* Click the 3 dots next to the version and click Deploy
+* Give you deployment job a name and description (e.g. deploytest_v2_dj)
+![lab3](images/lab3-deploy-version2-3.png)
+* Run your deployment job and select LIVE
+![lab3](images/lab3-deploy-version2-4.png)
+* Make sure you have only one tab open and switch to Designer module and LIVE mode
+* Enable your integration and test it and make sure your response is `Hello from V2`
+
+## Lab 4
+
+In this lab we'll roll back the production (LIVE) to v1. This simulates a scenario where we discover that we have a defect in production.
+
+* Make sure you only have one tab open and while in LVE mode disable the integration
+* Switch to the Manager module, select DESIGN mode and click on Deployments and click on History
+![lab3](images/lab4-rollback-version2-1.png)
+* Click on the rollback Action button for your v2 deployment and select your deployment only and click OK
+![lab3](images/lab4-rollback-version2-2.png)
+![lab3](images/lab4-rollback-version2-3.png)
+* Since we rolled back our deployment, we will need to redo the Connection override as we did in Lab 2
+* Make sure you have only one tab open and switch to Designer module and LIVE mode
+* Enable your integration and test it and make sure your response is `Hello from V1`
+
+## Lab 5
+
+In this lab we'll revert our project back to v1, make modifications and then version it to v3 and deploy it.
+
+* Make sure you have only one tab open and switch to Designer module and DESIGN mode
+* Open your project and click on the history icon and click on the 3 dots next to v1
+![lab3](images/lab5-deploy-version3-1.png)
+* Click on Revert to revert to v1
+* Follow the instructions in lab 3 and set your response to `Hello from V3` and test it
+* Refresh your browser tab and click on the history icon and create a new version V3
+![lab3](images/lab5-deploy-version3-2.png)
+![lab3](images/lab5-deploy-version3-3.png)
+* Deploy V3 as we did in lab 3 (e.g. deploytest_v3_dj). Remember that you'll need to disable your integration in LIVE prior to running your v3 deployment job
+![lab3](images/lab5-deploy-version3-4.png)
+* Enable your integration in LIVE and test it and make sure your response is `Hello from V3`
