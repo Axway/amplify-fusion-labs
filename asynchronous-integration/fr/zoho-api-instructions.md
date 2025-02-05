@@ -30,15 +30,15 @@
     `.com` si besoin )![API console](../assets/zoho-api-instructions/image4.png)
 
 9. Créez une "server-based application"
-   - Nommez le client "Axway Amplify Integration"
-   - Entrez l'URL Racine de votre Control Plane Amplify Integration pour le Homempage URL
+   - Nommez le client "Axway Amplify Fusion"
+   - Entrez l'URL Racine de votre Control Plane Amplify Fusion pour le Homempage URL
    - Ajoutez "/design/oauth2/callback" au même URL pour le redirect URL![server-based application](../assets/zoho-api-instructions/image5.png)
 
 10. Notez le Client ID et Secret pour plus tard 
 
-## Configuration sur Amplify Integration
+## Configuration sur Amplify Fusion
 
-1. Ouvrez votre projet Amplify Integration et ajoutez un connecteur "OpenAPI client"
+1. Ouvrez votre projet Amplify Fusion et ajoutez un connecteur "OpenAPI client"
     - Nommez le "**ZohoAPI**"
     - Sélectionnez l'option OpenAPI file et téléchargez le fichier JSON correspondant (en utilisant une copie locale de [Zoho-Invoice-oas3.json](../assets/Zoho-Invoice-oas3.json))
     - Configurez le serveur **<https://invoice.zoho.com>** (changez le suffixe `.com` du domaine si nécessaire)

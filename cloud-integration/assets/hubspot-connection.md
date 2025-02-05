@@ -1,12 +1,12 @@
-# Amplify Integration - Hubspot Connection Guide
+# Amplify Fusion - Hubspot Connection Guide
 
-This guide describes how to create an Amplify Integration Hubspot Connection.
+This guide describes how to create an Amplify Fusion Hubspot Connection.
 
 We will do the following:
 
 * Create a Hubspot Connected App and configure the OAuth settings
-* Create an Amplify Integration Hubspot Connection using these settings
-* Test our new Amplify Integration Hubspot Connection
+* Create an Amplify Fusion Hubspot Connection using these settings
+* Test our new Amplify Fusion Hubspot Connection
 
 ## Hubspot Connected App
 
@@ -17,17 +17,17 @@ We will do the following:
 * In your developer account, click on Manage Apps and click the Create App button to create a new app
   ![hubspot02](hubspot-connection/hubspot02.png)
 * Give your app a name (e.g. AIP App) and optional Logo and Description
-* Click on the Auth tab to see your Client ID and Client Secret. You will need these when you setup the Amplify Integration Hubspot Connection
+* Click on the Auth tab to see your Client ID and Client Secret. You will need these when you setup the Amplify Fusion Hubspot Connection
   ![hubspot03](hubspot-connection/hubspot03.png)
 * Scroll down to the Redirect URLs and enter the following Redirect URL and press Save:
   `<<YOUR AIP BASE URL>>/design/oauth2/callback`
   ![hubspot04](hubspot-connection/hubspot04.png)
 * Scroll down to the Scopes section and select your desired scopes. For example, I selected the contact CRM scopes below:
   ![hubspot05](hubspot-connection/hubspot05.png)
-* We will need the list of selected scopes when we create the Amplify Integration Hubspot Connection. For my settings, they are as follows:
+* We will need the list of selected scopes when we create the Amplify Fusion Hubspot Connection. For my settings, they are as follows:
 `crm.schemas.contacts.write crm.objects.contacts.write crm.schemas.contacts.read crm.objects.contacts.read crm.objects.custom.read oauth`
 
-## Amplify Integration Hubspot Connection
+## Amplify Fusion Hubspot Connection
 
 * Create a new Connection and select Hubspot and give it a name and description
   ![hubspot06](hubspot-connection/hubspot06.png)

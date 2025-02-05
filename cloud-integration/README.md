@@ -25,8 +25,8 @@ Your final integration should like this:
 
 ## Pre-requisites
 
-* Access to Amplify Integration
-  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
+* Access to Amplify Fusion
+  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Fusion Training Environment Access Request`
 * A **Salesforce developer instance**
   > If you don't have a developer instance, details to sign up for free will be provided in the lab below.
   > If you already use Salesforce as a CRM in your organization, don't use your corporate account for this lab and sign-up for a developer account not using your corporate email address as username.
@@ -41,8 +41,8 @@ Before you start, make sure you have Salesforce and Hubspot accounts that you ca
 
 In this lab, we'll set up a Salesforce push topic and start our integration by adding a Salesforce Pushtopic listener as a trigger to our integration.
 
-* Create a new project in Amplify Integration for this CRM cloud integration. Use a unique name in case your not the only one to do this lab on your Amplify Integration tenant.
-* Follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Integration Salesforce Connection and generate a token and test the connection \
+* Create a new project in Amplify Fusion for this CRM cloud integration. Use a unique name in case your not the only one to do this lab on your Amplify Fusion tenant.
+* Follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Fusion Salesforce Connection and generate a token and test the connection \
 ![salesforce connection](images/lab1-salesforce-connection.png)
 * Create a PushTopic in the Salesforce Developer Console
   * Open the Salesforce Developer Console \
@@ -67,7 +67,7 @@ In this lab, we'll set up a Salesforce push topic and start our integration by a
 
     ![salesforce apex code pushtopic](images/lab1-salesforce-apex-code-pushtopic.png)
 
-* Go back to your Amplify Integration project
+* Go back to your Amplify Fusion project
 * Create a Plug for Salesforce (e.g. SFDCContactPush), and configure it:
   * Select the Salesforce Connection you created previously
   * Select `SubscribePushTopic` for Actions

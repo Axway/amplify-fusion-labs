@@ -31,7 +31,7 @@
   ![salesforce10](salesforce-connection/salesforce10.png)
 
 - Enable **OAuth Settings** should be checked and
-  - Enter the **Callback URLs**. For example, if your Amplify Integration control plane URL is  `https://axway-university.integration.us.axway.com`, your callback URL to generate tokens will be `https://axway-university.integration.us.axway.com/design/oauth2/callback`.
+  - Enter the **Callback URLs**. For example, if your Amplify Fusion control plane URL is  `https://axway-university.integration.us.axway.com`, your callback URL to generate tokens will be `https://axway-university.integration.us.axway.com/design/oauth2/callback`.
   - Choose the following scopes in the **Available OAuth Scopes** and **Add** them to the **Selecected OAuth Scopes** .
     - Full access (full)
     - Manage user data via APIs (api)
@@ -43,14 +43,14 @@
 
 - **Save** the app and then click **Continue**.
 
-- Click on **Manage Consumer Details** button, and copy the **Consumer Key** and **Consumer Secret** or keep the page open for later. These consumer details will be used when creating your Salesforce connection on Amplify Integration \
+- Click on **Manage Consumer Details** button, and copy the **Consumer Key** and **Consumer Secret** or keep the page open for later. These consumer details will be used when creating your Salesforce connection on Amplify Fusion \
   ![salesforce12](salesforce-connection/salesforce12.png)
 
-## Amplify Integration Setup
+## Amplify Fusion Setup
 
-You must configure a Salesforce Connection to connect Amplify Integration to your Salesforce instance .
+You must configure a Salesforce Connection to connect Amplify Fusion to your Salesforce instance .
 
-- From Amplify Integration, Navigate to **New** in the top right corner. \
+- From Amplify Fusion, Navigate to **New** in the top right corner. \
 ![salesforce13](salesforce-connection/salesforce13.png)
 
 - Select the **Connections** tab from the left side menu, choose the **Salesforce** connection and then click **Next**. \

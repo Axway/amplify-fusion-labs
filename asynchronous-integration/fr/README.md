@@ -43,8 +43,8 @@ L'intégration finale est illustrée ci-dessous :
 
 Avant de démarrer cet exercice assurez vous d'avoir:
 
-* Un accès à Amplify Integration
-  > Si vous n'avez pas de compte, veuillez contacter **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** par mail avec en objet `Amplify Integration Training Environment Access Request`
+* Un accès à Amplify Fusion
+  > Si vous n'avez pas de compte, veuillez contacter **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Integration%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Integration%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** par mail avec en objet `Amplify Fusion Training Environment Access Request`
 * Un compte [**Zoho Invoice**](https://www.zoho.com/invoice/) gratuit
 * Une instance RabbitMQ sur CloudAMQ et une queue afin de publier dessus. [**CloudAMQ**](https://www.cloudamqp.com/) propose un forfait gratuit recommandé pour cet exercice. Suivez ce guide pour créer une instance gratuitement [**RabbitMQ tutorial**](rabbitmq-instructions.md) . 
 * Un Accès à **Microsoft Teams** et la capacité d'installer le connecteur Webhook entrant sur un canal
@@ -83,7 +83,7 @@ Dans cette étape, nous allons mettre en place le premier flux qui interroge Zoh
 * Cliquer sur Add à côté de Connection et donner un nom et une description à celle-ci.
 * Consulter vos détails CloudAMQ RabbitMQ pour récupérer la configuration (URL endpoint, Username et Password).
   ![CloudAMQ RabbitMQ details](../images/lab1-cloud-rabbitmq-details.jpg)
-* Dans la fenêtre Connection de Amplify Integration
+* Dans la fenêtre Connection de Amplify Fusion
   * Renseigner `Protocol` (ici, AMQP)
   * Renseigner `Host` et `port`
   * Renseigner le `VirtualHost` CloudAMQ

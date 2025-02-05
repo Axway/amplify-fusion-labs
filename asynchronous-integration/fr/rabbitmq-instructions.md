@@ -33,7 +33,7 @@
 9. Cliquer sur le nom de votre instance afin d'afficher aux détails comme son URL ou bien ses identifiants
     ![instance details](../assets/rabbitmq-instructions/cloudamq10.jpg)
 
-10. Les informations suivantes seront nécessaire pour la configuration d'un composant RabbitMQ dans Amplify Integration: 
+10. Les informations suivantes seront nécessaire pour la configuration d'un composant RabbitMQ dans Amplify Fusion: 
 - Dans la section **General**
   - Cluster
 - Dans la section **AMQP details**
