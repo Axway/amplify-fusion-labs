@@ -2,14 +2,14 @@
 
 ## Introduction
 
-In these labs, we'll create an Contact API to proxy a backend API. We will set up API proxy will handle both backend and frontend security. Alos, we will implement one of the API operation with a custom integration making the API being in hybrid mode, mixing proxy mode and apificiation.
+In these labs, we'll create a Contact API to proxy a backend API. We will set up an API proxy that will handle both backend and frontend security. Also, we will implement one of the API operations with a custom integration, making the API operate in hybrid mode, mixing proxy mode and apification.
 
-The API we are building will support the following operation
+The API we are building will support the following operations:
 
 * GET /contacts: Find Contacts (will be linked to an integration)
 * POST /contacts: Create New Contact (proxy mode)
-* GET /contacts/{contactId}: Get Contact Information by ID  (proxy mode)
-* PATCH /contacts/{contactId}: Update Contact Information(proxy mode)
+* GET /contacts/{contactId}: Get Contact Information by ID (proxy mode)
+* PATCH /contacts/{contactId}: Update Contact Information (proxy mode)
 
 This data flow is illustrated below:
 
@@ -20,8 +20,8 @@ In this set of labs, you will learn the following:
 * How to proxy an existing backend API
 * How to test backend connection and set backend API security to be used
 * How to implement one of the API operations with a customized integration flow (apification)
-* How to secure your API with API Key
-* How to manage consumer application with API access and keys.
+* How to secure your API with an API Key
+* How to manage consumer applications with API access and keys.
 
 ## Prerequisites
 
