@@ -155,7 +155,7 @@ Now the database is ready.
 
 In this lab, we'll import our Invoice API, create our integration for the API endpoint and then we'll query our database for invoices with the given state.
 
-* Create a new project in Amplify Fusion for this apificiation use-case. Use a unique name in case your not the only one to do this lab on your Amplify Fusion tenant (e.g. XX_apification with XX being your name or initials).\
+* Create a new project in Amplify Fusion for this apificiation use-case. Use a unique name in case you're not the only one doing this lab on your Amplify Fusion tenant (e.g. XX_apification with XX being your name or initials).\
   ![new-project](images/lab2-new-project.png)
 * Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml](assets\InvoiceAPI-OAS.yaml)**.\
   ![api-import](images/lab2-api-create.png)
