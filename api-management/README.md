@@ -40,6 +40,7 @@ Let's create a mock backend API in WireMock.
   ![wiremock-import](images/lab1-import.png).
 
 * Copy the generated base URL of the mock backend API
+  ![wiremock-import](images/lab1-copy-backendurl.png)
 
 Now the mock backend API is ready.
 
