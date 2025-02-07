@@ -76,9 +76,65 @@ Now, activate your API and test it:
 * Test every method from Postman or curl as follows:
   > Test the following operations after replacing `{{api_base_url}}` with the base URL you've just copied:
   * `curl --request GET   {{api_base_url}}/contacts --write-out "\n%{http_code}"`
+    * Sample response:
+      ```json
+      {
+        "contacts": [
+          {
+            "id": 142,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@gmail.com",
+            "emailVerified": true,
+            "creationDate": "2024-08-24"
+          },
+          {
+            "id": 13,
+            "firstName": "Rebecca",
+            "lastName": "Baker",
+            "email": "rebecca@gmail.com",
+            "emailVerified": false,
+            "creationDate": "2025-01-31"
+          }
+        ]
+      }
+      ```
   * `curl --request GET   {{api_base_url}}/contacts/142 --write-out "\n%{http_code}"`
+    * Sample response:
+      ```json
+      {
+        "id": 142,
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "email": "alice.smith@gmail.com",
+        "emailVerified": true,
+        "creationDate": "2025-03-14"
+      }
+      ```
   * `curl --request POST  {{api_base_url}}/contacts --data '{ "email": "bob.fellow@gmail.com", "firstName": "Bob", "lastName": "Fellow"}' --write-out "\n%{http_code}"`
+    * Sample response:
+      ```json
+      {
+        "id": 12,
+        "firstName": "Bob",
+        "lastName": "Fellow",
+        "email": "bob.fellow@gmail.com",
+        "emailVerified": false,
+        "creationDate": "2025-03-31"
+      }
+      ```
   * `curl --request PATCH {{api_base_url}}/contacts/13 --data '{ "emailVerified": true }' --write-out "\n%{http_code}"`
+    * Sample response:
+      ```json
+      {
+        "id": 13,
+        "firstName": "Rebecca",
+        "lastName": "Baker",
+        "email": "rebecca@gmail.com",
+        "emailVerified": true,
+        "creationDate": "2025-03-14"
+      }
+      ```
 
 ## Lab 3
 
@@ -86,7 +142,7 @@ In this lab, we will see how we can handle backend security.
 
 * Modify the mock backend API to add some security:
   * Open your mock API on WireMock
-  * Click on settings and in "Mock API security", set:
+  * Click on settings button (gear( and scroll down to the "Mock API security" section, and set the following:
     * Security type = `Header match`
     * Header = "`apikey`"
     * Predicate = `Equal to`
@@ -127,6 +183,7 @@ Let's update the API to implement the "Find Contacts" operation:
   * Choose to create a new Integration, give it a name and a description, and click on "Link Integration"
   ![create-integration](images/lab4-create-integration.png)
 * The integration tab should open by itself. Click on the API Server component and check that the linked API operation is "GET /contacts"
+  ![create-integration](images/lab4-check-apiserver.png)
 * Expand the Operations component and its Status component to see the integration flow. You can add some labels to them.
   ![integration-init](images/lab4-integration-init.png)
 * Click the first `+` button in Operations and add an If-Else component. Expand the If-Else and label it "check input query params"
@@ -162,7 +219,7 @@ Let's update the API to implement the "Find Contacts" operation:
         ```
 
       * Right-click again anywhere in the right-hand panel and select Paste, then name your variable `backendResponse`.
-      * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->response` to the `backendResponse` extract variable.
+      * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->response` to the `backend-response` extract variable.
       * Right-click again anywhere in the right-hand panel and select Extract, then paste in the following JSON that describes the currency converter API response object and click on Copy Node button:
 
         ```json
@@ -173,7 +230,7 @@ Let's update the API to implement the "Find Contacts" operation:
         ```
 
       * Right-click again anywhere in the right-hand and select Paste, then name your variable `backendResponse`.
-      * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->response` to the `backendResponse` extract variable.
+      * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->response` to the `backend-error` extract variable.
     * Right-click `HTTPSGetOutput` on the very right side and choose drop (to get rid of data that we don't need later in the integration).
 
   ![http-client-pipeline](images/lab4-http-client-pipeline.png)
@@ -205,7 +262,38 @@ The integration linked to the first operation should look like this: \
   > Test the following operations after replacing the `{{api_base_url}}` with the base URL of the API:
 
   * `curl --request GET   {{api_base_url}}/contacts?createdSince='2024-01-01' --write-out "\n%{http_code}"`
+    * Sample response:
+      ```json
+      {
+        "count": 2,
+        "contacts": [
+          {
+            "id": 142,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@gmail.com",
+            "emailVerified": true,
+            "creationDate": "2024-08-24"
+          },
+          {
+            "id": 13,
+            "firstName": "Rebecca",
+            "lastName": "Baker",
+            "email": "rebecca@gmail.com",
+            "emailVerified": false,
+            "creationDate": "2025-01-31"
+          }
+        ]
+      }
+      ```
   * `curl --request GET   {{api_base_url}}/contacts --write-out "\n%{http_code}"`
+    * Sample response:
+      ```json
+      {
+        "code": "400-Q",
+        "message": "Missing at least one query parameter for your research"
+      }
+      ```
 
 ## Lab 5
 
