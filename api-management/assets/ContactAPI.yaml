@@ -1,0 +1,351 @@
+openapi: 3.1.0
+info:
+  title: Contact API
+  description: 'This API allows you to create, search, update, and retrieve contacts. It is designed to help manage contact information efficiently.'
+  license:
+    name: Apache License
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: '1.2'
+  contact:
+    name: Axway
+    url: https://axway.com
+    email: support@axway.com
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - name: Contacts
+    description: Contacts
+paths:
+  /contacts:
+    get:
+      tags:
+        - Contacts
+      summary: Find Contacts
+      description: 'Search for contacts by email , name , or creation dates'
+      operationId: find-contacts
+      parameters:
+        - name: email
+          in: query
+          description: email searched. wildcard characters are supported
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: last name searched. wildcard characters are supported
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: firstName
+          in: query
+          description: first name searched. wildcard characters are supported
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: createdSince
+          in: query
+          description: earliest contact creation date
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - contacts
+                properties:
+                  contacts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Contact'
+                  count:
+                    type: integer
+              examples:
+                Search result:
+                  value:
+                    contacts:
+                      - id: 142
+                        firstName: Alice
+                        lastName: Smith
+                        email: alice.smith@gmail.com
+                        emailVerified: true
+                        creationDate: '2024-08-24'
+                      - id: 13
+                        firstName: Rebecca
+                        lastName: Baker
+                        email: rebecca@gmail.com
+                        emailVerified: false
+                        creationDate: '2025-01-31'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid request:
+                  value:
+                    code: '400'
+                    message: Invalid request parameters
+      servers:
+        - url: 'http://localhost:3000'
+    post:
+      tags:
+        - Contacts
+      summary: Create New Contact
+      description: Create a new contact.
+      operationId: post-contact
+      requestBody:
+        description: Post the necessary fields for the API to create a new contact.
+        content:
+          application/json:
+            schema:
+              required:
+                - email
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                email:
+                  type: string
+            examples:
+              Create Contact Bob Fellow:
+                value:
+                  firstName: Bob
+                  lastName: Fellow
+                  email: bob.fellow@gmail.com
+      responses:
+        '200':
+          description: Contact Created
+          content:
+            application/json:
+              schema:
+                title: Contact
+                required:
+                  - creationDate
+                  - email
+                  - emailVerified
+                  - id
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier for the given contact.
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                  emailVerified:
+                    type: boolean
+                    description: Set to true if the contact's email has been verified.
+                  creationDate:
+                    type: string
+                    description: The date that the contact was created.
+                    format: date
+              examples:
+                New Contact Bob Fellow:
+                  value:
+                    id: 12
+                    firstName: Bob
+                    lastName: Fellow
+                    email: bob.fellow@gmail.com
+                    emailVerified: false
+                    creationDate: '2025-03-31'
+        '400':
+          description: Missing Required Information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid request:
+                  value:
+                    code: '400'
+                    message: Invalid creation request
+        '409':
+          description: Email Already Taken
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Conflict:
+                  value:
+                    code: '409'
+                    message: Email Already Taken
+      servers:
+        - url: 'http://localhost:3000'
+  '/contacts/{contactId}':
+    get:
+      tags:
+        - Contacts
+      summary: Get Contact Information by ID
+      description: Retrieve the information of the contact with the matching contact ID.
+      operationId: get-contacts-contactId
+      parameters:
+        - name: contactId
+          in: path
+          description: Id of an existing contact.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            example: 142
+      responses:
+        '200':
+          description: Contact Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+              examples:
+                Get Contact Alice Smith:
+                  value:
+                    id: 142
+                    firstName: Alice
+                    lastName: Smith
+                    email: alice.smith@gmail.com
+                    emailVerified: true
+                    creationDate: '2025-03-14'
+        '404':
+          description: Contact Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Not Found:
+                  value:
+                    code: '404'
+                    message: Contact Not Found
+      servers:
+        - url: 'http://localhost:3000'
+    patch:
+      tags:
+        - Contacts
+      summary: Update Contact Information
+      description: Update the information of an existing contact.
+      operationId: patch-contacts-contactId
+      parameters:
+        - name: contactId
+          in: path
+          description: Id of an existing contact.
+          required: true
+          style: simple
+          explode: false
+          schema: 
+            type: string
+      requestBody:
+        description: Patch contact properties to update.
+        content:
+          application/json:
+            schema:
+              properties:
+                firstName: 
+                  type: string
+                email:
+                  type: string
+                  description: 'If a new email is given, the contact''s email verified property will be set to false.'
+                emailVerified: 
+                  type: boolean
+            examples:
+              Update First Name:
+                value:
+                  firstName: Rebecca
+              Update Email:
+                value:
+                  email: rebecca@gmail.com
+              Verify Email:
+                value:
+                  emailVerified: true
+      responses:
+        '200':
+          description: Contact Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+              examples:
+                Updated Contact Rebecca Baker:
+                  value:
+                    id: 13
+                    firstName: Rebecca
+                    lastName: Baker
+                    email: rebecca@gmail.com
+                    emailVerified: true
+                    creationDate: '2025-03-14'
+        '404':
+          description: Contact Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Not Found:
+                  value:
+                    code: '404'
+                    message: Contact Not Found
+        '409':
+          description: Email Already Taken
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'              
+              examples:
+                Conflict:
+                  value:
+                    code: '409'
+                    message: Email Already Taken
+      servers:
+        - url: 'http://localhost:3000'
+components:
+  schemas:
+    Contact:
+      title: Contact
+      type: object
+      required:
+        - id
+        - email
+        - emailVerified
+        - creationDate
+      properties:
+        id:
+          description: Unique identifier for the given contact.
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        emailVerified:
+          description: Set to true if the contact's email has been verified.
+          type: boolean
+        creationDate:
+          description: The date that the contact was created.
+          type: string
+    Error:
+      title: Error
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
