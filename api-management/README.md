@@ -142,7 +142,7 @@ In this lab, we will see how we can handle backend security.
 
 * Modify the mock backend API to add some security:
   * Open your mock API on WireMock
-  * Click on settings button (gear( and scroll down to the "Mock API security" section, and set the following:
+  * Click on settings (gear button on the left menu) and scroll down to the "Mock API security" section, and set the following:
     * Security type = `Header match`
     * Header = "`apikey`"
     * Predicate = `Equal to`
@@ -180,7 +180,7 @@ Let's update the API to implement the "Find Contacts" operation:
 
 * For the "GET /contacts - Find contacts" endpoint, use the button link integration on the right side of the operation title\
   ![link-integration](images/lab4-link-integration.png)
-  * Choose to create a new Integration, give it a name and a description, and click on "Link Integration"
+  * Choose to create a new Integration, give it a name and a description, and click on "Link Integration" \
   ![create-integration](images/lab4-create-integration.png)
 * The integration tab should open by itself. Click on the API Server component and check that the linked API operation is "GET /contacts"
   ![create-integration](images/lab4-check-apiserver.png)
@@ -218,7 +218,7 @@ Let's update the API to implement the "Find Contacts" operation:
         }
         ```
 
-      * Right-click again anywhere in the right-hand panel and select Paste, then name your variable `backendResponse`.
+      * Right-click again anywhere in the right-hand panel and select Paste, then name your variable `backend-response`.
       * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->response` to the `backend-response` extract variable.
       * Right-click again anywhere in the right-hand panel and select Extract, then paste in the following JSON that describes the currency converter API response object and click on Copy Node button:
 
@@ -229,8 +229,8 @@ Let's update the API to implement the "Find Contacts" operation:
         }
         ```
 
-      * Right-click again anywhere in the right-hand and select Paste, then name your variable `backendResponse`.
-      * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->response` to the `backend-error` extract variable.
+      * Right-click again anywhere in the right-hand and select Paste, then name your variable `backend-error`.
+      * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->errors` to the `backend-error` extract variable.
     * Right-click `HTTPSGetOutput` on the very right side and choose drop (to get rid of data that we don't need later in the integration).
 
   ![http-client-pipeline](images/lab4-http-client-pipeline.png)
@@ -306,7 +306,7 @@ Let's update the API to add front-end security:
 * Open the Security tab in the API configuration
 * Select API Key and add a new governance rule
 ![api-security](images/lab5-api-security.png)
-* Create a Governance Rule for API key to be provided in a header named "api_key"
+* Create a Governance Rule for API key to be provided in a header named "API-Key"
 ![api-gov-rule](images/lab5-gov-rule.png)
 * Save the changes of the API configuration
 * Activate your API on the data plane
