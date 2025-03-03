@@ -109,10 +109,10 @@ Now that we can publish an updated invoice to RabbitMQ queue, let's create a Rab
 In this lab, we'll consume a RabbitMQ message from the `invoices` queue and send a notification with some invoice details to Microsoft Teams.
 
 * Create an integration (e.g. InvoiceNotifier)
-* Click on the Event button and select the RabbitMQ Consume Component and select the RabbitMQ connector used in the first integration and enter the queue name (e.g. invoices) and press save
+* Click on the Event button and select the **RabbitMQ Consume** Component and select the RabbitMQ connector used in the first integration and enter the queue name (e.g. **invoices**) and press `Save`
   ![rabbitmq consume component](images/lab2-rabbitmq-consume-component.jpg)
 * Add a Map component to parse the RabbitMQ message and expand the bottom panel
-* Right click on any variable on the right hand side and select Extract and paste in the following invoice payload sample and click Copy Node
+* Right click on any variable on the right hand side and select `Extract` and paste in the following invoice payload sample and click Copy Node
 
   ```json
   {

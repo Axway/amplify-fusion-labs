@@ -9,8 +9,8 @@
    ![signup](rabbitmq-instructions/cloudamq02.jpg)
 
 3. Once your account is created and you first login, you have to create a team :
-   - Put a team name, 
-   - Accept tems of services, 
+   - Put a team name,
+   - Accept tems of services,
    - Decline GDPR
    - Click on **Create team**
    ![create a team](rabbitmq-instructions/cloudamq04.jpg)
@@ -33,7 +33,8 @@
 9. Click on your instance name to display details like URL and credentials
     ![instance details](rabbitmq-instructions/cloudamq10.jpg)
 
-10. In order to configure an Amplify Fusion Connection, copy the following information: 
+10. In order to configure an Amplify Fusion Connection, copy the following information:
+
 - From **General**
   - Cluster
 - From **AMQP details**
@@ -41,19 +42,21 @@
   - Password
   - Port (non TLS)
 
-  ## Create a RabbitMQ queue and a routing rule
-    To publish a message in RabbitMQ, you need to create a queue and a routing rule. You can read about CloudAMQP RabbitMQ Exchanges and a Routing Keys [here](https://www.cloudamqp.com/blog/part4-rabbitmq-for-beginners-exchanges-routing-keys-bindings.html).
+## Create a RabbitMQ queue and a routing rule
 
-  1. Click the RabbitMQ Manager button in your CloudAMQP cluster Overview page
-   ![rabbitmq manager ](rabbitmq-instructions/cloudamq12.jpg)
+To publish a message in RabbitMQ, you need to create a queue and a routing rule. You can read about CloudAMQP RabbitMQ Exchanges and a Routing Keys [here](https://www.cloudamqp.com/blog/part4-rabbitmq-for-beginners-exchanges-routing-keys-bindings.html).
 
-   2. Click on the `Queues and Streams` tab and add a new queue.
-   Enter a **Name** and click on **Add queue** button
-    ![rabbitmq queue1 ](rabbitmq-instructions/cloudamq13.jpg)
-    ![rabbitmq queue2 ](rabbitmq-instructions/cloudamq14.jpg)
+1. Click the `RabbitMQ Manager` button in your CloudAMQP cluster Overview page
+![rabbitmq manager ](rabbitmq-instructions/cloudamq12.jpg)
 
-   3. One your queue is created, click on your queue name, then go to `Bindings` section.
-      - Set **amq.topic** in `From exchange`
-      - Set **invoiceKey** in `Routing key`
-      - Click on `Bind` button to save.
+2. Click on the `Queues and Streams` tab and add a new queue. \
+   In the `Add a new queue section`, set **invoices** in `Name`  \
+   ![rabbitmq queue1 ](rabbitmq-instructions/cloudamq13.jpg) \
+   Click on `Add queue` button\
+   ![rabbitmq queue2 ](rabbitmq-instructions/cloudamq14.jpg)
+
+3. One your queue is created, click on your queue name, then go to `Bindings` section.
+   - Set **amq.topic** in `From exchange`
+   - Set **invoiceKey** in `Routing key`
+   - Click on `Bind` button to save.
 ![rabbitmq binding ](rabbitmq-instructions/cloudamq15.jpg)

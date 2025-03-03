@@ -56,7 +56,7 @@ Avant de démarrer cet exercice assurez vous d'avoir:
 Dans cette étape, nous allons mettre en place le premier flux qui interroge Zoho Invoice à propos des mises à jour de factures et publie pour chacune un message dans RabbitMQ.
 
 * Créer une intégration (par exemple: InvoiceHandler)
-* Cliquer sur le bouton **Event**, sélectionner l'évènement déclencheur **Scheduler** et le régler à 60 secondes
+* Cliquer sur le bouton `Event`, sélectionner l'évènement déclencheur **Scheduler** et le régler à 60 secondes
   ![scheduler](../images/lab1-scheduler.png)
 * Cliquer sur Test pour lancer l'intégration. Cette opération initialisera l'horodatage de la dernière exécution, `LastRunDt-...`. Cette variable intégrée contiendra toujours l'horodatage de la dernière exécution de l'intégration. Nous pourrons l'utiliser pour interroger à propos des modifications dans les sources de données backend.
 * Afin d'interroger Zoho Invoice à propose des mises à jour de  factures, nous utiliserons l'horodatage intégré de la dernière exécution, `LastRunDt-...` pour comparer avec l'horodatage de la facture modifiée `last_modified_time`. Mais pour cela nous devons le convertir au format d'horodatage de Zoho Invoice en utilisant une fonction dans un composant Map. Cliquez sur le bouton `+` pour ajouter un composant MAP puis étendez le panneau inférieur et ajoutez une fonction DateFormat
@@ -112,7 +112,7 @@ Maintenant que nous pouvons publier une facture mise à jour sur RabbitMQ, créo
 Dans cette étape, nous allons consommer un message RabbitMQ provenant de la queue `invoices` et envoyer une notification avec quelques détails de la facture sur Microsoft Teams
 
 * Créer une intégration (par exemple: InvoiceNotifier)
-* Cliquer sur le bouton `Event`, sélectionner l'évènement déclencheur **RabbitMQ Consume** puis sélectionner la connexion utilisée dans la première intégration et entrer le nom de la queue (par ex: invoices) et cliquer sur `Save`
+* Cliquer sur le bouton `Event`, sélectionner l'évènement déclencheur **RabbitMQ Consume** puis sélectionner la connexion utilisée dans la première intégration et entrer le nom de la queue (par ex: **invoices**) et cliquer sur `Save`
   ![RabbitMQ consume component](../images/lab2-rabbitmq-consume-component.jpg)
 * Ajouter ensuite un composant Map pour analyser le message RabbitMQ puis agrandir le panneau inférieur 
 * Faire un clic droit sur n'importe quelle variable du panneau de droite et sélectionner `Extract` puis coller l'exemple d'Invoice payload suivant. Cliquer ensuite sur `Copy Node`
