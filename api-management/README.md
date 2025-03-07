@@ -33,13 +33,16 @@ In this set of labs, you will learn the following:
 
 Let's create a mock backend API in WireMock.
 
-* Start creating a Mock API at <https://app.wiremock.cloud/mock-apis/create>
-  * Choose the "Unstructured" option and click on "Create Mock API"
-  * Set "mock backend" as the API name and click Save
-* Click on Import and paste the content of this file **[ContactAPI.yaml](assets\ContactAPI.yaml)**.
+* Start creating a Mock API at <https://app.wiremock.cloud/mock-apis/create-flow>
+  * Select the "Unstructured" option and click on "Import"
+  * Set "mock backend" as the name
+  * Customize the hostname so it is unique (e.g., mock-backend-XX with XX being your name or initials)
+  * Click "Continue" \
+  ![wiremock-import](images/lab1-create.png).
+  * Paste the content of this file **[ContactAPI.yaml](assets\ContactAPI.yaml)** in the Text area and click "Import" \
   ![wiremock-import](images/lab1-import.png).
-
-* Copy the generated base URL of the mock backend API
+  * Click "View Mock API"
+* Copy the base URL of the mock backend API \
   ![wiremock-import](images/lab1-copy-backendurl.png)
 
 Now the mock backend API is ready.
