@@ -77,8 +77,8 @@ Now, activate your API and test it:
   > Note that the URL corresponds to the API server of the selected data plane, followed by the base path you chose in one of the steps above
 
 * Test every method from Postman or curl as follows:
-  > Test the following operations after replacing `{{api_base_url}}` with the base URL you've just copied:
-  * `curl --request GET   {{api_base_url}}/contacts --write-out "\n%{http_code}"`
+  > Test the following operations after replacing `{api_base_url}` with the base URL you've just copied:
+  * `curl --request GET   {api_base_url}/contacts --write-out "\n%{http_code}"`
     * Sample response:
       ```json
       {
@@ -102,7 +102,7 @@ Now, activate your API and test it:
         ]
       }
       ```
-  * `curl --request GET   {{api_base_url}}/contacts/142 --write-out "\n%{http_code}"`
+  * `curl --request GET   {api_base_url}/contacts/142 --write-out "\n%{http_code}"`
     * Sample response:
       ```json
       {
@@ -114,7 +114,7 @@ Now, activate your API and test it:
         "creationDate": "2025-03-14"
       }
       ```
-  * `curl --request POST  {{api_base_url}}/contacts --data '{ "email": "bob.fellow@gmail.com", "firstName": "Bob", "lastName": "Fellow"}' --write-out "\n%{http_code}"`
+  * `curl --request POST  {api_base_url}/contacts --data '{ "email": "bob.fellow@gmail.com", "firstName": "Bob", "lastName": "Fellow"}' --write-out "\n%{http_code}"`
     * Sample response:
       ```json
       {
@@ -126,7 +126,7 @@ Now, activate your API and test it:
         "creationDate": "2025-03-31"
       }
       ```
-  * `curl --request PATCH {{api_base_url}}/contacts/13 --data '{ "emailVerified": true }' --write-out "\n%{http_code}"`
+  * `curl --request PATCH {api_base_url}/contacts/13 --data '{ "emailVerified": true }' --write-out "\n%{http_code}"`
     * Sample response:
       ```json
       {
@@ -262,9 +262,9 @@ The integration linked to the first operation should look like this: \
 
 * Go back to the API and activate it
 * Test the GET /contacts with and without a query parameter and find out the results matching your implementation:
-  > Test the following operations after replacing the `{{api_base_url}}` with the base URL of the API:
+  > Test the following operations after replacing the `{api_base_url}` with the base URL of the API:
 
-  * `curl --request GET   {{api_base_url}}/contacts?createdSince='2024-01-01' --write-out "\n%{http_code}"`
+  * `curl --request GET   {api_base_url}/contacts?createdSince='2024-01-01' --write-out "\n%{http_code}"`
     * Sample response:
       ```json
       {
@@ -289,7 +289,7 @@ The integration linked to the first operation should look like this: \
         ]
       }
       ```
-  * `curl --request GET   {{api_base_url}}/contacts --write-out "\n%{http_code}"`
+  * `curl --request GET   {api_base_url}/contacts --write-out "\n%{http_code}"`
     * Sample response:
       ```json
       {
@@ -333,10 +333,10 @@ Now that the API is secured, let's declare a consumer application, give access t
 Let's use our API Key and test our secure API:
 
 * Test some of the API operations with the API Key and make sure you have success:
-  > Use the following commands in Postman or curl and replace `{{api_base_url}}` with the base URL of the API and `{{api_key}}` with the key you just copied:
-  * `curl --request GET   {{api_base_url}}/contacts?createdSince='2024-01-01' --header 'API-Key: {{api_key}}' --write-out "\n%{http_code}"`
-  * `curl --request GET   {{api_base_url}}/contacts/142 --header 'API-Key: {{api_key}}' --write-out "\n%{http_code}"`
-  * `curl --request POST  {{api_base_url}}/contacts --header 'API-Key: {{api_key}}' --data '{ "email": "bob.fellow@gmail.com", "firstName": "Bob", "lastName": "Fellow"}' --write-out "\n%{http_code}"`
-  * `curl --request PATCH {{api_base_url}}/contacts/13 --header 'API-Key: {{api_key}}' --data '{ "emailVerified": true }' --write-out "\n%{http_code}"`
+  > Use the following commands in Postman or curl and replace `{api_base_url}` with the base URL of the API and `{{api_key}}` with the key you just copied:
+  * `curl --request GET   {api_base_url}/contacts?createdSince='2024-01-01' --header 'API-Key: {{api_key}}' --write-out "\n%{http_code}"`
+  * `curl --request GET   {api_base_url}/contacts/142 --header 'API-Key: {{api_key}}' --write-out "\n%{http_code}"`
+  * `curl --request POST  {api_base_url}/contacts --header 'API-Key: {{api_key}}' --data '{ "email": "bob.fellow@gmail.com", "firstName": "Bob", "lastName": "Fellow"}' --write-out "\n%{http_code}"`
+  * `curl --request PATCH {api_base_url}/contacts/13 --header 'API-Key: {{api_key}}' --data '{ "emailVerified": true }' --write-out "\n%{http_code}"`
 
 * Change the key value in your tests and make sure you get a security error (403)
