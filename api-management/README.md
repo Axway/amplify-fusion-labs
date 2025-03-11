@@ -333,10 +333,10 @@ Now that the API is secured, let's declare a consumer application, give access t
 Let's use our API Key and test our secure API:
 
 * Test some of the API operations with the API Key and make sure you have success:
-  > Use the following commands in Postman or curl and replace `{api_base_url}` with the base URL of the API and `{{api_key}}` with the key you just copied:
-  * `curl --request GET   {api_base_url}/contacts?createdSince='2024-01-01' --header 'API-Key: {{api_key}}' --write-out "\n%{http_code}"`
-  * `curl --request GET   {api_base_url}/contacts/142 --header 'API-Key: {{api_key}}' --write-out "\n%{http_code}"`
-  * `curl --request POST  {api_base_url}/contacts --header 'API-Key: {{api_key}}' --data '{ "email": "bob.fellow@gmail.com", "firstName": "Bob", "lastName": "Fellow"}' --write-out "\n%{http_code}"`
-  * `curl --request PATCH {api_base_url}/contacts/13 --header 'API-Key: {{api_key}}' --data '{ "emailVerified": true }' --write-out "\n%{http_code}"`
+  > Use the following commands in Postman or curl and replace `{api_base_url}` with the base URL of the API and `{api_key}` with the key you just copied:
+  * `curl --request GET   {api_base_url}/contacts?createdSince='2024-01-01' --header 'API-Key: {api_key}' --write-out "\n%{http_code}"`
+  * `curl --request GET   {api_base_url}/contacts/142 --header 'API-Key: {api_key}' --write-out "\n%{http_code}"`
+  * `curl --request POST  {api_base_url}/contacts --header 'API-Key: {api_key}' --data '{ "email": "bob.fellow@gmail.com", "firstName": "Bob", "lastName": "Fellow"}' --write-out "\n%{http_code}"`
+  * `curl --request PATCH {api_base_url}/contacts/13 --header 'API-Key: {api_key}' --data '{ "emailVerified": true }' --write-out "\n%{http_code}"`
 
 * Change the key value in your tests and make sure you get a security error (403)
