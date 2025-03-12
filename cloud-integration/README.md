@@ -177,7 +177,7 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
                 "body": [
                     {
                         "type": "TextBlock",
-                        "text": "Newly created Salesforce contact: {{name}} ({{email}}) copied to Hubspot",
+                        "text": "Newly created Salesforce contact: {name} ({email}) copied to Hubspot",
                         "wrap": true
                     }
                 ],
