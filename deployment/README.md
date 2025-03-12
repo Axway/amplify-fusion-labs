@@ -34,7 +34,7 @@ In this lab we'll create, test and version a very basic integration triggered by
 ![lab1](images/lab1-httpserver-coomponent-settings-2.png)
 * Enable your integration and copy your URL and call it using curl as follows:
   ```bash
-  curl --location '{{YOUR INTEGRATION URL}}/test' --header 'Authorization: Bearer 12345'
+  curl --location '{YOUR INTEGRATION URL}/test' --header 'Authorization: Bearer 12345'
   ```
   The response should be `Hello from V1`
 
@@ -82,7 +82,7 @@ Now we can activate the integration and test it.
 ![lab2](images/lab2-deploy-version-11.png)
 * Open the integration and activate it and copy your URL and call it using curl as follows:
   ```bash
-  curl --location '{{YOUR INTEGRATION URL}}/test' --header 'Authorization: Bearer abcde'
+  curl --location '{YOUR INTEGRATION URL}/test' --header 'Authorization: Bearer abcde'
   ```
   The response should be `Hello from V1`
 
