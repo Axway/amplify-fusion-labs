@@ -90,7 +90,7 @@ Now we can activate the integration and test it.
 
 In this lab we'll update our integration, version it to v2 and deploy it. Many of the steps will be a repeat of what we already did in lab 1 and lab 2
 
-* Make sure you only have one tab open and while in LVE mode disable the integration
+* Make sure you only have one tab open and while in LIVE mode disable the integration
 * Switch to DESIGN mode and open your project and integration
 * Edit the HTTP/S Server GET component and set the response to `Hello from V2` and save
 ![lab3](images/lab3-deploy-version2-1.png)

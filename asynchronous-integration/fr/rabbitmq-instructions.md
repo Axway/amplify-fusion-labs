@@ -57,6 +57,6 @@ Afin de publier un message dans RabbitMQ, il est nécessaire de créer une queue
 
 3. Une fois la queue créée, cliquer sur le nom de la queue, puis cliquer sur la section `Bindings`
    - Renseigner **amq.topic** dans `From exchange`
-   - Renseigner **invoiceKey** dans `Routing key`
+   - Renseigner **invoicesKey** dans `Routing key`
    - Cliquer sur le bouton `Bind` pour sauvegarder
 ![rabbitmq binding ](../assets/rabbitmq-instructions/cloudamq15.jpg)

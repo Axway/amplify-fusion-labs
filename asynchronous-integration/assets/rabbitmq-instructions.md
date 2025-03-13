@@ -57,6 +57,6 @@ To publish a message in RabbitMQ, you need to create a queue and a routing rule.
 
 3. One your queue is created, click on your queue name, then go to `Bindings` section.
    - Set **amq.topic** in `From exchange`
-   - Set **invoiceKey** in `Routing key`
+   - Set **invoicesKey** in `Routing key`
    - Click on `Bind` button to save.
 ![rabbitmq binding ](rabbitmq-instructions/cloudamq15.jpg)
