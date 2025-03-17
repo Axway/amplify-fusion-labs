@@ -109,7 +109,8 @@ In this lab we'll update our integration, version it to v2 and deploy it. Many o
 
 In this lab we'll roll back the production (LIVE) to v1. This simulates a scenario where we discover that we have a defect in production.
 
-* Make sure you only have one tab open and while in LVE mode disable the integration
+* Make sure you only have one tab open and while in LIVE mode 
+* Disable the integration
 * Switch to the Manager module, select DESIGN mode and click on Deployments and click on History
 ![lab3](images/lab4-rollback-version2-1.png)
 * Click on the rollback Action button for your v2 deployment and select your deployment only and click OK
@@ -121,7 +122,7 @@ In this lab we'll roll back the production (LIVE) to v1. This simulates a scenar
 
 ## Lab 5
 
-In this lab we'll revert our project back to v1, make modifications and then version it to v3 and deploy it.
+In this lab we'll revert our project back to v1 in DESIGN, make modifications and then version it to v3 and deploy it.
 
 * Make sure you have only one tab open and switch to Designer module and DESIGN mode
 * Open your project and click on the history icon and click on the 3 dots next to v1
