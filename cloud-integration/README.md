@@ -41,7 +41,7 @@ Before you start, make sure you have Salesforce and Hubspot accounts that you ca
 
 In this lab, we'll set up a Salesforce push topic and start our integration by adding a Salesforce Pushtopic listener as a trigger to our integration.
 
-* Create a new project in Amplify Fusion for this CRM cloud integration. Use a unique name in case your not the only one to do this lab on your Amplify Fusion tenant.
+* Create a new Amplify Fusion project for this CRM cloud integration. Use a unique name in case you're not the only one doing this lab on your Amplify tenant (e.g. XX_Salesforce2Hubspot with XX being your name or initials).
 * Follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Fusion Salesforce Connection and generate a token and test the connection \
 ![salesforce connection](images/lab1-salesforce-connection.png)
 * Create a PushTopic in the Salesforce Developer Console

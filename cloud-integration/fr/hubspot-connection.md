@@ -17,16 +17,17 @@ Nous ferons ce qui suit:
 * Sur votre compte développeur, cliquez sur Manage Apps puis cliquez sur Create App pour créer une nouvelle App
   ![hubspot02](../assets/hubspot-connection/hubspot02.png)
 * Donnez un nom à votre App (par ex: AIP App), un logo et une description (facultatif)
-* Cliquez sur la fenêtre Auth pour voir votre Client ID et votre Client Secret. Vous en aurez besoin pour paramétrer votre Connexion Hubspot dans Amplify Fusion
+* Cliquez sur la fenêtre Auth pour voir votre Client ID et votre Client Secret. Vous en aurez besoin pour paramétrer votre Connexion Amplify Fusion pour Hubspot \
   ![hubspot03](../assets/hubspot-connection/hubspot03.png)
 * Faites défiler vers le bas jusqu'aux URLs de redirection puis entrez l'URL de redirection suivant, puis appuyez sur Save:
-  `<<Nom de domaine de l'interface de Designe d'Amplify Fusion>>/design/oauth2/callback`
+  `<<Nom de domaine de l'interface de Designer d'Amplify Studio>>/design/oauth2/callback`
   ![hubspot04](../assets/hubspot-connection/hubspot04.png)
 * Faites défiler vers le bas jusqu'à la section Scopes et sélectionnez les scopes souhaités. Par exemple, vous pouvez sélectionner les 4 Scopes CRM en lien avec les clients:
   ![hubspot05](../assets/hubspot-connection/hubspot05.png)
-* Nous aurons besoin de la liste des Scopes lorsque nous créerons la connexion Hubspot sur Amplify Fusion Hubspot. Pour cet exemple, ce sont les suivants:
+* Nous aurons besoin de la liste des Scopes lorsque nous créerons la connexion Amplify Fusion pour Hubspot. Pour cet exemple, ce sont les suivants:
 `crm.schemas.contacts.write crm.objects.contacts.write crm.schemas.contacts.read crm.objects.contacts.read crm.objects.custom.read oauth`
-## Connexion Hubspot sur Amplify Fusion
+
+## Connexion Amplify Fusion pour Hubspot
 
 * Créez une nouvelle connexion, sélectionnez Hubspot et donnez-lui un nom et une description
   ![hubspot06](../assets/hubspot-connection/hubspot06.png)

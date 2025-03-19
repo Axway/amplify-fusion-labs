@@ -20,7 +20,7 @@ As you go through the labs, take the time to explore more about the items relate
 
 ## Logging In
 
-* Login into Amplify Fusion
+* Login into Amplify Studio
 
   ![login screen](images/login-screen.png)
 
@@ -36,7 +36,7 @@ As you go through the labs, take the time to explore more about the items relate
 
   ![designer menu](images/designer-menu.png)
 
-* Click on Create to start a new Project
+* Click on Create to start a new Project for Amplify Fusion
 
   ![projects list](images/projects-list.png)
 

@@ -23,7 +23,7 @@ Avant de démarrer cet exercice assurez vous d'avoir:
 
 ## Se connecter
 
-* Se connecter à Amplify Fusion
+* Se connecter à Amplify Studio
 
   ![login screen](../images/login-screen.png)
 
@@ -39,7 +39,7 @@ Avant de démarrer cet exercice assurez vous d'avoir:
 
   ![designer menu](../images/designer-menu.png)
 
-* Cliquer sur  Create pour commencer un nouveau projet
+* Cliquer sur  Create pour commencer un nouveau projet pour Amplify Fusion
 
   ![projects list](../images/projects-list.png)
 

@@ -31,12 +31,12 @@
 
 9. Créez une "server-based application"
    - Nommez le client "Axway Amplify Fusion"
-   - Entrez l'URL Racine de votre Control Plane Amplify Fusion pour le Homempage URL
+   - Entrez l'URL Racine de votre Amplify Studio pour la Homepage URL
    - Ajoutez "/design/oauth2/callback" au même URL pour le redirect URL![server-based application](../assets/zoho-api-instructions/image5.png)
 
 10. Notez le Client ID et Secret pour plus tard 
 
-## Configuration sur Amplify Fusion
+## Configuration pour Amplify Fusion
 
 1. Ouvrez votre projet Amplify Fusion et ajoutez un connecteur "OpenAPI client"
     - Nommez le "**ZohoAPI**"

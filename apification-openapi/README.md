@@ -84,7 +84,7 @@ The final integration is shown below:
 * Access to the free [**API Layer Exchange Rates Data API**](https://apilayer.com/marketplace/exchangerates_data-api).
   > Make sure that you subscribe to the API and test the API in Postman so that you are familiar with how to call the API and see its response.
 
-## Lab 1
+## Database preparation
 
 Let's create the Postgres Database to hold our invoice records.
 
@@ -151,11 +151,11 @@ Let's create the Postgres Database to hold our invoice records.
 
 Now the database is ready.
 
-## Lab 2
+## Lab 1
 
 In this lab, we'll import our Invoice API, create our integration for the API endpoint and then we'll query our database for invoices with the given state.
 
-* Create a new project in Amplify Fusion for this apificiation use-case. Use a unique name in case you're not the only one doing this lab on your Amplify Fusion tenant (e.g. XX_apification with XX being your name or initials).\
+* Create a new Amplify Fusion project for this APIfication. Use a unique name in case you're not the only one doing this lab on your Amplify tenant (e.g. XX_APIfication with XX being your name or initials).\
   ![new-project](images/lab2-new-project.png)
 * Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml](assets\InvoiceAPI-OAS.yaml)**.\
   ![api-import](images/lab2-api-create.png)
@@ -208,7 +208,7 @@ Your integration should look like this: \
 * Find your API transaction in the Monitor, click on the `+` sign next to Operations and click on the Database Select step and expand `GetInvoicesByStateOutput->resultSet` and see that you are retrieving invoices
 ![transaction monitoring](images/lab2-transaction-monitoring.png)
 
-## Lab 3
+## Lab 2
 
 In this lab, we'll loop over the invoices, parse each one to a JSON object and do a currency conversion on the invoice amount to a desired currency passed into the API call as a query parameter.
 
@@ -274,7 +274,7 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 * Click on the HTTP/S Client Get and then expand the HTTPSGetOutput to see the currency conversion API response
 ![transaction monitoring response details](images/lab3-transaction-monitoring-response-details.png)
 
-## Lab 4
+## Lab 3
 
 In this lab, we'll map our invoice and currency converted amount to the response invoice array and calculate a grand total.
 
@@ -372,7 +372,7 @@ Your result should look similar to the following:
   }
   ```
 
-## Lab 5 - Challenge yourself!
+## Lab 4 - Challenge yourself!
 
 1. Add API Key Authentication to your API and test it again.
 2. Handle 400 response in case of conversion error (when wrong currency code is used in the request for instance)

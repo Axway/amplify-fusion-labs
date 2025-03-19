@@ -82,7 +82,7 @@ L'intégration finale est illustrée ci-dessous:
 * Un accès gratuit à [**API Layer Exchange Rates Data API**](https://apilayer.com/marketplace/exchangerates_data-api).
   > Assurez-vous d'être bien inscrit et testez l'API dans POSTMAN afin de vous familiariser avec les appels d'API et la visualisation de réponses
 
-## Étape 1
+## Préparation de la base de données
 
 Créons une base de données Postgres qui contiendra nos factures
 
@@ -149,10 +149,11 @@ Créons une base de données Postgres qui contiendra nos factures
 
 La base de données est maintenant prête
 
-## Étape 2
+## Étape 1
 
 Dans cette étape, nous allons créer notre intégration et définir un endpoint API REST en utilisant le composant HTTP/S Server et la connexion associée. Ensuite nous interrogerons notre base de données pour récupérer les factures avec un statut particulier
 
+* Créer un nouveau projet Amplify Fusion pour cette implémentation d'API. Utiliser un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre tenant Amplify (par ex: XX_apification, XX étant votre nom ou vos initiales).
 * Créer une nouvelle intégration (par ex: GetInvoicesByStatus)
 * Cliquer sur le bouton Event et ajouter un composant HTTP/S Server et choisir GET pour la méthode
   * Une connexion HTTP/S sera nécessaire. Pour cela, cliquer sur Add à côté de Connection et donner à la connexion un nom et une description
@@ -244,7 +245,7 @@ L'intégration doit ressembler à ceci: \
 * Consulter la transaction dans le Monitor et cliquer sur l'étape Database Select puis dérouler `GetInvoicesByStatusOutput->resultSet`. Les factures ont bien été récupérées
 ![transaction monitoring](../images/lab2-transaction-monitoring_.png)
 
-## Étape 3
+## Étape 2
 
 Dans cette étape, nous allons parcourir les factures, parser chacune d'entre elles dans un format JSON et effectuer une conversion du montant de la facture dans la devise souhaitée, qui sera transmise à l'appel API sous la forme d'un paramètre de requête
 
@@ -307,7 +308,7 @@ Dans cette étape, nous allons parcourir les factures, parser chacune d'entre el
 * Cliquer sur HTTP/S Client Get puis dérouler la variable HTTPSGetOutput pour voir la réponse API de la conversion de devise
 ![transaction monitoring response details](../images/lab3-transaction-monitoring-response-details.png)
 
-## Étape 4
+## Étape 3
 
 Dans cette étape, nous allons mettre en correspondance (mapping) notre facture et le montant converti dans la devise souhaitée avec l'array de factures de la réponse, et calculer le motant total
 
@@ -406,6 +407,6 @@ Le résultat devrait ressembler à:
   }
   ```
 
-## Étape 5 - Relevez le défi!
+## Étape 4 - Relevez le défi!
 
 Ajouter une Authentification de base à votre API puis la tester de nouveau

@@ -29,7 +29,7 @@ In this set of labs, you will learn the following:
   > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Fusion%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Fusion%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Fusion Training Environment Access Request`
 * Access the free [**WireMock**](https://login.wiremock.cloud/) to simulate backend APIs, or any other tool that can expose a test or mock backend API.
 
-## Lab 1
+## Backend preparation
 
 Let's create a mock backend API in WireMock.
 
@@ -47,11 +47,11 @@ Let's create a mock backend API in WireMock.
 
 Now the mock backend API is ready.
 
-## Lab 2
+## Lab 1
 
 In this lab, we will proxy our backend API.
 
-* Create a new project in Amplify Fusion to manage this API. Use a unique name in case you're not the only one doing this lab on your Amplify Fusion tenant (e.g., XX_ContactAPI with XX being your name or initials).\
+* Create a new Amplify Fusion project to manage this API. Use a unique name in case you're not the only one doing this lab on your Amplify tenant (e.g., XX_ContactAPI with XX being your name or initials).\
   ![new-project](images/lab2-new-project.png)
 
 * Create a new API (e.g., ContactAPI) by uploading this sample OpenAPI specification (OAS): **ContactAPI.yaml**.\
@@ -139,7 +139,7 @@ Now, activate your API and test it:
       }
       ```
 
-## Lab 3
+## Lab 2
 
 In this lab, we will see how we can handle backend security.
 
@@ -168,7 +168,7 @@ In this lab, we will see how we can handle backend security.
 * Go back to the API and activate it
 * Test every method again from Postman or curl as follows, and make sure you now get success responses from the backend
 
-## Lab 4
+## Lab 3
 
 In this lab, we will see how to implement an API operation instead of simply proxying the backend. The implementation of the "Find Contacts" operation will consist of:
 
@@ -298,7 +298,7 @@ The integration linked to the first operation should look like this: \
       }
       ```
 
-## Lab 5
+## Lab 4
 
 In this lab, we are going to see how we can set front-end security on our API and manage consumer application access and credentials.
 

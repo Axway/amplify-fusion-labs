@@ -84,7 +84,7 @@ The final integration is shown below:
 * Access to the free [**API Layer Exchange Rates Data API**](https://apilayer.com/marketplace/exchangerates_data-api).
   > Make sure that you subscribe to the API and test the API in Postman so that you are familiar with how to call the API and see its response.
 
-## Lab 1
+## Database preparation
 
 Let's create the Postgres Database to hold our invoice records.
 
@@ -151,10 +151,11 @@ Let's create the Postgres Database to hold our invoice records.
 
 Now the database is ready.
 
-## Lab 2
+## Lab 1
 
 In this lab, we'll create our integration and define the REST API endpoint using an HTTP/S Server Component and associated connection and then we'll query our database for invoices with a particular status.
 
+* Create a new Amplify Fusion project for this APIfication. Use a unique name in case you're not the only one doing this lab on your Amplify tenant (e.g. XX_apification with XX being your name or initials)
 * Create a new integration (e.g. GetInvoicesByStatus)
 * Click on the Event button and add an HTTP/S Server component and choose GET method
   * We'll need an HTTP/S Connection so click on Add next to Connection, provide a connection name and description
@@ -246,7 +247,7 @@ Your integration should look like this: \
 * Find your transaction in the Monitor and click on the Database Select step and expand `GetInvoicesByStatusOutput->resultSet` and see that you are retrieving invoices
 ![transaction monitoring](images/lab2-transaction-monitoring_.png)
 
-## Lab 3
+## Lab 2
 
 In this lab, we'll loop over the invoices, parse each one to a JSON object and do a currency conversion on the invoice amount to a desired currency passed into the API call as a query parameter.
 
@@ -309,7 +310,7 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 * Click on the HTTP/S Client Get and then expand the HTTPSGetOutput to see the currency conversion API response
 ![transaction monitoring response details](images/lab3-transaction-monitoring-response-details.png)
 
-## Lab 4
+## Lab 3
 
 In this lab, we'll map our invoice and currency converted amount to the response invoice array and calculate a grand total.
 
@@ -409,6 +410,6 @@ Your result should look similar to the following:
   }
   ```
 
-## Lab 5 - Challenge yourself!
+## Lab 4 - Challenge yourself!
 
 Add Basic Authentication to your API and test it again.

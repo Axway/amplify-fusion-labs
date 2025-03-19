@@ -31,7 +31,7 @@
   ![salesforce10](../assets/salesforce-connection/salesforce10.png)
 
 - Cochez  **Enable OAuth Settings** puis:
-  - Entrez le **Callback URL**. Par exemple, si votre URL Amplify Fusion est `https://axway-university.integration.us.axway.com`, votre callback URL pour générer les tokens sera `https://axway-university.integration.us.axway.com/design/oauth2/callback`.
+  - Entrez le **Callback URL**. Par exemple, si votre URL Amplify Studio est `https://axway-university.integration.us.axway.com`, votre callback URL pour générer les tokens sera `https://axway-university.integration.us.axway.com/design/oauth2/callback`.
   - Choisissez les scopes suivants dans **Available OAuth Scopes** et **Ajoutez** les aux **Selected OAuth Scopes** .
     - Full access (full)
     - Manage user data via APIs (api)
@@ -46,11 +46,11 @@
 - Cliquez sur **Manage Consumer Details**, puis copiez la **Consumer Key** et le  **Consumer Secret** ou gardez la page ouverte pour plus tard. Ces informations seront nécessaires lors de la création de votre connexion Salesforce sur Amplify Fusion \
   ![salesforce12](../assets/salesforce-connection/salesforce12.png)
 
-## Configuration sur Amplify Fusion
+## Configuration Amplify Fusion
 
 Nous devons configurer une connexion Salesforce pour relier Amplify Fusion à votre instance Salesforce. 
 
-- Depuis Amplify Fusion, cliquez sur **New**, en haut à droite \
+- Depuis Amplify Studio, cliquez sur **New**, en haut à droite \
 ![salesforce13](../assets/salesforce-connection/salesforce13.png)
 
 - Sélectionnez **Connections** dans le menu de gauche. Choisir la connexion **Salesforce** puis cliquez sur **Next**. \

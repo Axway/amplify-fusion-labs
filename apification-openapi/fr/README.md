@@ -84,7 +84,7 @@ L'intégration finale est illustrée ci-dessous:
 * Un accès gratuit à [**API Layer Exchange Rates Data API**](https://apilayer.com/marketplace/exchangerates_data-api).
   > Assurez-vous d'être bien inscrit et testez l'API dans POSTMAN afin de vous familiariser avec les appels d'API et la visualisation de réponses
 
-## Étape 1
+## Préparation de la base de données
 
 Créons une base de données Postgres qui contiendra nos factures
 
@@ -155,17 +155,17 @@ La base de données est maintenant prête
 
 Dans cette étape, nous allons importer notre API de facture, créer notre intégration pour le méthode d'API puis nous interrogerons notre base de données pour récupérer les factures étant dans un état particulier
 
-* Créer un nouveau projet dans Amplify Fusion pour cet example d'APIsation. Utilisez un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre tenant Amplify Fusion (par ex: XX_apification, XX étant votre nom ou vos initiales).\
-  ![new-project](images/lab2-new-project.png)
+* Créer un nouveau projet Amplify Fusion pour cette implémentation d'API. Utiliser un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre tenant Amplify (par ex: XX_APIfication, XX étant votre nom ou vos initiales).\
+  ![new-project](../images/lab2-new-project.png)
 * Créer une nouvelle API (par exemple, InvoiceAPI) en chargeant cet exemple de spécification OpenAPI (OAS) : **[InvoiceAPI-OAS.yaml](..\N-assets\InvoiceAPI-OAS.yaml)**.\
-  ![api-import](images/lab2-api-create.png)
+  ![api-import](../images/lab2-api-create.png)
 * Modifier les paramètres de l'API pour définir un chemin de base unique pour l'API (par ex: XX_api).
 * Pour la méthode « GET /invoices », utiliser le bouton "Link integration" sur le côté droit du titre de la méthode.\
-  ![api-integration-link](images/lab2-api-integration-link.png)
+  ![api-integration-link](../images/lab2-api-integration-link.png)
 * Choisir de créer une nouvelle intégration (par ex: GetInvoicesByStatus)
 * L'onglet de l'intégration devrait s'ouvrir automatiquement, cliquer sur le composant API Server et vérifier que la methode liée est « GET /invoices »
 * Ouvrir le composant Opérations et son composant Status pour voir le flux d'intégration.\
-  ![integration-init](images/lab2-integration-init.png)
+  ![integration-init](../images/lab2-integration-init.png)
 
 * Cliquer sur le premier bouton `+` pour ajouter un composant Database Select puis agrandir le panneau inférieur
   * Nous devons créer une connexion Database pour notre Database Postgres. Pour cela cliquer sur Add à côté du sélecteur de connexion et donner à la connexion un nom et une description (par ex: Neon Postgres DB)

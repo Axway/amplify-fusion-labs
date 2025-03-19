@@ -55,6 +55,7 @@ Avant de démarrer cet exercice assurez vous d'avoir:
 
 Dans cette étape, nous allons mettre en place le premier flux qui interroge Zoho Invoice à propos des mises à jour de factures et publie pour chacune un message dans RabbitMQ.
 
+* Créer un nouveau projet Amplify Fusion pour cette intégration asynchrone. Utiliser un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre tenant Amplify (par ex: XX_InvoiceAsyncNotification, XX étant votre nom ou vos initiales).
 * Créer une intégration (par exemple: InvoiceHandler)
 * Cliquer sur le bouton `Event`, sélectionner l'évènement déclencheur **Scheduler** et le régler à 60 secondes
   ![scheduler](../images/lab1-scheduler.png)

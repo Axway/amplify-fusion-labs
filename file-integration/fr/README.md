@@ -43,6 +43,8 @@ Avant de démarrer cet exercice assurez vous d'avoir:
 
 Dans cette étape, nous allons ingérer un fichier CSV de Leads.
 
+* Créer un nouveau projet Amplify Fusion pour cette intégration de fichier. Utiliser un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre tenant Amplify (par ex: XX_FileIntegration, XX étant votre nom ou vos initiales).
+* Créer une intégration (par exemple: InvoiceHandler)
 * Créer une intégration (par ex: CSVtoSalesforce)
 * Cliquer sur Event et sélectionner le composant SFTP Server
   ![sftp server poll event](../images/lab1-sftp-server-poll-event.png)

@@ -31,7 +31,7 @@
 
 9. Create a "server-based application"
    - Name the client "Axway Amplify Fusion"
-   - Set the Homepage URL with the base URL of your Amplify Fusion Control plane
+   - Set the Homepage URL with the base URL of your Amplify Studio Control plane
    - Add "/design/oauth2/callback" to the same URL for the Authorized
         redirect URL![server-based application](zoho-api-instructions/image5.png)
 

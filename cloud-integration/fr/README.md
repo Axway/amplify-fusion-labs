@@ -42,7 +42,8 @@ Avant de démarrer cet exercice assurez vous d'avoir:
 
 Dans cette étape nous allons paramétrer un PushTopic Salesforce et commencer notre intégration par ajouter un Salesforce PushTopic listener en tant qu'évènement déclencheur de notre intégration 
 
-* Créer un nouveau projet dans Amplify Fusion pour cette intégration CRM. (Utilisez un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre plateforme Amplify Fusion)
+* Créer un nouveau projet Amplify Fusion pour cette intégration CRM. Utiliser un nom unique au cas où vous ne seriez pas le seul à faire cet exercice sur votre tenant Amplify (par ex: XX_Salesforce2Hubspot, XX étant votre nom ou vos initiales).
+* Créer une intégration (par exemple: InvoiceHandler)
 * Suivre les instructions [**ci-jointes**](../fr/salesforce-connection.md) pour configurer une App OAuth connectée à Salesforce, une connexion Salesforce dans Amplify Fusion, génerer un token et tester la connexion \
 ![salesforce connection](../images/lab1-salesforce-connection.png)
 * Créer un PushTopic dans la console de développeur Salesforce

@@ -20,7 +20,7 @@ We will do the following:
 * Click on the Auth tab to see your Client ID and Client Secret. You will need these when you setup the Amplify Fusion Hubspot Connection
   ![hubspot03](hubspot-connection/hubspot03.png)
 * Scroll down to the Redirect URLs and enter the following Redirect URL and press Save:
-  `<<YOUR AIP BASE URL>>/design/oauth2/callback`
+  `<<Your Amplify Studio base URL>>/design/oauth2/callback`
   ![hubspot04](hubspot-connection/hubspot04.png)
 * Scroll down to the Scopes section and select your desired scopes. For example, I selected the contact CRM scopes below:
   ![hubspot05](hubspot-connection/hubspot05.png)
