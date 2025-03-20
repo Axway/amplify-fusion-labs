@@ -52,7 +52,7 @@ The final integrations are shown below:
 
 In this lab, we'll create the first flow that will poll Zoho Invoice for updated invoices and publish each as a RabbitMQ message.
 
-* Create a new project in Amplify Fusion to manage this asynchronous integration. Use a unique name in case you're not the only one doing this lab on your Amplify tenant (e.g., XX_InvoiceAsyncNotification with XX being your name or initials).
+* Create a new project in Amplify Fusion to manage this asynchronous integration. Use a unique name in case you're not the only one doing this lab on your tenant (e.g., XX_InvoiceAsyncNotification with XX being your name or initials).
 * Create an integration (e.g. InvoiceHandler)
 * Click on the Event button and select the Scheduler Component and configure for 60 seconds
   ![scheduler](images/lab1-scheduler.png)

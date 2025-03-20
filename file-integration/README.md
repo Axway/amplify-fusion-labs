@@ -40,7 +40,7 @@ The final integration is shown below:
 
 In this lab, we will ingest a CSV file of contacts.
 
-* Create a new Amplify Fusion project for this file integration. Use a unique name in case you're not the only one doing this lab on your Amplify tenant (e.g. XX_FileIntegration with XX being your name or initials).
+* Create a new Amplify Fusion project for this file integration. Use a unique name in case you're not the only one doing this lab on your tenant (e.g. XX_FileIntegration with XX being your name or initials).
 * Create an integration (e.g. CSVtoSalesforce)
 * Click on the Event button and select the SFTP Server Poll Component
   ![sftp server poll event](images/lab1-sftp-server-poll-event.png)

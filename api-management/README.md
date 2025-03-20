@@ -51,7 +51,7 @@ Now the mock backend API is ready.
 
 In this lab, we will proxy our backend API.
 
-* Create a new Amplify Fusion project to manage this API. Use a unique name in case you're not the only one doing this lab on your Amplify tenant (e.g., XX_ContactAPI with XX being your name or initials).\
+* Create a new Amplify Fusion project to manage this API. Use a unique name in case you're not the only one doing this lab on your tenant (e.g., XX_ContactAPI with XX being your name or initials).\
   ![new-project](images/lab2-new-project.png)
 
 * Create a new API (e.g., ContactAPI) by uploading this sample OpenAPI specification (OAS): **ContactAPI.yaml**.\

@@ -22,7 +22,7 @@ In these labs, we will build a very basic project and integration and version an
 
 In this lab we'll create, test and version a very basic integration triggered by an HTTP/S Server GET.
 
-* Create a new project (e.g. deploytest)
+* Create a new Amplify Fusion project for this deployment test. Use a unique name in case you're not the only one doing this lab on your tenant (e.g. XX_deploytest with XX being your name or initials).
 * Create an integration (e.g. test)
 * Add an HTTP/S Server Get for the Event
 ![lab1](images/lab1-event-1.png)
@@ -30,7 +30,8 @@ In this lab we'll create, test and version a very basic integration triggered by
 * Select `HTTPS` for Protocol and `Token` for Authentication and enter `12345` for the Token and click Update
 ![lab1](images/lab1-httpserver-connection-settings-1.png)
 * Return to the integration and click on the HTTP/S Server Get component and click refresh and select the HTTP/S Server Connection you just created
-* Enter `test` for the Resource Path
+* Enter `test` for the Resource Path.
+  > Note that the resource path must be unique for your tenant. Since you are most likely working in a shared environment, you may want to prefix the resource path with your initials to make it unique (e.g. XX_test) \
 ![lab1](images/lab1-httpserver-coomponent-settings-1.png)
   > Note that your Resource Path must be unique for your tenant. You can prefix with your initials to help ensure uniqueness (e.g. `lb_test`)
 * Click on Response and set Body to `Hello from V1`, set Content Type to `text/plain`, check `Send Response before flow execution` and click Save
@@ -38,7 +39,7 @@ In this lab we'll create, test and version a very basic integration triggered by
 * Activate your integration and copy your URL and call it using curl as follows:
 ![lab1](images/lab1-url-1.png)
   ```bash
-  curl "{YOUR INTEGRATION URL}/test" --header "Authorization: Bearer 12345"
+  curl "{YOUR INTEGRATION URL}" --header "Authorization: Bearer 12345"
   ```
   The response should be `Hello from V1`
 
@@ -87,7 +88,7 @@ Now we can activate the integration and test it.
 ![lab2](images/lab2-deploy-version-13.png)
 * Call it using curl as follows:
   ```bash
-  curl "{YOUR INTEGRATION URL}/test" --header "Authorization: Bearer abcde"
+  curl "{YOUR INTEGRATION URL}" --header "Authorization: Bearer abcde"
   ```
   The response should be `Hello from V1`
 

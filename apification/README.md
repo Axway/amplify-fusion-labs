@@ -155,7 +155,7 @@ Now the database is ready.
 
 In this lab, we'll create our integration and define the REST API endpoint using an HTTP/S Server Component and associated connection and then we'll query our database for invoices with a particular status.
 
-* Create a new Amplify Fusion project for this APIfication. Use a unique name in case you're not the only one doing this lab on your Amplify tenant (e.g. XX_apification with XX being your name or initials)
+* Create a new Amplify Fusion project for this APIfication. Use a unique name in case you're not the only one doing this lab on your tenant (e.g. XX_apification with XX being your name or initials)
 * Create a new integration (e.g. GetInvoicesByStatus)
 * Click on the Event button and add an HTTP/S Server component and choose GET method
   * We'll need an HTTP/S Connection so click on Add next to Connection, provide a connection name and description
@@ -163,7 +163,7 @@ In this lab, we'll create our integration and define the REST API endpoint using
   ![HTTPS server connection](images/lab2-https-server-connection.png)
   * Close the connection sub tab and go back to the HTTP/S Server component in the integration, refresh the connection list and select the connection you have just created.
   * Enter `invoices` for the resource path and enter two Query Parameters: `status` and `currencycode` and press Save. 
-    > Note that the resource path must be unique for your tenant. Since you are most likely working in a shared environment, you may want to prefix the resource path with your initials to make it unique (e.g. lb_invoices) \
+    > Note that the resource path must be unique for your tenant. Since you are most likely working in a shared environment, you may want to prefix the resource path with your initials to make it unique (e.g. XX_invoices) \
   ![HTTPS Server component](images/lab2-https-server-component.png) 
     > Note that we still need to connect the response to the HTTP/S Server component but we'll do that shortly after we've defined the response variable
 * Click the `+` button to add a Database Select component and expand the bottom panel

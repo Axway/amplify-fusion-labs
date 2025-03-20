@@ -160,8 +160,8 @@ Dans cette étape, nous allons créer notre intégration et définir un endpoint
   * Sélectionner HTTPS comme protocole et laisser None pour l'Authentication pour le moment puis cliquer sur Update
   ![HTTPS server connection](../images/lab2-https-server-connection.png)
   * Fermer l'onglet de la connexion et retourner au composant HTTP/S Server de l'intégration, rafraîchir la liste de connexion puis sélectionner la connexion tout juste créée
-  * Entrer `invoices` pour le resource path (chemin d'accès à la ressource) et entrer deux Query Parameters: `status` et  `currencycode` puis apuyer sur Save. 
-    > À noter que le resource path doit être unique. Étant donné que vous travaillez probablement dans un environnement partagé, vous pouvez préfixer le ressource path avec vos initiales pour le rendre unique (par exemple, lb_invoices) \
+  * Entrer `invoices` pour le resource path (chemin d'accès à la ressource) et entrer deux Query Parameters: `status` et  `currencycode` puis apuyer sur Save.
+    > À noter que le resource path doit être unique. Étant donné que vous travaillez probablement dans un environnement partagé, vous pouvez préfixer le ressource path avec vos initiales pour le rendre unique (par exemple, XX_invoices) \
   ![HTTPS Server component](../images/lab2-https-server-component.png) 
     > À noter que nous avons toujours besoin de connecter la réponse au composant HTTP/S Server mais nous ferons cela juste après avoir défini la variable réponse
 * Cliquer sur le bouton `+` pour ajouter un composant Database Select puis agrandir le panneau inférieur
