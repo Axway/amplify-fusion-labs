@@ -1,13 +1,16 @@
 # Amplify Fusion - Labs
 
-These labs are related to  *"Amplify Fusion"* course on [Axway University](https://university.axway.com/)
+These labs are related to  *"Amplify Fusion"* courses on [Axway University](https://university.axway.com/)
 
-> The links below will work only if you are enrolled in the related Axway University course. To enroll, [CLICK HERE](https://university.axway.com/learn/course/11701/introduction-to-amplify-integration?generated_by=33633&hash=d0dde5caee15bc60aabd0bb914a0ba5d9b80814c)
+> The links below will work only if you are enrolled in the related Axway University courses. To find the available courses and enroll, [CLICK HERE](https://university.axway.com/pages/79/amplify-api-management)
 
-- [Amplify Fusion - Hello World](https://university.axway.com/learn/course/11701/play/25574/hands-on-lab-hello-world-ampint0104?hash=0180bbf5c81862afce156015046f3cdb78c25f74&generated_by=13047)
-- [Amplify Fusion - File Integration of CSV Leads](https://university.axway.com/learn/course/11701/play/25650/example-file-integration-use-case-ampint0203?hash=0180bbf5c81862afce156015046f3cdb78c25f74&generated_by=13047)
-- [Amplify Fusion - Asynchronous Integration of invoice updates](https://university.axway.com/learn/course/11701/play/25858/example-asynchronous-integration-use-case-ampint0303?hash=0180bbf5c81862afce156015046f3cdb78c25f74&generated_by=13047)
-- [Amplify Fusion - APIfication example](https://university.axway.com/learn/course/11701/play/25844/example-apification-use-case-ampint0403?hash=0180bbf5c81862afce156015046f3cdb78c25f74&generated_by=13047)
-- [Amplify Fusion - Cloud Integration of contact information](https://university.axway.com/learn/course/11701/play/25847/example-cloud-integration-use-case-ampint0503?hash=0180bbf5c81862afce156015046f3cdb78c25f74&generated_by=13047)
+
+| Lab Name                                | Course Link                                                                 |
+|-----------------------------------------|-----------------------------------------------------------------------------|
+| Hello World Lab | [Amplify Fusion - Design Fundamentals](https://university.axway.com/learn/courses/13884/introduction-to-amplify-fusion/)  |
+| CSV Leads File Integration Lab | [Amplify Fusion - File Integration use-case](https://university.axway.com/learn/courses/13887/amplify-fusion-file-integration-use-case) |
+| Invoice Asynchronous Integration Lab | [Amplify Fusion - Asynchronous Integration use-case](https://university.axway.com/learn/courses/13888/amplify-fusion-asynchronous-integration-use-case) |
+| Invoices APIfication Lab | [Amplify Fusion - APIficiation use-case](https://university.axway.com/learn/courses/13889/amplify-fusion-apification-use-case) |
+| CRM Cloud Integration Lab | [Amplify Fusion - Cloud Integration use-case](https://university.axway.com/learn/courses/13886/amplify-fusion-cloud-integration-use-case) |
 
 > For questions related to Axway University, email `university@axway.com`
