@@ -42,7 +42,7 @@ The final integrations are shown below:
 ## Prerequisites
 
 * Access to Amplify Fusion
-  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Fusion%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Fusion%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Fusion Training Environment Access Request`
+  > If you do not have an account and need one, please send an email to **[amplify-fusion-training@axway.com](mailto:amplify-fusion-training@axway.com?subject=Amplify%20Fusion%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Fusion%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Fusion Training Environment Access Request`
 * A free [**Zoho Invoice**](https://www.zoho.com/invoice/) account
 * A CloudAMQ RabbitMQ instance and the ability to create queues and publish on the queue. [**CloudAMQ**](https://www.cloudamqp.com/) have free tiers and is recommended for this lab. Follow this tutorial to create an instance and get access [**RabbitMQ tutorial**](assets/rabbitmq-instructions.md)
 * Access to **Microsoft Teams** and the ability to install an Microsoft Teams incoming Webhook connector
