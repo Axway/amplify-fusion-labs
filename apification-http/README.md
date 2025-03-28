@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In these labs, we'll create an integration that will enable us to expose an API for invoices in a database. The integration will also orchestrate and aggregate the invoice data with a currency conversion service to convert the invoice amount to the desired currency as well as calculate a grand total amount of the invoices.
+In these labs, we'll create an integration that will enable us to expose an API http endpoint for invoices in a database. The integration will also orchestrate and aggregate the invoice data with a currency conversion service to convert the invoice amount to the desired currency as well as calculate a grand total amount of the invoices.
 
 The API we are building is as follows:
 

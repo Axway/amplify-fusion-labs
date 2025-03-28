@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Dans cet exercice, nous allons créer une intégration qui nous permettra d'exposer avce une API des factures présentes dans une base de données. L'intégration permettra également d'orchestrer et d'agréger les données des factures avec un service de conversion de devises afin de convertir le montant de la facture dans la devise souhaitée et de calculer le montant total des factures.
+Dans cet exercice, nous allons créer une intégration qui nous permettra d'exposer sur un endpoint HTTP une API pour des factures présentes dans une base de données. L'intégration permettra également d'orchestrer et d'agréger les données des factures avec un service de conversion de devises afin de convertir le montant de la facture dans la devise souhaitée et de calculer le montant total des factures.
 
 L'API que nous construirons sera comme telle:
 
