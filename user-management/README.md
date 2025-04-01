@@ -13,60 +13,60 @@ The following diagram illustrates what we will be doing in these labs.
 
 ## Pre-requisites
 
-* Access to Amplify Fusion
-  > If you do not have an account and need one, please send an email to **[amplify-integration-training@axway.com](mailto:amplify-integration-training@axway.com?subject=Amplify%20Fusion%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Fusion%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Integration Training Environment Access Request`
+ * Access to Amplify Fusion
+    > If you do not have an account and need one, please send an email to **[amplify-fusion-training@axway.com](mailto:amplify-fusion-training@axway.com?subject=Amplify%20Fusion%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Fusion%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Fusion Training Environment Access Request`
 * Familiarity with Amplify Fusion
-* Suitable role to create a new user with Support Role in DESIGN, CHECK and LIVE
+* Your role must be Admin in DESIGN, CHECK and LIVE
+* A second user with Support role in DESIGN, CHECK and LIVE.
   ![lab1](images/lab1-newuser-2.png)
-    > **Note**: You will need Super Admin role in order to add a new user; please reach out to your environment administrator to either set your role to Super Admin or create this new user for you
-* Suitable role to add this user to multiple teams that you will create
-    > **Note**: You will need an Admin role in order to create teams and add users to teams please reach out to your environment administrator to update your role to Admin, accordingly.
+  > **Note**: You can use a personal email (e.g. gmail) or a plus addresses/subaddressing using your work email (e.g. lbrenman+support@axway.com)
   
-    > **Note**: You can ask the environment administrator to create a training environment to avoid modifications to your production environment
+  > **Note**: You can ask the environment administrator to create a training environment to avoid modifications to your production environment
 
 ## Lab 1
 
 In this lab we'll log in as a limited role user, your second user, and see how the user only has access to the Monitor module since they have the Support role.
 
-* If your environment administrator made you Super Admin then do the following:
-  * From the Manager module, Users tab, click the Invite User button add a second user with Support Role and click Send Invites
-  ![lab1](images/lab1-newuser-1.png)
-  ![lab1](images/lab1-newuser-2.png)
-  ![lab1](images/lab1-newuser-3.png)
-  ![lab1](images/lab1-newuser-4.png)
-* When the invite email arrives, click the Register button in the email and complete the form (enter name, create a password, ..) and click the Sign Up button
-  > **Note**: You will need to logout of Amplify Fusion prior to clicking the button or copy the button link and paste it into an a browser in Incognito mode. This will apply for all instructions related to the new user
-  ![lab1](images/lab1-newuser-5.png)
-  ![lab1](images/lab1-newuser-6.png)
-* You will receive a second email confirming account creation with a link to the tenant
-  ![lab1](images/lab1-newuser-7.png)
 * Login as second user using your Browsers Incognito mode and see your limited role and confirm that you don’t have access to any projects and can’t even click on the Designer and Manager module as they are greyed out
   ![lab1](images/lab1-newuser-8.png)
 
 ## Lab 2
 
-In this lab we'll create some projects and teams and add the second user to one of the teams, Team A, with an enhanced role of Designer in DESIGN mode. Then we'll log in as the second user and see that they have limited access to projects in Team A but not the other. Also, we'll see that while they can access the project they cannot deploy it based on their team role.
+In this lab we'll create some projects and teams and add the second user to one of the teams, Team A, with an enhanced role of Designer in DESIGN mode. Then we'll log in as the second user and see that they have limited access to projects in Team A but not other Projects. Also, we'll see that while they can access the project and collaborate on it, they cannot deploy it based on their team role.
 
-* As your main user in the Designer module, create three projects, ProjectA, ProjectB1 and ProjectB2, each with a test integration with a 60 scheduler event and version each project to V1
-> Note: After creating ProjectA, you can clone it to ProjectB1 and again to ProjectB2. Then go into each cloned project and version it to V1
+You should prefix all Project and Team names with your initials (e.g. LB_ProjectA, LB_Teams A, ...) to avoid conflict when more than one user is performing this lab in the same tenant.
+
+* As your main user in the Designer module, do the following:
+  * Create ProjectA
+  * Create a test integration
+  * Add a scheduler as a trigger event and set it to 60 seconds
+  * Clone ProjectA to ProjectB1 (deep clone not required)
+  * Clone ProjectA to ProjectB2 (deep clone not required)
+  * For each project, click on project history and create a new version (V1)
+  * Unlock the 3 projects to enable collaboration
 * In the Manager module, create Team A and add ProjectA to it and click the + Add User button to add your second user and add Designer in DESIGN mode role. Click Save and Save again.
 ![lab2](images/lab2-newteam-1.png)
 ![lab2](images/lab2-newteam-2.png)
 ![lab2](images/lab2-newteam-3.png)
 ![lab2](images/lab2-newteam-4.png)
 ![lab2](images/lab2-newteam-5.png)
-* Logout your second user and log back in again and see that you now have access to Designer and can access projA but cannot create a deployment job as you don’t have manager role
+* Logout your second user and log back in again and see that you now have access to Designer Module
+* Go to the Designer Module and you should be able to see ProjectA
+* Acquire the lock for Project A and do the following:
+  * Open the integration and modify the Scheduler to 120 seconds
+  * Version the project to V2
 ![lab2](images/lab2-seconduser-1.png)
 ![lab2](images/lab2-seconduser-2.png)
+* See that you cannot create a deployment job as you don’t have Deployer role
 ![lab2](images/lab2-seconduser-3.png)
 
 ## Lab 3
 
-In this lab we'll add the second user to another team, Team B, with an enhanced role of Designer and Deployer in DESIGN mode. Then we'll log in as the second user and see that they have limited access to ProjectB1 and ProjectB2 in Team B in addition to ProjectA in Team A. This time, they can access the projects in Team B and they can also deploy them but they cannot run the deployment job into CHECK or LIVE since they don't have Deployer access to CHECK or LIVE.
+In this lab we'll add the second user to another team, Team B, with an enhanced role of Designer and Deployer in DESIGN and CHECK modes. Then we'll log in as the second user and see that they have limited access to ProjectB1 and ProjectB2 in Team B in addition to ProjectA in Team A. This time, they can access the projects in Team B too AND they can also create deployment jobs on Team B projects and run the deployment job into CHECK.
 
 We'll also see how to use the Set Preferred Teams picker.
 
-* As your main user, create Team B and add ProjectB1 and ProjectB2 and click the + Add User button to add your second user with additional Designer and Deployer DESIGN roles. Click Save and Save again.
+* As your main user, create Team B and add ProjectB1 and ProjectB2 and click the + Add User button to add your second user with additional Designer DESIGN and Deployer DESIGN and CHECK roles. Click Save and Save again.
 ![lab3](images/lab3-teambuser-1.png)
 * Logout your second user and log back in again
 ![lab3](images/lab3-seconduserlogin-1.png)
@@ -84,5 +84,5 @@ We'll also see how to use the Set Preferred Teams picker.
 ![lab3](images/lab3-seconduserlogin-8.png)
 * Click the Team picker and add teamA and click on the Set Preferred Teams button
 ![lab3](images/lab3-seconduserlogin-9.png)
-* Click on Designer and see that you can see both projA and projB but will have different roles for each
+* Click on Designer and see that you can see ProjectA, ProjectB1 and ProjectB2 but will have different roles for each
 ![lab3](images/lab3-seconduserlogin-10.png)
