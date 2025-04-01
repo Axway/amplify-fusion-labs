@@ -3,6 +3,7 @@
 This lab demonstrates some of the user management aspects of the Manager module, namely managing Users, Roles and Teams. We will add a user with a limited default role and then add the user to two teams with different elevated team roles and see how roles and teams control visibility and capabilities of the user. You will use Incognito mode in your browser to login as the second user so you can be logged into the tenant as two different users, each with different roles at the same time. At the end of these labs, you will learn the following:
 
 * How user roles control access
+* How project collaboration and project locks work
 * How to add a user to a team with specific team roles
 * How to select your preferred Team
 
@@ -14,11 +15,11 @@ The following diagram illustrates what we will be doing in these labs.
 
  * Access to Amplify Fusion
     > If you do not have an account and need one, please send an email to **[amplify-fusion-training@axway.com](mailto:amplify-fusion-training@axway.com?subject=Amplify%20Fusion%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Fusion%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Fusion Training Environment Access Request`
-* Familiarity with Amplify Fusion
+* Familiarity with Amplify Fusion: Creating Projects and Integrations, Versioning and Deploying
 * Your role must be Admin in DESIGN, CHECK and LIVE
 * A second user with Support role in DESIGN, CHECK and LIVE
   ![lab1](images/lab1-newuser-2.png)
-  > **Note**: You can use a personal email (e.g. gmail) or a plus addresses/subaddressing using your work email (e.g. lbrenman+support@axway.com)
+  > **Note**: You can use a personal email (e.g. gmail) or a plus addresses/subaddressing using your work email (e.g. lbrenman+support@axway.com) for this second user
   
   > **Note**: You can ask the environment administrator to create a training environment to avoid modifications to your production environment, if necessary
 
