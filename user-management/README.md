@@ -62,11 +62,11 @@ You should prefix all Project and Team names with your initials (e.g. LB_Project
 
 ## Lab 3
 
-In this lab we'll add the second user to another team, Team B, with an enhanced role of Designer and Deployer in DESIGN and CHECK modes. Then we'll log in as the second user and see that they have limited access to ProjectB1 and ProjectB2 in Team B in addition to ProjectA in Team A. This time, they can access the projects in Team B too AND they can also create deployment jobs on Team B projects and run the deployment job into CHECK.
+In this lab we'll add the second user to another team, Team B, with an enhanced role of Designer and Deployer in DESIGN mode. Then we'll log in as the second user and see that they have limited access to ProjectB1 and ProjectB2 in Team B in addition to ProjectA in Team A. This time, they can access the projects in Team B too AND they can also create deployment jobs on Team B projects but they won't be able to run the deployment job into CHECK or LIVE as they don't have access.
 
 We'll also see how to use the Set Preferred Teams picker.
 
-* As your main user, create Team B and add ProjectB1 and ProjectB2 and click the + Add User button to add your second user with additional Designer DESIGN and Deployer DESIGN and CHECK roles. Click Save and Save again.
+* As your main user, create Team B and add ProjectB1 and ProjectB2 and click the + Add User button to add your second user with additional Designer DESIGN and Deployer DESIGN roles. Click Save and Save again.
 ![lab3](images/lab3-teambuser-1.png)
 * Logout your second user and log back in again
 ![lab3](images/lab3-seconduserlogin-1.png)
