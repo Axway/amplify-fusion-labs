@@ -52,7 +52,7 @@ In this lab, we'll set up a Salesforce Platform Event and start our integration 
     ![salesforce menu](images/lab1-salesforce-platform-event-fields.png)
 
 * Add a Object Trigger for New Contacts
-  * Open Salesforce Salesforce _Setup menu > Object and Fields > Object Manager_ and select "Contact" Object 
+  * Open Salesforce _Setup menu > Object and Fields > Object Manager_ and select "Contact" Object 
     ![salesforce menu](images/lab1-salesforce-contact-object.png)
   
   * Click "New" in _Triggers_ section 
@@ -150,7 +150,7 @@ In this lab, we'll use the retrieved contact and insert it into Hubspot. We'll u
   ![hubspot create component](images/lab3-hubspot-create-component.png)
 * Maximize the bottom panel, to view the pipeline details  
   * In the left pane (pipe-in), expand `Salesforce_GetContactByIdOutput/response/records` and expose the `LastName`, `FirstName` and `Email`  variables from Salesforce contact.
-  * In the middle pane under ACTION PROPERTIES on the right (action-in) expand `Hubspot_CreateContactInput/create` to expose the `email`, `firstname` and `lastname` variables of the Hubspot contact to be created
+  * In the middle pane, under ACTION PROPERTIES, on the left side (action-in) expand `Hubspot_CreateContactInput/create` to expose the `email`, `firstname` and `lastname` variables of the Hubspot contact to be created
   * Connect each Salesforce contact variable to the corresponding Hubspot contact variable 
   * Click Save
 
@@ -161,21 +161,21 @@ In this lab, we'll use the retrieved contact and insert it into Hubspot. We'll u
 
 ## Lab 4 - Challenge yourself!
 
-In this lab, we'll post a message to MS Teams with the contact details.
+In this lab, we'll post a message to Microsoft Teams with the contact details.
 
-We'll use the MS Teams Incoming Webhook Connector so that we can Post a message to a MS Teams channel.
+We'll use the Microsoft Teams Incoming Webhook Connector so that we can Post a message to a MS Teams channel.
 
-* Follow the instructions [**here**](https://support.microsoft.com/en-us/office/create-incoming-webhooks-with-workflows-for-microsoft-teams-8ae491c7-0394-4861-ba59-055e33f75498) to get a URL to a MS Teams channel
+* Follow the instructions [**here**](https://support.microsoft.com/en-us/office/create-incoming-webhooks-with-workflows-for-microsoft-teams-8ae491c7-0394-4861-ba59-055e33f75498) to get a URL to a Microsoft Teams channel
   * If you don't use Teams or don't have the webhook capability, you can use a test webhook online app like [Webhook.site](https://webhook.site) instead for this lab.
 * Deactivate to integration and add an HTTP/S Client Post Connection to your integration
   ![add https client post](images/lab4-add-https-client-post.png)
   ![https client post component init](images/lab4-https-client-post-component-init.png)
-* Click Add next to Connection so we can create an HTTP/S Client Connection to the MS Teams Incoming Webhook Connector URL and give the connection a name and description and do the following:
+* Click Add next to Connection so we can create an HTTP/S Client Connection to the Microsoft Teams Incoming Webhook Connector URL and give the connection a name and description and do the following:
   * Select HTTPS for Protocol
   * Select HTTP/2 for HTTP Version
-  * Enter the MS Teams Incoming Webhook Connector URL and press Update 
+  * Enter the Microsoft Teams Incoming Webhook Connector URL and press Update 
   ![https client connection](images/lab4-https-client-connection.png)
-* Return the integration and select the MS Teams Connection
+* Return to the integration and select the Microsoft Teams Connection
 * Maximize the bottom panel, to view the pipeline details  
   * In the ACTION PROPERTIES section, expand `HTTPSPostInput` to expose the body and right click on body and select SetValue
     ![https client post component setvalue](images/lab4-https-client-post-component-setvalue.png)
@@ -208,7 +208,7 @@ We'll use the MS Teams Incoming Webhook Connector so that we can Post a message 
     ```
 
   ![https client post component setvalue variable1](images/lab4-https-client-post-component-setvalue-variable.png)
-* Activate your integration and create a new Salesforce contact and see the new contact in Hubspot and you should also have a message in your MS Teams channel as follows:
+* Activate your integration and create a new Salesforce contact and see the new contact in Hubspot and you should also have a message in your Microsoft Teams channel as follows:
   ![microsoft teams message](images/lab4-microsoft-teams-message.png)
 
 Your final flow should like this:
