@@ -75,7 +75,7 @@ Dans cette étape nous allons paramétrer un Platform Event Salesforce et commen
     }
     ```
 
-    ![salesforce apex trigger pushtopic](../image/lab1-salesforce-contact-trigger-code.png)
+    ![salesforce apex trigger code](../image/lab1-salesforce-contact-trigger-code.png)
   * Sauvergarder puis vérifier qu'il n'y a pas d'erreur de compilation et que le trigger est bien actif.
 
 * Retourner au projet Fusion
@@ -100,7 +100,7 @@ Dans cette étape nous allons paramétrer un Platform Event Salesforce et commen
 
 ## Étape 2
 
-Dans cette étape, nous allons récupérer le contact et les champs souhaités à partir l'identifiant du PushTopic du nouveau contact. Nous utiliserons un composant de requête Salesforce (Salesforce query component) et un plug de recherche de contact par identifiant
+Dans cette étape, nous allons récupérer le contact et les champs souhaités à partir l'identifiant du nouveau contact reçu dans l'évènement Salesforce. Nous utiliserons un composant de requête Salesforce (Salesforce query component) et un plug de recherche de contact par identifiant
 
 * Désactiver l'intégration pour poursuivre le design
 * Cliquer sur l'icône `+` pour ajouter une étape après l'évènement déclencheur 

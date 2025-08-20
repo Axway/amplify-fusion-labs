@@ -98,7 +98,7 @@ In this lab, we'll set up a Salesforce Platform Event and start our integration 
 
 ## Lab 2
 
-In this lab, we'll retrieve the contact and desired fields based on the id from the new contact pushtopic. We'll use a Salesforce query component and a query Contact by id Plug.
+In this lab, we'll retrieve the contact and desired fields based on the id from the new contact received in the Salesforce event. We'll use a Salesforce query component and a query Contact by id Plug.
 
 * Deactivate your integration to continue designing the integration
 * Click the `+` icon to add a step after the trigger event 
