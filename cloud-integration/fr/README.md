@@ -61,7 +61,7 @@ Dans cette étape nous allons paramétrer un Platform Event Salesforce et commen
   * Remplacer le code Apex trigger par le code suivant :
 
     ```java
-        trigger NewContactTrigger on Contact (after insert) {
+    trigger NewContactTrigger on Contact (after insert) {
       List<NewContact__e> events = new List<NewContact__e>();
       for (Contact contact : Trigger.new) {
         NewContact__e event = new NewContact__e(
