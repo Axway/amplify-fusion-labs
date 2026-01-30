@@ -204,7 +204,7 @@ Let's update the API to implement the "Find Contacts" operation:
     * Link query parameters from the input API request `find-contactsAPIServerRequest/queryParams` to the backend input request `HTTPSGetInput/queryParams`
   * On the output side (right side) of the pipeline:
     * Link backend output statusCode `HTTPSGetOutput/statusCode` to the output `status` variable
-    * Right-click anywhere in the right-hand panel and select Extract, then paste in the following JSON that describes the currency converter API response object and click on Copy Node button:
+    * Right-click anywhere in the right-hand panel and select Extract, then paste in the following JSON that describes the Contact API  success response object and click on Copy Node button:
 
         ```json
         {
@@ -223,7 +223,7 @@ Let's update the API to implement the "Find Contacts" operation:
 
       * Right-click again anywhere in the right-hand panel and select Paste, then name your variable `backend-response`.
       * Drag a line from ACTION PROPERTIES `HTTPSGetOutput->response` to the `backend-response` extract variable.
-      * Right-click again anywhere in the right-hand panel and select Extract, then paste in the following JSON that describes the currency converter API response object and click on Copy Node button:
+      * Right-click again anywhere in the right-hand panel and select Extract, then paste in the following JSON that describes the Contact API error response object and click on Copy Node button:
 
         ```json
         { 
