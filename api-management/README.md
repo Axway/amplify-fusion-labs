@@ -199,10 +199,10 @@ Let's update the API to implement the "Find Contacts" operation:
   * Expand the bottom panel
   * Select the `ContactAPI` backend connection (with WireMock details)
   * Expand the `HTTPSGetInput` and `HTTPSGetOutput` flyouts in the ACTION PROPERTIES section
-  * On the input side (left side) of the pipeline:
+  * On the input side (left side) of the pipeline, prepare the http client request to the back-end API:
     * Set the value of `HTTPSGetInput/basePath` to "`/contacts`"
     * Link query parameters from the input API request `find-contactsAPIServerRequest/queryParams` to the backend input request `HTTPSGetInput/queryParams`
-  * On the output side (right side) of the pipeline:
+  * On the output side (right side) of the pipeline,  extract the http client response from the back-end API:
     * Link backend output statusCode `HTTPSGetOutput/statusCode` to the output `status` variable
     * Right-click anywhere in the right-hand panel and select Extract, then paste in the following JSON that describes the Contact API  success response object and click on Copy Node button:
 
@@ -252,6 +252,12 @@ Let's update the API to implement the "Find Contacts" operation:
   ![else-map](images/lab4-status-map.png)
   * Expand the bottom panel
   * Set values for the following output variables:
+    * Map `backend-response/contacts` from the pipeline intput to `find-contactsAPIServerResponse/200/contacts` in the pipeline output
+    * Add a SizeOfList function in the middle and 
+      * Map `backend-response/contacts` from the pipeline intput to the input of the function
+      * Map the output of the function to `find-contactsAPIServerResponse/200/count` in the pipeline output
+    * Set a value for the `Content-Type` response header to `apllication/json` in the 200 response case.
+
   ![else-map](images/lab4-status-map-pipeline.png)
 
 Your API in hybrid mode (1 operation is apified, the others are simply proxied) should look like this: \
