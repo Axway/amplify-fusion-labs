@@ -45,8 +45,14 @@ In this lab, we'll set up a Salesforce Platform Event and start our integration 
 * Follow the instructions [**here**](assets/salesforce-connection.md) to setup a Salesforce Connected OAuth App and an Amplify Fusion Salesforce Connection and generate a token and test the connection \
 ![salesforce connection](images/lab1-salesforce-connection.png)
 * Create a Platform Event for New Contacts
-    * Open Salesforce _Setup menu > Integration > Platform Events_
-    * Set "NewContact" as label and object name 
+    * Open Salesforce _Setup menu > Integration > Platform Events and click on "New Platform Event"
+    ![salesforce menu](images/lab1-salesforce-platform-event_new.png)  
+    * Set the Data Type as Text
+  ![salesforce menu](images/lab1-salesforce-platform-event_datatype.png)  
+    * Set "ContactID" as the Field Type
+    * Set 100 for the Length
+    * Set ContactID as the Field Name
+    ![salesforce menu](images/lab1-salesforce-platform-event_datatype1.png) 
     ![salesforce menu](images/lab1-salesforce-platform-event.png)
     * Add a custom field "ContactID"
     ![salesforce menu](images/lab1-salesforce-platform-event-fields.png)
