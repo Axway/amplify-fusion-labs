@@ -40,16 +40,20 @@
 
   ![salesforce11](salesforce-connection/salesforce11.png)
  ![salesforce11.1](salesforce-connection/salesforce11.1.png)
-- Enable **Enable Client Credentials Flow**
+
 - Enable **Enable Authorization Code and Credentials Flow**
 - Enable **Enable Device Flow**
 - Enable **Enable Token Exchange Flow**
 - Enable **Require secret for Token exchange Flow**
+
+
+In the security field
+- Enable **Require secret for Web Server Flow**
+- Enable **Require secret for Refresh Token Flow**
+- Disable **Require Proof Key for Code Exchange (PKCE) extension for Supported Authorization Flows**
 - Enable **Enable Refresh Token Rotation**
 
 - Click on **Create** 
-
-- Enable **Enable Authorization Code and Credentials Flow**
 
     ![salesforce11.3](salesforce-connection/salesforce11.3.png)
 
@@ -59,7 +63,7 @@
 
   ![salesforce12](salesforce-connection/salesforce12.png)
     ![salesforce12.1](salesforce-connection/salesforce12.1.png)
-     -  A new tab will ask you to verify your idenity by asking you to enter the verification code sent to your email. Once you enter the code, you will be able to see the Consumer Key and Secret, which you need to save for later use in Amplify Fusion connection configuration. \
+     -  A new tab will ask you to verify your idenity by asking you to enter the verification code sent to your email. Once you enter the code, you will be able to see the Consumer Key and Consumer Secret, which you need to save for later use in Amplify Fusion connection configuration. \
         ![salesforce12.2](salesforce-connection/salesforce12.2.png)
 
 ## Amplify Fusion Setup
@@ -93,7 +97,7 @@ You must configure a Salesforce Connection to connect Amplify Fusion to your Sal
 
 - After entering the above details, click **Update** to save the connection details.
 
-- Click on [Generate token] to Allow access. A pop-up window should prompt you to explicitly allow some access. \
+- Click on [Generate token] to Allow access. A pop-up window should prompt you to explicitly allow some access. Please ensure that the browser does not block pop-ups. \
 ![salesforce18](salesforce-connection/salesforce18.png)
 
 - Once token is generated, click on **Test** button \
