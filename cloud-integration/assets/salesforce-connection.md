@@ -63,7 +63,8 @@ In the security field
 
   ![salesforce12](salesforce-connection/salesforce12.png)
     ![salesforce12.1](salesforce-connection/salesforce12.1.png)
-     -  A new tab will ask you to verify your idenity by asking you to enter the verification code sent to your email. Once you enter the code, you will be able to see the Consumer Key and Consumer Secret, which you need to save for later use in Amplify Fusion connection configuration. \
+    
+-  A new tab will ask you to verify your idenity by asking you to enter the verification code sent to your email. Once you enter the code, you will be able to see the Consumer Key and Consumer Secret, which you need to save for later use in Amplify Fusion connection configuration. \
         ![salesforce12.2](salesforce-connection/salesforce12.2.png)
 
 ## Amplify Fusion Setup

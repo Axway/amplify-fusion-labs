@@ -8,7 +8,7 @@
   Make sure to use a username that is specific for the training, and **different from corporate email address** in case you use Salesforce in your organization. \
   ![salesforce02](salesforce-connection/salesforce02.png)
 
-  - Once you click on **Sign me Up**, you will get an email with your Salesforce URL and username (you might need to wait couple minutes) \
+  - Once you click on **Sign me Up**, you will get an email with your Salesforce URL and username (you might need to wait couple minutes). Reset your password \
   ![salesforce04](salesforce-connection/salesforce04.png)
 
   - Verify account by clicking on **Verify Account** button in the email.
@@ -24,7 +24,7 @@
 - Open the **Setup** menu. \
   ![salesforce07](salesforce-connection/salesforce07.png)
 
-- Under **Apps**, click on **App Manager** and click **New connected App** for creating a new app \
+- Under **Apps**, click on **App Manager** and click **New External Client  App** for creating a new app \
   ![salesforce08](salesforce-connection/salesforce09.png).
 
 - Fill up the required fields in the **Basic Information** \
@@ -36,15 +36,37 @@
     - Full access (full)
     - Manage user data via APIs (api)
     - Perform requests at any time (refresh_token, offline_access)
-
-  - Make sure to disable the PKCE extension. Leave the other options requiring secret enabled
+  
 
   ![salesforce11](salesforce-connection/salesforce11.png)
+ ![salesforce11.1](salesforce-connection/salesforce11.1.png)
 
-- **Save** the app and then click **Continue**.
+- Enable **Enable Authorization Code and Credentials Flow**
+- Enable **Enable Device Flow**
+- Enable **Enable Token Exchange Flow**
+- Enable **Require secret for Token exchange Flow**
 
-- Click on **Manage Consumer Details** button, and copy the **Consumer Key** and **Consumer Secret** or keep the page open for later. These consumer details will be used when creating your Salesforce connection on Amplify Fusion \
+
+In the security field
+- Enable **Require secret for Web Server Flow**
+- Enable **Require secret for Refresh Token Flow**
+- Disable **Require Proof Key for Code Exchange (PKCE) extension for Supported Authorization Flows**
+- Enable **Enable Refresh Token Rotation**
+
+- Click on **Create** 
+
+    ![salesforce11.3](salesforce-connection/salesforce11.3.png)
+
+ - Click on **Settings tab**
+ - Scroll down and open OAuth Settings
+ -  Click on **ConsumerKey and Secret**
+
   ![salesforce12](salesforce-connection/salesforce12.png)
+    ![salesforce12.1](salesforce-connection/salesforce12.1.png)
+    
+-  A new tab will ask you to verify your idenity by asking you to enter the verification code sent to your email. Once you enter the code, you will be able to see the Consumer Key and Consumer Secret, which you need to save for later use in Amplify Fusion connection configuration. 
+  
+![salesforce12.2](salesforce-connection/salesforce12.2.png)
 
 ## Amplify Fusion Setup
 
@@ -69,7 +91,7 @@ You must configure a Salesforce Connection to connect Amplify Fusion to your Sal
     - Subdomain: You can get your domain by clicking on the Avatar on the top right corner of Salesforce application and copy what comes before ".my.saleforce.com"
       ![salesforce17](salesforce-connection/salesforce17.png)
 
-    - Version: 46.0, 57.0 etc.  You can get the available API versions by calling the service <https://{subdomain}.my.salesforce.com/services/data> in your browser.
+    - Version: 60.0.  You can get the available API versions by calling the service <https://{subdomain}.my.salesforce.com/services/data> in your browser.
 
   - ClientID: Paste the Consumer Key of the Salesforce app
 
@@ -77,7 +99,7 @@ You must configure a Salesforce Connection to connect Amplify Fusion to your Sal
 
 - After entering the above details, click **Update** to save the connection details.
 
-- Click on [Generate token] to Allow access. A pop-up window should prompt you to explicitly allow some access. \
+- Click on [Generate token] to Allow access. A pop-up window should prompt you to explicitly allow some access. Please ensure that the browser does not block pop-ups. \
 ![salesforce18](salesforce-connection/salesforce18.png)
 
 - Once token is generated, click on **Test** button \
