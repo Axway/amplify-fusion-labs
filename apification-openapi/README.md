@@ -156,44 +156,95 @@ Now the database is ready.
 In this lab, we'll import our Invoice API, create our integration for the API endpoint and then we'll query our database for invoices with the given state.
 
 * Create a new Amplify Fusion project for this APIfication. Use a unique name in case you're not the only one doing this lab on your tenant (e.g. XX_APIfication with XX being your name or initials).\
-  ![new-project](images/lab2-new-project.png)
-* Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml](assets\InvoiceAPI-OAS.yaml)**.\
+  ![new-project](images/lab2-new-project1.png)
+
+* Create a new API by clicking on the + symbol next to API.
+  
+  ![new-project](images/lab2-new-api.png)  
+
+* Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml] (assets\InvoiceAPI-OAS.yaml)**.\
+* Click on Next
+* 
   ![api-import](images/lab2-api-create.png)
-* Edit the API settings to set a unique API base path (e.g. XX_api)
+
+
+* Leave the Backend Server URL blank and choose create
+  
+    ![new-project](images/lab2-frontendbasepath.png)  
+* Edit the API settings to set a unique API Frontend Base Path (e.g. XX_api) and click on save
+  
 * For the "GET /invoices" endpoint, use the button link integration on the right side of the method title\
   ![api-integration-link](images/lab2-api-integration-link.png)
-  * Choose to create a new Integration (e.g. GetInvoicesByState)
-* The integration tab should open by itself, click on API Server component and check that linked API operation is  "GET /invoices"
-* Expand Operations component and its Status component to see the integration flow\
+
+  * Type in a name for the new Integration (e.g. GetInvoicesByState) and click on Create New Integration
+  
+    ![api-integration-link](images/lab2-getinvoicesbystate.png) 
+
+* The integration tab should open by itself, click on API Server component and check that linked API operation is  "GET /invoices". Click on Save. 
+* Expand Operations component and its Status component to see the integration flow
   ![integration-init](images/lab2-integration-init.png)
-* Click the first `+` button in Operations to add a Database Select component and expand the bottom panel
-  * We need to create a database connection for our Postgres database so click Add next to the Connection picker and give your connection a name and description (e.g. Neon Postgres DB)
+
+* Click the first `+` button in Operations to add a Database Select component
+  
+  ![integration-init](images/lab2-database-connection-picker.png)
+
+* Expand the Database select bottom panel
+  
+  ![integration-init](images/lab2-database-expand.png)
+
+
+  * We need to create a database connection for our Postgres database.
+  * Click on Add next to connection.
+
+  * Give your connection a  description (e.g. Neon Postgres DB) and click on Create.
     * Select PostgreSQL as Database Type and set the version you used for the database creation (default is 15.x)
     * Update the connection URL with jdbc:postgresql://_`server`_/_`databaseName`_ with `host` and `database name` that you wrote down after database creation (default postgresql port 5432 is not required in the URL)
-    * Enter your User Name and Passwordthat you wrote down after database creation
-    * click on Update and then on Test \
+    * Enter your User Name and Password that you wrote down after database creation
+    * Click on Update and then on Test. There will be a green check mark if the connection is successful\
     ![database connection](images/lab2-database-connection.png)
       > Note that if you get any Connection Timeout errors with the connection then you may want to expand the Advanced section and set `Connection Wait Timeout` to 1000. Don't forget to click update.
     * Close your connection sub tab and return to the Database Select component in your integration
+  
+     ![database connection](images/lab2-database-refresh.png) 
+
   * Click refresh in the Connections tab and select the database connection you just created
-  * We need a plug for selecting invoices by State so click Add next to the Plug picker and give your plug a name and description (e.g. GetInvoicesByState) and click on the Configure button
+  
+    ![database connection](images/lab2-plug-creation.png) 
+  * We need a plug for selecting invoices by State so click Add next to the Plug picker and give your plug a name and description (e.g. GetInvoicesByState) and click on the Create button
+  * Click on the Configure button
     * Select the database connector you just created and select `Select` for the Actions and `public` for the schemas
     * Check the box next to your invoice table, and select all the fields
-    * Click the Where tab and select `invoice.state` field and the `=` operator and press Generate and click save
+    * Click the Where tab and click on Add condition. Select `invoice.state` field and the `=` operator and press Generate and click save
     ![database plug configuration](images/lab2-database-plug-configuration.png)
     ![database plug](images/lab2-database-plug.png)
     * Close the plug sub tab and return to the Database Select component in your integration and click the refresh button in the Plug picker and select the newly created plug
   * Expand `get-invoices-by-stateAPIServerRequest` in the left hand panel to expose the `queryParams->state` and drag a line from state to `GetInvoicesBystateInput->where->invoice_state` in the ACTION PROPERTIES in the center panel
-  * In the right hand panel set the value of the response `status` variable to `200` for now.
-  * Expand `get-invoices-by-stateAPIServerResponse` in the right hand panel to see response body format of the `200` case and set its `grandTotal`  to the value `0` (this will be the default response if no invoices are found for the requested state)
-  * Expand `get-invoices-by-stateAPIServerResponse->200->responseHeaders` to see the `200` response headers and set its `Content-Type` to the value `application/json`
+  
+![integration](images/lab2-setstatus200.png)  
+
+  * In the right hand panel right click on `status` and click on Set Value and set it to `200` for now.
+  
+  ![integration](images/lab2-grandtotal.png)  
+
+* On the right panel expand `get-invoices-by-stateAPIServerResponse -> 200 -> body` and set `grandTotal`  to the value `0` (this will be the default response if no invoices are found for the requested state)
+* On the right panel expand `get-invoices-by-stateAPIServerResponse->200->Headers` to see the `200` response headers and set its `Content-Type` to the value `application/json`
   * Click the Save button \
   ![database component](images/lab2-database-component.png)
+
+* Label the components: \
+  
+  API Server = receive API request 
+
+  Operations = process API request
+
+  Database = query Invoices by State
+
+  Status = send API response
 
 Your integration should look like this: \
 ![integration](images/lab2-integration.png)
 
-* Enable your API and make an API call from your Browser, Postman or curl as follows:
+* Go the Invoice API and enable your API and make an API call from your Browser, Postman or curl as follows:
   
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
@@ -205,20 +256,28 @@ Your integration should look like this: \
   
     ![API Call](images/lab2-APICall.png)  
 
-* Find your API transaction in the Monitor, click on the `+` sign next to Operations and click on the Database Select step and expand `GetInvoicesByStateOutput->resultSet` and see that you are retrieving invoices
-![transaction monitoring](images/lab2-transaction-monitoring.png)
+    ![API Call](images/lab2-plus-operations.png)  
+* Find your API transaction in the Monitor, click on the `+` sign next to Operations and click on the Database Select step and expand `GetInvoicesByStateOutput-> response-> resultSet` and see that you are retrieving invoices
+
+  ![transaction monitoring](images/lab2-transaction-monitoring.png)
 
 ## Lab 2
 
 In this lab, we'll loop over the invoices, parse each one to a JSON object and do a currency conversion on the invoice amount to a desired currency passed into the API call as a query parameter.
 
 * Disable the API so the integration can be modified
-* Click the `+` button after the database component and add a For-each component, expand it and click on Config
+* Click the `+` button after the database component and add a For-each system component and label it `For each invoice`
+
+![ForEach](images/lab2-forEach.png)
+
+*  Expand the For each component and click on Config
 * Click the down arrow and select the `GetInvoicesByStateOutput->response->resultSet` array to loop over and click Save
 ![foreach configuration](images/lab3-foreach-configuration.png)
 * Let's convert the invoice total amount to the desired currency using the APILayer currency conversion API. 
-  * Add an HTTP/S Client Get component inside the loop and expand the bottom panel
-  * Click Add next to the Connection picker and give your connection a name and description (e.g. Exchange Rates Data API) and do the following:
+
+![https Client](images/lab3-httpsclient.png)
+  * Add an HTTP/S Client Get component by clicking on the `+` symbol inside the loop and expand the bottom panel
+  * Click `Add` next to the Connection picker and give your connection a name and description (e.g. Exchange Rates Data API) and do the following:
   * Select HTTPS for the Protocol
   * Select HTTP/2 for the HTTP Version
   * Enter `api.apilayer.com/exchangerates_data` for Url
@@ -232,7 +291,9 @@ In this lab, we'll loop over the invoices, parse each one to a JSON object and d
 * Go back to your HTTP/S Client Get component, click refresh in the Connection picker and select the connection you just created
 * In the center panel under ACTION PROPERTIES, expand `HTTPSGetInput` and:
   * Right click on basePath and setValue to `/convert`
-  * Right click on `queryParams` and add 3 string variables inside (`amount`, `from` and `to` )  
+  
+    ![variable add](images/lab3-add-inside.png)
+  * Right click on `queryParams` and add 3 `string` variables inside (`amount`, `from` and `to` )  
   * Drag a line from the left hand panel `GetInvoicesByStateOutput->response->resultSet->invoice_totalamt` to the center panel `HTTPSGetInput->queryParams->amount` to set the amount for the APILayer API
   * Drag a line from the left hand panel `GetInvoicesByStateOutput->response->resultSet->invoice_currency` to the center panel `HTTPSGetInput->queryParams->from` to set the source currency code for the APILayer API
   * Drag a line from the left hand panel `get-invoices-by-stateAPIServerRequest->queryParams->currencycode` to the center panel `HTTPSGetInput->queryParams->to` to set the target currency code for the APILayer API
@@ -299,6 +360,8 @@ In this lab, we'll map our invoice and currency converted amount to the response
   * Right click on any variable on the right hand panel and select Paste and name the variable `invoiceResponse`
   * Click on it to expand this variable
   * Expand `currencyConvertResponse` in the left hand panel
+   ![Fx](images/lab4-fx.png) 
+      ![decimal](images/lab4-decimal.png) 
     * Add a map function using the '+fx' button, select DecimalPrecision in the Math category.
       * Drag a line from `currencyConvertResponse->result` to `decimal`
       * Set `precision` to 2
@@ -313,23 +376,28 @@ In this lab, we'll map our invoice and currency converted amount to the response
     * `invoice_billtoname` to `invoiceResponse->billtoname` in the right hand panel
     * `invoice_vat` to `invoiceResponse->vat` in the right hand panel
     * `invoice_state` to `invoiceResponse->state` in the right hand panel
+  
   * Click Save
-  ![map1](images/lab4-map1.png)
+  
+      ![map1](images/lab4-map1.png)
 * Then we add the converted invoice to the response list and calculate the response grand total.
   * Add another Map component after the previous one and expand the bottom panel.
+  
+    ![map2 addFloats](images/lab4-list.png)
   * Add an AppendList map function from the List catagory
-    * Drag a line from `get-invoices-by-stateAPIServerResponse->200->invoices[]` on the left to `docList`
+    * Drag a line from `get-invoices-by-stateAPIServerResponse->200->body->invoices[]` on the left to `docList`
     * Drag a line from `invoiceResponse` to `docIn`
-    * Drag a line from `docList` to `get-invoices-by-stateAPIServerResponse->200->invoices[]` on the right
+    * Drag a line from `docList` to `get-invoices-by-stateAPIServerResponse->200->body->invoices[]` on the right
     ![map2](images/lab4-map2-AppendList.png)
   * Add an AddFloats function
-    * Drag a line from `get-invoices-by-stateAPIServerResponse->200->grandTotal` to `num1`
+    * Drag a line from `get-invoices-by-stateAPIServerResponse->200->body->grandTotal` to `num1`
     * Drag a line from `invoiceResponse->totalamt` to `num2`
-    * Drag a line from `output` to `response->grandTotal`
+    * Drag a line from `output` to `get-invoices-by-stateAPIServerResponse->200->body->grandTotal`
     ![map2](images/lab4-map2-addfloats.png)
+    * Click on the AddFloats function title to minimize and continue the mapping
   * Complete the response fields
     * Drag a line from `get-invoices-by-stateAPIServerRequest->queryParams->state` on the left to `get-invoices-by-stateAPIServerResponse->200->state` on the right
-    * Drag a line from `get-invoices-by-stateAPIServerRequest->queryParams->currencycode` on the left to `get-invoices-by-stateAPIServerResponse->200->currency` on the right
+    * Drag a line from `get-invoices-by-stateAPIServerRequest->queryParams->currencycode` on the left to `get-invoices-by-stateAPIServerResponse->200->body->currency` on the right
     ![map2 addFloats](images/lab4-map2.png)
   * Click Save
 
