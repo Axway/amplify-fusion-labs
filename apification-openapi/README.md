@@ -162,7 +162,7 @@ In this lab, we'll import our Invoice API, create our integration for the API en
   
   ![new-project](images/lab2-new-api.png)  
 
-* Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml] (assets\InvoiceAPI-OAS.yaml)**.\
+* Create a new API (e.g. InvoiceAPI) by uploading this sample OpenAPI specification (OAS) : **[InvoiceAPI-OAS.yaml](assets/InvoiceAPI-OAS.yaml)**.\
 * Click on Next
 * 
   ![api-import](images/lab2-api-create.png)
@@ -244,7 +244,7 @@ In this lab, we'll import our Invoice API, create our integration for the API en
 Your integration should look like this: \
 ![integration](images/lab2-integration.png)
 
-* Go the Invoice API and enable your API and make an API call from your Browser, Postman or curl as follows:
+* Enable your API and make an API call from your Browser, Postman or curl as follows:
   
   > Mouse over the link icon to see the URL you need for the API call and copy the link
   
