@@ -123,7 +123,6 @@ Normally, we'd use rollback in Production (LIVE) but we can also perform rollbac
 * Click on the rollback Action button for your v2 deployment and select your deployment only and click OK
 ![lab3](images/lab4-rollback-version2-2.png)
 ![lab3](images/lab4-rollback-version2-3.png)
-* Since we rolled back our deployment, we will need to redo the Connection override as we did in Lab 2
 * Activate your integration and test it and make sure your response is `Hello from V1`
 
 ## Lab 5
