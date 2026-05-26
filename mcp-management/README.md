@@ -26,7 +26,7 @@ In this set of labs, you will learn the following:
   > If you do not have an account and need one, please send an email to **[amplify-fusion-training@axway.com](mailto:amplify-fusion-training@axway.com?subject=Amplify%20Fusion%20-%20Training%20Environment%20Access%20Request&body=Hi%2C%0D%0A%0D%0ACould%20you%20provide%20me%20with%20access%20to%20an%20environment%20where%20I%20can%20practice%20the%20Amplify%20Fusion%20e-Learning%20labs%20%3F%0D%0A%0D%0ABest%20Regards.%0D%0A)** with the subject line `Amplify Fusion Training Environment Access Request`
 
 * An AI app with free subscription that supports adding custom MCP server or test MCP client:
-  * Mistral:   https://chat.mistral.ai/ 
+
   * Claude Desktop: 
     * Make sure you have node.js installed, or install it from https://nodejs.org/en/download
     * Install Claude for Desktop from https://claude.ai/download     
@@ -93,15 +93,6 @@ Let's add the "Check email" tool:
       ![image](images/mcp_lab1_step8.png)
 
 * Add the MCP in your client app
-  * Mistral:  
-      * Go to https://chat.mistral.ai/connections 
-      * Click on "Add connector"
-      * Select "Custom MCP connector"
-      * Set the name to "Contacts-Fusion-MCP-Server"
-      * Paste the coppied url in Connector Server
-      * Click Create
-      * You should see the MCP Server at the bottom of the app page, with the status "connected" and the list of tools.
-      ![image](images/mcp_lab1_test_mistral1.png)
   * Claude Desktop: 
     * Edit the Config file from File Menu > Settings > Developpers
     * Add the MCP server details to the config file (claude_desktop_config.json)
@@ -132,9 +123,9 @@ Let's add the "Check email" tool:
       ![image](images/mcp_lab1_test_postman1.png)
 
 * Test the MCP server
-  * with claude/mistral: start a new chat, make sure to enable the use of your MCP server in the chat and sent the prompt "Is "abc@test.com" a valid email?" or "Check "contact@axway.com"
+  * with claude: start a new chat, make sure to enable the use of your MCP server in the chat and sent the prompt "Is "abc@test.com" a valid email?" or "Check "contact@axway.com"
   
-      ![image](images/mcp_lab1_test_mistral2.png)      
+    
       ![image](images/mcp_lab1_test_claude2.png)
   * with postman: select the "check email" tool and test various email address
       ![image](images/mcp_lab1_test_postman2.png)
@@ -202,12 +193,11 @@ Let's add the "Check email" tool:
 * Go back to your MCP server and activate it
 
 * Refresh the MCP connection from the client:
-  * Mistral: Go to the connection and click refreh tools
   * Claude Desktop: Refresh with Ctrl+R or restart
   * Postman: Disconnect and Reconnect
 
 * Test the update MCP server
-  * with claude/mistral: sent a new prompt to update Alice's email 
+  * with claude: sent a new prompt to update Alice's email 
       ![image](images/mcp_lab2_step5.png)  
   * with postman: select the "update email" and test with required parameters
 
@@ -274,12 +264,11 @@ Let's add the "Check email" tool:
 * Go back to your MCP server and activate it
 
 * Refresh the MCP connection from the client:
-  * Mistral: Go to the connection and click refreh tools
   * Claude Desktop: Refresh with Ctrl+R or restart
   * Postman: Disconnect and Reconnect
 
 * Test the update MCP server
-  * with claude/mistral: sent a new prompt to search for Rebecca's details. You can combine all tools in the same prompt.
+  * with claude: sent a new prompt to search for Rebecca's details. You can combine all tools in the same prompt.
       ![image](images/mcp_lab3_step3.png)  
   * with postman: select the "search contact" and test with various parameters combinations
 

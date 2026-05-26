@@ -46,6 +46,7 @@ In this lab, we'll set up a Salesforce Platform Event and start our integration 
 ![salesforce connection](images/lab1-salesforce-connection.png)
 * Create a Platform Event for New Contacts
     * Open Salesforce _Setup menu > Integration > Platform Events and click on "New Platform Event"
+    ![salesforce menu](images/lab1-salesforce-platform-event_new1.png)  
     ![salesforce menu](images/lab1-salesforce-platform-event_new.png)  
     * Set the Data Type as Text
   ![salesforce menu](images/lab1-salesforce-platform-event_datatype.png)  
@@ -98,6 +99,7 @@ In this lab, we'll set up a Salesforce Platform Event and start our integration 
 * Activate your integration 
 * Add a new contact in Salesforce _Sales menu > Contacts > New Contact_
   ![salesforce contact](images/lab1-salesforce-new-contact.png)
+  Ensure that the Firstname, Lastname and email fileds are filled. 
   ![salesforce contact](images/lab1-salesforce-new-contact-created.png)
 * Go to the Monitor and click on the transaction and see that you consumed the pushtopic contact
   ![transaction monitoring details](images/lab1-transaction-monitoring-details.png)
@@ -214,6 +216,12 @@ We'll use the Microsoft Teams Incoming Webhook Connector so that we can Post a m
     ```
 
   ![https client post component setvalue variable1](images/lab4-https-client-post-component-setvalue-variable.png)
+
+  Expose the headers and add a variable --> String --> Add Inside
+  Set the variable name as: Content-Type
+  Set its value as application/json
+
+  Save your HTTPS Client 
 * Activate your integration and create a new Salesforce contact and see the new contact in Hubspot and you should also have a message in your Microsoft Teams channel as follows:
   ![microsoft teams message](images/lab4-microsoft-teams-message.png)
 
