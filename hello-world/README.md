@@ -64,6 +64,9 @@ Create a new project and give it a meaningful name
 * Create an integration and provide a meaningful name
   
     <img src="images/lab1-add-integration.png" width="30%" />
+
+    Click on the + symbol next to Integrations to create a new integration and provide a meaningful name. 
+
     <img src="images/lab1-add-integration1.png" width="50%" />
 * Click on + Event and add Scheduler trigger
   ![Add Scheduler](images/lab1-add-scheduler-a.png)
