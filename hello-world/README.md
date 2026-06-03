@@ -38,7 +38,12 @@ As you go through the labs, take the time to explore more about the items relate
 
 * Click on Create to start a new Project for Amplify Fusion
 
-  ![projects list](images/projects-list.png)
+
+  <img src="images/projects-list.png" width="80%" height="50%" />
+
+* Add an appropriate name for the project with your unique initials (Ex TM_ HelloWorld) and choose Create
+<img src="images/projects-list1.png" width="50%" height="50%" />
+
 
 * This is where we will do our design work
 
@@ -50,17 +55,35 @@ The labs below are intended to be exploratory. Instructions are provided but you
 
 In this lab, we'll create an integration that is triggered using a Scheduler and test it.
 
-* Create an integration
-* Add Scheduler trigger
+Create a new project and give it a meaningful name
+
+  ![Create Project](images/lab1-create-project.png)
+
+  <img src="images/lab1-create-project1.png" width="50%" height="50%" />
+
+* Create an integration and provide a meaningful name
+  
+    <img src="images/lab1-add-integration.png" width="30%" />
+
+    Click on the + symbol next to Integrations to create a new integration and provide a meaningful name. 
+
+    <img src="images/lab1-add-integration1.png" width="50%" />
+* Click on + Event and add Scheduler trigger
   ![Add Scheduler](images/lab1-add-scheduler-a.png)
+* Fill in the mandatory fields 
+   Internal as 1 
+   Time Unit as Minutes
+   Click on Save
   ![Add Scheduler](images/lab1-add-scheduler-b.png)
+  The integration must look like this. 
   ![Add Scheduler](images/lab1-add-scheduler-c.png)
-* Choose a test data plane (if not set yet on the top bar)
+* Choose Test and select Shared Data Plane and click on Submit 
   ![Prepare Test](images/lab1-prepare-test.png)
-* Click test
-* See transaction in monitor (or refresh until you see it)
+* A new tab will open up to show the transaction in Monitor section
   ![Test](images/lab1-test-a.png)
+* Click on the Scheduler transaction
   ![Test](images/lab1-test-b.png)
+
 
 Your final integration should look like this:
 
@@ -72,13 +95,16 @@ In this lab, we'll add an HTTP/S Client component (and associated connection) to
 
 Continue from Lab 1
 
-* Add an HTTP/S Client Post Component
+* Click on the '+' symbol and add an HTTP/S Client Post Component
   ![Add HTTPS Post](images/lab2-add-https-post-a.png)
-* Label the component "Send to webhook site"
+* Label the component "Send to webhook site" and expand the bottom panel
   ![Add HTTPS Post](images/lab2-add-https-post-b.png)
-* Expand bottom panel
+
   ![Add HTTPS Post](images/lab2-add-https-post-c.png)
-* Click Add on Connection
+* Click Add and type in an appropriate name for the connection
+    <img src="images/lab2-Add-new-connection.png" width="70%" />
+    
+
   * Provide a name and description (webhook site)
   * Select https
   * Paste url for webhook site (WITHOUT THE `https://` PROTOCOL )
@@ -86,9 +112,13 @@ Continue from Lab 1
   * Enter username and password (abcd/1234)
   * Set / as safe path
   * Click update
-    ![Create Connection](images/lab2-create-connection-a.png)
+  
+    <img src="images/lab2-create-connection-a.png" width="70%" height="50%" />
+  
   * Click test and make sure you get a green check
   * Close tab
+  
+      <img src="images/lab2-refresh-connection.png" width="50%" height="50%" />
 * Go back to integration -> HTTP/S Client POST Component, click refresh in the Connection picker and select the Connection we just made
 * Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
 * Right click on body and select Set Value
@@ -119,25 +149,40 @@ In this lab, we'll replace the Scheduler component event trigger with an HTTP/S 
 
 Continue from Lab 2
 
-* Delete the Scheduler Event trigger (first component)
+* Delete the Scheduler Event trigger (first component) by hovering the mouse on it and pressing the delete button. 
+    <img src="images/lab3-delete-scheduler.png" width="50%" height="50%" />
+ 
 * Click the Event button and select an HTTP/S Server Get trigger
   ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-a.png)
-  ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-b.png)
-* Click add on Connection
+    <img src="images/lab3-add-https-get-trigger-b.png" width="70%" height="50%" />
+    * Click add on Connection
+  
+   <img src="images/lab3-add-https-get-trigger-add-connection.png" width="50%" height="50%" />
+
+    * Provide a name and choose create
+
+  ![HTTP Server Connection](images/lab3-https-connection-a.png)
+
+
   * Provide a name and description (e.g. HTTPS Server) and press Select
-  * Select HTTPS
+  * Select HTTPS as the protocol
   * Leave authentication as None
   * Click Update
-  ![HTTP Server Connection](images/lab3-https-connection-a.png)
   * Close tab
-* Go back to integration and open the HTTP/S Server GET Component. click refresh and select the Connection we just created
-* Add a resource path (e.g. checkvalue). Note that the name must be unique
+  
+* Go back to integration and open the HTTP/S Server GET Component. Click refresh and select the Connection we just created
+* Add a resource path (e.g. TM_checkvalue). Note that the name must be unique, so use your initials before the resource path. 
 * Add a query parameter (e.g. value)
   ![HTTP Server Get Trigger](images/lab3-add-https-get-trigger-c.png)
-* Click Save 
+* Click Save
+   
+ <img src="images/lab3-https-label.png" width="30%" />
+
 * Label the HTTP/S Server Get component "Receive check request"
 * Click on the HTTP/S Client POST component (Send to webhook site) and expand the bottom panel
 * Expand the HTTPSPostInput flyout in the ACTION PROPERTIES section
+  
+   <img src="images/lab3-delete-body.png" width="40%" />
 * Click the delete button on the body to remove the former static value
 * Expand the HTTPSServerGetOutput flyout and the queryParams flyout on the left hand side of the panel
 * Drag value over to body and click save
@@ -145,9 +190,13 @@ Continue from Lab 2
 * Click the Test button to test your flow and see that you cannot do that. We will need to trigger our integration with an API call
 * Activate the integration on the data plane with the toggle switch
   ![Enable Toggle](images/lab3-enable-a.png)
-  ![Enable Toggle](images/lab3-enable-b.png)
-* Copy the endpoint URL of the integration on the data plane  
-  ![Enable Toggle](images/lab3-enable-c.png)
+
+  <img src="images/lab3-enable-b.png" width="40%" />
+
+* Copy the endpoint URL of the integration on the data plane by clicking on the copy button
+  
+ <img src="images/lab3-enable-c.png" width="40%" />
+
 * In a separate browser tab paste the URL and enter a value for value (e.g. 10)
 * See results in webhook site and see that the body should be equal to the value you provided as a query parameter
   ![Result](images/lab3-result-a.png)
@@ -168,8 +217,10 @@ In this lab, we'll add some flow control logic and variables to our integration 
 Continue from Lab 3
 
 * Disable the integration so it can be edited
+  ![Final](images/lab4-deactivate.png)
+   <img src="images/lab4-deactivate1.png" width="40%" />
 * Click the `+` sign between the two components and add an if-else
-  ![If-else](images/lab4-ifelse-a.png)
+  ![If-else](images/lab4-addifelse.png)
 * Expand the If-else and label it "check value"
   ![If-else](images/lab4-ifelse-b.png)
 * click on Expression
