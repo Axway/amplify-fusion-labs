@@ -108,6 +108,7 @@ In this lab we'll update our integration, version it to v2 and deploy it to CHEC
 ![lab3](images/lab3-deploy-version2-3.png)
 * Run your deployment job and select CHECK
 ![lab3](images/lab3-deploy-version2-4.png)
+
 * Make sure you have only one tab open and switch to Manager module and CHECK mode
 * Open the Events tab and activate your integration and test it and make sure your response is `Hello from V2`
 
