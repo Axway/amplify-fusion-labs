@@ -220,6 +220,8 @@ In this lab, we'll import our Invoice API, create our integration for the API en
     * Close the plug sub tab and return to the Database Select component in your integration and click the refresh button in the Plug picker and select the newly created plug
   * Expand `get-invoices-by-stateAPIServerRequest` in the left hand panel to expose the `queryParams->state` and drag a line from state to `GetInvoicesBystateInput->where->invoice_state` in the ACTION PROPERTIES in the center panel
   
+![integration](images/lab2-setqueryparam.png)  
+
 ![integration](images/lab2-setstatus200.png)  
 
   * In the right hand panel right click on `status` and click on Set Value and set it to `200` for now.
@@ -227,7 +229,7 @@ In this lab, we'll import our Invoice API, create our integration for the API en
   ![integration](images/lab2-grandtotal.png)  
 
 * On the right panel expand `get-invoices-by-stateAPIServerResponse -> 200 -> body` and set `grandTotal`  to the value `0` (this will be the default response if no invoices are found for the requested state)
-* On the right panel expand `get-invoices-by-stateAPIServerResponse->200->Headers` to see the `200` response headers and set its `Content-Type` to the value `application/json`
+* On the right panel expand `get-invoices-by-stateAPIServerResponse->200->headers->Content-Type` and set the value to `application/json`
   * Click the Save button \
   ![database component](images/lab2-database-component.png)
 
@@ -238,7 +240,7 @@ In this lab, we'll import our Invoice API, create our integration for the API en
   Operations = process API request
 
   Database = query Invoices by State
-
+  
   Status = send API response
 
 Your integration should look like this: \

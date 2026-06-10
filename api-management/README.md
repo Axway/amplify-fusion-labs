@@ -242,21 +242,23 @@ Let's update the API to implement the "Find Contacts" operation:
   ![else-map](images/lab4-else-map.png)
   * Expand the bottom panel
   * Set values for the following output variables:
-    * `find-contactsAPIServerResponse/400/code` = `400-Q`
-    * `find-contactsAPIServerResponse/400/message` = `Missing at least one query parameter for your research`
-    * `find-contactsAPIServerResponse/400/responseHeaders/Content-Type` = `application/json`
+    * `find-contactsAPIServerResponse/400/headers/Content-Type` = `application/json`
+    * `find-contactsAPIServerResponse/400/body/code` = `400-Q`
+    * `find-contactsAPIServerResponse/400/body/message` = `Missing at least one query parameter for your research`
     * `status` = `400`
-  ![else-map](images/lab4-else-map-pipeline.png)
+  
+  <img src="images/lab4-else-map-pipeline.png" width="50%" height="50%" />
+
   * Press Save and close the map panel
 * Add another Map component in the status=200 case
   ![else-map](images/lab4-status-map.png)
   * Expand the bottom panel
   * Set values for the following output variables:
-    * Map `backend-response/contacts` from the pipeline intput to `find-contactsAPIServerResponse/200/contacts` in the pipeline output
-    * Add a SizeOfList function in the middle and 
+    * Map `backend-response/contacts` from the pipeline intput to `find-contactsAPIServerResponse/200/body/contacts` in the pipeline output
+    * Add a SizeOfArray function in the middle and 
       * Map `backend-response/contacts` from the pipeline intput to the input of the function
-      * Map the output of the function to `find-contactsAPIServerResponse/200/count` in the pipeline output
-    * Set a value for the `Content-Type` response header to `apllication/json` in the 200 response case.
+      * Map the output of the function to `find-contactsAPIServerResponse/200/body/count` in the pipeline output
+    * Set a value for the `find-contactsAPIServerResponse/200/headers/Content-Type` response header to `application/json` in the 200 response case.
 
   ![else-map](images/lab4-status-map-pipeline.png)
 
