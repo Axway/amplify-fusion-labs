@@ -201,6 +201,11 @@ Now let's add an OpenAI LLM Connector.
 
 Congratulations! You've built your first AI Chatbot API in the AI Gateway!!!
 
+* Open the Monitor module and find your transaction and click on the transaction hyperlink. Click the + button on the + Operations Step and then click on the OpenAI - Chat step and open the OpenAIChatOutput components in the input and output and notice the token reporting
+  ![image](images/lab2_step19.png)
+  ![image](images/lab2_step20.png)
+  ![image](images/lab2_step21.png)
+
 * Try some other messages and check the responses
 
   For example, my request: `Who won the last FIFA World Cup championship?`, had a response of `The most recent FIFA World Cup took place in 2022 in Qatar. The winner of this championship was Argentina, who won their third World Cup title by defeating France 4-2 in a penalty shootout, after the match ended 3-3 after extra time on December 18, 2022`
@@ -272,3 +277,36 @@ Now, we'll check the Lakera response in an `if` statement and if flaged, we'll s
 * Ask `Who won the last FIFA World Cup championship?` again and make sure that the Guardrail is not flagging incorrectly.
 
 Congratulations! Now, you've added a guardrail to your chatbot API!
+
+## Lab 4
+
+In this lab we'll look at monitoring and governing LLM usage.
+
+* Open the Manager Module and open the application you created in Lab 1 and click on Usage Controls and click on LLM Quotas. This should be empty.
+  ![image](images/lab4_step01.png)
+
+* Click on View Consumption to view the token consumption for this application for different time ranges, chart types and different table views. These are the calls made to Groq in Labs 2 and 3
+  ![image](images/lab4_step02.png)
+  ![image](images/lab4_step03.png)
+  ![image](images/lab4_step04.png)
+
+Let's add an LLM Quota and test it.
+
+* While on the LLM Quotas tab, click the + Add Quotas button
+  ![image](images/lab4_step05.png)
+
+* Do the folowing:
+  * Click on API/MCP and select All APIs and MCPs
+  * Click on Data Plane and select Per Fusion Data Plane Default
+  * You can set the quota by cost or token. We'll do token so select token and enter 200 for both intput and output and set Reset Interval to 1 minute and click OK and then click Update
+    ![image](images/lab4_step07.png)
+    ![image](images/lab4_step08.png)
+
+Note that you can set quotas for peak and daily and monthly limits, etc... but we are simply setting a limit for test purposes.
+
+Go to the Designer module and activate your API and make some calls as before but rapidly until you receive a 429 Too Many Requests response. This is the LLM quota kicking in. Wait a minute and repeat. Again you should receive a 429 Too Many Requests response after a few calls.
+
+## Extra Credit Lab
+
+* Create another Groq OpenAI Connector using a different Groq model
+* Modify the integration to check the response from the LLM and if success is false, call your new Connector. This is refered to as LLM failover. You can test by changing the model name of the first Groq OpenAI Connector to force it to fail and see that you failover LLM is called.
