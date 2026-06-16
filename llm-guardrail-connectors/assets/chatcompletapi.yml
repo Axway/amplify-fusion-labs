@@ -1,0 +1,40 @@
+openapi: 3.1.0
+info:
+  title: Chat Completion API
+  version: 1.0.0
+
+paths:
+  /v1/chatcomplete:
+    post:
+      summary: Generate a chat completion
+      operationId: chatComplete
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - usermessage
+              properties:
+                usermessage:
+                  type: string
+                  description: Message from the user
+
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: string
+                    description: Generated response text
+
+        "400":
+          description: Invalid request
