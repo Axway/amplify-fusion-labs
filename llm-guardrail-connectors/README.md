@@ -49,8 +49,9 @@ In this lab, we will implement a chat API with API Key security and a mock respo
 * Click the link integration button for `POST /v1/chatcomple` and select Create New Integration
   ![image](images/lab1_create_api_step04.png)
 
-* Enter an integration name, `post-chatcomplete` and click Link Integration and expand the Operations component in your API Server lnked integration and add a map component
+* Enter an integration name, `post-chatcomplete`, and click Link Integration
   ![image](images/lab1_create_api_step05.png)
+* Expand the Operations component in your API Server linked integration and add a map component
   ![image](images/lab1_create_api_step06.png)
 
 We are going to hard code the response for now and later replace with actual data.
@@ -109,18 +110,20 @@ Let's now add API Key authentication.
     ![image](images/lab1_create_api_step18.png)
     ![image](images/lab1_create_api_step19.png)
 
-* Activate your API
+* Click Save and activate your API
 
 * Go to the Manager module, Application tab and create an application and provide a name (e.g. XX_ChatApp) and click Create
   ![image](images/lab1_create_api_step20.png)
   ![image](images/lab1_create_api_step21.png)
 
-* Add your API and Data plane and add an API Key and copy it
+* Add your API and Data plane and add an API Key, click Update and copy your API Key
   ![image](images/lab1_create_api_step22.png)
   ![image](images/lab1_create_api_step23.png)
   ![image](images/lab1_create_api_step24.png)
 
-* Use a curl command as follows to call your API after replacing with your url and api key and you should get the same response:
+* Use your previous curl command to call the API and see that you get a 401 Unauthorized response
+
+* Add an API Key header to your curl command as follows to call your API after replacing with your url and api key and you should get the same response:
 
   ```bash
   curl --location 'https://axway-university-design.sandbox.fusion.services.axway.com:4443/chatapi/v1/chatcomplete' \
@@ -144,7 +147,7 @@ In this lab we'll add an LLM Connector to process the user input message and cre
 * Click the trash can next to status and expand `chatCompleteAPIServerResponse`, then the `200` response and `body` and click the trash can next to `response` and click save
   ![image](images/lab2_step03.png)
 
-* Delte the map component
+* Delete the map component
   ![image](images/lab2_step04.png)
 
 Now let's add an OpenAI LLM Connector.
@@ -179,16 +182,16 @@ Now let's add an OpenAI LLM Connector.
 * Configure the connector as following:
   * Expand Pipe-In `chatCompleteAPIServerRequest/body` and drag a line from `usermessage` to ACTION PROPERTY `OpenAIChatInput/messages[]/text`
   * Right click on ACTION PROPERTIES `OpenAIChatInput/messages[]/type` and Set Value to `USER`
+    ![image](images/lab2_step14.png)
   * Drag a line from ACTION PROPERTIES `OpenAIChatOutput/response/message/text` to Pipe-Out `chatCompleteAPIServerResponse/200/application_json/response`
   * Right click on Pipe-Out `chatCompleteAPIServerResponse/200/headers/Content-Type` and Set Value to `application/json`
+    ![image](images/lab2_step15.png)
   * Right click on ACTION PROPERTIES `OpenAIChatInput/prompt/text` and set the value to 'You are a helpful AI agent`
+    ![image](images/lab2_step16.png)
   * Right click on Pipe-Out `status` and set to 200
+    ![image](images/lab2_step17.png)
   * Click Save
-  ![image](images/lab2_step14.png)
-  ![image](images/lab2_step15.png)
-  ![image](images/lab2_step16.png)
-  ![image](images/lab2_step17.png)
-  ![image](images/lab2_step18.png)
+    ![image](images/lab2_step18.png)
 
 * Open the API and activate it and call it as you did in Lab 1. This time, you will see an AI response, such as below, instead of 'Hello World':
   ```json
@@ -308,15 +311,15 @@ Go to the Designer module and activate your API and make some calls as before bu
 
 If your LLM fails, it is good practice to have a fallback LLM. In this lan, you will try to add a failover LLM with minimal instructions.
 
-* Create another Groq OpenAI Connector using a different Groq model
+* Create another Groq OpenAI Connector, or clone your existing one and use a different Groq model
 * Modify the integration to check the response from the first LLM and if success is false, call the failover LLM
 * You can test by changing the model name of the first Groq OpenAI Connector to force it to fail and see that you failover LLM is called
 * Hint: You will want to store responses as local variables until the end of you integration when you set your integration/API response
 
 ## Extra Credit Lab 2: Add Lakera Guardrail On LLM Response
 
-In lab 3 Wwe used a Guardrail on the input to the LLM. However, it is good practice to pass the LLM response through a Guardrail before responding to the user.
+In lab 3 we used a Guardrail on the input to the LLM. However, it is good practice to pass the LLM response through a Guardrail before responding to the user.
 
 * A good message to test that is: "What common household medications should I be careful not to take too much of, and what are the risks?" This should pass the input Guardrail but the LLM response should not pass the response check Guardrail. Try it and see.
-* Implement LLM respinse Guardrail by check the LLM (and/or failover LLM) response using the Lakera Guardrail so that you are screening bad responses being generated by the LLM and reaching your user
+* Implement LLM response Guardrail by checking the LLM (and/or failover LLM) response using the Lakera Guardrail so that you are screening bad responses being generated by the LLM and reaching your user
 * Try the message above now and see if it's screened on response
